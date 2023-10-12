@@ -1,16 +1,20 @@
+# Standard
 node_modules
-*.log
-.nuxt
-nuxt.d.ts
-.output
-.data
+*.log*
 .env
-package-lock.json
-framework
+
+# dev, build and generate
+.nuxt
+.output
 dist
-.DS_Store
+
+# Playground
+.playground/.nuxt
+.playground/.output
+.playground/dist
 
 # Yarn
+yarn.lock
 .yarn/cache
 .yarn/*state*
 
