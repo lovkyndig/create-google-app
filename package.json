@@ -45,9 +45,9 @@
     "vue-gtag": "^2.0.1"
   },
   "scripts": {
-    "dev": "nuxi dev .playground",
-    "build": "nuxi build .playground",
-    "generate": "nuxt generate .playground && npx pagefind",
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "generate": "nuxt generate",
     "pagefind": "npx pagefind",
     "preview": "nuxt preview .playground",
     "lint": "eslint .",
