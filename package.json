@@ -47,7 +47,7 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
-    "generate": "nuxt generate && npx pagefind",
+    "generate": "nuxt generate",
     "pagefind": "npx pagefind",
     "preview": "nuxt preview .playground",
     "lint": "eslint .",

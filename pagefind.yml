@@ -1,5 +1,5 @@
 site: .output/public
-output_path: public/pgefind
+output_path: public/_pagefind
 # Generate-instruction:
 # Remove the .playground from generate (in package.json)
 # Example: 
