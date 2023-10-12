@@ -1,0 +1,23 @@
+{
+  /* Sources:
+  https://v3.nuxtjs.org/concepts/typescript
+  https://nuxt.com/docs/guide/concepts/typescript#nuxttsconfigjson
+  https://www.typescriptlang.org/tsconfig
+  https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#types-typeroots-and-types
+  */
+  "extends": "./.playground/.nuxt/tsconfig.json",
+  "compilerOptions": {
+    // https://www.typescriptlang.org/docs/handbook/compiler-options.html
+    "ignoreDeprecations": "5.0",
+    "suppressImplicitAnyIndexErrors": true,
+    // source: https://github.com/viandwi24/nuxt3-awesome-starter/blob/v2/tsconfig.json
+  },
+  
+  "vueCompilerOptions": {
+    // "skipTemplateCodegen": true
+  },
+  // "include": ["**/*"], // only for checking everything sometimes:)
+  "exclude": [
+    // "./node_modules/@nuxtjs/mdc/**/*", 
+  ]
+}
