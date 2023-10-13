@@ -156,7 +156,7 @@ const getFileTypeIcon = (type:string) => {
 const { $log, $webnoti } = useNuxtApp()
 onMounted(() => { 
   // $webnoti('How to create an google app in one week?')
-  $log('Webnotification from script in index.vue')
+  // $log('Webnotification from script in index.vue')
 })
 </script>
 
