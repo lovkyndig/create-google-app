@@ -1,6 +1,6 @@
 {
   "name": "create-google-app",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "type": "module",
   "main": "./nuxt.config.ts",
   "description": "⚡Nuxt layer with nuxt-content, full search-functionality, pwa and guide to how to use this template to create an app and publish it to Google App Store.",

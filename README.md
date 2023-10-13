@@ -1,8 +1,8 @@
 # Create Google App
 Clone the repository or use it as a template. 
-- Follow the [documentation/ guidelines](https://create-google-app.vercel.app).
+- Follow the [documentation](https://create-google-app.vercel.app)/ guidlines.
 
-If you read the [documentation and follow my guidlines](https://create-google-app.vercel.app), you will have your app in Google Pay Console in less than a week.
+If you read the documentation and [follow my guidlines](https://create-google-app.vercel.app), you'll `get your app in the Google Pay console in less than a week`.
 
 ## Futures
 **Full search functionality**
@@ -27,10 +27,6 @@ If you read the [documentation and follow my guidlines](https://create-google-ap
 [//]: <> (15. gtag.clients.ts. See in the plugins-folder.[^15])
 [//]: <> (16. Google-site-verification-file in public-folder.[^16])
 
-## Install and setup
-Download, clone 
-Read the [release](https://github.com/lovkyndig/kirkepostille/releases)-notes for teaching to setup a repo. Notice that bubblewrap `update removes` all the files from the /app-"folder". Notice my guidelines in [Releases](https://github.com/lovkyndig/kirkepostille/releases) for publishing app on _Google App Store_.
-
 ## To do-list (personal notes)
 ### Priority
 - Add the site to [Ahrefs website-checker](https://ahrefs.com/website-checker)
@@ -50,7 +46,7 @@ Read the [release](https://github.com/lovkyndig/kirkepostille/releases)-notes fo
 [^4]: The length of articles on the home- and list-page is reduced. Style is changed in PostCardItem (see scss), and .short-description is added in list-page and PostListItem.
 [^5]: Nuxt-svgo is used for instead. All icons are downloaded and saved in assets/icons-folder. No need for the iconify-package. Svg-compoents is added because nuxt-svgo v2 has the name as tag-name, not as attribute.
 [^6]: All my helpers is located in plugin-folder.
-[^7]: Se components/custom-catalog for new components. CopyContent and IconCustom (from BlogiNote) is removed.
+[^7]: If the notifications don't shows, changed the settings. Add the sites url in the `allow`-settings. - In Chrome: chrome://settings/content/notifications - In Edge: edge://settings/content/notifications
 [^8]: Typescript-issues in my base theme ([BlogiNote](https://github.com/Benbinbin/BlogiNote))-files are fixed with types/index.d.ts
 [^9]: Needs to be there because of [issues in nuxt-content](). The inspiration for the module is this [package](https://www.npmjs.com/package/bloginote-copy-files-module).
 [^10]: Privacy is mandatory for all Google Apps (and therefore needed in my apps). - privacy.txt.ts is added in server/routes-folder and privacy.txt is added to public-folder.

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-
+onMounted(() => { 
+  useNuxtApp().$webnoti('Do you love this app? Download it from github.com/lovkyndig')
+})
 </script>
 
 <template>
