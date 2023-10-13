@@ -118,21 +118,21 @@
       "label": "List-page mobile"
     },
     {
-      "src": "/screenshots/wide-front.png",
+      "src": "/screenshots/wide-front.PNG",
       "sizes": "1920x1080",
       "type": "image/png",
       "platform": "wide",
       "label": "Front wide"
     },
     {
-      "src": "/screenshots/wide-list.png",
+      "src": "/screenshots/wide-list.PNG",
       "sizes": "1920x1080",
       "type": "image/png",
       "platform": "wide",
       "label": "List wide"
     },
     {
-      "src": "/screenshots/wide-article.png",
+      "src": "/screenshots/wide-article.PNG",
       "sizes": "1920x1080",
       "type": "image/png",
       "platform": "wide",

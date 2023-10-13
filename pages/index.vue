@@ -155,7 +155,7 @@ const getFileTypeIcon = (type:string) => {
 // added in create-google-app v1.0.0 beta 10 (30.09.2023)
 const { $log, $webnoti } = useNuxtApp()
 onMounted(() => { 
-  $webnoti('How to create an google app in one week?')
+  // $webnoti('How to create an google app in one week?')
   $log('Webnotification from script in index.vue')
 })
 </script>
