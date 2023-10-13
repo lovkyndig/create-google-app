@@ -1,4 +1,5 @@
 //grepper use webnotification in typescript inside nuxt3 with whis file in plugins-folder
+/*
 import { useWebNotification } from '@vueuse/core'
 import type { UseWebNotificationOptions } from '@vueuse/core'
 
@@ -30,6 +31,7 @@ export default defineNuxtPlugin(() => {
 })
 console.log('This message is written if you saved this ts-file in plugins and wrote this in a script tag: useNuxtApp().$webnoti("Hello!")')
 //end grepper
+*/
 
 /*
 Source:

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/*
 import { useWebNotification } from '@vueuse/core'
 import type { UseWebNotificationOptions } from '@vueuse/core'
 
@@ -28,6 +29,8 @@ onMounted(() => {
     }
   }
 })
+*/
+
 /*
 Source:
 // source: https://vueuse.org/core/useWebNotification/#demo

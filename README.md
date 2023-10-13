@@ -2,7 +2,7 @@
 Clone the repository or use it as a template. 
 - Follow the [documentation](https://create-google-app.vercel.app)/ guidlines.
 
-If you read the documentation and [follow my guidlines](https://create-google-app.vercel.app), you'll `get your app in the Google Pay console in less than a week`.
+`Get your app in the Google Pay Console in less than a week`, if you read the documentation and [follow my guidlines](https://create-google-app.vercel.app). (I was working 10 weeks to reach this goal.)
 
 ## Futures
 **Full search functionality**
