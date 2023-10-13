@@ -2,6 +2,8 @@
   <!-- 
     THIS COMPONENT CAN ONLY BE USED IN THIS TEMPLATE IN ONE CONDITIONS;
     THE ICONS HAVE TO BE SAVED IN USERS FOLDER: ASSETS/ICONS 
+    ***
+    There is a problem with using this component on .playground (13.10.2023)
   -->
   <span
     v-if="icon"

@@ -17,18 +17,11 @@ const appConfig = useAppConfig()
         <span v-else>{{ appConfig.site.author }}</span>
       </p>
       <p>
-        Theme <a
+        Template <a
           href="https://github.com/lovkyndig/create-google-app"
           target="_blank"
           class="text-blue-400"
-        >BlogiNote</a>
-      </p>
-      <p>
-        Icons from <a
-          href="https://icones.js.org/"
-          target="_blank"
-          class="text-blue-400"
-        >Icônes</a>
+        >Create Google App</a>
       </p>
     </div>
   </div>

@@ -1,6 +1,7 @@
 /* https://web.dev/learn/html/details/ */
 /* top right bottom left */
 
+/* style for accordions added october 2023 */
 details {
   width: 100%;
   border-bottom: 1px inset;

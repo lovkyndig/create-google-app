@@ -155,15 +155,8 @@ const getFileTypeIcon = (type:string) => {
 // added in create-google-app v1.0.0 beta 10 (30.09.2023)
 const { $log, $webnoti } = useNuxtApp()
 onMounted(() => { 
-  $webnoti('Dr. Martin Luther - The German professor the Pove tried to kill.')
+  $webnoti('How to create an google app in one week?')
   $log('Webnotification from script in index.vue')
-})
-
-definePageMeta({
-  title: 'Accordion',
-  icon: 'lucide:box-select',
-  description: 'SVG icons',
-  section: 'content',
 })
 </script>
 

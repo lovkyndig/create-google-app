@@ -32,7 +32,7 @@
   
   ## Claims and objections
   Complaints or objections to the developer's use of Google Analytics and cookies, or other complaints and objections, can be sent to the developer's email:
-  - [Eleison](mailto:jur.eleison@gmail.com)
+  - [Kyrie Eleison](mailto:jur.eleison@gmail.com)
   
   ## Complaint about processing of user activity
   In addition to complaining to the e-mail address mentioned in the previous section, you can complain to the Data Protection Authority (in Norway) if you believe that he is doing something wrong.
@@ -58,6 +58,6 @@
   More information about this app can be found on Google Play by adding it to Google with the search terms "Google Play Church Postille". Direct link:
   - [Church postil](https://play.google.com/store/apps/details?id=app.vercel.create-google-app.twa).
   
-  _Edited: 10.10.2023_
+  _Edited: 13.10.2023_
   
   [//]: # (This is a copy of the text in ~/server/routes/privacy.txt.ts)
