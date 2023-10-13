@@ -1,9 +1,9 @@
 {
   "name": "create-google-app",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.7",
   "type": "module",
   "main": "./nuxt.config.ts",
-  "description": "⚡Nuxt layer with nuxt-content, full search-functionality, pwa and guide to how to use this template to create an app and publish it to Google App Store.",
+  "description": "⚡Nuxt layer with nuxt-content, full search-functionality, pwa and guide to how to go on to Google Play Store.",
   "homepage": "https://create-google-app.vercel.app",
   "author": "Kyrie Eleison <jur.eleison@gmail.com> (https://github.com/lovkyndig)",
   "repository": {

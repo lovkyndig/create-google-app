@@ -11,71 +11,71 @@
   "display": "minimal-ui",
   "icons": [
     {
-      "src": "icons/logo.svg",
+      "src": "icons/24.svg",
       "sizes": "24x24",
       "type": "image/svg+xml"
     },
     {
-      "src": "icons/logo.svg",
+      "src": "icons/48.svg",
       "sizes": "48x48",
       "type": "image/svg+xml"
     },
     {
-      "src": "icons/logo.svg",
+      "src": "icons/64.svg",
       "sizes": "64x64",
       "type": "image/svg+xml",
       "purpose": "any"
     },
      {
-      "src": "icons/logo.svg",
+      "src": "icons/64.svg",
       "sizes": "64x64",
       "type": "image/svg+xml",
       "purpose": "maskable"
     },
     {
-      "src": "icons/logo.svg",
-      "sizes": "384x384",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/logo.svg",
-      "sizes": "384x384",
-      "type": "image/svg+xml",
-      "purpose": "maskable"
-    },
-    {
-      "src": "icons/logo.svg",
+      "src": "icons/144.svg",
       "sizes": "144x144",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "icons/logo.svg",
+      "src": "icons/144.svg",
       "sizes": "144x144",
       "type": "image/svg+xml",
       "purpose": "maskable"
     },
     {
-      "src": "icons/logo.svg",
+      "src": "icons/192.svg",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "icons/logo.svg",
+      "src": "icons/192.svg",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "maskable"
     },
     {
-      "src": "icons/logo.svg",
+      "src": "icons/384.svg",
+      "sizes": "384x384",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/384.svg",
+      "sizes": "384x384",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/512.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "icons/logo.svg",
+      "src": "icons/512.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "maskable"
@@ -83,56 +83,56 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/narrow-notepad.PNG",
+      "src": "/screenshots/narrow-notepad.png",
       "sizes": "540x720",
       "type": "image/png",
       "platform": "narrow",
       "label": "Notepad narrow"
     },
     {
-      "src": "/screenshots/wide-notepad.PNG",
+      "src": "/screenshots/wide-notepad.png",
       "sizes": "720x540",
       "type": "image/png",
       "platform": "wide",
       "label": "Notepad wide"
     },
     {
-      "src": "/screenshots/mobile-front.PNG",
+      "src": "/screenshots/mobile-front.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "platform": "narrow",
       "label": "Frontpage mobile"
     },
     {
-      "src": "/screenshots/mobile-list.PNG",
+      "src": "/screenshots/mobile-list.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "platform": "narrow",
       "label": "List-page mobile"
     },
     {
-      "src": "/screenshots/mobile-article.PNG",
+      "src": "/screenshots/mobile-article.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "platform": "narrow",
       "label": "List-page mobile"
     },
     {
-      "src": "/screenshots/wide-front.PNG",
+      "src": "/screenshots/wide-front.png",
       "sizes": "1920x1080",
       "type": "image/png",
       "platform": "wide",
       "label": "Front wide"
     },
     {
-      "src": "/screenshots/wide-list.PNG",
+      "src": "/screenshots/wide-list.png",
       "sizes": "1920x1080",
       "type": "image/png",
       "platform": "wide",
       "label": "List wide"
     },
     {
-      "src": "/screenshots/wide-article.PNG",
+      "src": "/screenshots/wide-article.png",
       "sizes": "1920x1080",
       "type": "image/png",
       "platform": "wide",
@@ -145,21 +145,21 @@
       "short_name": "About",
       "description": "About this amazing app",
       "url": "/about",
-      "icons": [{ "src": "/shortcuts/about.PNG", "sizes": "96x96" }]
+      "icons": [{ "src": "/shortcuts/about.png", "sizes": "96x96" }]
     },
     {
       "name": "Privacy Policy",
       "short_name": "Privacy",
       "description": "Privacy Statement",
       "url": "/privacy",
-      "icons": [{ "src": "/shortcuts/privacy.PNG", "sizes": "96x96" }]
+      "icons": [{ "src": "/shortcuts/privacy.png", "sizes": "96x96" }]
     },
     {
       "name": "Content-list",
       "short_name": "List",
       "description": "List of the content",
       "url": "/list",
-      "icons": [{ "src": "/shortcuts/list.PNG", "sizes": "96x96" }]
+      "icons": [{ "src": "/shortcuts/list.png", "sizes": "96x96" }]
     }
   ],
   "lang": "en",

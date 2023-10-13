@@ -12,8 +12,8 @@ useHead({
   noscript: [ { children: `Turn on javascript to use this app!` } ],
   style: [ 'body { overflow: overlay }' ],
   link: [
-    { rel: 'icon', href: appConfig?.favicon as any },
-    { rel: 'apple-touch-icon', href: appConfig?.avatar as any },
+    { rel: 'icon', href: appConfig?.site?.favicon },
+    { rel: 'apple-touch-icon', href: appConfig?.site?.avatar },
     { rel: 'manifest', href: 'manifest.webmanifest', crossorigin: 'use-credentials' },
   ],
   meta: [ { name: 'id', content: `${pkg.version}` } ]
