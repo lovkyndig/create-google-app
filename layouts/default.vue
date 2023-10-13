@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import pkg from '../package.json'
 const appConfig = useAppConfig()
 
 /**
@@ -7,15 +8,15 @@ const appConfig = useAppConfig()
  *
  */
 useHead({
-  style: [
-    'body { overflow: overlay }'
-  ],
+  htmlAttrs: { lang: 'en' },
+  noscript: [ { children: `Turn on javascript to use this app!` } ],
+  style: [ 'body { overflow: overlay }' ],
   link: [
-    {
-      rel: 'icon',
-      href: appConfig.site.favicon
-    }
-  ]
+    { rel: 'icon', href: appConfig?.favicon as any },
+    { rel: 'apple-touch-icon', href: appConfig?.avatar as any },
+    { rel: 'manifest', href: 'manifest.webmanifest', crossorigin: 'use-credentials' },
+  ],
+  meta: [ { name: 'id', content: `${pkg.version}` } ]
 })
 
 if (appConfig.site.scrollSmooth) {
@@ -25,6 +26,19 @@ if (appConfig.site.scrollSmooth) {
     ]
   })
 }
+
+useServerSeoMeta({
+  ogType: 'website',
+  ogUrl: pkg.homepage,
+  ogImage: `${pkg.homepage}/seo-meta/1200x720.PNG`,
+  ogImageAlt: pkg.name,
+  twitterImage: `${pkg.homepage}/seo-meta/800x425.PNG`,
+  twitterSite: '@nuxt_js',
+  twitterCreator: '@nuxt_js',
+  twitterCard: 'summary_large_image',
+  // googleSiteVerification: process.env.GSITE_VERIFICATION,
+  themeColor: '#f9fafb'
+})
 </script>
 
 <template>
