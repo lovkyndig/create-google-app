@@ -129,7 +129,7 @@ const showSearchModal = useState('showSearchModal')
           @click="showSearchModal=true"
         >
           <!-- tabler:search (original in BlogiNote) -->
-          <svgo-akar-search class="w-6 h-6" :fontControlled="false" />
+          <svgo-akar-search class="w-6 h-6" :font-controlled="false" />
           <span class="hidden lg:block text-sm">Search</span>
           <span class="hidden md:flex justify-center items-center gap-1 text-xs ">
             <code class="px-2 py-0.5 border rounded bg-gray-200">Ctrl</code>
@@ -164,7 +164,7 @@ const showSearchModal = useState('showSearchModal')
             class="sub-nav-item-card text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-100"
             @click="showSubNav=false"
           >
-            <svgo-material-symbols-category-rounded class="w-8 h-8" :fontControlled="false" />
+            <svgo-material-symbols-category-rounded class="w-8 h-8" :font-controlled="false" />
             <p class="py-2 font-bold text-center">
               All
             </p>
@@ -176,7 +176,7 @@ const showSearchModal = useState('showSearchModal')
             class="sub-nav-item-card text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-100"
             @click="showSubNav=false"
           >
-            <svgo-material-symbols-category-rounded class="w-8 h-8" :fontControlled="false" />
+            <svgo-material-symbols-category-rounded class="w-8 h-8" :font-controlled="false" />
             <p class="py-2 font-bold text-center">
               {{ theme.title }}
             </p>

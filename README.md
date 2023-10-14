@@ -2,7 +2,7 @@
 Clone the repository or use it as a template. 
 - Follow the [documentation](https://create-google-app.vercel.app)/ guidlines.
 
-`Get your app in the Google Pay Console in less than a week`, if you read the documentation and [follow my guidlines](https://create-google-app.vercel.app). (I was working 10 weeks to reach this goal.)
+`Get your app in the Google Pay Console in one (1) week`, if you read the documentation and [follow my guidlines](https://create-google-app.vercel.app). (I was working ten (10) weeks to reach this goal.)
 
 ## Futures
 **Full search functionality**
@@ -57,4 +57,4 @@ Clone the repository or use it as a template.
 [//]: <> ([^15]: .env holds the GTAG_ID.)
 [//]: <> ([^16]: google.site-verification-file is necessary for indexing the pages in google-search-console.)
 
-Updated 13.10.2023
+Updated 14.10.2023

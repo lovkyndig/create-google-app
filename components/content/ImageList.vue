@@ -161,7 +161,7 @@ const doubleClickHandler = (event) => {
         >
           <svgo-bi-layout-sidebar
             class="w-4 h-4 -rotate-90 sm:rotate-0"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
         </button>
         <span class="text-center text-xs text-gray-400">
@@ -183,7 +183,7 @@ const doubleClickHandler = (event) => {
         >
           <svgo-material-symbols-vertical-align-top-rounded
             class="w-4 h-4"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
         </button>
         <button
@@ -194,7 +194,7 @@ const doubleClickHandler = (event) => {
         >
           <svgo-material-symbols-vertical-align-bottom-rounded
             class="w-4 h-4"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
         </button>
 
@@ -206,7 +206,7 @@ const doubleClickHandler = (event) => {
         >
           <svgo-material-symbols-vertical-align-bottom-rounded
             class="w-4 h-4 rotate-90"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
         </button>
         <button
@@ -217,7 +217,7 @@ const doubleClickHandler = (event) => {
         >
           <svgo-material-symbols-vertical-align-top-rounded
             class="w-4 h-4 rotate-90"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
         </button>
       </div>

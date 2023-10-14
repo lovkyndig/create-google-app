@@ -6,10 +6,6 @@ export default defineAppConfig({
     name: 'Hello from Nuxt layer',
     menuBtn1: 'Google'
   },
-  copyFiles: {
-    content: 'wrong/content',
-    public: 'wrong/public'
-  },
   meta: {
     url: 'https://create-google-app.vercel.app/'
   },
@@ -18,7 +14,7 @@ export default defineAppConfig({
     email: 'jur.eleison@gmail.com',
     avatar: '/avatar.svg',
     favicon: '/avatar.svg', // favicon.ico
-    scrollSmooth: true,
+    scrollSmooth: true
   },
   homePage: {
     showBlogPosts: true,
