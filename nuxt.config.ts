@@ -101,28 +101,62 @@ export default defineNuxtConfig({
     strategies: 'generateSW',
     injectRegister: 'auto',
     registerType: 'autoUpdate',
+    /*
     includeAssets: [
       '*.html',
+      '*,js',
+      '*.css',
+      '*.*.map',
       '*.svg',
       '*.png',
       '*.PNG'
     ],
+    */
     workbox: {
       navigateFallback: '/',
+      // globPatterns: [
+      //   './**/*.{js,json,css,html}',
+      //   '*.js',
+      //   '/*.js',
+      //   '*.css',
+      //   '*.html',
+      //   '**/*.html',
+      //   '*.*.map',
+      //   '**/**/*.*.map',
+      //   '*/*.*',
+      //   '*.*'
+      // ],
       globPatterns: [
-        './**/*.{js,json,css,html}',
-        '*.js',
-        '/*.js',
-        '*.css',
-        '*.html',
-        '**/*.html',
-        '*.*.map',
-        '**/**/*.*.map',
-        '*/*.*',
-        '*.*'
+        '*.*.map'
       ],
+
       // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
-      runtimeCaching: []
+      runtimeCaching: [
+        {
+        // urlPattern: /^https:\/\/kirkepostille.vercel\.app\/.*/i, // not working
+          urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
+          handler: 'CacheFirst' as const,
+          options: {
+            cacheName: 'api-cache',
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        },
+        { // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
+          handler: 'NetworkOnly',
+          urlPattern: /\/api\/.*\/*.json/,
+          method: 'POST',
+          options: {
+            backgroundSync: {
+              name: 'backgroundsync',
+              options: {
+                maxRetentionTime: 24 * 60
+              }
+            }
+          }
+        }
+      ]
     },
     devOptions: {
       enabled: true,
