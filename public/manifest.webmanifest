@@ -2,7 +2,7 @@
   "name": "Create Google App",
   "short_name": "Google App",
   "description": "Guidelines to create a google app, without prior knowledge, in less than one week.",
-  "start_url": "vite preview",
+  "start_url": "/",
   "scope": "/",
   "id": "/",
   "theme_color": "#f9fafb",

@@ -126,9 +126,6 @@ export default defineNuxtConfig({
       //   '*/*.*',
       //   '*.*'
       // ],
-      globPatterns: [
-        '*.*.map'
-      ],
 
       // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
       runtimeCaching: [
