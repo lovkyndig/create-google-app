@@ -102,10 +102,11 @@ export default defineNuxtConfig({
     injectRegister: 'auto',
     registerType: 'autoUpdate',
     includeAssets: [
-      'content/**/*'
+      'index.html'
     ],
     workbox: {
       navigateFallback: '/',
+      globPatterns: ['**/*.{html,js,css}'],
       runtimeCaching: []
     },
     devOptions: {
