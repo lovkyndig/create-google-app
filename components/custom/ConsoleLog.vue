@@ -7,5 +7,5 @@ console.log('Testing in template: ' + props.name)
 </script>
 
 <template>
-
+  <span><!----></span>
 </template>

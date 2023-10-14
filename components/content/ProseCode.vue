@@ -165,7 +165,7 @@ onMounted(() => {
           <svgo-material-symbols-keyboard-arrow-down-rounded
             class="w-4 h-4 text-gray-400 transition-transform duration-300"
             :class="expand ? '' : '-rotate-90'"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
         </button>
       </div>
@@ -183,7 +183,7 @@ onMounted(() => {
         >
           <svgo-bi-link-45deg
             class="shrink-0 w-4 h-4"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
           <!-- <span class="shrink-0 text-xs">{{ props.filename }}</span> -->
         </NuxtLink>
@@ -193,7 +193,7 @@ onMounted(() => {
         >
           <svgo-bi-file-earmark-code
             class="shrink-0 w-4 h-4"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
           <span class="shrink-0 text-xs">{{ props.filename }}</span>
         </div>
@@ -210,25 +210,25 @@ onMounted(() => {
             v-show="copyState === 'wait'"
             name="copy"
             class="w-4 h-4"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
           <SvgoEosIconsLoading
             v-show="copyState === 'process'"
             name="icons-loading"
             class="w-4 h-4 text-purple-500"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
           <SvgoUilCheck
             v-show="copyState === 'success'"
             name="check"
             class="w-4 h-4 text-green-500"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
           <LazySvgoIconParkOutlineFileFailedOne
             v-show="copyState === 'fail'"
             name="file-failed-one"
             class="w-4 h-4 text-red-500"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
         </button>
 

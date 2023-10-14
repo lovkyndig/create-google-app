@@ -297,7 +297,7 @@ const resetFloatCardHandler = () => {
           @pointercancel="dragPointerCancelHandler"
           @pointerup="dragPointerCancelHandler"
         >
-          <svgo-akar-drag-horizontal class="w-4 h-4" :fontControlled="false" />
+          <svgo-akar-drag-horizontal class="w-4 h-4" :font-controlled="false" />
         </button>
 
         <!-- content -->
@@ -396,7 +396,7 @@ const resetFloatCardHandler = () => {
           class="p-3 sm:p-2 flex justify-center items-center fixed bottom-[8.5rem] sm:bottom-28 right-2 sm:right-4 z-40 active:text-white rounded-lg text-purple-400 hover:text-purple-500 bg-purple-100 active:bg-purple-500 border border-purple-200"
           @click="resetFloatCardHandler"
         >
-          <svgo-bi-layout-sidebar-inset class="w-5 h-5" :fontControlled="false" />
+          <svgo-bi-layout-sidebar-inset class="w-5 h-5" :font-controlled="false" />
         </button>
       </Transition>
     </Teleport>

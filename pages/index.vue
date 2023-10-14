@@ -327,7 +327,7 @@ onMounted(() => {
       >
         <div class="flex py-8 justify-between">
           <div class="folder-nav-container flex sm:flex-wrap items-center gap-1 overflow-x-auto">
-            <svgo-ph-folder-open-fill class="shrink-0 w-6 h-6 text-yellow-400" :fontControlled="false" />
+            <svgo-ph-folder-open-fill class="shrink-0 w-6 h-6 text-yellow-400" :font-controlled="false" />
             <div
               v-for="(folder, index) in folderNavArr"
               :key="folderNavArr.length>1 ? folder.path.join() : 'root'"

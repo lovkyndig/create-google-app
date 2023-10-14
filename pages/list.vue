@@ -315,7 +315,7 @@ watch(() => windowSize.value.width, () => {
             :class="showMoreFilter ? 'bg-purple-500 hover:bg-purple-400 text-white' : 'bg-purple-100 text-purple-400 hover:text-purple-500'"
             @click="showMoreFilter = !showMoreFilter"
           >
-            <svgo-mdi-filter-plus-outline class="w-6 h-6" :fontControlled="false" />
+            <svgo-mdi-filter-plus-outline class="w-6 h-6" :font-controlled="false" />
           </button>
           <div class="grow max-w-full space-y-2 ">
             <div class="p-2 flex items-start text-sm bg-gray-100 sm:space-x-4">
@@ -326,7 +326,7 @@ watch(() => windowSize.value.width, () => {
                 <svgo-ic-round-keyboard-arrow-right
                   class="w-5 h-5 transition-transform duration-300"
                   :class="showMoreTheme ? 'rotate-90' : 'rotate-0'"
-                  :fontControlled="false"
+                  :font-controlled="false"
                 />
                 <!-- <p>Theme</p> -->
               </button>
@@ -341,7 +341,7 @@ watch(() => windowSize.value.width, () => {
                     :class="currentTheme === 'all' ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-400 hover:text-purple-500 bg-purple-100'"
                     @click="toggleTheme('all')"
                   >
-                    <svgo-material-symbols-category-rounded class="w-5 h-5" :fontControlled="false" />
+                    <svgo-material-symbols-category-rounded class="w-5 h-5" :font-controlled="false" />
                     <p>all</p>
                   </button>
                 </li>
@@ -355,7 +355,7 @@ watch(() => windowSize.value.width, () => {
                     :class="currentTheme === getTheme(item._path) ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-400 hover:text-purple-500 bg-purple-100'"
                     @click="toggleTheme(getTheme(item._path))"
                   >
-                    <svgo-material-symbols-category-rounded class="shrink-0 w-5 h-5" :fontControlled="false" />
+                    <svgo-material-symbols-category-rounded class="shrink-0 w-5 h-5" :font-controlled="false" />
                     <p>
                       {{ getTheme(item._path) }}
                     </p>
@@ -384,7 +384,7 @@ watch(() => windowSize.value.width, () => {
                     <svgo-ic-round-keyboard-arrow-right
                       class="w-5 h-5 transition-transform duration-300"
                       :class="showMoreTag ? 'rotate-90' : 'rotate-0'"
-                      :fontControlled="false"
+                      :font-controlled="false"
                     />
                     <!-- <p>Tags</p> -->
                   </button>
@@ -418,7 +418,7 @@ watch(() => windowSize.value.width, () => {
                     <svgo-ic-round-keyboard-arrow-right
                       class="w-5 h-5 transition-transform duration-300"
                       :class="showMoreSeries ? 'rotate-90' : 'rotate-0'"
-                      :fontControlled="false"
+                      :font-controlled="false"
                     />
                     <!-- <p>Series</p> -->
                   </button>
@@ -439,7 +439,7 @@ watch(() => windowSize.value.width, () => {
                         :disabled="(series === 'all' || currentTheme === 'all' || themeSeries[currentTheme]?.includes(series)) ? false : true"
                         @click="toggleSeries(series)"
                       >
-                        <svgo-bi-collection class="shrink-0 w-5 h-5" :fontControlled="false" />
+                        <svgo-bi-collection class="shrink-0 w-5 h-5" :font-controlled="false" />
                         <p>{{ series }}</p>
                       </button>
                     </li>
@@ -453,7 +453,7 @@ watch(() => windowSize.value.width, () => {
                 class="px-4 py-1 sm:hidden text-red-400 hover:text-red-500 bg-red-50 hover:bg-red-100 transition-colors duration-300 rounded"
                 @click="toggleTheme('all')"
               >
-                <svgo-ant-design-clear-outlined class="w-4 h-4" :fontControlled="false" />
+                <svgo-ant-design-clear-outlined class="w-4 h-4" :font-controlled="false" />
               </button>
               <button
                 class="grow py-1 sm:hidden text-purple-500 bg-purple-100 rounded"
@@ -462,12 +462,12 @@ watch(() => windowSize.value.width, () => {
                 <svgo-ic-round-keyboard-arrow-down
                   v-show="!showMoreFilter"
                   class="w-4 h-4"
-                  :fontControlled="false"
+                  :font-controlled="false"
                 />
                 <svgo-ic-round-keyboard-arrow-up
                   v-show="showMoreFilter"
                   class="w-4 h-4"
-                  :fontControlled="false"
+                  :font-controlled="false"
                 />
               </button>
               <button
@@ -478,12 +478,12 @@ watch(() => windowSize.value.width, () => {
                 <svgo-ic-round-unfold-less
                   v-show="showListDetail"
                   class="w-4 h-4"
-                  :fontControlled="false"
+                  :font-controlled="false"
                 />
                 <svgo-ic-round-unfold-more
                   v-show="!showListDetail"
                   class="w-4 h-4"
-                  :fontControlled="false"
+                  :font-controlled="false"
                 />
               </button>
             </div>
@@ -497,7 +497,7 @@ watch(() => windowSize.value.width, () => {
           class="p-2 flex items-center text-red-400 hover:text-red-500 bg-red-50 hover:bg-red-100 transition-colors duration-300 rounded"
           @click="toggleTheme('all')"
         >
-         <svgo-ant-design-clear-outlined class="w-5 h-5" :fontControlled="false" />
+         <svgo-ant-design-clear-outlined class="w-5 h-5" :font-controlled="false" />
           <p class="hidden sm:block">
             Clear Filter
           </p>
@@ -510,12 +510,12 @@ watch(() => windowSize.value.width, () => {
           <svgo-ic-round-unfold-less
             v-show="showListDetail"
             class="w-5 h-5"
-            :fontControlled="false" 
+            :font-controlled="false" 
           />
           <svgo-ic-round-unfold-more
             v-show="!showListDetail"
             class="w-5 h-5"
-            :fontControlled="false"
+            :font-controlled="false"
           />
           <p class="hidden sm:block">
             {{ showListDetail ? 'Less' : 'More' }} Detail
@@ -527,7 +527,7 @@ watch(() => windowSize.value.width, () => {
         v-if="pending"
         class="grow flex flex-col justify-center items-center space-y-2 text-gray-400"
       >
-        <svgo-eos-icons-loading class="w-10 h-10" :fontControlled="false" />
+        <svgo-eos-icons-loading class="w-10 h-10" :font-controlled="false" />
         <p class="text-xl">
           Loading
         </p>
@@ -585,7 +585,7 @@ watch(() => windowSize.value.width, () => {
                 :class="currentSeries === item.series ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-100'"
                 @click="toggleSeries(item.series)"
               >
-                <svgo-bi-collection class="shrink-0 w-4 h-4" :fontControlled="false" />
+                <svgo-bi-collection class="shrink-0 w-4 h-4" :font-controlled="false" />
                 <p>{{ item.series }}</p>
               </button>
             </div>

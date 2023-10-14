@@ -1,25 +1,26 @@
-import pkg from './package.json'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
-// import { createResolver } from '@nuxt/kit'
-// const { resolve } = createResolver(import.meta.url)
+import { createResolver } from '@nuxt/kit'
+import pkg from './package.json'
+
+const { resolve } = createResolver(import.meta.url)
 
 const currentDir = dirname(fileURLToPath(import.meta.url))
 // https://nuxt.com/docs/guide/going-further/layers#relative-paths-and-aliases
 
-//grepper capitalize first letter in all words in a string, separeted with space ' ' or hyphen '-' (like name in package.json)
+// grepper capitalize first letter in all words in a string, separeted with space ' ' or hyphen '-' (like name in package.json)
 const capitalize = (string) => {
   const words = string.split(/[\s-]+/)
-  for (let i in words) {
-      words[i] = words[i][0].toUpperCase() + words[i].substring(1)
+  for (const i in words) {
+    words[i] = words[i][0].toUpperCase() + words[i].substring(1)
   }
   return words.join(' ')
 }
 // console.log('The pkg.name is now changed to: ' + capitalize(pkg.name))
-//end grepper
+// end grepper
 
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   app: { /* baseURL: '/' */ },
   css: [
     join(currentDir, './assets/style.css')
@@ -81,18 +82,39 @@ export default defineNuxtConfig({
       copyright: `All rights reserved ${(new Date()).getFullYear()}, Kyrie Eleison`
     },
     public: {
-      hostname: pkg.homepage,
+      hostname: pkg.homepage
     }
   },
   components: [
-    { path: './components/custom', pathPrefix: false  },
-    { path: './components/content', pathPrefix: false  },
-    { path: './components'}
+    { path: './components/custom', pathPrefix: false },
+    { path: './components/content', pathPrefix: false },
+    { path: './components' }
     // https://nuxt.com/docs/guide/directory-structure/components
   ],
   svgo: {
     // https://nuxt.com/docs/guide/going-further/layers#relative-paths-and-aliases
-    autoImportPath: join(currentDir, '/assets/icons/'),
+    autoImportPath: join(currentDir, './assets/icons/')
     // svgoConfig: {}
   },
+  pwa: {
+    manifest: false, // public/manifest.webmanifest
+    strategies: 'generateSW',
+    injectRegister: 'auto',
+    registerType: 'autoUpdate',
+    includeAssets: [
+      'content/**/*'
+    ],
+    workbox: {
+      navigateFallback: '/',
+      runtimeCaching: []
+    },
+    devOptions: {
+      enabled: true,
+      navigateFallback: '/'
+    },
+    client: {
+      installPrompt: true
+      // periodicSyncForUpdates: 300 // per 5 min for testing only
+    }
+  }
 })

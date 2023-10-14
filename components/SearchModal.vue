@@ -139,7 +139,7 @@ const clearInputTextHandler = () => {
         >
           <svgo-tabler-search
             class="shrink-0 w-6 h-6 text-gray-600"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
         </button>
 
@@ -166,7 +166,7 @@ const clearInputTextHandler = () => {
         >
           <svgo-ion-close-circle
             class="w-6 h-6"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
         </button>
       </div>
@@ -178,7 +178,7 @@ const clearInputTextHandler = () => {
         >
           <svgo-fluent-text-t-28-filled
             class="w-12 h-12"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
           <p>Type to Search</p>
         </div>
@@ -188,7 +188,7 @@ const clearInputTextHandler = () => {
         >
           <svgo-fluent-slide-search-28-filled
             class="w-12 h-12 animate-bounce"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
           <p>Searching</p>
         </div>
@@ -224,7 +224,7 @@ const clearInputTextHandler = () => {
         >
           <svgo-fluent-mail-inbox-dismiss-28-filled
             class="w-12 h-12"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
           <p>Oops! There is no result.</p>
         </div>

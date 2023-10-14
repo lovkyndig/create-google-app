@@ -59,7 +59,7 @@ const getCoverUrl = (relativeURL:(string)) => {
         :to="{ path: '/list', query: { series: props.article.series } }"
         class="shrink-0 px-2 py-1 flex justify-center items-center text-green-400 hover:text-green-500 bg-green-50 transition-colors duration-300 rounded"
       >
-        <svgo-bi-collection class="w-4 h-4" :fontControlled="false" />
+        <svgo-bi-collection class="w-4 h-4" :font-controlled="false" />
       </NuxtLink>
     </div>
   </div>

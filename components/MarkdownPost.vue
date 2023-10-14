@@ -370,7 +370,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
         >
           <svgo-material-symbols-category-rounded
             class="shrink-0 w-4 h-4"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
           <span class="text-xs">{{ theme }}</span>
         </NuxtLink>
@@ -384,7 +384,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           >
             <svgo-mdi-pencil-circle
               class="w-4 h-4"
-              :fontControlled="false" 
+              :font-controlled="false"
             />
             <span class="text-xs">Created {{ (new Date(props.data.created || props.data.git_time_created)).toLocaleDateString() }}</span>
           </div>
@@ -394,7 +394,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           >
             <svgo-mdi-clock
               class="w-4 h-4"
-              :fontControlled="false" 
+              :font-controlled="false"
             />
             <span class="text-xs">Updated {{ (new Date(props.data.updated || props.data.git_time_updated)).toLocaleDateString() }}</span>
           </div>
@@ -407,7 +407,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           >
             <svgo-bi-collection
               class="shrink-0 w-4 h-4"
-              :fontControlled="false" 
+              :font-controlled="false"
             />
             <span class="text-xs">{{ props.data.series }}</span>
           </button>
@@ -419,7 +419,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           >
             <svgo-bi-collection
               class="shrink-0 w-4 h-4"
-              :fontControlled="false" 
+              :font-controlled="false"
             />
             <span class="text-xs">Tags</span>
           </button>
@@ -447,7 +447,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
         >
           <svgo-ic-round-keyboard-arrow-left
             class="w-4 h-4"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
           <span>Prev Article</span>
         </NuxtLink>
@@ -459,7 +459,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           <span>Next Article</span>
           <svgo-ic-round-keyboard-arrow-right
             class="w-4 h-4"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
         </NuxtLink>
       </div>
@@ -495,7 +495,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
         <div class="flex items-center gap-1">
           <svgo-ic-round-keyboard-arrow-left
             class="shrink-0 w-8 h-8 opacity-70"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
           <div class="flex flex-col gap-2">
             <p class="text-lg font-bold">
@@ -529,7 +529,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           </div>
           <svgo-ic-round-keyboard-arrow-right
             class="shrink-0 w-8 h-8 opacity-70"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
         </div>
       </NuxtLink>
@@ -559,7 +559,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
         >
           <svgo-entypo-list
             class="w-5 h-5"
-            :fontControlled="false" 
+            :font-controlled="false"
           />
         </button>
       </Transition>

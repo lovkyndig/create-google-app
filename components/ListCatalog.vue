@@ -1,14 +1,13 @@
 <script setup lang="ts">
-const props = defineProps<{
-  catalogs: CatalogItem[]
-}>()
-
 interface CatalogItem {
   id: string;
   depth: number;
   text: string;
   children?: CatalogItem[]
 }
+const props = defineProps<{
+  catalogs: CatalogItem[]
+}>()
 
 /**
  *
@@ -36,7 +35,7 @@ const toggleFloatCatalogTypeHandler = () => {
 }
 
 const toggleCatalogFloatHandler = () => {
-  if(catalogType.value === 'sidebarList') {
+  if (catalogType.value === 'sidebarList') {
     changeCatalogType('floatList')
   } else {
     changeCatalogType('sidebarList')
@@ -69,14 +68,14 @@ const expandAllHeadingsHandler = inject('expandAllHeadingsHandler') as () => voi
           :class="syncCatalogToggleState ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-500 hover:text-white bg-purple-100 hover:bg-purple-500'"
           @click="syncCatalogToggleState = !syncCatalogToggleState"
         >
-          <svgo-c-outline-link class="w-4 h-4" :fontControlled="false" />
+          <svgo-c-outline-link class="w-4 h-4" :font-controlled="false" />
         </button>
 
         <button
           class="catalog-btn flex text-green-400 hover:text-green-500 active:text-white bg-green-100 active:bg-green-500 border-green-400"
           @click="expandAllHeadingsHandler"
         >
-          <svgo-ic-outline-unfold-more class="w-4 h-4" :fontControlled="false" />
+          <svgo-ic-outline-unfold-more class="w-4 h-4" :font-controlled="false" />
         </button>
 
         <button
@@ -84,7 +83,7 @@ const expandAllHeadingsHandler = inject('expandAllHeadingsHandler') as () => voi
           class="catalog-btn flex text-red-400 hover:text-red-500 bg-red-100 active:text-white active:bg-red-500 border-red-400"
           @click="collapseAllHeadingsHandler"
         >
-          <svgo-ic-outline-unfold-less class="w-4 h-4" :fontControlled="false" />
+          <svgo-ic-outline-unfold-less class="w-4 h-4" :font-controlled="false" />
         </button>
       </div>
 
@@ -94,14 +93,14 @@ const expandAllHeadingsHandler = inject('expandAllHeadingsHandler') as () => voi
           :class="catalogType === 'floatTree' ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-500 hover:text-white bg-purple-100 hover:bg-purple-500'"
           @click="toggleFloatCatalogTypeHandler"
         >
-          <svgo-ic-outline-account-tree  class="w-4 h-4" :fontControlled="false" />
+          <svgo-ic-outline-account-tree class="w-4 h-4" :font-controlled="false" />
         </button>
         <button
           class="catalog-btn hidden xl:flex border-purple-400"
           :class="(catalogType === 'floatTree' || catalogType === 'floatList') ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-500 hover:text-white bg-purple-100 hover:bg-purple-500'"
           @click="toggleCatalogFloatHandler"
         >
-            <SvgSidebar
+          s<SvgSidebar
             :name="`${catalogType}`"
             class="text-base"
           /> <!-- w-4 h-4 mingcute:[icon-name] -->

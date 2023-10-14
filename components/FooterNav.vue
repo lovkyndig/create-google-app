@@ -134,7 +134,7 @@ const showSearchModal = useState('showSearchModal')
         @click="showFooterNavThemeOptions = !showFooterNavThemeOptions"
       >
         <div class="flex flex-col justify-center items-center gap-1">
-          <svgo-ic-round-category  class="w-6 h-6" :fontControlled="false" />
+          <svgo-ic-round-category class="w-6 h-6" :font-controlled="false" />
           <p
             class="text-xs"
           >
@@ -178,7 +178,7 @@ const showSearchModal = useState('showSearchModal')
       >
         <div class="flex flex-col justify-center items-center gap-1">
           <!-- tabler:search (original in BlogiNote) -->
-          <svgo-akar-search class="w-6 h-6" :fontControlled="false" />
+          <svgo-akar-search class="w-6 h-6" :font-controlled="false" />
           <p class="text-xs">
             Search
           </p>
