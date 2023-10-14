@@ -7,6 +7,7 @@ const appConfig = useAppConfig()
  * set head meta for almost all page
  *
  */
+/*
 useHead({
   htmlAttrs: { lang: 'en' },
   noscript: [ { children: `Turn on javascript to use this app!` } ],
@@ -26,7 +27,6 @@ if (appConfig.site.scrollSmooth) {
     ]
   })
 }
-
 useServerSeoMeta({
   ogType: 'website',
   ogUrl: pkg.homepage,
@@ -39,6 +39,7 @@ useServerSeoMeta({
   // googleSiteVerification: process.env.GSITE_VERIFICATION,
   themeColor: '#f9fafb'
 })
+*/
 </script>
 
 <template>

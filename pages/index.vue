@@ -13,7 +13,7 @@ const homepageLayoutMode = useHomepageLayoutMode()
 const changeHomepageLayoutMode = () => {
   if (homepageLayoutMode.value === 'post') {
     homepageLayoutMode.value = 'folder'
-  } else if(homepageLayoutMode.value === 'folder') {
+  } else if (homepageLayoutMode.value === 'folder') {
     homepageLayoutMode.value = 'post'
   }
 }
@@ -122,7 +122,7 @@ const setTreeHandler = (path: number[], type = 'drill-down') => {
     }
   ]
 
-   // the start folderNavPath just contain empty array
+  // the start folderNavPath just contain empty array
   let folderNavPathTemp:number[] = []
 
   if (folderNavPath.length > 0) {
@@ -154,8 +154,9 @@ const getFileTypeIcon = (type:string) => {
 
 // added in create-google-app v1.0.0 beta 10 (30.09.2023)
 const { $log, $webnoti } = useNuxtApp()
-onMounted(() => { 
-  // $webnoti('How to create an google app in one week?')
+onMounted(() => {
+  // @ts-ignore
+  $webnoti('How to create an google app in one week?')
   // $log('Webnotification from script in index.vue')
 })
 </script>

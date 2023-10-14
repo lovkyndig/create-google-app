@@ -30,6 +30,7 @@ const showFooterNavThemeOptions = useState('showFooterNavThemeOptions')
  */
 
 const { $getAndChangeSearchparam } = useNuxtApp()
+// @ts-ignore
 const searchString = $getAndChangeSearchparam()
 </script>
 

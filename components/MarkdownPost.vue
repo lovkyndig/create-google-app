@@ -286,20 +286,21 @@ const detailNodeArr = ref<null | NodeListOf<HTMLDetailsElement>>(null)
 const addClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
   list.forEach((element) => {
     element.addEventListener('click', (event) => {
+      // @ts-ignore
       useNuxtApp().$closeOtherSiblings(event) // added 04.10.23
       event.stopPropagation()
       // if toggle the heading manually (by click)
-      if(syncCatalogToggleState.value) {
+      if (syncCatalogToggleState.value) {
         // and sync catalog toggle state is true
         const detailsElem = event.currentTarget as HTMLDetailsElement
         const headingId = detailsElem?.dataset?.headingId
 
-        if(headingId && headingArr.includes(headingId)) {
+        if (headingId && headingArr.includes(headingId)) {
           event.preventDefault() // prevent the default toggle action
           // change the collapsed heading set instead
           // let programming toggle (open or collapse) <details>
           // (see the next watch function 👇)
-          if(detailsElem.open) {
+          if (detailsElem.open) {
             collapseHeadingHandler(headingId)
           } else {
             expandHeadingHandler(headingId)
@@ -315,10 +316,10 @@ onMounted(() => {
     // get all <details> elements
     detailNodeArr.value = articleDOM.value.querySelectorAll('details')
 
-    if(detailNodeArr.value && detailNodeArr.value.length > 0) {
+    if (detailNodeArr.value && detailNodeArr.value.length > 0) {
       // add click event listener for each <details> element
       addClickListener(detailNodeArr.value)
-      // added 03.10.23
+      // @ts-ignore added 03.10.23
       useNuxtApp().$toggleAllHeadings() // if not searchString
     }
   }

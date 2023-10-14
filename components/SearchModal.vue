@@ -115,6 +115,7 @@ const inputHandler = (event: Event) => {
     pagefind.preload(target.value);
     debouncedSearch(target.value)
   }
+  // @ts-ignore
   searchString.value = $checkSearchString(target.value) // added
 }
 

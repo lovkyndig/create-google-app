@@ -96,42 +96,25 @@ export default defineNuxtConfig({
     autoImportPath: join(currentDir, './assets/icons/')
     // svgoConfig: {}
   },
+  vite: {
+    plugins: [
+      // VitePWA({ }) // testing between "pwa: { * }" and "VitePWA({ * })"
+    ]
+  },
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
     injectRegister: 'auto',
     registerType: 'autoUpdate',
-    /*
-    includeAssets: [
-      '*.html',
-      '*,js',
-      '*.css',
-      '*.*.map',
-      '*.svg',
-      '*.png',
-      '*.PNG'
-    ],
-    */
     workbox: {
       navigateFallback: '/',
-      // globPatterns: [
-      //   './**/*.{js,json,css,html}',
-      //   '*.js',
-      //   '/*.js',
-      //   '*.css',
-      //   '*.html',
-      //   '**/*.html',
-      //   '*.*.map',
-      //   '**/**/*.*.map',
-      //   '*/*.*',
-      //   '*.*'
-      // ],
-
       globPatterns: [
-        '*.*.map'
+        '*.*.map',
+        '**/*.{js,css,html,png,PNG,svg,ico}'
       ],
-
       // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
+      // globIgnores: ['google*.html'],
+      cleanupOutdatedCaches: true,
       runtimeCaching: [
         {
         // urlPattern: /^https:\/\/kirkepostille.vercel\.app\/.*/i, // not working
@@ -159,13 +142,15 @@ export default defineNuxtConfig({
         }
       ]
     },
+    client: {
+      installPrompt: true,
+      periodicSyncForUpdates: 300 // per 5 min for testing only
+    },
     devOptions: {
       enabled: true,
-      navigateFallback: '/'
-    },
-    client: {
-      installPrompt: true
-      // periodicSyncForUpdates: 300 // per 5 min for testing only
+      navigateFallback: '/',
+      navigateFallbackAllowlist: [/^\/$/],
+      type: 'module'
     }
   }
 })

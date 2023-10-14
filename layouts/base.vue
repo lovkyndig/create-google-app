@@ -16,26 +16,26 @@ const appConfig = useAppConfig()
  * set head meta for almost all page
  *
  */
+/*
 useHead({
   htmlAttrs: { lang: 'en' },
-  noscript: [ { children: `Turn on javascript to use this app!` } ],
-  style: [ 'body { overflow: overlay }' ],
+  noscript: [{ children: 'Turn on javascript to use this app!' }],
+  style: ['body { overflow: overlay }'],
   link: [
     { rel: 'icon', href: appConfig?.site?.favicon },
     { rel: 'apple-touch-icon', href: appConfig?.site?.avatar },
-    { rel: 'manifest', href: 'manifest.webmanifest', crossorigin: 'use-credentials' },
+    { rel: 'manifest', href: 'manifest.webmanifest', crossorigin: 'use-credentials' }
   ],
-  meta: [ { name: 'id', content: `${pkg.version}` } ]
+  meta: [{ name: 'id', content: `${pkg.version}` }]
 })
 
-if(appConfig.site.scrollSmooth) {
+if (appConfig.site.scrollSmooth) {
   useHead({
     style: [
       'html, body { scroll-behavior: smooth }'
     ]
   })
 }
-
 useServerSeoMeta({
   ogType: 'website',
   ogUrl: pkg.homepage,
@@ -48,6 +48,7 @@ useServerSeoMeta({
   // googleSiteVerification: process.env.GSITE_VERIFICATION,
   themeColor: '#f9fafb'
 })
+*/
 
 /**
  *
