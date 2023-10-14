@@ -102,11 +102,23 @@ export default defineNuxtConfig({
     injectRegister: 'auto',
     registerType: 'autoUpdate',
     includeAssets: [
-      'index.html'
+      // 'index.html'
     ],
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{html,js,css}'],
+      globPatterns: [
+        './**/*.{js,json,css,html}',
+        '*.js',
+        '/*.js',
+        '*.css',
+        '*.html',
+        '**/*.html',
+        '*.*.map',
+        '**/**/*.*.map',
+        // '*/*.*',
+        // '*.*'
+      ],
+      // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
       runtimeCaching: []
     },
     devOptions: {
