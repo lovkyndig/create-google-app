@@ -1,10 +1,11 @@
-import type { DefineComponent } from 'vue'
-// the alternative to Nuxt theme https://nuxt-themes.netlify.app/
-// removed bloginote in the root and move all other to the root and add site as parent obj
 export default defineAppConfig({
   myLayer: {
     name: 'Hello from Nuxt layer',
-    menuBtn1: 'Google'
+    menuBtn1: 'Google',
+    notification: {
+      frontpage: 'How to create an google app in one week?',
+      about: 'Do you love this app? Download it from github.com/lovkyndig'
+    }
   },
   meta: {
     url: 'https://create-google-app.vercel.app/'

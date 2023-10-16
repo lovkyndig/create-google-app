@@ -44,6 +44,7 @@ useServerSeoMeta({
 
 <template>
   <div>
+    <!--<VitePwaManifest />-->
     <slot />
   </div>
 </template>

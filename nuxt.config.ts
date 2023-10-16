@@ -1,9 +1,10 @@
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
-import { createResolver } from '@nuxt/kit'
+// import { createResolver } from '@nuxt/kit'
+import { isProduction } from 'std-env'
 import pkg from './package.json'
 
-const { resolve } = createResolver(import.meta.url)
+// const { resolve } = createResolver(import.meta.url)
 
 const currentDir = dirname(fileURLToPath(import.meta.url))
 // https://nuxt.com/docs/guide/going-further/layers#relative-paths-and-aliases
@@ -82,7 +83,8 @@ export default defineNuxtConfig({
       copyright: `All rights reserved ${(new Date()).getFullYear()}, Kyrie Eleison`
     },
     public: {
-      hostname: pkg.homepage
+      hostname: pkg.homepage,
+      production_mode: isProduction,
     }
   },
   components: [
@@ -106,13 +108,15 @@ export default defineNuxtConfig({
     strategies: 'generateSW',
     injectRegister: 'auto',
     registerType: 'autoUpdate',
+    // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
+    includeAssets: ['index.html', 'avatar.svg', 'favicon.svg'],
     workbox: {
+      maximumFileSizeToCacheInBytes: 5000000,
       navigateFallback: '/',
       globPatterns: [
-        '*.*.map',
-        '**/*.{js,css,html,png,PNG,svg,ico}'
+        '**/*.{js,css,html,svg}'
       ],
-      // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
+      sourcemap: true,
       // globIgnores: ['google*.html'],
       cleanupOutdatedCaches: true,
       runtimeCaching: [
@@ -124,6 +128,9 @@ export default defineNuxtConfig({
             cacheName: 'api-cache',
             cacheableResponse: {
               statuses: [0, 200]
+            },
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
             }
           }
         },

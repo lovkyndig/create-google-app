@@ -497,7 +497,7 @@ watch(() => windowSize.value.width, () => {
           class="p-2 flex items-center text-red-400 hover:text-red-500 bg-red-50 hover:bg-red-100 transition-colors duration-300 rounded"
           @click="toggleTheme('all')"
         >
-         <svgo-ant-design-clear-outlined class="w-5 h-5" :font-controlled="false" />
+          <svgo-ant-design-clear-outlined class="w-5 h-5" :font-controlled="false" />
           <p class="hidden sm:block">
             Clear Filter
           </p>

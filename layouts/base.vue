@@ -131,6 +131,7 @@ onUnmounted(() => {
       class="hidden sm:block shrink-0"
       :class="route.path === '/' ? 'sm:sticky top-0 inset-x-0 z-30' : 'relative z-40'"
     >
+      <!--<VitePwaManifest />-->
       <HeaderNav>
         <template #header-nav-right>
           <slot name="header-nav-right" />

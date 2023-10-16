@@ -3,8 +3,6 @@
   "short_name": "Google App",
   "description": "Guidelines to create a google app, without prior knowledge, in less than one week.",
   "start_url": "/",
-  "scope": "/",
-  "id": "/",
   "theme_color": "#f9fafb",
   "background_color": "#f9fafb",
   "orientation": "any",
@@ -162,6 +160,8 @@
       "icons": [{ "src": "/shortcuts/list.png", "sizes": "96x96" }]
     }
   ],
+  "id": "/",
+  "scope": "/",
   "lang": "en",
   "dir": "ltr",
   "prefer_related_applications": false,

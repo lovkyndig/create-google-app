@@ -1,7 +1,9 @@
 <script setup lang="ts">
+const runtime = useRuntimeConfig()
+const appConfig = useAppConfig()
 onMounted(() => {
   // @ts-ignore
-  useNuxtApp().$webnoti('Do you love this app? Download it from github.com/lovkyndig')
+  useNuxtApp().$webnoti(appConfig.myLayer.notification.about)
 })
 </script>
 
@@ -14,21 +16,21 @@ onMounted(() => {
       <ContentDoc class="about-me-content-container container mx-auto lg:max-w-4xl px-6 md:px-12 py-12">
         <template #not-found>
           <div class="about-me-content-container">
-            <h1>
-              About
+            <h1 style="display: none">
+              About {{ runtime.site.title }}
             </h1>
+            <img src="svg/text-logo.svg" alt="About logo-text" class="svg logo">
+            <img src="svg/about-not-found.svg" alt="Frontpage svg-text" class="svg content">
             <p class="max-w-prose mx-auto p-4">
-              This message is shown because there is no md-files in the content-directory.
-            </p>
-            <p class="max-w-prose mx-auto p-4">
-              This website is build on this template: 
-              <a
-                href="https://github.com/lovkyndig/crate-google-app"
-                target="_blank"
-                class="text-blue-500 hover:text-blue-600 underline font-bold transition-colors duration-300"
-              >
-                Create Google App
-              </a>.
+              Go to the <b>
+                <a
+                  href="https://create-google-app.vercel.app"
+                  target="_blank"
+                  class="text-blue-500 hover:text-blue-600 underline font-bold transition-colors duration-300"
+                >
+                  Documentation
+                </a> </b>
+              to read the guidelines, about how to set up the project.
             </p>
           </div>
         </template>
@@ -46,5 +48,21 @@ onMounted(() => {
   p {
     @apply py-4 text-lg
   }
+}
+
+</style>
+
+<style scoped>
+.svg {
+  display: block;
+  margin-right: auto;
+  width: 75%;
+}
+
+.content {
+  margin-left: 5%;
+}
+.logo {
+  margin-left: 10%;
 }
 </style>

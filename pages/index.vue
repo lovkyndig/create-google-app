@@ -153,11 +153,10 @@ const getFileTypeIcon = (type:string) => {
 }
 
 // added in create-google-app v1.0.0 beta 10 (30.09.2023)
-const { $log, $webnoti } = useNuxtApp()
+const { $webnoti } = useNuxtApp()
 onMounted(() => {
   // @ts-ignore
-  $webnoti('How to create an google app in one week?')
-  // $log('Webnotification from script in index.vue')
+  $webnoti(appConfig.myLayer.notification.frontpage)
 })
 </script>
 
@@ -206,17 +205,15 @@ onMounted(() => {
               <h1 class="py-4 text-3xl sm:text-5xl font-bold text-center text-purple-500">
                 Create Google App
               </h1>
-
-              <div class="grid place-items-center" >
+              <img src="svg/frontpage.svg" alt="Frontpage svg-text">
+              <div class="grid place-items-center text-purple-700">
                 <p class="mt-8">
-                  Click on <b><NuxtLink to="/about">About</NuxtLink></b>-link to read about how to create content.
-                </p>
-                <p class="mt-8">
-                  Or go to <b><NuxtLink href="https://create-google-app.vercel.app">documentation</NuxtLink></b>, 
-                  to read all about how to set up this page.
+                  Link to the <b>
+                    <NuxtLink href="https://create-google-app.vercel.app"> documentation </NuxtLink>
+                  </b>
+                  and the <i>guidelines</i> about how to setup the project.
                 </p>
               </div>
-
             </template>
           </ContentDoc>
         </div>

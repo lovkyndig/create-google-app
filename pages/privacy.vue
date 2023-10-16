@@ -17,7 +17,6 @@ const config = useRuntimeConfig()
             <span class="text-sm text-gray-400">Click the links or the icons to load the page.</span>
           </p>
           <div class="mx-auto p-8 flex flex-wrap justify-center items-center gap-16">
-
             <div class="flex flex-col items-center gap-2">
               <a
                 :href="`./privacy.txt`"
@@ -26,7 +25,7 @@ const config = useRuntimeConfig()
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
               > <!-- icon="iconoir:privacy-policy" class="w-36 h-36" -->
                 <SvgoIconoirPrivacyPolicy class="text-green-400 text-9xl" />
-                <br />
+                <br>
                 <span class="flex flex-col items-center">Privacy Policy</span>
               </a>
             </div>
@@ -39,7 +38,7 @@ const config = useRuntimeConfig()
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
               > <!-- icon="majesticons:sitemap" class="w-36 h-36" -->
                 <SvgoMajesticonsSitemap class="text-purple-400 text-9xl" />
-                <br />
+                <br>
                 <span class="flex flex-col items-center">Sitemap</span>
               </a>
             </div>
@@ -52,11 +51,15 @@ const config = useRuntimeConfig()
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
               > <!-- icon="fa-solid:rss-square" class="w-36 h-36" -->
                 <SvgoFaSolidRssSquare class="text-orange-400 h-1/2 text-9xl" />
-                <br />
+                <br>
                 <span class="flex flex-col items-center">Rss</span>
               </a>
             </div>
-
+            <div>
+              <NuxtLink to="/test">
+                Testing
+              </NuxtLink>
+            </div>
           </div>
         </div>
       </div>
