@@ -3,8 +3,9 @@ export default defineAppConfig({
     name: 'Hello from Nuxt layer',
     menuBtn1: 'Google',
     notification: {
-      frontpage: 'How to create an google app in one week?',
-      about: 'Do you love this app? Download it from github.com/lovkyndig'
+      // frontpage: 'How to create an google app in one week?',
+      frontpage: 'This app is under heavy development! It is working fine, but there is added futures all the time.',
+      about: 'Do you love this app? Please wait some weeks before you download it from github.com/lovkyndig'
     }
   },
   meta: {
