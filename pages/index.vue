@@ -167,7 +167,7 @@ onMounted(() => {
 */
 
 useSeoMeta({
-  titleTemplate: `${pkg.version} ${appConfig.myLayer.seoMeta.home.title}`,
+  titleTemplate: `v${pkg.version} - ${appConfig.myLayer.seoMeta.home.title}`,
   description: appConfig.myLayer.seoMeta.home.description,
   ogDescription: appConfig.myLayer.seoMeta.home.description
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa

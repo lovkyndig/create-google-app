@@ -107,11 +107,11 @@ export default defineNuxtConfig({
     useCredentials: true,
     // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
     workbox: {
-      maximumFileSizeToCacheInBytes: 5000000,
+      // maximumFileSizeToCacheInBytes: 5000000,
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,png,PNG,svg}'],
       // globIgnores: ['google*.html'],
-      cleanupOutdatedCaches: true,
+      // cleanupOutdatedCaches: true,
       runtimeCaching: [
         {
         // urlPattern: /^https:\/\/kirkepostille.vercel\.app\/.*/i, // not working
@@ -126,20 +126,20 @@ export default defineNuxtConfig({
               maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
             } */
           }
-        },
-        { // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
-          handler: 'NetworkOnly',
-          urlPattern: /\/api\/.*\/*.json/,
-          method: 'POST',
-          options: {
-            backgroundSync: {
-              name: 'backgroundsync',
-              options: {
-                maxRetentionTime: 24 * 60
-              }
-            }
-          }
         }
+        // { // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
+        //   handler: 'NetworkOnly',
+        //   urlPattern: /\/api\/.*\/*.json/,
+        //   method: 'POST',
+        //   options: {
+        //     backgroundSync: {
+        //       name: 'backgroundsync',
+        //       options: {
+        //         maxRetentionTime: 24 * 60
+        //       }
+        //     }
+        //   }
+        // }
       ]
     },
     client: {
