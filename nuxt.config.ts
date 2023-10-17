@@ -1,10 +1,10 @@
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
-// import { createResolver } from '@nuxt/kit'
+import { createResolver } from '@nuxt/kit'
 import { isProduction } from 'std-env'
 import pkg from './package.json'
 
-// const { resolve } = createResolver(import.meta.url)
+const { resolve } = createResolver(import.meta.url)
 
 const currentDir = dirname(fileURLToPath(import.meta.url))
 // https://nuxt.com/docs/guide/going-further/layers#relative-paths-and-aliases
@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     join(currentDir, './assets/style.css')
   ],
   modules: [
-    // [resolve('./modules/copy-files-module'), { cleanFolders: ['public/article'] }],
+    [resolve('./modules/copy-files-module'), { cleanFolders: ['public/article'] }],
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@vite-pwa/nuxt',
@@ -98,24 +98,18 @@ export default defineNuxtConfig({
     autoImportPath: join(currentDir, './assets/icons/')
     // svgoConfig: {}
   },
-  vite: {
-    plugins: [
-      // VitePWA({ }) // testing between "pwa: { * }" and "VitePWA({ * })"
-    ]
-  },
+  // vite: { plugins: [ /* VitePWA({ }) // testing between "pwa: { * }" and "VitePWA({ * })" */ ] },
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
     injectRegister: 'script',
     registerType: 'autoUpdate',
+    useCredentials: true,
     // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
     workbox: {
       maximumFileSizeToCacheInBytes: 5000000,
       navigateFallback: '/',
-      globPatterns: [
-        '**/*.{js,css,html,png,PNG,svg}'
-      ],
-      sourcemap: true,
+      globPatterns: ['**/*.{js,css,html,png,PNG,svg}'],
       // globIgnores: ['google*.html'],
       cleanupOutdatedCaches: true,
       runtimeCaching: [
@@ -127,25 +121,25 @@ export default defineNuxtConfig({
             cacheName: 'api-cache',
             cacheableResponse: {
               statuses: [0, 200]
-            },
+            } /*
             expiration: {
               maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
-            }
+            } */
           }
         },
-        { // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
-          handler: 'NetworkOnly',
-          urlPattern: /\/api\/.*\/*.json/,
-          method: 'POST',
-          options: {
-            backgroundSync: {
-              name: 'backgroundsync',
-              options: {
-                maxRetentionTime: 24 * 60
-              }
-            }
-          }
-        }
+        // { // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
+        //   handler: 'NetworkOnly',
+        //   urlPattern: /\/api\/.*\/*.json/,
+        //   method: 'POST',
+        //   options: {
+        //     backgroundSync: {
+        //       name: 'backgroundsync',
+        //       options: {
+        //         maxRetentionTime: 24 * 60
+        //       }
+        //     }
+        //   }
+        // }
       ]
     },
     client: {

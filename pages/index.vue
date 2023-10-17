@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import pkg from '../package.json'
 import type { NavItem } from '@nuxt/content/dist/runtime/types'
 // import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 
@@ -156,7 +157,8 @@ const getFileTypeIcon = (type:string) => {
 const { $webnoti } = useNuxtApp()
 onMounted(() => {
   // @ts-ignore
-  $webnoti(appConfig.myLayer.notification.frontpage)
+  // $webnoti(`${appConfig.myLayer.notification.frontpage}`)
+  $webnoti(`This is test-version: ${pkg.version}`)
 })
 </script>
 
