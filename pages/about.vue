@@ -5,6 +5,13 @@ onMounted(() => {
   // @ts-ignore
   useNuxtApp().$webnoti(appConfig.myLayer.notification.about)
 })
+
+useSeoMeta({
+  titleTemplate: appConfig.myLayer.seoMeta.about.title,
+  description: appConfig.myLayer.seoMeta.about.description,
+  ogDescription: appConfig.myLayer.seoMeta.about.description
+}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
+
 </script>
 
 <template>

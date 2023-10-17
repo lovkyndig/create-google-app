@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import pkg from '../package.json'
 import type { NavItem } from '@nuxt/content/dist/runtime/types'
+import pkg from '../package.json'
 // import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 
 /**
@@ -160,6 +160,13 @@ onMounted(() => {
   // $webnoti(`${appConfig.myLayer.notification.frontpage}`)
   $webnoti(`This is test-version: ${pkg.version}`)
 })
+
+useSeoMeta({
+  titleTemplate: `${appConfig.myLayer.seoMeta.home.title} ${pkg.version}`,
+  description: appConfig.myLayer.seoMeta.home.description,
+  ogDescription: appConfig.myLayer.seoMeta.home.description
+}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
+
 </script>
 
 <template>

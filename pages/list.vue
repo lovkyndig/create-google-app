@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
+const appConfig = useAppConfig()
+
 interface MyCustomParsedContent extends ParsedContent {
   tags: string[]
 }
-
 const route = useRoute()
+
+useSeoMeta({
+  titleTemplate: appConfig.myLayer.seoMeta.list.title,
+  description: appConfig.myLayer.seoMeta.list.description,
+  ogDescription: appConfig.myLayer.seoMeta.list.description
+}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
+
 
 /**
  *

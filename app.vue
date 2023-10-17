@@ -16,7 +16,7 @@ const config = useRuntimeConfig()
  */
 
 useServerSeoMeta({
-  ogTitle: `${config.site.title} - v${pkg.version}`,
+  ogTitle: config.site.title,
   ogType: 'website',
   ogUrl: pkg.homepage,
   ogImage: `${pkg.homepage}/seo-meta/1200x720.PNG`,
