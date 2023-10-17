@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { NavItem } from '@nuxt/content/dist/runtime/types'
 import pkg from '../package.json'
-// import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
+// @ts-ignore
+// import IconComponent from '../../assets/icons/custom/front-page.svg?component' // <svgo-custom-front-page
+
+const appConfig = useAppConfig()
 
 /**
  *
@@ -27,7 +31,6 @@ const changeHomepageLayoutMode = () => {
 const { data: navTree } = await useAsyncData('rootFolder', () => fetchContentNavigation())
 
 // const themeOptions = useTheme()
-const appConfig = useAppConfig()
 
 /**
  *
@@ -162,7 +165,7 @@ onMounted(() => {
 })
 
 useSeoMeta({
-  titleTemplate: `${appConfig.myLayer.seoMeta.home.title} ${pkg.version}`,
+  titleTemplate: `${pkg.version} ${appConfig.myLayer.seoMeta.home.title}`,
   description: appConfig.myLayer.seoMeta.home.description,
   ogDescription: appConfig.myLayer.seoMeta.home.description
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
@@ -174,9 +177,7 @@ useSeoMeta({
     <Head>
       <Title>Home</Title>
     </Head>
-    <NuxtLayout
-      name="base"
-    >
+    <NuxtLayout name="base">
       <template #header-nav-right>
         <button
           title="toggle homepage layout mode"
@@ -208,16 +209,18 @@ useSeoMeta({
         <div class="sm:px-10 py-16">
           <ContentDoc>
             <template #empty>
-              <IntroCard :avatar="appConfig.site.avatar" />
+              <IntroCard :avatar="'/avatar.svg'" />
             </template>
             <template #not-found>
               <h1 class="py-4 text-3xl sm:text-5xl font-bold text-center text-purple-500">
-                Create Google App
+                {{ appConfig.myLayer.seoMeta.home.title }}
               </h1>
-              <NuxtImg src="svg/frontpage.svg" alt="Frontpage svg-text" />
+              <svgo-custom-front-page alt="Frontpage svg-text" />
               <div class="grid place-items-center text-purple-700">
                 <p class="mt-8">
-                  Link to the <b>
+                  No content here!
+                  <br>
+                  Read the <b>
                     <NuxtLink href="https://create-google-app.vercel.app"> documentation </NuxtLink>
                   </b>
                   and the <i>guidelines</i> about how to setup the project.

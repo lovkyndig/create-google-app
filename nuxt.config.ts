@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     join(currentDir, './assets/style.css')
   ],
   modules: [
-    [resolve('./modules/copyFilesToPublic'), { cleanFolders: ['public/article'] }],
+    [resolve('./modules/copy-files-module'), { cleanFolders: ['public/article'] }],
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@vite-pwa/nuxt',
@@ -48,7 +48,7 @@ export default defineNuxtConfig({
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
       theme: 'one-dark-pro',
       // https://github.com/shikijs/shiki/blob/main/docs/languages.md for the available program language
-      preload: ['vue', 'python', 'tsx']
+      preload: ['latex', 'markdown', 'md', 'tex']
     },
     markdown: {
       toc: {
@@ -94,7 +94,7 @@ export default defineNuxtConfig({
   ],
   svgo: {
     // https://nuxt.com/docs/guide/going-further/layers#relative-paths-and-aliases
-    autoImportPath: join(currentDir, './assets/icons/')
+    // autoImportPath: join(currentDir, './assets/icons/')
     // svgoConfig: {}
   },
   // vite: { plugins: [ /* VitePWA({ }) // testing between "pwa: { * }" and "VitePWA({ * })" */ ] },
@@ -126,19 +126,19 @@ export default defineNuxtConfig({
             } */
           }
         },
-        // { // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
-        //   handler: 'NetworkOnly',
-        //   urlPattern: /\/api\/.*\/*.json/,
-        //   method: 'POST',
-        //   options: {
-        //     backgroundSync: {
-        //       name: 'backgroundsync',
-        //       options: {
-        //         maxRetentionTime: 24 * 60
-        //       }
-        //     }
-        //   }
-        // }
+        { // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
+          handler: 'NetworkOnly',
+          urlPattern: /\/api\/.*\/*.json/,
+          method: 'POST',
+          options: {
+            backgroundSync: {
+              name: 'backgroundsync',
+              options: {
+                maxRetentionTime: 24 * 60
+              }
+            }
+          }
+        }
       ]
     },
     client: {
@@ -147,7 +147,7 @@ export default defineNuxtConfig({
     },
     devOptions: {
       enabled: true,
-      navigateFallback: '/',
+      navigateFallback: '/'
       // navigateFallbackAllowlist: [/^\/$/],
       // type: 'module'
     }
