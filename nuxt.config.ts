@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   // devtools: { enabled: false },
   app: { /* baseURL: '/' */ },
   css: [
-    './assets/style.css'
+    'assets/style.css'
     // join(currentDir, './assets/style.css')
   ],
   modules: [
