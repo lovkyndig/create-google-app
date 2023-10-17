@@ -1,6 +1,6 @@
 {
   "name": "create-google-app",
-  "version": "1.0.0-rc.29",
+  "version": "1.0.0-rc.30",
   "description": "⚡Nuxt layer with nuxt-content, full search-functionality, pwa and guide to how to publish to Google Play Store.",
   "homepage": "https://create-google-app.vercel.app",
   "author": "Kyrie Eleison <jur.eleison@gmail.com> (https://github.com/lovkyndig)",
