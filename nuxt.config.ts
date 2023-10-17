@@ -143,8 +143,8 @@ export default defineNuxtConfig({
       ]
     },
     client: {
-      installPrompt: true,
-      periodicSyncForUpdates: 300 // per 5 min for testing only
+      installPrompt: true
+      // periodicSyncForUpdates: 300 // per 5 min for testing only
     },
     devOptions: {
       enabled: true,
