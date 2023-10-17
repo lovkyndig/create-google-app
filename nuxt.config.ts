@@ -67,7 +67,6 @@ export default defineNuxtConfig({
   },
   typescript: {
     shim: false,
-    strict: false,
     typeCheck: true
   },
   runtimeConfig: {
@@ -76,7 +75,7 @@ export default defineNuxtConfig({
       updated: false
     },
     site: { // renamed from rss
-      title: capitalize(pkg.name),
+      title: `${capitalize(pkg.name)} - ${pkg.version}`,
       description: 'Guide to Create Google App in one day or one week, depending on the programming skills.',
       image: `${pkg.homepage}/avatar.svg`, // avatar also in appconfig
       favicon: `${pkg.homepage}/avatar.svg`, // favicon also in appconfig
@@ -84,7 +83,7 @@ export default defineNuxtConfig({
     },
     public: {
       hostname: pkg.homepage,
-      production_mode: isProduction,
+      production_mode: isProduction
     }
   },
   components: [
