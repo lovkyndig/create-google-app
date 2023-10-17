@@ -205,7 +205,7 @@ onMounted(() => {
               <h1 class="py-4 text-3xl sm:text-5xl font-bold text-center text-purple-500">
                 Create Google App
               </h1>
-              <img src="svg/frontpage.svg" alt="Frontpage svg-text">
+              <NuxtImg src="svg/frontpage.svg" alt="Frontpage svg-text" />
               <div class="grid place-items-center text-purple-700">
                 <p class="mt-8">
                   Link to the <b>

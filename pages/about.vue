@@ -19,8 +19,8 @@ onMounted(() => {
             <h1 style="display: none">
               About {{ runtime.site.title }}
             </h1>
-            <img src="svg/text-logo.svg" alt="About logo-text" class="svg logo">
-            <img src="svg/about-not-found.svg" alt="Frontpage svg-text" class="svg content">
+            <NuxtImg src="svg/text-logo.svg" alt="About logo-text" class="svg logo" />
+            <NuxtImg src="svg/about-not-found.svg" alt="Frontpage svg-text" class="svg content" />
             <p class="max-w-prose mx-auto p-4">
               Go to the <b>
                 <a

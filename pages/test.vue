@@ -2,6 +2,7 @@
 const date = useAppConfig().buildDate
 // source:
 // https://github.com/vite-pwa/nuxt/blob/main/playground/layouts/default.vue
+const { $pwa } = useNuxtApp()
 </script>
 
 <template>
