@@ -4,7 +4,7 @@ const props = defineProps({
   footerCatalog: {
     type: Boolean,
     default: false
-  },
+  }
 })
 
 const route = useRoute()
@@ -106,7 +106,7 @@ const showSearchModal = useState('showSearchModal')
 
 // keyboard shortcuts for search modal
 const ModalKeyListener = function (event: KeyboardEvent) {
-  if(event.ctrlKey && event.key ==='k') {
+  if (event.ctrlKey && event.key === 'k') {
     event.preventDefault()
     showSearchModal.value = !showSearchModal.value
   } else if (showSearchModal.value && event.key === 'Escape') {
