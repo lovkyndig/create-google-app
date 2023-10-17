@@ -36,7 +36,7 @@ export default defineNuxtConfig({
   ],
   nitro: {
     prerender: {
-      routes: ['/rss.xml', '/sitemap.xml']
+      routes: ['/rss.xml', '/sitemap.xml', '/']
     }
   },
   // https://content.nuxtjs.org
@@ -63,7 +63,7 @@ export default defineNuxtConfig({
         }
       }
     },
-    ignores: [/* ['images', 'attachment'] */],
+    ignores: [/* ['images', 'attachment'] */]
   },
   typescript: {
     shim: false,
@@ -148,8 +148,8 @@ export default defineNuxtConfig({
     devOptions: {
       enabled: true,
       navigateFallback: '/',
-      navigateFallbackAllowlist: [/^\/$/],
-      type: 'module'
+      // navigateFallbackAllowlist: [/^\/$/],
+      // type: 'module'
     }
   }
 })
