@@ -3,7 +3,7 @@
   "extends": "./.nuxt/tsconfig.json", 
   "compilerOptions": {
     "types": [
-      "vite-plugin-pwa/client"
+      // "vite-plugin-pwa/client"
     ],
     "allowJs": true // TreeCatalog.vue has js-code
     // "ignoreDeprecations": "5.0",

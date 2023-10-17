@@ -1,3 +1,4 @@
+/*
 import VueGtag from 'vue-gtag'
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -10,6 +11,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 })
+*/
+
 /*
 sources:
 https://www.npmjs.com/package/vue-gtag
