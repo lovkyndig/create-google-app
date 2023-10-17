@@ -103,7 +103,7 @@ export default defineNuxtConfig({
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
     injectRegister: 'script',
-    registerType: 'autoUpdate',
+    // registerType: 'autoUpdate',
     useCredentials: true,
     // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
     workbox: {
