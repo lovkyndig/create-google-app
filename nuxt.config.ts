@@ -106,15 +106,14 @@ export default defineNuxtConfig({
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
-    injectRegister: 'auto',
+    injectRegister: 'script',
     registerType: 'autoUpdate',
     // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
-    includeAssets: ['index.html', 'avatar.svg', 'favicon.svg'],
     workbox: {
       maximumFileSizeToCacheInBytes: 5000000,
       navigateFallback: '/',
       globPatterns: [
-        '**/*.{js,css,html,svg}'
+        '**/*.{js,css,html,png,PNG,svg}'
       ],
       sourcemap: true,
       // globIgnores: ['google*.html'],
