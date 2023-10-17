@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     join(currentDir, './assets/style.css')
   ],
   modules: [
-    [resolve('./modules/copy-files-module'), { cleanFolders: ['public/article'] }],
+    [resolve('./modules/ccopyFilesToPublic'), { cleanFolders: ['public/article'] }],
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@vite-pwa/nuxt',
