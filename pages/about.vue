@@ -1,11 +1,12 @@
 <script setup lang="ts">
 const runtime = useRuntimeConfig()
 const appConfig = useAppConfig()
+/*
 onMounted(() => {
   // @ts-ignore
   useNuxtApp().$webnoti(appConfig.myLayer.notification.about)
 })
-
+*/
 useSeoMeta({
   titleTemplate: appConfig.myLayer.seoMeta.about.title,
   description: appConfig.myLayer.seoMeta.about.description,
@@ -27,7 +28,7 @@ useSeoMeta({
               About {{ runtime.site.title }}
             </h1>
             <svgo-custom-text-logo alt="About logo-text" class="svg logo" />
-            <svgo-custom-about-not-found alt="Frontpage svg-text" class="svg content" />
+            <svgo-custom-not-found alt="Frontpage svg-text" class="svg content" />
             <p class="max-w-prose mx-auto p-4">
               Go to the <b>
                 <a
