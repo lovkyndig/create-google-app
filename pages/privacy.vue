@@ -56,8 +56,8 @@ const config = useRuntimeConfig()
               </a>
             </div>
             <div>
-              <NuxtLink to="/test">
-                Testing
+              <NuxtLink to="/pwa">
+                PWA Testing
               </NuxtLink>
             </div>
           </div>

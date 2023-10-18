@@ -98,7 +98,7 @@ export default defineNuxtConfig({
     // autoImportPath: join(currentDir, './assets/icons/')
     // svgoConfig: {}
   },
-  // vite: { plugins: [ /* VitePWA({ }) // testing between "pwa: { * }" and "VitePWA({ * })" */ ] },
+  // vite: { plugins: [ /* VitePWA({ }) // testing between pwa: { * } and VitePWA({ * }) */ ]}
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
@@ -144,11 +144,12 @@ export default defineNuxtConfig({
         // }
       ]
     },
+    /*
     client: {
       installPrompt: true,
       periodicSyncForUpdates: 60 // per 5 min for testing only
-    },
-    registerWebManifestInRouteRules: true,
+    }, */
+    // registerWebManifestInRouteRules: true,
     devOptions: {
       enabled: true,
       navigateFallback: '/',

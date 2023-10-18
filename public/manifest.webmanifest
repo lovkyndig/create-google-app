@@ -6,7 +6,7 @@
   "theme_color": "#f9fafb",
   "background_color": "#f9fafb",
   "orientation": "any",
-  "display": "standalone",
+  "display": "minimal-ui",
   "icons": [
     {
       "src": "icons/24.svg",
@@ -120,6 +120,7 @@
       "sizes": "1920x1080",
       "type": "image/png",
       "platform": "wide",
+      "form_factor": "wide",
       "label": "Front wide"
     },
     {
