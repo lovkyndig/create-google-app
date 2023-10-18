@@ -107,6 +107,8 @@ export default defineNuxtConfig({
     useCredentials: true,
     // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
     workbox: {
+      skipWaiting: true,
+      // clientsClaim: true,
       // maximumFileSizeToCacheInBytes: 5000000,
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,png,PNG,svg}'],
