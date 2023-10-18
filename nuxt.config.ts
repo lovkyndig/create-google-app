@@ -103,7 +103,7 @@ export default defineNuxtConfig({
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
     injectRegister: 'script',
-    // registerType: 'autoUpdate',
+    registerType: 'autoUpdate',
     useCredentials: true,
     // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
     workbox: {
@@ -143,14 +143,14 @@ export default defineNuxtConfig({
       ]
     },
     client: {
-      installPrompt: true
-      // periodicSyncForUpdates: 300 // per 5 min for testing only
+      installPrompt: true,
+      periodicSyncForUpdates: 60 // per 5 min for testing only
     },
+    registerWebManifestInRouteRules: true,
     devOptions: {
       enabled: true,
-      navigateFallback: '/'
-      // navigateFallbackAllowlist: [/^\/$/],
-      // type: 'module'
+      navigateFallback: '/',
+      navigateFallbackAllowlist: [/^\/$/]
     }
   }
 })
