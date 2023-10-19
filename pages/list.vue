@@ -14,7 +14,6 @@ useSeoMeta({
   ogDescription: appConfig.myLayer.seoMeta.list.description
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 
-
 /**
  *
  * build the theme filter options

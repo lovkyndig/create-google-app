@@ -6,7 +6,7 @@ import pkg from './package.json'
 
 const { resolve } = createResolver(import.meta.url)
 
-// const currentDir = dirname(fileURLToPath(import.meta.url))
+const currentDir = dirname(fileURLToPath(import.meta.url))
 // https://nuxt.com/docs/guide/going-further/layers#relative-paths-and-aliases
 
 // grepper capitalize first letter in all words in a string, separeted with space ' ' or hyphen '-' (like name in package.json)
@@ -21,11 +21,10 @@ const capitalize = (string) => {
 // end grepper
 
 export default defineNuxtConfig({
-  // devtools: { enabled: false },
+  devtools: { enabled: false },
   app: { /* baseURL: '/' */ },
   css: [
-    'assets/style.css'
-    // join(currentDir, './assets/style.css')
+    join(currentDir, './assets/style.css')
   ],
   modules: [
     [resolve('./modules/copy-files-module'), { cleanFolders: ['public/article'] }],
@@ -93,63 +92,37 @@ export default defineNuxtConfig({
     { path: './components' }
     // https://nuxt.com/docs/guide/directory-structure/components
   ],
-  svgo: {
-    // https://nuxt.com/docs/guide/going-further/layers#relative-paths-and-aliases
-    // autoImportPath: join(currentDir, './assets/icons/')
-    // svgoConfig: {}
+  experimental: {
+    payloadExtraction: false // get the api-cache loads/working
   },
-  // vite: { plugins: [ /* VitePWA({ }) // testing between pwa: { * } and VitePWA({ * }) */ ]}
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
     injectRegister: 'script',
     registerType: 'autoUpdate',
-    useCredentials: true,
-    // https://developer.chrome.com/docs/workbox/reference/workbox-build/#type-GlobPartial
+    includeAssets: ['avatar.svg', 'privacy.txt'],
     workbox: {
-      // skipWaiting: true,
-      // clientsClaim: true,
-      // maximumFileSizeToCacheInBytes: 5000000,
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html,png,PNG,svg}'],
+      globPatterns: ['**/*.{js,css,html}'],
       // globIgnores: ['google*.html'],
-      // cleanupOutdatedCaches: true,
+      navigateFallbackDenylist: [/^\/api/],
       runtimeCaching: [
         {
-        // urlPattern: /^https:\/\/kirkepostille.vercel\.app\/.*/i, // not working
           urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
           handler: 'CacheFirst' as const,
           options: {
             cacheName: 'api-cache',
             cacheableResponse: {
               statuses: [0, 200]
-            } /*
-            expiration: {
-              maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
-            } */
+            }
           }
         }
-        // { // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
-        //   handler: 'NetworkOnly',
-        //   urlPattern: /\/api\/.*\/*.json/,
-        //   method: 'POST',
-        //   options: {
-        //     backgroundSync: {
-        //       name: 'backgroundsync',
-        //       options: {
-        //         maxRetentionTime: 24 * 60
-        //       }
-        //     }
-        //   }
-        // }
       ]
     },
-    /*
     client: {
       installPrompt: true,
-      periodicSyncForUpdates: 60 // per 5 min for testing only
-    }, */
-    // registerWebManifestInRouteRules: true,
+      periodicSyncForUpdates: 3600 // 360 for testing only
+    },
     devOptions: {
       enabled: true,
       navigateFallback: '/',
@@ -157,3 +130,14 @@ export default defineNuxtConfig({
     }
   }
 })
+
+/*
+work-box-source:
+https://github.com/vite-pwa/nuxt/issues/76
+https://vite-pwa-org.netlify.app/workbox/generate-sw.html
+Regex source:
+https://developer.chrome.com/docs/workbox/reference/workbox-webpack-plugin/
+https://regexone.com/
+https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285
+https://stackoverflow.com/questions/16657152/matching-a-forward-slash-with-a-regex
+*/
