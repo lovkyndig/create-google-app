@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const config = useRuntimeConfig()
+// const config = useRuntimeConfig()
+onMounted(() => {
+  // @ts-ignore
+  useNuxtApp().$webnoti(appConfig.myLayer.notification.privacy)
+})
 </script>
 
 <template>

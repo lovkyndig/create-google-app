@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
+onMounted(() => {
+  // @ts-ignore
+  useNuxtApp().$webnoti(appConfig.myLayer.notification.list)
+})
+
 const appConfig = useAppConfig()
 
 interface MyCustomParsedContent extends ParsedContent {

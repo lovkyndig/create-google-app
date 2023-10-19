@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
-/*
+
 onMounted(() => {
   // @ts-ignore
   useNuxtApp().$webnoti(appConfig.myLayer.notification.about)
 })
-*/
+
 useSeoMeta({
   titleTemplate: appConfig.myLayer.seoMeta.about.title,
   description: appConfig.myLayer.seoMeta.about.description,
