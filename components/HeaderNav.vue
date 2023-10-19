@@ -94,9 +94,9 @@ const showSearchModal = useState('showSearchModal')
       <div class="flex justify-start items-center">
         <NuxtLink to="/">
           <img
-            :src="'/webp-logo.webp'"
-            alt="avatar"
-            class="w-10 h-10 rounded-full"
+            :src="appConfig.site.logo"
+            alt="img"
+            class="w-96 h-12 rounded-full"
           >
         </NuxtLink>
       </div>

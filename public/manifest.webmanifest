@@ -9,11 +9,6 @@
   "display": "minimal-ui",
   "icons": [
     {
-      "src": "icons/16.svg",
-      "sizes": "16x16",
-      "type": "image/svg+xml"
-    },
-    {
       "src": "icons/24.svg",
       "sizes": "24x24",
       "type": "image/svg+xml"

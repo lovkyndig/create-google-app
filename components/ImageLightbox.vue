@@ -224,7 +224,6 @@ const transitionEndHandler = () => {
 }
 
 const onBeforeLeave = () => {
-
   if (currentZoomImg.value && zoomImage.value && currentZoomImg.value.src === zoomImage.value.src) {
     toggleImageClassName('add')
     currentZoomImg.value = zoomImage.value
@@ -405,7 +404,7 @@ const pointerMoveHandler = (event:PointerEvent) => {
       pointerB = event
     }
 
-    if(prevPointer) {
+    if (prevPointer) {
       translateX = translateStartPointX + (event.clientX - prevPointer.clientX)
       translateY = translateStartPointY + (event.clientY - prevPointer.clientY)
 

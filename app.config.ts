@@ -28,7 +28,8 @@ export default defineAppConfig({
   site: {
     author: 'Kyrie Eleison',
     email: 'jur.eleison@gmail.com',
-    avatar: '/webp-logo.webp',
+    logo: '/svg/text-logo.svg',
+    avatar: '/svg/avatar.svg',
     favicon: '/favicon.svg', // favicon.ico
     scrollSmooth: true
   },

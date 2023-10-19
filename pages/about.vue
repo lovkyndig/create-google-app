@@ -26,8 +26,8 @@ useSeoMeta({
             <h1 style="display: none">
               {{ appConfig.myLayer.seoMeta.about.title }}
             </h1>
-            <img src="/svg/text-logo.svg" alt="About text-logo" class="svg logo">
-            <img src="/svg/about-not-found.svg" alt="About-md-file not-found" class="svg content">
+            <img src="/svg/text-logo.svg" alt="img" class="svg logo">
+            <img src="/svg/about-not-found.svg" alt="img" class="svg content">
             <p class="max-w-prose mx-auto p-4">
               Go to the <b>
                 <a

@@ -101,7 +101,7 @@ onMounted(() => {
     <img
       id="findNextHeader"
       src="/svg/find-next.svg"
-      alt="find next"
+      alt="img"
       width="50"
       height="50"
       :title="tooltip"

@@ -79,8 +79,8 @@ const showSearchModal = useState('showSearchModal')
       >
         <div class="flex flex-col justify-center items-center gap-1">
           <img
-            :src="appConfig.site.avatar"
-            alt="avatar"
+            :src="appConfig.site.favicon"
+            alt="img"
             class="w-6 h-6"
           >
           <p

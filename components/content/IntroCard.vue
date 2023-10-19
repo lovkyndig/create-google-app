@@ -39,7 +39,7 @@ const props = defineProps({
       v-if="props.avatar"
       :src="props.avatar"
       :class="avatarClass"
-      alt="avatar"
+      alt="img"
     >
   </div>
 </template>
