@@ -72,7 +72,7 @@ const onAfterEnter = (el:HTMLElement) => {
 // fix the overscroll bug
 const subNavDOM = ref<null | HTMLElement>(null)
 const scrollWheelHandler = (event: WheelEvent) => {
-  if(subNavDOM.value) {
+  if (subNavDOM.value) {
     overscrollWheelHandler(event, subNavDOM.value)
   }
 }
@@ -94,7 +94,7 @@ const showSearchModal = useState('showSearchModal')
       <div class="flex justify-start items-center">
         <NuxtLink to="/">
           <img
-            :src="appConfig.site.avatar"
+            :src="'/webp-logo.webp'"
             alt="avatar"
             class="w-10 h-10 rounded-full"
           >
