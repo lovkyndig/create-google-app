@@ -77,7 +77,7 @@ export default defineNuxtConfig({
     site: { // renamed from rss
       title: capitalize(pkg.name),
       description: 'Guide to Create Google App in one day or one week, depending on the programming skills.',
-      image: `${pkg.homepage}/webp-logo.webp`, // avatar also in appconfig
+      image: `${pkg.homepage}/svg/avatar.svg`, // avatar also in appconfig
       favicon: `${pkg.homepage}/favicon.svg`, // favicon also in appconfig
       copyright: `All rights reserved ${(new Date()).getFullYear()}, Kyrie Eleison`
     },
