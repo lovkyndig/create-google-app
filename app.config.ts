@@ -21,6 +21,10 @@ export default defineAppConfig({
       list: {
         title: 'List of content in this Google App',
         description: 'This is the list of content in the "Create Google App" - with responsive design for mobile and laptop. '
+      },
+      privacy: {
+        title: 'Privacy Policy etc.',
+        description: 'The Privacy Policy, Sitemap and Rss for "Create Google App". Privacy Policy is requrid for all Google Apps.'
       }
     }
   },

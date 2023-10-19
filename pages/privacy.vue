@@ -16,7 +16,7 @@ onMounted(() => {
       <div class="privacy-content-container container mx-auto lg:max-w-4xl px-6 md:px-12 py-12">
         <div class="privacy-content-container">
           <h1>
-            Privacy Police etc.
+            {{ appConfig.myLayer.seoMeta.privacy.title }}
           </h1>
           <p class="text-center">
             <span class="text-sm text-gray-400">Click the links or the icons to load the page.</span>
@@ -29,7 +29,7 @@ onMounted(() => {
                 aria-label="privacy.txt"
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
               > <!-- icon="iconoir:privacy-policy" class="w-36 h-36" -->
-                <SvgoIconoirPrivacyPolicy class="text-green-400 text-9xl" />
+                <SvgoCustomPrivacyPolicy class="text-green-400 text-9xl" />
                 <br>
                 <span class="flex flex-col items-center">Privacy Policy</span>
               </a>

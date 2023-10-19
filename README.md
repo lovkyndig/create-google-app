@@ -5,30 +5,35 @@ Clone the repository or use it as a template.
 `Get your app in the Google Pay Console in one (1) week`, if you read the documentation and [follow my guidlines](https://create-google-app.vercel.app). (I was working ten (10) weeks to reach this goal.)
 
 ## Futures
-**Full search functionality**
-1. Full search functionality with use of [pagefind](https://pagefind.app/).[^1]
-2. window.find()-function is used to continue searching in a article.[^2]  
+**Full search functionality**  
 
-**Style and icons**
-3. Accordion style.[^3]
-4. Home- and list-page with good readability for mobil and notebook.[^4]
-5. Offline icons; [nuxt-svgo](https://www.npmjs.com/package/nuxt-svgo).[^5]  
+1. Full search functionality with use of [pagefind](https://pagefind.app/).[^1]  
+2. window.find()-function is used to continue searching in a article.[^2]
 
-**Helpers (functions/methods)**
-6. Providing helpers to all my functionalities (methods).[^6]
-7. WebNotification can be used in this package to send msg to the user.[^7]
-8. Typescript can be used in dev ([vue-tsc](https://www.npmjs.com/package/vue-tsc)).[^8]
-9. Created copy-files-module as an local module.[^9]  
+**Style and icons**  
 
-**Arrangement for PWA**
-10. Privacy policy statement.[^10]
-11. [@vite-pwa/nuxt](https://www.npmjs.com/package/@vite-pwa/nuxt): This is the first step on the way to Google Store.[^11]
-12. BubbleWrap guide. See assets/guide. Required to be read.[^12]
-13. Hosting on [Vercel](https://vercel.com/docs/deployments/git/vercel-for-github).[^13]  
+3. Accordion style.[^3]  
+4. Home- and list-page with good readability for mobil and notebook.[^4]  
+5. Offline icons; [nuxt-svgo](https://www.npmjs.com/package/nuxt-svgo).[^5]
 
-**Extra (not necessary)**
-14. [Vercel Analytics](https://vercel.com/analytics), can be used when hosted on vercel.[^14]
-[//]: <> (15. gtag.clients.ts. See in the plugins-folder.[^15])
+**Helpers (functions/methods)**  
+
+6. Providing helpers to all my functionalities (methods).[^6]  
+7. WebNotification can be used in this package to send msg to the user.[^7]  
+8. Typescript can be used in dev ([vue-tsc](https://www.npmjs.com/package/vue-tsc)).[^8]  
+9. Created copy-files-module as an local module.[^9]
+
+**Arrangement for PWA**  
+
+10. Privacy policy statement.[^10]  
+11. [@vite-pwa/nuxt](https://www.npmjs.com/package/@vite-pwa/nuxt): This is the first step on the way to Google Store.[^11]  
+12. BubbleWrap guide. See assets/guide. Required to be read.[^12]  
+13. Hosting on [Vercel](https://vercel.com/docs/deployments/git/vercel-for-github).[^13]
+
+**Extra (not necessary)**  
+
+14. [Vercel Analytics](https://vercel.com/analytics), can be used when hosted on vercel.[^14]  
+[//]: <> (15. gtag.clients.ts. See in the plugins-folder.[^15])  
 [//]: <> (16. Google-site-verification-file in public-folder.[^16])
 
 ## To do-list (personal notes)
