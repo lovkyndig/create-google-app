@@ -7,21 +7,25 @@ Clone the repository or use it as a template.
 ## Futures
 **Full search functionality**
 1. Full search functionality with use of [pagefind](https://pagefind.app/).[^1]
-2. window.find()-function is used to continue searching in a article.[^2]
+2. window.find()-function is used to continue searching in a article.[^2]  
+
 **Style and icons**
 3. Accordion style.[^3]
 4. Home- and list-page with good readability for mobil and notebook.[^4]
-5. Offline icons; [nuxt-svgo](https://www.npmjs.com/package/nuxt-svgo).[^5]
+5. Offline icons; [nuxt-svgo](https://www.npmjs.com/package/nuxt-svgo).[^5]  
+
 **Helpers (functions/methods)**
 6. Providing helpers to all my functionalities (methods).[^6]
 7. WebNotification can be used in this package to send msg to the user.[^7]
 8. Typescript can be used in dev ([vue-tsc](https://www.npmjs.com/package/vue-tsc)).[^8]
-9. Created copy-files-module as an local module.[^9]
+9. Created copy-files-module as an local module.[^9]  
+
 **Arrangement for PWA**
 10. Privacy policy statement.[^10]
 11. [@vite-pwa/nuxt](https://www.npmjs.com/package/@vite-pwa/nuxt): This is the first step on the way to Google Store.[^11]
 12. BubbleWrap guide. See assets/guide. Required to be read.[^12]
-13. Hosting on [Vercel](https://vercel.com/docs/deployments/git/vercel-for-github).[^13]
+13. Hosting on [Vercel](https://vercel.com/docs/deployments/git/vercel-for-github).[^13]  
+
 **Extra (not necessary)**
 14. [Vercel Analytics](https://vercel.com/analytics), can be used when hosted on vercel.[^14]
 [//]: <> (15. gtag.clients.ts. See in the plugins-folder.[^15])
@@ -57,4 +61,4 @@ Clone the repository or use it as a template.
 [//]: <> ([^15]: .env holds the GTAG_ID.)
 [//]: <> ([^16]: google.site-verification-file is necessary for indexing the pages in google-search-console.)
 
-Updated 14.10.2023
+Updated 19.10.2023

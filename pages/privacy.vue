@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // const config = useRuntimeConfig()
+const appConfig = useAppConfig()
 onMounted(() => {
   // @ts-ignore
   useNuxtApp().$webnoti(appConfig.myLayer.notification.privacy)
@@ -58,11 +59,6 @@ onMounted(() => {
                 <br>
                 <span class="flex flex-col items-center">Rss</span>
               </a>
-            </div>
-            <div>
-              <NuxtLink to="/pwa">
-                PWA Testing
-              </NuxtLink>
             </div>
           </div>
         </div>
