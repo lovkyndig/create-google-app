@@ -93,7 +93,7 @@ const searchString = $getAndChangeSearchparam()
       </template>
     </NuxtLayout>
     <!-- *****************************  FIND-NEXT ********************************* -->
-    <CustomFindNext v-if="searchString"/>
+    <FindNext v-if="searchString" />
     <!-- *****************************  FIND-NEXT ********************************* -->
   </div>
 </template>

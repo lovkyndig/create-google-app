@@ -2,45 +2,48 @@
 Clone the repository or use it as a template. 
 - Follow the [documentation](https://create-google-app.vercel.app)/ guidlines.
 
-`Get your app in the Google Pay Console in one (1) week`, if you read the documentation and [follow my guidlines](https://create-google-app.vercel.app). (I was working ten (10) weeks to reach this goal.)
+You can `Get your app in the Google Pay Console in one (1) week`, if you read the documentation and [follow my guidlines](https://create-google-app.vercel.app). (I was working ten (10) weeks to reach this goal for my first app.)
 
 ## Futures
-**Full search functionality**  
+_Full search functionality_  
 
 1. Full search functionality with use of [pagefind](https://pagefind.app/).[^1]  
 2. window.find()-function is used to continue searching in a article.[^2]
 
-**Style and icons**  
+_Style and icons_  
 
 3. Accordion style.[^3]  
 4. Home- and list-page with good readability for mobil and notebook.[^4]  
 5. Offline icons; [nuxt-svgo](https://www.npmjs.com/package/nuxt-svgo).[^5]
 
-**Helpers (functions/methods)**  
+_Helpers (functions/methods)_  
 
 6. Providing helpers to all my functionalities (methods).[^6]  
 7. WebNotification can be used in this package to send msg to the user.[^7]  
 8. Typescript can be used in dev ([vue-tsc](https://www.npmjs.com/package/vue-tsc)).[^8]  
 9. Created copy-files-module as an local module.[^9]
 
-**Arrangement for PWA**  
+_Arrangement for PWA_  
 
 10. Privacy policy statement.[^10]  
 11. [@vite-pwa/nuxt](https://www.npmjs.com/package/@vite-pwa/nuxt): This is the first step on the way to Google Store.[^11]  
 12. BubbleWrap guide. See assets/guide. Required to be read.[^12]  
 13. Hosting on [Vercel](https://vercel.com/docs/deployments/git/vercel-for-github).[^13]
 
-**Extra (not necessary)**  
+_Extra (not necessary)_  
 
 14. [Vercel Analytics](https://vercel.com/analytics), can be used when hosted on vercel.[^14]  
+
 [//]: <> (15. gtag.clients.ts. See in the plugins-folder.[^15])  
 [//]: <> (16. Google-site-verification-file in public-folder.[^16])
 
-## To do-list (personal notes)
+## To do-list (plan)
 ### Priority
 - Add the site to [Ahrefs website-checker](https://ahrefs.com/website-checker)
 - Add the site to [Google Search Console](https://search.google.com/search-console/about), and check if indexing-problems.
 - Use [lighthouse](https://lighthouse-metrics.com/) to check performance, accessibility, beste practices, seo and pwa.
+- Use Bubblewrap and add app to Google Play Console
+
 ### On available capacity
 - Add [giscus](https://giscus.app/) - Follow this [tutorial](https://www.freecodecamp.org/news/github-discussions-as-chat-system/).
 - Add dark-light-themetoggle.
