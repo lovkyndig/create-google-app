@@ -32,7 +32,6 @@ let showTime = true
 showTime = appConfig.articlePage.showTime
 // show created and updated time or not decided by page metadata
 if ('showTime' in props.data) {
-  // eslint-disable-next-line vue/no-setup-props-destructure
   showTime = props.data.showTime
 }
 
@@ -46,7 +45,6 @@ let showOutdatedWarningComponent = true
 showOutdatedWarningComponent = appConfig.articlePage.outdated.show
 if ('showOutdatedWarning' in props.data) {
   // show expire warning or not decided by page metadata
-  // eslint-disable-next-line vue/no-setup-props-destructure
   showOutdatedWarningComponent = props.data.showOutdatedWarning
 }
 
@@ -162,16 +160,16 @@ provide('activeH4Heading', activeH4Heading)
 provide('activeH5Heading', activeH5Heading)
 provide('activeH6Heading', activeH6Heading)
 
-function setActiveHeading(heading: HTMLElement) {
+function setActiveHeading (heading: HTMLElement) {
   const headingPathStr = heading?.dataset?.headingPath
 
   if (headingPathStr) {
     const headingPathObj = JSON.parse(headingPathStr)
-    activeH2Heading.value = headingPathObj['h2']
-    activeH3Heading.value = headingPathObj['h3']
-    activeH4Heading.value = headingPathObj['h4']
-    activeH5Heading.value = headingPathObj['h5']
-    activeH6Heading.value = headingPathObj['h6']
+    activeH2Heading.value = headingPathObj.h2
+    activeH3Heading.value = headingPathObj.h3
+    activeH4Heading.value = headingPathObj.h4
+    activeH5Heading.value = headingPathObj.h5
+    activeH6Heading.value = headingPathObj.h6
   }
 }
 
@@ -197,16 +195,16 @@ onMounted(() => {
           // when the heading disappear at the bottom
           // it mean the user scroll up to see the previous content
           // so we should fallback to the previous heading
-          let index;
+          let index
           for (let i = 0; i < headingDomList.length; i++) {
             const item = headingDomList[i]
-            if(item.id === id) {
+            if (item.id === id) {
               index = i
-              break;
+              break
             }
           }
-          if(index && index-1>= 0) {
-            const prevHeading = headingDomList[index-1]
+          if (index && index - 1 >= 0) {
+            const prevHeading = headingDomList[index - 1]
             setActiveHeading(prevHeading as HTMLElement)
           }
         }
@@ -227,7 +225,6 @@ onUnmounted(() => {
   }
 })
 
-
 // get all heading id (with children)
 interface CatalogItem {
   id: string;
@@ -240,7 +237,7 @@ const headingArr: string[] = []
 const recursiveGetHeadingWithChildren = (heading: CatalogItem) => {
   if (heading.children) {
     headingArr.push(heading.id)
-    heading.children.forEach(subHeading => {
+    heading.children.forEach((subHeading) => {
       recursiveGetHeadingWithChildren(subHeading)
     })
   }
@@ -282,12 +279,21 @@ provide('expandHeadingHandler', expandHeadingHandler)
 provide('expandAllHeadingsHandler', expandAllHeadingsHandler)
 
 const detailNodeArr = ref<null | NodeListOf<HTMLDetailsElement>>(null)
+const anchorNodeArr = ref<null | NodeListOf<HTMLAnchorElement>>(null) // added 20.10.23
 
-const addClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
+const {
+  $anchorClickListener,
+  $toggleAllHeadings,
+  $closeOtherSiblings
+} = useNuxtApp() as any // added 21.10.23
+const anchorClick = useState('anchorClick', () => false) // added 20.10.23
+
+const addDetailsClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
   list.forEach((element) => {
     element.addEventListener('click', (event) => {
-      // @ts-ignore
-      useNuxtApp().$closeOtherSiblings(event) // added 04.10.23
+      if (anchorClick.value === false) { // added 20.10.23
+        $closeOtherSiblings(event) // added 04.10.23
+      }
       event.stopPropagation()
       // if toggle the heading manually (by click)
       if (syncCatalogToggleState.value) {
@@ -307,6 +313,7 @@ const addClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
           }
         }
       }
+      anchorClick.value = false // added 20.10.2023
     })
   })
 }
@@ -315,25 +322,27 @@ onMounted(() => {
   if (articleDOM.value) {
     // get all <details> elements
     detailNodeArr.value = articleDOM.value.querySelectorAll('details')
+    anchorNodeArr.value = articleDOM.value.querySelectorAll('a') // added 20.10.23
 
     if (detailNodeArr.value && detailNodeArr.value.length > 0) {
       // add click event listener for each <details> element
-      addClickListener(detailNodeArr.value)
-      // @ts-ignore added 03.10.23
-      useNuxtApp().$toggleAllHeadings() // if not searchString
+      addDetailsClickListener(detailNodeArr.value)
+      // added 21.10.23
+      anchorClick.value = $anchorClickListener(anchorNodeArr.value)
+      // added 03.10.23
+      $toggleAllHeadings() // if not searchString
     }
   }
 })
 
 // watch collapsed heading set change
 watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
-  if(syncCatalogToggleState.value && detailNodeArr.value && detailNodeArr.value.length > 0) {
-
-    detailNodeArr.value.forEach(node => {
+  if (syncCatalogToggleState.value && detailNodeArr.value && detailNodeArr.value.length > 0) {
+    detailNodeArr.value.forEach((node) => {
       const headingId = node?.dataset?.headingId
       // then programming toggle (open or collapse) <details>
       // refer to https://web.dev/learn/html/details/
-      if(headingId && collapsedHeadingsSet.value.has(headingId)) {
+      if (headingId && collapsedHeadingsSet.value.has(headingId)) {
         node.removeAttribute('open')
       } else {
         node.setAttribute('open', 'true')

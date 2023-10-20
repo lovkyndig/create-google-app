@@ -155,9 +155,8 @@ const getFileTypeIcon = (type:string) => {
 }
 
 // added in create-google-app v1.0.0 beta 10 (30.09.2023)
-const { $webnoti } = useNuxtApp()
+const { $webnoti } = useNuxtApp() as any
 onMounted(() => {
-  // @ts-ignore
   // $webnoti(`${appConfig.myLayer.notification.frontpage}`)
   $webnoti(`This is test-version: ${pkg.version}`)
 })

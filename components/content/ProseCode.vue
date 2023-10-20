@@ -46,9 +46,8 @@ const toggleExpand = () => {
   expand.value = !expand.value
   if (!expand.value && codeBlockContainer.value) {
     nextTick(() => {
-      codeBlockContainer.value.scrollIntoView({ block: "nearest" })
+      codeBlockContainer.value.scrollIntoView({ block: 'nearest' })
     })
-
   }
 }
 
@@ -75,7 +74,7 @@ const languageColorMap = {
 
 const programLanguage = ref('')
 
-if(props.language) {
+if (props.language) {
   programLanguage.value = props.language.toLowerCase()
 }
 
@@ -94,7 +93,7 @@ if (props.filename) {
  */
 type CopyState = 'wait' | 'process' | 'success' | 'fail'
 const copyState = ref<CopyState>('wait')
-  const clipboard = ref<Clipboard | Navigator>(null) // ref<null | Navigator>(null)
+const clipboard = ref<Clipboard | Navigator>(null) // ref<null | Navigator>(null)
 
 onMounted(() => {
   clipboard.value = navigator.clipboard

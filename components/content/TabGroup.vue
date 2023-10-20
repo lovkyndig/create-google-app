@@ -1,11 +1,11 @@
 <script lang="ts">
-import { defineComponent, h, nextTick, ref } from '#imports'
 import TabGroupHeader from './TabGroupHeader.vue'
+import { defineComponent, h, nextTick, ref } from '#imports'
 
 // refer to @nuxt-themes/docus-edge module component: components/content/CodeGroup.vue
 export default defineComponent({
-  setup(props, { slots }) {
-
+  // maybe set the script to setup and change this setup?
+  setup (props, { slots }) {
     /**
      *
      * change active tab index
@@ -19,8 +19,8 @@ export default defineComponent({
 
       nextTick(() => {
         if (tabGroupContainer.value) {
-            tabGroupContainer.value.scrollIntoView({ block: "nearest" })
-          }
+          tabGroupContainer.value.scrollIntoView({ block: 'nearest' })
+        }
       })
     }
 
@@ -63,7 +63,6 @@ export default defineComponent({
 
             // map tabs to content children
             tabNodes.map((node: any, index) => {
-
               return h(
                 'div',
                 {

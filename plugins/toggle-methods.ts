@@ -14,23 +14,22 @@ export default defineNuxtPlugin(() => {
         if (document) {
           // first step: set attributes (style is set in assets/style.css)
           const detailEl = document.querySelectorAll('details')
-          detailEl.forEach((element, index) => { // adding //tooltip 
+          detailEl.forEach((element) => { // adding //tooltip 
             element.setAttribute('title', 'Click beside the Header - to toggle the content!') 
             element.setAttribute('style', 'position:relative;')
             const summary = element.querySelector('summary')
             if (summary) {
               summary.setAttribute('class', 'summary') // set expand icon on all headings
-              let html = `<span style="opacity:0.8s;position:absolute;right:0.8rem;bottom:0.8rem">
+              const html = `<span style="opacity:0.8s;position:absolute;right:0.8rem;bottom:0.8rem">
                             ${expandSvg}
                           </span>`
-              summary.insertAdjacentHTML("beforeend", html)
+              summary.insertAdjacentHTML('beforeend', html)
             }
           })
           // second step: close all open elements
           const searchString = useState('searchString')
           if (searchString.value === '') {
-            detailEl.forEach((element, index) => { 
-              
+            detailEl.forEach((element) => {
               if (element.hasAttribute('open')) {
                 element.removeAttribute('open')
               }
@@ -45,13 +44,13 @@ export default defineNuxtPlugin(() => {
         if (summary) { // changing the expand icon to collapse - on the first click
           summary.innerHTML = collapseSvg
         }
-        // First step: Close other open siblings 
+        // First step: Close other open siblings
         const getSiblings = (e) => {
-          let siblings = [] // for collecting siblings
-          let sibling  = e.parentNode.firstChild // first child of the parent node
+          const siblings = [] // for collecting siblings
+          let sibling = e.parentNode.firstChild // first child of the parent node
           while (sibling) { // collecting siblings
             if (sibling.nodeType === 1 && sibling !== e) {
-                siblings.push(sibling)
+              siblings.push(sibling)
             }
             sibling = sibling.nextSibling
           }
@@ -60,16 +59,17 @@ export default defineNuxtPlugin(() => {
         const siblings = getSiblings(current)
         // Do something with the colleted siblings
         if (!current.hasAttribute('open')) {
-          siblings.map(sibling => {
+          siblings.map((sibling) => {
             if (sibling.hasAttribute('open')) {
               sibling.removeAttribute('open')
-              sibling.querySelector('summary > span').innerHTML = expandSvg
+              const span = sibling.querySelector('summary > span')
+              span.innerHTML = expandSvg
             }
+            // return expandSvg
           })
-        } else { // Running this on click on an open accordion. - Changing icon.
-          if (summary) { // Changing the collapse-icon to expand-icon on click on open element
-            summary.innerHTML = expandSvg
-          }
+        } else if (summary) { // Running this on click on an open accordion. - Changing icon.
+          // Changing the collapse-icon to expand-icon on click on open element
+          summary.innerHTML = expandSvg
         }
 
         // Second step: Get the clicked header on the top of the screen
@@ -83,7 +83,6 @@ export default defineNuxtPlugin(() => {
           // get the url and add page-id to it, and then "click"
           window.location.href = url + page
         }
-
       }
     }
   }

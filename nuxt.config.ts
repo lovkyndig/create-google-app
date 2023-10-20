@@ -51,6 +51,7 @@ export default defineNuxtConfig({
       preload: ['latex', 'markdown', 'md', 'tex']
     },
     markdown: {
+      anchorLinks: false,
       toc: {
         depth: 5,
         searchDepth: 5

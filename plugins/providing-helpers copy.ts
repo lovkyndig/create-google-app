@@ -13,7 +13,7 @@ export default defineNuxtPlugin(() => {
 
 /*
 hello (and other provide-objects) can be used in templates like this:
-const { $hello } = useNuxtApp()
+const { $hello } = useNuxtApp() as any
 <template>
   <div>
     {{ $hello('world') }}
@@ -22,7 +22,7 @@ const { $hello } = useNuxtApp()
 
 <script setup lang="ts">
 // alternatively, you can also use provided helpers inside script
-const { $log } = useNuxtApp()
+const { $log } = useNuxtApp() as any
 $log('Webnotification from script.')
 </script>
 */

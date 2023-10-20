@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
+const { $webnoti } = useNuxtApp() as any
 onMounted(() => {
-  // @ts-ignore
-  useNuxtApp().$webnoti(appConfig.myLayer.notification.list)
+  $webnoti(appConfig.myLayer.notification.list)
 })
 
 const appConfig = useAppConfig()

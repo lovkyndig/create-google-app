@@ -107,7 +107,7 @@ const debouncedSearch = (key: string, delay: number = 300) => {
 
 // added in create-google-app v1.0.0 beta 7
 const searchString = useState('searchString') // transfered to findNext.vue as queryparam
-const { $checkSearchString } = useNuxtApp()
+const { $checkSearchString } = useNuxtApp() as any
 
 const inputHandler = (event: Event) => {
   const target = event.target as HTMLInputElement
@@ -115,7 +115,6 @@ const inputHandler = (event: Event) => {
     pagefind.preload(target.value);
     debouncedSearch(target.value)
   }
-  // @ts-ignore
   searchString.value = $checkSearchString(target.value) // added
 }
 
