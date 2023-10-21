@@ -24,8 +24,8 @@ useServerSeoMeta({
   twitterSite: '@nuxt_js',
   twitterCreator: '@nuxt_js',
   twitterCard: 'summary_large_image',
-  themeColor: '#f9fafb'
-  // googleSiteVerification: process.env.GSITE_VERIFICATION
+  themeColor: '#f9fafb',
+  googleSiteVerification: process.env.GSITE_VERIFICATION
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 
 // definePageMeta({ doctype: 'html' })
@@ -40,8 +40,8 @@ useHead({
     { rel: 'manifest', href: 'manifest.webmanifest', crossorigin: 'use-credentials' }
   ],
   meta: [
-    { name: 'id', content: `${pkg.version}` },
-    { name: 'google-site-verification', content: `${process.env.GSITE_VERIFICATION}` }
+    { name: 'id', content: `${pkg.version}` }
+    // { name: 'google-site-verification', content: `${process.env.GSITE_VERIFICATION}` }
   ]
 })
 
