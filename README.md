@@ -38,9 +38,9 @@ _Extra (not necessary)_
 [//]: <> (16. Google-site-verification-file in public-folder.[^16])
 
 ## To do-list (plan)
-### Priority
+### Priority'
+- Add the site to [Google Search Console](https://search.google.com/search-console/about), and verify the ownership of our website (and check later for indexing problem).
 - Add the site to [Ahrefs website-checker](https://ahrefs.com/website-checker)
-- Add the site to [Google Search Console](https://search.google.com/search-console/about), and check if indexing-problems.
 - Use [lighthouse](https://lighthouse-metrics.com/) to check performance, accessibility, beste practices, seo and pwa.
 - Use Bubblewrap and add app to Google Play Console
 
