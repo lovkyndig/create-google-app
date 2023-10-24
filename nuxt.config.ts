@@ -27,7 +27,9 @@ export default defineNuxtConfig({
     join(currentDir, './assets/style.css')
   ],
   modules: [
-    [resolve('./modules/copy-files-module'), { cleanFolders: ['public/article'] }],
+    // The first module only clean the public/article-folder if exists.
+    [resolve('./modules/copy-image-files'), { cleanFolders: ['public/article'] }],
+    // './modules/copy-sw-dev-files', // autoloaded
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@vite-pwa/nuxt',
@@ -103,8 +105,7 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html}', 'svg/*.svg', 'favicon.{svg,png,PNG,jpg,webp}', '*logo.svg'],
-      // globIgnores: ['google*.html'],
+      globPatterns: ['**/*.{js,css,html}', 'svg/*.svg', 'favicon.{svg}'],
       navigateFallbackDenylist: [/^\/api/],
       runtimeCaching: [
         {

@@ -1,6 +1,7 @@
 import { SitemapStream, streamToPromise } from 'sitemap'
 import { defineEventHandler } from 'h3'
 import { serverQueryContent } from '#content/server'
+// @ts-ignore (vue-tsc giv error on the following line somethimes)
 import { useRuntimeConfig } from '#imports'
 
 // refer to https://content.nuxtjs.org/guide/recipes/sitemap

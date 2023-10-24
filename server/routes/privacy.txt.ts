@@ -1,5 +1,6 @@
 import { defineEventHandler } from 'h3'
 export default defineEventHandler(async (event) => {
+  // @ts-ignore
   await appendHeader(event, 'Content-Type', 'text/plain')
 
   return `

@@ -9,8 +9,8 @@
     v-if="icon"
     class="inline-block"
     :class="props.iconClass"
-    v-html="icon" 
-  /> 
+    v-html="icon"
+  />
   <span v-else>{{ name }}</span>
 </template>
 

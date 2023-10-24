@@ -3,42 +3,41 @@
  * wrap the heading with a <details> element
  *
  */
- // refer to a rehype plugin
- // https://github.com/Benbinbin/rehype-details-wrapper
- //
- // and the heading move to a <summary> element inside the <details> element
- // and the content below this heading between the next siblings heading (same level) will move to this <details> element
- // for example
- //
- // <h2>heading 2</h2>
- // <p>content 2</p>
- // <h3>heading 3</h3>
- // <p>content 3</p>
- // <h2>another heading 2</h2>
- // <p>content 4</p>
- //
- // will be transform to
- //
- // <details>
- //   <summary>
- //     <h2>heading 2</h2>
- //   </summary>
- //   <p>content 2</p>
- //   <details>
- //     <summary>
- //       <h3>heading 3</h3>
- //     </summary>
- //     <p>content 3</p>
- //   </details>
- // </details>
- // <details>
- //   <summary>
- //     <h2>another heading 2</h2>
- //   </summary>
- //   <p>content 4</p>
- // </details>
+// refer to a rehype plugin
+// https://github.com/Benbinbin/rehype-details-wrapper
+//
+// and the heading move to a <summary> element inside the <details> element
+// and the content below this heading between the next siblings heading (same level) will move to this <details> element
+// for example
+//
+// <h2>heading 2</h2>
+// <p>content 2</p>
+// <h3>heading 3</h3>
+// <p>content 3</p>
+// <h2>another heading 2</h2>
+// <p>content 4</p>
+//
+// will be transform to
+//
+// <details>
+//   <summary>
+//     <h2>heading 2</h2>
+//   </summary>
+//   <p>content 2</p>
+//   <details>
+//     <summary>
+//       <h3>heading 3</h3>
+//     </summary>
+//     <p>content 3</p>
+//   </details>
+// </details>
+// <details>
+//   <summary>
+//     <h2>another heading 2</h2>
+//   </summary>
+//   <p>content 4</p>
+// </details>
 
-// eslint-disable-next-line no-inner-declarations
 const headingArr = ['h2', 'h3', 'h4', 'h5', 'h6']
 const headingLevelMap = {
   'h2': 2,
@@ -49,11 +48,11 @@ const headingLevelMap = {
 }
 
 interface CurrentHeadingWrapperMapType {
-  'h2': any;
-  'h3': any;
-  'h4': any;
-  'h5': any;
-  'h6': any;
+  'h2': any
+  'h3': any
+  'h4': any
+  'h5': any
+  'h6': any
 }
 
 const currentHeadingWrapperMap: CurrentHeadingWrapperMapType = {
@@ -61,7 +60,7 @@ const currentHeadingWrapperMap: CurrentHeadingWrapperMapType = {
   'h3': null,
   'h4': null,
   'h5': null,
-  'h6': null,
+  'h6': null
 }
 
 function wrapInDetails(headingNode: any) {
@@ -84,8 +83,7 @@ function wrapInDetails(headingNode: any) {
   }
 }
 
-// eslint-disable-next-line no-inner-declarations
-function getParentWrapper(level: number) {
+function getParentWrapper (level: number) {
   let parentWrapper = currentHeadingWrapperMap[`h${level - 1}` as ('h2' | 'h3' | 'h4' | 'h5')]
   if (!parentWrapper) {
     if (level - 1 > 2) {
@@ -93,14 +91,13 @@ function getParentWrapper(level: number) {
       parentWrapper = getParentWrapper(upperLevel)
     } else {
       // the highest wrapper
-      parentWrapper = currentHeadingWrapperMap['h2']
+      parentWrapper = currentHeadingWrapperMap.h2
     }
   }
   return parentWrapper
 }
 
-// eslint-disable-next-line no-inner-declarations
-function cleanDeepWrapper(level: number) {
+function cleanDeepWrapper (level: number) {
   currentHeadingWrapperMap[`h${level + 1}` as ('h3' | 'h4' | 'h5' | 'h6')] = null
 
   if (level + 1 < 6) {
@@ -109,6 +106,7 @@ function cleanDeepWrapper(level: number) {
   }
 }
 
+// @ts-ignore (of unknown reson this error is showing from time to)
 export default defineNitroPlugin((nitroApp) => {
   // @ts-ignore
   nitroApp.hooks.hook('content:file:afterParse', (file) => {
@@ -151,29 +149,27 @@ export default defineNitroPlugin((nitroApp) => {
           // set the heading path for the current heading node
           // the heading path include all the level headings in current state
           const headingPathObj = {
-            h2: currentHeadingWrapperMap['h2']?.children[0]?.children[0]?.props
+            h2: currentHeadingWrapperMap.h2?.children[0]?.children[0]?.props
               ?.id,
-            h3: currentHeadingWrapperMap['h3']?.children[0]?.children[0]?.props
+            h3: currentHeadingWrapperMap.h3?.children[0]?.children[0]?.props
               ?.id,
-            h4: currentHeadingWrapperMap['h4']?.children[0]?.children[0]?.props
+            h4: currentHeadingWrapperMap.h4?.children[0]?.children[0]?.props
               ?.id,
-            h5: currentHeadingWrapperMap['h5']?.children[0]?.children[0]?.props
+            h5: currentHeadingWrapperMap.h5?.children[0]?.children[0]?.props
               ?.id,
-            h6: currentHeadingWrapperMap['h6']?.children[0]?.children[0]?.props
-              ?.id,
-          };
+            h6: currentHeadingWrapperMap.h6?.children[0]?.children[0]?.props
+              ?.id
+          }
 
-          const headingPathStr = JSON.stringify(headingPathObj);
+          const headingPathStr = JSON.stringify(headingPathObj)
 
           // record it as the data-heading-path attribute for the current heading node
-          node.props.dataHeadingPath = headingPathStr;
-        } else {
+          node.props.dataHeadingPath = headingPathStr
+        } else if (currentWrapper) {
           // if this isn't a heading node
-          if (currentWrapper) {
-            currentWrapper.children.push(node)
-          } else {
-            newChildren.push(node)
-          }
+          currentWrapper.children.push(node)
+        } else {
+          newChildren.push(node)
         }
       })
 

@@ -1,7 +1,7 @@
 import { inject } from '@vercel/analytics'
 
-export default defineNuxtPlugin((/*nuxtApp*/) => {
-  // nuxtApp.provide('inject', () => inject() ) 
+export default defineNuxtPlugin((/* nuxtApp */) => {
+  // nuxtApp.provide('inject', () => inject() )
   // This method not working, using return instead.
 
   return {

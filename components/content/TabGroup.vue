@@ -1,5 +1,6 @@
 <script lang="ts">
 import TabGroupHeader from './TabGroupHeader.vue'
+// @ts-ignore (vue-tsc giv error on the following line somethimes)
 import { defineComponent, h, nextTick, ref } from '#imports'
 
 // refer to @nuxt-themes/docus-edge module component: components/content/CodeGroup.vue
@@ -51,7 +52,7 @@ export default defineComponent({
             TabGroupHeader,
             {
               activeTabIndex: activeTabIndex.value,
-              tabNameArr: tabNameArr,
+              tabNameArr,
               'onUpdate:activeTabIndex': changeActiveTabIndexHandler,
             }
           ),

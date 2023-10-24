@@ -3,14 +3,12 @@
   "extends": "./.nuxt/tsconfig.json", 
   "compilerOptions": {
     "strict": false,
-    // "types": [ // "vite-plugin-pwa/client" ],
-    "allowJs": true // TreeCatalog.vue has js-code
-    // "ignoreDeprecations": "5.0",
-    // "suppressImplicitAnyIndexErrors": true,
+    "types": [/* "vite-plugin-pwa/client" */],
+    "allowJs": true, // TreeCatalog.vue has js-code
   },
   "vueCompilerOptions": {
     // "skipTemplateCodegen": true
-  }
+  },
 }
 /* Sources:
 https://github.com/vuejs/language-tools/issues/1544

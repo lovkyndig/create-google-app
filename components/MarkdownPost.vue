@@ -283,7 +283,7 @@ const anchorNodeArr = ref<null | NodeListOf<HTMLAnchorElement>>(null) // added 2
 
 const {
   $anchorClickListener,
-  $toggleAllHeadings,
+  $closeAllHeadings,
   $closeOtherSiblings
 } = useNuxtApp() as any // added 21.10.23
 const anchorClick = useState('anchorClick', () => false) // added 20.10.23
@@ -330,7 +330,7 @@ onMounted(() => {
       // added 21.10.23
       anchorClick.value = $anchorClickListener(anchorNodeArr.value)
       // added 03.10.23
-      $toggleAllHeadings() // if not searchString
+      $closeAllHeadings() // if not searchString
     }
   }
 })

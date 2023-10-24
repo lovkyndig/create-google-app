@@ -30,12 +30,11 @@ _Arrangement for PWA_
 12. BubbleWrap guide. See assets/guide. Required to be read.[^12]  
 13. Hosting on [Vercel](https://vercel.com/docs/deployments/git/vercel-for-github).[^13]
 
-_Extra (not necessary)_  
+_Extra Futures_  
 
-14. [Vercel Analytics](https://vercel.com/analytics), can be used when hosted on vercel.[^14]  
-
-[//]: <> (15. gtag.clients.ts. See in the plugins-folder.[^15])  
-[//]: <> (16. Google-site-verification-file in public-folder.[^16])
+14. To get the caching to work in dev-mode, copy the files in sw-dev-dist from .nuxt-folder (manually) to the public-folder.[14]
+15. [Vercel Analytics](https://vercel.com/analytics), can be used when hosted on vercel.[^15]  
+16. Google-site-verification-file in public-folder.[^16]
 
 ## To do-list (plan)
 ### Priority'
@@ -65,8 +64,8 @@ _Extra (not necessary)_
 [^11]: @vite-pwa/nuxt is added and the setup is done in nuxt.config.ts. NB! First host your site ([vercel](https://vercel.com/docs/deployments/git/vercel-for-github)). Se more in pkt 15 below.
 [^12]: Bubblewrap has to be used to create the aab-package before uploading it to Google App Store. - Bubblewrap are installed Globally on the local mashine, for use on development, because; - I'm using bubblewrap in a subfolder under the root, because the bubblewrap are creating so many files that have to be keeped away from the github-repo-files. - Guide-folder with links and info about using bubblewrap is added inside the assets-folder. - bubblewrap-folder is added to .gitignore-file.
 [^13]: All public repos on github can be hosted on [vercel](https://vercel.com/docs/deployments/git/vercel-for-github) for free.
-[^14]: Vercel Analytics don't use cookies and this app isn't using cookies at all, therefore you don't need to have a plugin that pop up with a question if you accept cookies.
-[//]: <> ([^15]: .env holds the GTAG_ID.)
-[//]: <> ([^16]: google.site-verification-file is necessary for indexing the pages in google-search-console.)
+[^15]: Planning to create a plugin that starts when the browser opens with the site, that copy the sw-files.
+[^15]: Vercel Analytics don't use cookies and this app isn't using cookies at all, therefore it's not need for a plugin that pop up with a question if you accept cookies.
+[^16]: google.site-verification-file is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), and for using [Ahrefs website-checker](https://ahrefs.com/website-checker).
 
-Updated 19.10.2023
+Updated 24.10.2023

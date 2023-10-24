@@ -1,22 +1,23 @@
 <script setup lang="ts">
-const pagefindPath = "/_pagefind/pagefind.js"
+const pagefindPath = '/_pagefind/pagefind.js'
 
 const runtimeConfig = useRuntimeConfig()
 const baseURL = runtimeConfig.app.baseURL
 
-let pagefind: any;
+let pagefind: any
 
 // if (!process.dev) {
 try {
-  pagefind = await import(/* @vite-ignore */pagefindPath);
+  pagefind = await import(/* @vite-ignore */pagefindPath)
 
   if (baseURL !== '/') {
     await pagefind.options({
+      // eslint-disable-next-line object-shorthand
       baseURL: baseURL
     })
   }
 } catch (error) {
-    console.log(error);
+  console.log(error)
 }
 // }
 

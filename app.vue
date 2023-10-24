@@ -6,12 +6,13 @@
 
 <script setup lang="ts">
 // import { registerSW } from 'virtual:pwa-register'
-import pkg from '~/package.json'
+import pkg from './package.json'
 const appConfig = useAppConfig()
 const config = useRuntimeConfig()
 /**
  *
  * set head meta for all pages
+ * https://nuxt.com/docs/getting-started/seo-meta#useseometa
  *
  */
 useServerSeoMeta({
@@ -26,13 +27,15 @@ useServerSeoMeta({
   twitterCard: 'summary_large_image',
   themeColor: '#f9fafb',
   googleSiteVerification: process.env.GSITE_VERIFICATION
-}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
+  // NB! Add verification-code to Vercel "Settings" Environments Variables
+})
 
 // definePageMeta({ doctype: 'html' })
 
 useHead({
   htmlAttrs: { lang: 'en' },
   noscript: [{ children: 'Turn on javascript to use this app!' }],
+  script: [],
   style: ['body { overflow: overlay }'],
   link: [
     { rel: 'icon', href: appConfig?.site?.favicon },
@@ -41,7 +44,6 @@ useHead({
   ],
   meta: [
     { name: 'id', content: `${pkg.version}` }
-    // { name: 'google-site-verification', content: `${process.env.GSITE_VERIFICATION}` }
   ]
 })
 

@@ -26,7 +26,8 @@ export default defineAppConfig({
         title: 'Privacy Policy etc.',
         description: 'The Privacy Policy, Sitemap and Rss for "Create Google App". Privacy Policy is requrid for all Google Apps.'
       }
-    }
+    },
+    articleFoldersAreNumbered: true
   },
   meta: {
     url: 'https://create-google-app.vercel.app/'
@@ -50,7 +51,7 @@ export default defineAppConfig({
       show: true,
       threshold: 30
     },
-    showCatalog: false,
+    showCatalog: false
   },
   search: {
     exclude: [

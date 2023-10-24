@@ -10,7 +10,7 @@ const collapseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="
 export default defineNuxtPlugin(() => {
   return {
     provide: {
-      toggleAllHeadings: () => {
+      closeAllHeadings: () => {
         if (document) {
           // first step: set attributes (style is set in assets/style.css)
           const detailEl = document.querySelectorAll('details')

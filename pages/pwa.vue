@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const date = useAppConfig().buildDate
+// const date = useAppConfig().buildDate
 // source:
 // https://github.com/vite-pwa/nuxt/blob/main/playground/layouts/default.vue
-const { $pwa } = useNuxtApp()
+const { $pwa } = useNuxtApp() as any
 </script>
 
 <template>

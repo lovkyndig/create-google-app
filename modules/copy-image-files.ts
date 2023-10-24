@@ -1,12 +1,26 @@
 /**
  *
- * copy files to public folder
+ * copy image-files from content to public folder
+ * and rename folders if they are dot-numbered (1.a, 2.b,3.c)
  * source:
  * https://github.com/Benbinbin/bloginote-copy-files-module/blob/main/src/module.ts
  */
 import fs from 'node:fs'
 import path from 'node:path'
 import { defineNuxtModule } from '@nuxt/kit'
+
+/**
+ * Check if folder starts with numbers;
+ * 1.foldername, 2.foldername (Images must not be numbered like this.)
+ * Removing numbers;
+ * Because Images will not load if the folders is numbered like this.
+ */
+const rename = true // added 23.10.2023
+const imageFolders = ['img', 'image', 'images']
+function containsNumber(str) {
+  return /^\d+$/.test(str)
+}
+
 /*
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
@@ -26,7 +40,7 @@ if (!fs.existsSync('content')) {
   if (!fs.existsSync(source)) {
     console.log('Creating content-folder!')
     fs.mkdir(`${source}`, () => {})
-  } 
+  }
 } else { /* https://iq.opengenus.org/create-delete-files-directory-js/ */ }
 
 // clean the "article" folder (copy from the "content" folder) by default
@@ -48,17 +62,36 @@ const copyContentFiles = (src: string, destFolderName: string, ignore: string[] 
 
   const exists = fs.existsSync(src)
   const stats = exists && fs.statSync(src)
+  // @ts-ignore isDirectory()
   const isDirectory = exists && stats.isDirectory()
   if (isDirectory) {
     if (!fs.existsSync(dest) || !fs.statSync(src).isDirectory()) {
       fs.mkdirSync(dest)
     }
     fs.readdirSync(src).forEach((childItemName: string) => {
-      copyContentFiles(
-        path.join(src, childItemName),
-        path.join(dest, childItemName),
-        ignore
-      )
+      if (rename) { // added 23.10.2023
+        if (imageFolders.includes(dest)) {
+          copyContentFiles(path.join(src, childItemName), path.join(dest, childItemName), ignore)
+        } else if (containsNumber(childItemName.charAt(0)) &&
+          (childItemName.charAt(1) === '.')) {
+          copyContentFiles(
+            path.join(src, childItemName), path.join(dest, childItemName.slice(2)), ignore
+          )
+        } else if (containsNumber(childItemName.charAt(1)) &&
+          (childItemName.charAt(2) === '.')) { // if number also in string(1)
+          copyContentFiles(
+            path.join(src, childItemName), path.join(dest, childItemName.slice(3)), ignore
+          )
+        } else { // if not number in string(0)
+          copyContentFiles(path.join(src, childItemName), path.join(dest, childItemName), ignore)
+        }
+      } else { // if not rename
+        copyContentFiles(
+          path.join(src, childItemName),
+          path.join(dest, childItemName),
+          ignore
+        )
+      }
     })
   } else {
     const ext = path.extname(src) as string
@@ -89,3 +122,14 @@ export default defineNuxtModule({
     })
   }
 })
+
+/**
+ * Renaming if folders have number like this 1.foldername, 2.foldername.
+ * Source Renaming 23.10.2023:
+ * https://bobbyhadz.com/blog/javascript-check-if-string-contains-numbers
+ * https://stackoverflow.com/questions/22504566/renaming-files-using-node-js
+ * https://bobbyhadz.com/blog/rename-directory-in-node-js#rename-a-directory-in-nodejs-using-fsrenamesync
+ * https://www.youtube.com/watch?v=GMf30xyRv9M
+ * https://www.geeksforgeeks.org/delete-first-character-of-a-string-in-javascript/
+ * https://iq.opengenus.org/create-delete-files-directory-js/
+ */
