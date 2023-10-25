@@ -385,7 +385,7 @@ onMounted(() => {
 <template>
   <div>
     <Head>
-      <Title>List</Title>
+      <Title>{{ titles }}</Title>
     </Head>
     <h1 style="display: none">
       {{ titles }}

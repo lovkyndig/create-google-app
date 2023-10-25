@@ -24,12 +24,11 @@ export default defineAppConfig({
         description: 'The Privacy Policy, Sitemap and Rss for "Create Google App". Privacy Policy is requrid for all Google Apps.'
       },
       list: {
-        tags: 'Create Google App - Tag: ',
-        tags_all: 'Create Google App - All Tags',
+        tags: 'Documentation/guidelines in "Create Google App" with tag: ',
+        tags_all: 'All guidelines"',
         description: 'This is the list of content in the "Create Google App" - with responsive design for mobile and laptop.'
       },
       slug: {
-        title: 'Guidelines and documentation about how to create a Google App.',
         description: 'Guidelines and documentation for "Create Google App" - a tutorial for non-programmers/non-developers!'
       }
     },
