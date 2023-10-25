@@ -5,11 +5,12 @@ Clone the repository or use it as a template.
 You can `Get your app in the Google Pay Console in one (1) week`, if you read the documentation and [follow the guidlines](https://create-google-app.vercel.app). (I was working ten (10) weeks to reach this goal for my first app.)
 
 ## Futures
-_100% Health Score_
-1. 100% Health Score in [ahrefs website-checker]((https://ahrefs.com/website-checker):[^1]
-![](https://raw.githubusercontent.com/lovkyndig/kirkepostille/main/public/webp/ahrefs-website-checker.webp)
-2. Lighthouse report on Accessibility, Best Practices[^2], SEO and PWA[^3] (Progressive Web App):[^2]
-![](https://raw.githubusercontent.com/lovkyndig/kirkepostille/main/public/webp/lighthouse-report.webp)
+| 100% Healt Score | Lighthouse report |
+| --- | --- |
+|![](https://raw.githubusercontent.com/lovkyndig/create-google-app/main/public/webp/ahrefs-website-checker.webp) |![](https://raw.githubusercontent.com/lovkyndig/create-google-app/main/public/webp/lighthouse-report.webp)|  
+
+1. _100% Health Score_ with [ahrefs website-checker](https://ahrefs.com/website-checker):[^1]
+2. Lighthouse report on _Accessibility_, _Best Practices_, _SEO_ and _PWA_ (Progressive Web App):[^2]
 
 _Full search functionality_  
 
@@ -45,8 +46,6 @@ _Extra Futures_
 ## To do-list (plan)
 ### Priority'
 - Check for indexing problem in [Google Search Console](https://search.google.com/search-console/about).
-- Add the site to [Ahrefs website-checker](https://ahrefs.com/website-checker)
-- Use [lighthouse](https://lighthouse-metrics.com/) to check performance, accessibility, beste practices, seo and pwa.
 - Use Bubblewrap and add app to Google Play Console
 
 ### On available capacity
