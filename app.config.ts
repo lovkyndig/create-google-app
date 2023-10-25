@@ -6,7 +6,7 @@ export default defineAppConfig({
       // frontpage: 'How to create an google app in one week?',
       frontpage: 'This app is under heavy development! It is working fine, but there is added futures all the time.',
       about: 'Do you love this app? Please wait some weeks before you download it from github.com/lovkyndig.',
-      privacy: 'The privacy is normally not recuried, but because this app is published on Google Play - Google need it:)',
+      privacy: 'Privacy police is normally not recuried, but because this app is published on Google Play - Google need it:)',
       list: 'Search and find what you are locking for with the amazing search-functionality on this site:)'
     },
     seoMeta: {
@@ -23,7 +23,7 @@ export default defineAppConfig({
         description: 'This is the list of content in the "Create Google App" - with responsive design for mobile and laptop. '
       },
       privacy: {
-        title: 'Privacy Policy etc.',
+        title: 'Privacy Policy following because this is an Google App.',
         description: 'The Privacy Policy, Sitemap and Rss for "Create Google App". Privacy Policy is requrid for all Google Apps.'
       }
     },

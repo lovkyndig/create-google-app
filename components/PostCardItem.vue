@@ -45,10 +45,11 @@ const getCoverUrl = (relativeURL:(string)) => {
     </NuxtLink>
     <div id="footer" class="shrink-0 px-6 pb-1 flex justify-between items-start gap-2 my-footer">
       <div v-if="props.article.tags" class="scroll-container grow flex sm:flex-wrap gap-1 overflow-x-auto my-footer">
+        <!-- changed query: { tags: [tag, 'HTML']} -->
         <NuxtLink
           v-for="tag in props.article.tags"
           :key="tag"
-          :to="{ path: '/list', query: { tags: [tag, 'HTML'] } }"
+          :to="{ path: '/list', query: { tags: [tag] } }"
           class="shrink-0 px-2 py-1 text-xs text-blue-400 hover:text-blue-500 bg-blue-50 transition-colors duration-300 rounded"
         >
           #{{ tag }}
