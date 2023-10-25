@@ -372,10 +372,6 @@ onMounted(() => {
   if (window) {
     if (window.innerWidth > 640) { // or window.outerWidth
       showMoreFilter.value = true
-      /*
-      const btn = document.getElementById('showMoreFilter')
-      btn.dispatchEvent(new Event('click')) // Fire event
-      */
     }
   }
 })

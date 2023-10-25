@@ -81,59 +81,59 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/narrow-notepad.png",
+      "src": "/screenshots/narrow-notepad.webp",
       "sizes": "540x720",
-      "type": "image/png",
+      "type": "image/webp",
       "platform": "narrow",
       "label": "Notepad narrow"
     },
     {
-      "src": "/screenshots/wide-notepad.png",
+      "src": "/screenshots/wide-notepad.webp",
       "sizes": "720x540",
-      "type": "image/png",
+      "type": "image/webp",
       "platform": "wide",
       "label": "Notepad wide"
     },
     {
-      "src": "/screenshots/mobile-front.png",
+      "src": "/screenshots/mobile-front.webp",
       "sizes": "1080x1920",
-      "type": "image/png",
+      "type": "image/webp",
       "platform": "narrow",
       "label": "Frontpage mobile"
     },
     {
-      "src": "/screenshots/mobile-list.png",
+      "src": "/screenshots/mobile-list.webp",
       "sizes": "1080x1920",
-      "type": "image/png",
+      "type": "image/webp",
       "platform": "narrow",
       "label": "List-page mobile"
     },
     {
-      "src": "/screenshots/mobile-article.png",
+      "src": "/screenshots/mobile-article.webp",
       "sizes": "1080x1920",
-      "type": "image/png",
+      "type": "image/webp",
       "platform": "narrow",
       "label": "List-page mobile"
     },
     {
-      "src": "/screenshots/wide-front.PNG",
+      "src": "/screenshots/wide-front.webp",
       "sizes": "1920x1080",
-      "type": "image/png",
+      "type": "image/webp",
       "platform": "wide",
       "form_factor": "wide",
       "label": "Front wide"
     },
     {
-      "src": "/screenshots/wide-list.PNG",
+      "src": "/screenshots/wide-list.webp",
       "sizes": "1920x1080",
-      "type": "image/png",
+      "type": "image/webp",
       "platform": "wide",
       "label": "List wide"
     },
     {
-      "src": "/screenshots/wide-article.PNG",
+      "src": "/screenshots/wide-article.webp",
       "sizes": "1920x1080",
-      "type": "image/png",
+      "type": "image/webp",
       "platform": "wide",
       "label": "Article wide"
     }
@@ -144,21 +144,21 @@
       "short_name": "About",
       "description": "About this amazing app",
       "url": "/about",
-      "icons": [{ "src": "/shortcuts/about.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/shortcuts/about.webp", "sizes": "96x96" }]
     },
     {
       "name": "Privacy Policy",
       "short_name": "Privacy",
       "description": "Privacy Statement",
       "url": "/privacy",
-      "icons": [{ "src": "/shortcuts/privacy.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/shortcuts/privacy.webp", "sizes": "96x96" }]
     },
     {
       "name": "Content-list",
       "short_name": "List",
       "description": "List of the content",
       "url": "/list",
-      "icons": [{ "src": "/shortcuts/list.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/shortcuts/list.webp", "sizes": "96x96" }]
     }
   ],
   "id": "/",

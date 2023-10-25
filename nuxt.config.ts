@@ -105,7 +105,7 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html}', 'svg/*.*', 'favicon.*'],
+      globPatterns: ['**/*.{js,css,html,webp}', 'svg/*.*', 'favicon.*'],
       globIgnores: ['google*.*'],
       navigateFallbackDenylist: [/^\/api/],
       runtimeCaching: [

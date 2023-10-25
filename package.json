@@ -1,6 +1,6 @@
 {
   "name": "create-google-app",
-  "version": "1.0.0-rc.66",
+  "version": "1.0.0-rc.67",
   "type": "module",
   "main": "./nuxt.config.ts",
   "description": "⚡Nuxt layer with nuxt-content, full search-functionality, pwa and guide to how to publish to Google Play Store.",
@@ -45,7 +45,7 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
-    "generate": "nuxt generatev && npx pagefind",
+    "generate": "nuxt generate && npx pagefind",
     "pagefind": "npx pagefind",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
