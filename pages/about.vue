@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
+const runtimeConfig = useRuntimeConfig()
 
 const { $webnoti } = useNuxtApp() as any
 onMounted(() => {
@@ -9,7 +10,8 @@ onMounted(() => {
 useSeoMeta({
   titleTemplate: appConfig.myLayer.seoMeta.about.title,
   description: appConfig.myLayer.seoMeta.about.description,
-  ogDescription: appConfig.myLayer.seoMeta.about.description
+  ogDescription: appConfig.myLayer.seoMeta.about.description,
+  ogUrl: `${runtimeConfig.public.hostname}/about`
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 
 </script>

@@ -1,10 +1,20 @@
 <script setup lang="ts">
 // const config = useRuntimeConfig()
 const appConfig = useAppConfig()
+const runtimeConfig = useRuntimeConfig()
+
 onMounted(() => {
   // @ts-ignore
   useNuxtApp().$webnoti(appConfig.myLayer.notification.privacy)
 })
+
+useSeoMeta({
+  titleTemplate: appConfig.myLayer.seoMeta.privacy.title,
+  description: appConfig.myLayer.seoMeta.privacy.description,
+  ogDescription: appConfig.myLayer.seoMeta.privacy.description,
+  ogUrl: `${runtimeConfig.public.hostname}/privacy`
+}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
+
 </script>
 
 <template>

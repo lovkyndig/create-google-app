@@ -1,23 +1,18 @@
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
-const { $webnoti } = useNuxtApp() as any
-onMounted(() => {
-  $webnoti(appConfig.myLayer.notification.list)
-})
-
 const appConfig = useAppConfig()
+const runtimeConfig = useRuntimeConfig()
 
 interface MyCustomParsedContent extends ParsedContent {
   tags: string[]
 }
 const route = useRoute()
 
-useSeoMeta({
-  titleTemplate: appConfig.myLayer.seoMeta.list.title,
-  description: appConfig.myLayer.seoMeta.list.description,
-  ogDescription: appConfig.myLayer.seoMeta.list.description
-}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
+const { $webnoti } = useNuxtApp()
+onMounted(() => {
+  $webnoti(appConfig.myLayer.notification.list)
+})
 
 /**
  *
@@ -200,6 +195,7 @@ onMounted(() => {
 
   const series = route.query?.series as string || 'all'
   currentSeries.value = series
+  echoQueryParam(route.query) // lovkyndig coded 2023
 })
 
 /**
@@ -292,7 +288,7 @@ const getFileTypeIcon = (type) => {
  * Added 29.09.23 in v1.0.0 beta 4 to only show open filter on pc-screen.
  * Also removed the title of the three different type of tags - see below in template.
  */
- onMounted(() => {
+onMounted(() => {
   if (window) {
     if (window.innerWidth > 640) { // or window.outerWidth
       showMoreFilter.value = true
@@ -312,6 +308,78 @@ watch(() => windowSize.value.width, () => {
     showMoreFilter.value = true
   }
 })
+
+/** ----------------------------------------------------------------------------- */
+useServerSeoMeta({
+  ogDescription: `${appConfig.myLayer.seoMeta.list.description} ${route.fullPath.slice(6)}`
+}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
+
+/**
+ *
+ * Publishing the TITLE.
+ * Using route.path as argument to this function.
+ * Using this function five times below, from here to the script end.
+ *
+ */
+const publishTitle = (value) => { // using this function 5 times below
+  const title = ref(value)
+  titles.value = title
+  useSeoMeta({
+    title: title.value,
+    description: `${appConfig.myLayer.seoMeta.list.description} ${route.fullPath.slice(6)}`,
+    ogDescription: `${appConfig.myLayer.seoMeta.list.description} ${route.fullPath.slice(6)}`,
+    ogUrl: `${runtimeConfig.public.hostname}${route.fullPath}`
+  })
+  useHead({ link: [{ rel: 'canonical', href: `${runtimeConfig.public.hostname}${route.fullPath}` }] })
+}
+const titles = useSearchString()
+/**
+ * Loading echoQueryParam above onMounted
+ */
+const searchString = useState('searchString')
+const echoQueryParam = (queryObj) => {
+  /* const cat = queryObj.category; const tag = queryObj.tags; const serie = queryObj.series */
+  if (process.client) {
+    const querystring = window.location.search
+    if (querystring.substring(1)) { // set searchString.value
+      searchString.value = querystring.substring(1)
+    } else { /* console.log('No searchstring here!') */ }
+  }
+  publishTitle(`${appConfig.myLayer.seoMeta.list.tags} ${searchString.value}`)
+}
+
+const getAndUseSearchparam = () => { // only on load
+  if (route.fullPath === route.path) {
+    publishTitle(appConfig.myLayer.seoMeta.list.tags_all)
+  } else {
+    publishTitle(`${appConfig.myLayer.seoMeta.list.tags} ${route.fullPath.slice(6)}`)
+  }
+}
+getAndUseSearchparam()
+
+watch(() => route.fullPath, () => { // only on change after load
+  if (route.path === route.fullPath) {
+    publishTitle(appConfig.myLayer.seoMeta.list.tags_all)
+  } else {
+    publishTitle(`${appConfig.myLayer.seoMeta.list.tags} ${route.fullPath.slice(6)}`)
+  }
+})
+
+/**
+ * Added 20.09.23 in v3.10-rc.19 to only show open filter on pc-screen.
+ */
+onMounted(() => {
+  if (window) {
+    if (window.innerWidth > 640) { // or window.outerWidth
+      showMoreFilter.value = true
+      /*
+      const btn = document.getElementById('showMoreFilter')
+      btn.dispatchEvent(new Event('click')) // Fire event
+      */
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -319,6 +387,9 @@ watch(() => windowSize.value.width, () => {
     <Head>
       <Title>List</Title>
     </Head>
+    <h1 style="display: none">
+      {{ titles }}
+    </h1>
     <NuxtLayout name="base">
       <div class="shrink-0 px-4 sm:px-8 py-4 space-y-4 sm:sticky top-0 inset-x-0 z-10 bg-gray-50">
         <div class="flex items-start sm:space-x-2">

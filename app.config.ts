@@ -7,24 +7,30 @@ export default defineAppConfig({
       frontpage: 'This app is under heavy development! It is working fine, but there is added futures all the time.',
       about: 'Do you love this app? Please wait some weeks before you download it from github.com/lovkyndig.',
       privacy: 'Privacy police is normally not recuried, but because this app is published on Google Play - Google need it:)',
-      list: 'Search and find what you are locking for with the amazing search-functionality on this site:)'
+      list: 'Search and find what you are locking for with the amazing search-functionality on this site:)',
+      slug: 'Read the documentation with guidelines about how to create a Google App in one week.'
     },
     seoMeta: {
       home: {
-        title: 'Create Google App',
+        title: 'How to Create a Google App and goign on Google App Store?',
         description: 'How to Create a Google App in less than a week, with no programming skills? Answer: Follow my guidlines and read this documentation:)'
       },
       about: {
-        title: 'About this Google App',
+        title: 'Information about this Google App, and going on "Google App Store"',
         description: 'About the guidlines and description of how to create a google app'
-      },
-      list: {
-        title: 'List of content in this Google App',
-        description: 'This is the list of content in the "Create Google App" - with responsive design for mobile and laptop. '
       },
       privacy: {
         title: 'Privacy Policy following because this is an Google App.',
         description: 'The Privacy Policy, Sitemap and Rss for "Create Google App". Privacy Policy is requrid for all Google Apps.'
+      },
+      list: {
+        tags: 'Create Google App - Tag: ',
+        tags_all: 'Create Google App - All Tags',
+        description: 'This is the list of content in the "Create Google App" - with responsive design for mobile and laptop.'
+      },
+      slug: {
+        title: 'Guidelines and documentation about how to create a Google App.',
+        description: 'Guidelines and documentation for "Create Google App" - a tutorial for non-programmers/non-developers!'
       }
     },
     articleFoldersAreNumbered: true

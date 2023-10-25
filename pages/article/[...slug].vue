@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
+const runtimeConfig = useRuntimeConfig()
+
 const route = useRoute()
 
 /**
@@ -31,6 +33,16 @@ const showFooterNavThemeOptions = useState('showFooterNavThemeOptions')
 
 const { $getAndChangeSearchparam } = useNuxtApp() as any
 const searchString = $getAndChangeSearchparam()
+
+const { $webnoti } = useNuxtApp()
+onMounted(() => {
+  $webnoti(appConfig.myLayer.notification.slug)
+})
+useSeoMeta({
+  description: appConfig.myLayer.seoMeta.slug.description,
+  ogDescription: appConfig.myLayer.seoMeta.slug.description,
+  ogUrl: `${runtimeConfig.public.hostname}${route.fullPath}`
+}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 </script>
 
 <template>

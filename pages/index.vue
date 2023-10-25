@@ -4,6 +4,7 @@ import type { NavItem } from '@nuxt/content/dist/runtime/types'
 import pkg from '../package.json'
 
 const appConfig = useAppConfig()
+const runtimeConfig = useRuntimeConfig()
 
 /**
  *
@@ -164,7 +165,8 @@ onMounted(() => {
 useSeoMeta({
   titleTemplate: `v${pkg.version} - ${appConfig.myLayer.seoMeta.home.title}`,
   description: appConfig.myLayer.seoMeta.home.description,
-  ogDescription: appConfig.myLayer.seoMeta.home.description
+  ogDescription: appConfig.myLayer.seoMeta.home.description,
+  ogUrl: `${runtimeConfig.public.hostname}`
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 
 </script>
