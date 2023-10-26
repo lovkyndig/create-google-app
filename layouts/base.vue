@@ -33,7 +33,7 @@ onMounted(() => {
 
       resizeTimer = null
     }, 300)
-  })
+  }, { passive: true })
 })
 
 /**
@@ -56,7 +56,7 @@ onMounted(() => {
 
         scrollTimer = null
       }, 100)
-    })
+    }, { passive: true })
   }
 })
 
@@ -74,7 +74,7 @@ const ModalKeyListener = function (event: KeyboardEvent) {
 
 onMounted(() => {
   if (document) {
-    document.addEventListener('keydown', ModalKeyListener)
+    document.addEventListener('keydown', ModalKeyListener, { passive: true })
   }
 })
 

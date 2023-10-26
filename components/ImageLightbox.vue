@@ -52,7 +52,7 @@ onMounted(() => {
   watch(showZoomImage, () => {
     if (document) {
       if (showZoomImage.value !== 'hidden') {
-        document.addEventListener('keyup', lightboxKeyListener)
+        document.addEventListener('keyup', lightboxKeyListener, { passive: true })
       } else {
         document.removeEventListener('keyup', lightboxKeyListener)
       }

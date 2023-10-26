@@ -77,7 +77,7 @@ const ModalKeyListener = function (event:KeyboardEvent) {
 onMounted(() => {
   if (document) {
     itemNum.value = itemRefs.value.length
-    document.addEventListener('keyup', ModalKeyListener)
+    document.addEventListener('keyup', ModalKeyListener, { passive: true })
   }
 })
 

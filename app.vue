@@ -69,8 +69,8 @@ onMounted(() => {
     }
   }
   if (window) {
-    window.addEventListener('load', () => { widthCheck() })
-    window.addEventListener('resize', () => { widthCheck() })
+    window.addEventListener('load', () => { widthCheck() }, { passive: true })
+    window.addEventListener('resize', () => { widthCheck() }, { passive: true })
   }
   // watch(() => windowSize.value.width, () => { widthCheck() })
   if (process.client) {

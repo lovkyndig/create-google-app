@@ -8,7 +8,7 @@ export default defineNuxtPlugin(() => {
             event.stopPropagation()
             clickIs.value = true
             return clickIs.value
-          }, { once: true })
+          }, { once: true, passive: true })
         })
       }
     }

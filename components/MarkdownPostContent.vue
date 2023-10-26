@@ -58,7 +58,7 @@ const addClickListener = (list: NodeListOf<Element>, prefix: string, suffix: str
           clearTimeout(timer)
         }, 800)
       }
-    })
+    }, { passive: true })
   })
 }
 

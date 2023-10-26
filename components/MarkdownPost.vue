@@ -314,7 +314,7 @@ const addDetailsClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
         }
       }
       anchorClick.value = false // added 20.10.2023
-    })
+    }, { passive: true })
   })
 }
 
