@@ -45,15 +45,16 @@ const getCoverUrl = (relativeURL:string) => {
         v-for="tag in props.article.tags"
         :key="tag"
         :to="{ path: '/list', query: { tags: [tag] } }"
-        class="px-2 py-1 text-xs text-blue-400 hover:text-blue-500 bg-blue-50 transition-colors duration-300 rounded"
+        class="px-2 py-1 text-xs text-blue-700 hover:text-blue-950 bg-purple-100 transition-colors duration-300 rounded"
       >
         #{{ tag }}
       </NuxtLink>
     </div>
+    <!-- Style for mobile, for link above and below, is in PostCrdItem -->
     <NuxtLink
       v-if="props.article.series"
       :to="{ path: '/list', query: { series: props.article.series } }"
-      class="w-fit px-2 py-1 flex justify-center items-center space-x-1 text-green-400 hover:text-green-500 bg-green-50 transition-colors duration-300 rounded"
+      class="w-fit px-2 py-1 flex justify-center items-center space-x-1 text-green-700 hover:text-green-950 bg-green-50 transition-colors duration-300 rounded"
     >
       <svgo-bi-collection class="w-4 h-4" :font-controlled="false" />
       <p class="text-xs">

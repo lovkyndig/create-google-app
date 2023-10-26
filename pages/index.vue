@@ -278,18 +278,23 @@ useSeoMeta({
                 <div class="flex justify-between items-start">
                   <h2 class="border-l-8 border-purple-500 rounded-l-sm">
                     <button
-                      class="p-1 font-bold text-lg text-purple-500 hover:bg-purple-100 border rounded-r-sm transition-colors duration-300 "
+                      class="p-1 font-bold text-lg text-purple-600 hover:bg-slate-100 border rounded-r-sm transition-colors duration-300 "
                       :class="hidePostThemeSections.has(theme._path) ? 'border-purple-500' : 'border-transparent'"
                       @click="togglePostThemeSectionsHandler(theme._path)"
                     >
                       {{ theme.title }}
                     </button>
                   </h2>
+                  <!--
+                    CONTENT BEST PRACTICES:
+                    Links do not have descriptive text
+                    https://developer.chrome.com/docs/lighthouse/seo/link-text/?utm_source=lighthouse&utm_medium=devtools
+                  -->
                   <NuxtLink
                     :to="{ path: '/list', query: { theme: getTheme(theme._path) } }"
-                    class="p-2 text-xs font-bold transition-colors duration-300 rounded-lg text-purple-500 bg-purple-100 hover:bg-purple-50"
+                    class="p-2 text-xs font-bold transition-colors duration-300 rounded-lg text-purple-700 bg-purple-200 hover:bg-purple-100"
                   >
-                    More
+                    Open folder
                   </NuxtLink>
                 </div>
                 <div
