@@ -103,14 +103,14 @@ const showSearchModal = useState('showSearchModal')
         >
           <NuxtLink
             to="/"
-            class="option-item text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-500"
+            class="option-item text-purple-600 bg-purple-50 hover:bg-purple-100 border-purple-500"
             @click="showFooterNavMoreOptions = false"
           >
             Home
           </NuxtLink>
           <NuxtLink
             to="/about"
-            class="option-item text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-500"
+            class="option-item text-purple-600 bg-purple-50 hover:bg-purple-100 border-purple-500"
             @click="showFooterNavMoreOptions = false"
           >
             About
@@ -118,7 +118,7 @@ const showSearchModal = useState('showSearchModal')
           <NuxtLink
             v-if="appConfig.privacyPage"
             to="/privacy"
-            class="option-item text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-500"
+            class="option-item text-purple-600 bg-purple-50 hover:bg-purple-100 border-purple-500"
             @click="showFooterNavMoreOptions = false"
           >
             Privacy

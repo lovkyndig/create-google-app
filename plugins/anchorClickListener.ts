@@ -9,7 +9,7 @@ export default defineNuxtPlugin(() => {
             clickIs.value = true
             return clickIs.value
           }, { once: true, passive: true })
-        })
+        }, { passive: true })
       }
     }
   }

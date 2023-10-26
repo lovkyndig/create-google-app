@@ -30,11 +30,11 @@ const getCoverUrl = (relativeURL:string) => {
         style="background: linear-gradient(135deg, rgba(249,250,251,1) 40%, rgba(249,250,251,0.6) 80%, rgba(249,250,251,0.9) 100%)"
       />
     </div>
-
+    <!-- h3 changed to h1 after lighthouse-test 26.10.2023 s-->
     <NuxtLink :to="props.article._path" class="group block py-4 transition-colors duration-300 space-y-2">
-      <h3 class="font-bold text-2xl text-gray-600 group-hover:text-blue-400 transition-colors duration-500">
+      <h1 class="font-bold text-2xl text-gray-600 group-hover:text-blue-400 transition-colors duration-500">
         {{ props.article.title || "This Post Hasn't Title Yet" }}
-      </h3>
+      </h1>
       <p v-if="props.article.description" class="text-gray-600 short-description">
         {{ props.article.description }}
       </p>
