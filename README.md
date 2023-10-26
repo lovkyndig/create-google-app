@@ -1,16 +1,14 @@
 # Create Google App
-Clone the repository or use it as a template. 
-- Follow the [documentation](https://create-google-app.vercel.app)/ guidlines for install, setup and all you need to on Google Play.
-
-You can `Get your app in the Google Pay Console in one (1) week`, if you read the documentation and [follow the guidlines](https://create-google-app.vercel.app). (I was working ten (10) weeks to reach this goal for my first app.)
+Clone this repository or use it as a template for a website.
+- The [documentation](https://create-google-app.vercel.app)/ guidlines shows how to install, setup and publishing it on Google Play.
 
 ## Futures
-| 100% Healt Score | Lighthouse report |
+| 100% Healt Score | Lighthouse => 99% |
 | --- | --- |
 |![](https://raw.githubusercontent.com/lovkyndig/create-google-app/main/public/webp/ahrefs-website-checker.webp) |![](https://raw.githubusercontent.com/lovkyndig/create-google-app/main/public/webp/lighthouse-report.webp)|  
 
 1. _100% Health Score_ with [ahrefs website-checker](https://ahrefs.com/website-checker):[^1]
-2. Lighthouse report on _Accessibility_, _Best Practices_, _SEO_ and _PWA_ (Progressive Web App):[^2]
+2. 100% in _Accessibility_, _Best Practices_, _SEO_ and _PWA_ (Progressive Web App) on [Lighthouse-report](https://pagespeed.web.dev/). 95% on _Performance_. Total 99%.[^2]
 
 _Full search functionality_  
 
@@ -46,7 +44,8 @@ _Extra Futures_
 ## To do-list (plan)
 ### Priority'
 - Check for indexing problem in [Google Search Console](https://search.google.com/search-console/about).
-- Use Bubblewrap and add app to Google Play Console
+- Finish the content with guidlines/ documentation.
+- Use Bubblewrap and add app to Google Play Console.
 
 ### On available capacity
 - Add [giscus](https://giscus.app/) - Follow this [tutorial](https://www.freecodecamp.org/news/github-discussions-as-chat-system/).
@@ -57,7 +56,7 @@ _Extra Futures_
 [MIT](./LICENSE)
 
 [^1]: Prov from 25.10.2023 - version 1.0.0-rc.66.
-[^2]: About the errors: 
+[^2]: _((4 x 100)% + 95)%/5_ = **99%**. The use of Nuxt3 as framework prevents 100% on performance (as I can see of the report from Lighthouse).
 [^3]: The bundle that is used for searching is normally created on generate. If you are using .playground (and want to test it there), you can use this command to create the bundle: `- npx -y pagefind --site .output/public --output-path public/_pagefind`. - Maybe you need to change `--site .output/public` to `--site ../.output/public`.
 [^4]: The style and the _find-next-btn_ isn't good, and you are welcome to do it better. See FindNext-component and the find-next.svg.
 [^5]: Most of the accordion functions are from [BlogiNote](https://github.com/Benbinbin/BlogiNote). - style.css is added in assets-folder with style for the accordions. - All headers is collapsed and the Catalog (Table of contents) is closed on load, except; - The headers is not collapsed when using the search-functionality.
@@ -75,4 +74,4 @@ _Extra Futures_
 [^17]: Vercel Analytics don't use cookies and this app isn't using cookies at all, therefore it's not need for a plugin that pop up with a question if you accept cookies.
 [^18]: google.site-verification-file is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), and for using [Ahrefs website-checker](https://ahrefs.com/website-checker).
 
-Updated 25.10.2023
+Updated 26.10.2023

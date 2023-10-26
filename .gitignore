@@ -29,3 +29,6 @@ sw.js
 sw.js.map
 workbox-ad213f2f.js
 workbox-ad213f2f.js.map
+
+# Original images (converted to webp)
+public/images

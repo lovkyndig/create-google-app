@@ -24,6 +24,6 @@ if "x!variable:~-4!"=="x.png" (
     set variable=!variable:~0,-4!
 )
 echo !variable!
-cwebp -q 50 images/original-format/%input% -o images/webp/!variable!.webp
+cwebp -q 50 images/original-format/%input% -o webp/!variable!.webp
 goto x
 endlocal
