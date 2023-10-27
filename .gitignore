@@ -1,3 +1,4 @@
+# No need to have the following files on GitHub and Vercel.
 # Standard
 node_modules
 *.log*
@@ -32,3 +33,6 @@ workbox-ad213f2f.js.map
 
 # Original images (converted to webp)
 public/images
+
+# bubblewrap
+bubblewrap

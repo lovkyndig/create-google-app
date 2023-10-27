@@ -625,7 +625,7 @@ onMounted(() => {
           >
             <NuxtLink
               :to="item._path"
-              class="block px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-blue-100 transition-colors duration-300 rounded-lg space-y-2"
+              class="block px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-blue-100 transition-colors duration-300 rounded-lg space-y-2"
             >
               <div class="flex items-start">
                 <FileType
@@ -661,7 +661,7 @@ onMounted(() => {
               <button
                 v-if="item.series"
                 class="px-2 py-1 flex justify-center items-center space-x-1 transition-colors duration-300 rounded"
-                :class="currentSeries === item.series ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-100'"
+                :class="currentSeries === item.series ? 'text-white bg-green-600 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-100'"
                 @click="toggleSeries(item.series)"
               >
                 <svgo-bi-collection class="shrink-0 w-4 h-4" :font-controlled="false" />

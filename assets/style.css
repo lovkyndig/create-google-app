@@ -18,3 +18,23 @@ summary {
 details[open] > summary {
   background-color: #f3e8ff;
 }
+
+/* Markdown images */
+img[src*='#50'] {
+  width: 50%;
+}
+img[src*='#60'] {
+  width: 60%;
+}
+img[src*='#70'] {
+  width: 70%;
+}
+img[src*='#80'] {
+  width: 80%;
+}
+img[src*='#90'] {
+  width: 90%;
+}
+/* Use it like this:
+![Image width=60%](./localimage.webp#60 title="title is this")
+*/

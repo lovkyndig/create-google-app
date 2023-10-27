@@ -96,7 +96,7 @@ const showSearchModal = useState('showSearchModal')
           <img
             :src="appConfig.site.logo"
             alt="img"
-            class="w-96 h-12 rounded-full"
+            class="w-96 h-10 rounded-full"
           >
         </NuxtLink>
       </div>

@@ -1,6 +1,6 @@
 # Create Google App
 Clone this repository or use it as a template for a website.
-- The [documentation](https://create-google-app.vercel.app)/ guidlines shows how to install, setup and publishing it on Google Play.
+- The [documentation](https://create-google-app.vercel.app)/ guidlines shows how to install, setup and publish it on Google Play.
 
 ## Futures
 | 100% Healt Score | Lighthouse => 99% |
@@ -19,33 +19,33 @@ _Style and icons_
 
 5. Accordion style.[^5]  
 6. Home- and list-page with good readability for mobil and notebook.[^6]  
-7. Offline icons; [nuxt-svgo](https://www.npmjs.com/package/nuxt-svgo).[^7]
+7. Offline icons, [nuxt-svgo](https://www.npmjs.com/package/nuxt-svgo), so the app looks nice offline.[^7]
 
 _Helpers (functions/methods)_  
 
 8. Providing helpers to all my functionalities (methods).[^8]  
 9. WebNotification can be used in this package to send msg to the user.[^9]  
-10. Typescript can be used in dev ([vue-tsc](https://www.npmjs.com/package/vue-tsc)).[^10]  
-11. Created copy-files-module as an local module.[^11]
+10. Typescript checker in developer-mode ([vue-tsc](https://www.npmjs.com/package/vue-tsc)).[^10]  
+11. Images in content is copied to public folder trough the _"copy-images-files"_-module. (Have to be done because of [an nuxt-content-issue](https://github.com/nuxt/content/issues/106#issuecomment-1002820342)).[^11]
 
 _Arrangement for PWA_  
 
-12. Privacy policy statement.[^12]  
-13. [@vite-pwa/nuxt](https://www.npmjs.com/package/@vite-pwa/nuxt): This is the first step on the way to Google Store.[^13]  
+12. Privacy policy statement with route, ready to be used on Google App Store.[^12]  
+13. [@vite-pwa/nuxt](https://www.npmjs.com/package/@vite-pwa/nuxt) is setting up the PWA. Manifest is loaded trough the settings in nuxt.config.[^13]  
 14. BubbleWrap guide. See assets/guide. Required to be read.[^14]  
 15. Hosting on [Vercel](https://vercel.com/docs/deployments/git/vercel-for-github).[^15]
 
 _Extra Futures_  
 
-16. To get the caching to work in dev-mode, copy the files in sw-dev-dist from .nuxt-folder (manually) to the public-folder.[16]
+16. To get the caching to work in dev-mode, copy the sw-files in _sw-dev-dist_ from ._nuxt_-folder (manually) to the _public_-folder.[16]
 17. [Vercel Analytics](https://vercel.com/analytics), can be used when hosted on vercel.[^17]  
 18. Google-site-verification-file in public-folder.[^18]
 
 ## To do-list (plan)
 ### Priority'
-- Check for indexing problem in [Google Search Console](https://search.google.com/search-console/about).
 - Finish the content with guidlines/ documentation.
-- Use Bubblewrap and add app to Google Play Console.
+- Check if [Google Search Console](https://search.google.com/search-console/about) is indexing the pages.
+- Use _Bubblewrap_ and add app to _Google Play Console_.
 
 ### On available capacity
 - Add [giscus](https://giscus.app/) - Follow this [tutorial](https://www.freecodecamp.org/news/github-discussions-as-chat-system/).
@@ -61,17 +61,17 @@ _Extra Futures_
 [^4]: The style and the _find-next-btn_ isn't good, and you are welcome to do it better. See FindNext-component and the find-next.svg.
 [^5]: Most of the accordion functions are from [BlogiNote](https://github.com/Benbinbin/BlogiNote). - style.css is added in assets-folder with style for the accordions. - All headers is collapsed and the Catalog (Table of contents) is closed on load, except; - The headers is not collapsed when using the search-functionality.
 [^6]: The length of articles on the home- and list-page is reduced. Style is changed in PostCardItem (see scss), and .short-description is added in list-page and PostListItem.
-[^7]: Nuxt-svgo is used for instead. All icons are downloaded and saved in assets/icons-folder. No need for the iconify-package. Svg-compoents is added because nuxt-svgo v2 has the name as tag-name, not as attribute.
-[^8]: All my helpers is located in plugin-folder.
+[^7]: _Nuxt-svgo_ is used for instead. All icons are downloaded and saved in assets/icons-folder. Two svg-compoents is added because _nuxt-svgo_ v2 has the name as a _tag_-name, not om a _attribute_.
+[^8]: Most of my functions and methods are located in plugin-folder as helpers.
 [^9]: If the notifications don't shows, changed the settings. Add the sites url in the `allow`-settings. - In Chrome: chrome://settings/content/notifications - In Edge: edge://settings/content/notifications
-[^10]: Typescript-issues in my base theme ([BlogiNote](https://github.com/Benbinbin/BlogiNote))-files are fixed with types/index.d.ts
+[^10]: Typescript-issues in my base theme ([BlogiNote](https://github.com/Benbinbin/BlogiNote))-files are fixed and javascript is converted to typescript.
 [^11]: Needs to be there because of [issues in nuxt-content](). The inspiration for the module is this [package](https://www.npmjs.com/package/bloginote-copy-files-module).
-[^12]: Privacy is mandatory for all Google Apps (and therefore needed in my apps). - privacy.txt.ts is added in server/routes-folder and privacy.txt is added to public-folder.
-[^13]: @vite-pwa/nuxt is added and the setup is done in nuxt.config.ts. NB! First host your site ([vercel](https://vercel.com/docs/deployments/git/vercel-for-github)). Se more in pkt 15 below.
-[^14]: Bubblewrap has to be used to create the aab-package before uploading it to Google App Store. - Bubblewrap are installed Globally on the local mashine, for use on development, because; - I'm using bubblewrap in a subfolder under the root, because the bubblewrap are creating so many files that have to be keeped away from the github-repo-files. - Guide-folder with links and info about using bubblewrap is added inside the assets-folder. - bubblewrap-folder is added to .gitignore-file.
+[^12]: Privacy is mandatory for all Google Apps (and therefore needed in my apps). - privacy.txt.ts is added in server/routes-folder, and privacy.txt is added to public-folder.
+[^13]: PWA is the first step on the way to Google Store. Remember to host your site ([vercel](https://vercel.com/docs/deployments/git/vercel-for-github)). Se more in pkt 15 below.
+[^14]: Bubblewrap has to be used to create the aab-package before uploading it to Google App Store. - Bubblewrap are installed Globally on the local mashine, for use on development, because; - I'm using bubblewrap in a subfolder under the root, because the bubblewrap are creating so many files that have to be keeped away from the github-repo-files. - Guide-folder with links and info about using bubblewrap is added inside the assets-folder. - bubblewrap-folder is added to .gitignore-file. [Read more](http://create-google-app.vercel.app/article/create-and-upload/create-app/bubblewrap).
 [^15]: All public repos on github can be hosted on [vercel](https://vercel.com/docs/deployments/git/vercel-for-github) for free.
-[^16]: Planning to create a plugin that starts when the browser opens with the site, that copy the sw-files.
-[^17]: Vercel Analytics don't use cookies and this app isn't using cookies at all, therefore it's not need for a plugin that pop up with a question if you accept cookies.
-[^18]: google.site-verification-file is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), and for using [Ahrefs website-checker](https://ahrefs.com/website-checker).
+[^16]: Planning to create a plugin that to this (copy-job) when the site opens in the browser.
+[^17]: Vercel Analytics don't use cookies and this app isn't using cookies at all, therefore it's not need for a plugin that pop up with a question if you accept cookies. See the [doc](http://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
+[^18]: _google.site-verification_-file ([or code](http://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics)) is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), before [Ahrefs website-checker](https://ahrefs.com/website-checker) can be used. [Read more](http://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
 
-Updated 26.10.2023
+Updated 27.10.2023
