@@ -39,17 +39,16 @@ _Extra Futures_
 
 16. To get the caching to work in dev-mode, copy the sw-files in _sw-dev-dist_ from ._nuxt_-folder (manually) to the _public_-folder.[16]
 17. [Vercel Analytics](https://vercel.com/analytics), can be used when hosted on vercel.[^17]  
-18. Google-site-verification-file in public-folder.[^18]
+18. Verification of ownership with `google-site-verification`-file in _public_-folder, and code in `.env`-file.[^18]
 
 ## To do-list (plan)
 ### Priority'
-- Finish the content with guidlines/ documentation.
-- Check if [Google Search Console](https://search.google.com/search-console/about) is indexing the pages.
 - Use _Bubblewrap_ and add app to _Google Play Console_.
 
 ### On available capacity
 - Add [giscus](https://giscus.app/) - Follow this [tutorial](https://www.freecodecamp.org/news/github-discussions-as-chat-system/).
 - Add dark-light-themetoggle.
+- Update content with guidelines /documentation.
 - Maybe add Google Translate option (not auto-translate).
 
 ## License
