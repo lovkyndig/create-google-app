@@ -9,8 +9,9 @@ const { resolve } = createResolver(import.meta.url)
 const currentDir = dirname(fileURLToPath(import.meta.url))
 
 let iconDir = './assets/icons'
-if (pkg.scripts.dev.endsWith('.playground')) {
+if (!isProduction && pkg.scripts.dev.endsWith('.playground')) {
   iconDir = '../../../assets/icons/'
+  console.log('In developer-mode iconDir is set to ' + iconDir)
 }
 
 // https://nuxt.com/docs/guide/going-further/layers#relative-paths-and-aliases
