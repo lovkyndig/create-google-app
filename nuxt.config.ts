@@ -8,12 +8,6 @@ const { resolve } = createResolver(import.meta.url)
 
 const currentDir = dirname(fileURLToPath(import.meta.url))
 
-let iconDir = './assets/icons'
-if (!isProduction && pkg.scripts.dev.endsWith('.playground')) {
-  iconDir = '../../../assets/icons/'
-  console.log('In developer-mode iconDir is set to ' + iconDir)
-}
-
 // https://nuxt.com/docs/guide/going-further/layers#relative-paths-and-aliases
 
 // grepper capitalize first letter in all words in a string, separeted with space ' ' or hyphen '-' (like name in package.json)
@@ -134,11 +128,12 @@ export default defineNuxtConfig({
     devOptions: {
       enabled: true,
       navigateFallback: '/',
-      navigateFallbackAllowlist: [/^\/$/]
+      navigateFallbackAllowlist: [/^\/$/],
+      suppressWarnings: true
     }
   },
   svgo: {
-    autoImportPath: `${iconDir}`
+    autoImportPath: join(currentDir, './assets/icons')
   }
 })
 

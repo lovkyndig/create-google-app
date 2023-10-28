@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
 // @ts-ignore
-import IconComponent from '../../assets/icons/ion/add.svg?component' // <svgo-ion-add
+import IconComponent from '../assets/icons/ion/add.svg?component' // <svgo-ion-add
 
 interface CatalogItemType {
   id: string;
