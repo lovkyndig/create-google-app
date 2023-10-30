@@ -1,8 +1,14 @@
+import fs from 'node:fs'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
 import { SitemapStream, streamToPromise } from 'sitemap'
 import { defineEventHandler } from 'h3'
 import { serverQueryContent } from '#content/server'
 // @ts-ignore (vue-tsc giv error on the following line somethimes)
 import { useRuntimeConfig } from '#imports'
+
+const currentDir = dirname(fileURLToPath(import.meta.url))
+console.log('The currentDir is ' + currentDir)
 
 // refer to https://content.nuxtjs.org/guide/recipes/sitemap
 export default defineEventHandler(async (event) => {
