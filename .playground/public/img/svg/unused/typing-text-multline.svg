@@ -1,5 +1,5 @@
 <!-- source: https://stackoverflow.com/questions/67861817/hi-line-break-text-animation-svg-file -->
-<svg width="500" height="180" version="1.1" viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="600" height="180" version="1.1" viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <path id="line1">
     <animate attributeName="d" begin="0s" from="m0,40 h0" to="m0,30 h1100" dur="2.8s" fill="freeze" repeatCount="0"/>
   </path>
@@ -28,22 +28,22 @@
   >
     <textPath xlink:href="#line1">
       <tspan stroke-width="2.5">
-        How to create google app
+        This text is writed because
       </tspan>
     </textPath>
     <textPath xlink:href="#line2">
       <tspan stroke-width="2.5">
-        without programming skills
+        there is no content in content-folder
       </tspan>
     </textPath>
     <textPath xlink:href="#line3">
       <tspan stroke-width="2.5">
-        in less than one week?
+        Create md-files with content and
       </tspan>
     </textPath>
     <textPath xlink:href="#line4">
       <tspan stroke-width="2.5">
-        Read the doc. and find out!
+        put them in the content-folder.
       </tspan>
     </textPath>
 

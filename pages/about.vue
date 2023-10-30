@@ -28,18 +28,19 @@ useSeoMeta({
             <h1 style="display: none">
               {{ appConfig.myLayer.seoMeta.about.title }}
             </h1>
-            <img src="/svg/text-logo.svg" alt="img" class="svg logo">
-            <img src="/svg/about-not-found.svg" alt="img" class="svg content">
-            <p class="max-w-prose mx-auto p-4">
-              Go to the <b>
+            <p class="max-w-prose mx-auto p-4 mt-8">
+              The <b>about.md</b> in <b>content</b>-folder is missing!
+              <br>
+              <br>
+              Read the <b>
                 <a
-                  href="https://create-google-app.vercel.app"
+                  :href="appConfig.myLayer.meta.homepage"
                   target="_blank"
                   class="text-blue-500 hover:text-blue-600 underline font-bold transition-colors duration-300"
                 >
                   Documentation
                 </a> </b>
-              to read the guidelines, about how to set up the project.
+              and guidelines, about how to set up the project.
             </p>
           </div>
         </template>
@@ -60,6 +61,12 @@ useSeoMeta({
 }
 
 .svg {
+  display: block;
+  margin-right: auto;
+  width: 75%;
+}
+
+.svgo-custom-about-not-found {
   display: block;
   margin-right: auto;
   width: 75%;

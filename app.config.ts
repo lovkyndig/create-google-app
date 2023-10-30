@@ -1,18 +1,24 @@
 export default defineAppConfig({
   myLayer: {
-    name: 'Hello from Nuxt layer',
-    menuBtn1: 'Google',
+    name: 'Create Google App',
+    meta: {
+      homepage: 'https://create-google-app.vercel.app/',
+      author: 'Kyrie Eleison',
+      email: 'jur.eleison@gmail.com'
+    },
+    menu: {
+      btn1: 'Google'
+    },
     notification: {
-      // frontpage: 'How to create an google app in one week?',
-      frontpage: 'This app is under heavy development! It is working fine, but there is added futures all the time.',
-      about: 'Do you love this app? Please wait some weeks before you download it from github.com/lovkyndig.',
-      privacy: 'Privacy police is normally not recuried, but because this app is published on Google Play - Google need it:)',
-      list: 'Search and find what you are locking for with the amazing search-functionality on this site:)',
+      frontpage: 'How to create an google app in one week?',
+      about: 'A laywer from Norway, Kyrie Eleison, has made this app! Like it? Follow him on GitHub!',
+      privacy: 'Privacy police is normally not recuried, but because this app is published on Google Play - Google need it.',
+      list: 'Search and find what you are locking for - with the amazing search-functionality on this Google App.',
       slug: 'Read the documentation with guidelines about how to create a Google App in one week.'
     },
     seoMeta: {
       home: {
-        title: 'How to Create a Google App and goign on Google App Store?',
+        title: 'How to Create an sApp and go on Google App Store?',
         description: 'How to Create a Google App in less than a week, with no programming skills? Answer: Follow my guidlines and read this documentation:)'
       },
       about: {
@@ -31,19 +37,12 @@ export default defineAppConfig({
       slug: {
         description: 'Guidelines and documentation for "Create Google App" - a tutorial for non-programmers/non-developers!'
       }
-    },
-    articleFoldersAreNumbered: true
-  },
-  meta: {
-    url: 'https://create-google-app.vercel.app/'
+    }
   },
   site: {
-    author: 'Kyrie Eleison',
-    email: 'jur.eleison@gmail.com',
-    logo: '/svg/text-logo.svg',
-    avatar: '/svg/avatar.svg',
-    favicon: '/favicon.svg', // favicon.ico
-    scrollSmooth: true
+    logo: '/img/svg/text-logo.svg',
+    avatar: '/img/svg/avatar.svg',
+    favicon: '/favicon.svg' // favicon.ico
   },
   homePage: {
     showBlogPosts: true,
@@ -66,6 +65,7 @@ export default defineAppConfig({
       '/list/'
     ]
   },
+  scrollSmooth: true,
   assetTypes: []
 })
 

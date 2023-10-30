@@ -5,7 +5,7 @@ Clone this repository or use it as a template for a website.
 ## Futures
 | 100% Healt Score | Lighthouse => 99% |
 | --- | --- |
-|![](https://raw.githubusercontent.com/lovkyndig/create-google-app/main/public/webp/ahrefs-website-checker.webp) |![](https://raw.githubusercontent.com/lovkyndig/create-google-app/main/public/webp/lighthouse-report.webp)|  
+|![](https://raw.githubusercontent.com/lovkyndig/create-google-app/main/public/img/webp/ahrefs-website-checker.webp) |![](https://raw.githubusercontent.com/lovkyndig/create-google-app/main/public/img/webp/lighthouse-report.webp)|  
 
 1. _100% Health Score_ with [ahrefs website-checker](https://ahrefs.com/website-checker):[^1]
 2. 100% in _Accessibility_, _Best Practices_, _SEO_ and _PWA_ (Progressive Web App) on [Lighthouse-report](https://pagespeed.web.dev/). 95% on _Performance_. Total 99%.[^2]
@@ -43,12 +43,12 @@ _Extra Futures_
 
 ## To do-list (plan)
 ### Priority'
-- Use _Bubblewrap_ and add app to _Google Play Console_.
+- Create bundle with _Bubblewrap_ and add it to _Google Play Console_.
 
 ### On available capacity
 - Add [giscus](https://giscus.app/) - Follow this [tutorial](https://www.freecodecamp.org/news/github-discussions-as-chat-system/).
 - Add dark-light-themetoggle.
-- Update content with guidelines /documentation.
+- Add a copy-module to copy rss.txt (and sistemap) to public, ref. [ahrefs](https://ahrefs.com/seo/glossary/sitemap).
 - Maybe add Google Translate option (not auto-translate).
 
 ## License
@@ -73,4 +73,4 @@ _Extra Futures_
 [^17]: Vercel Analytics don't use cookies and this app isn't using cookies at all, therefore it's not need for a plugin that pop up with a question if you accept cookies. See the [doc](http://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
 [^18]: _google.site-verification_-file ([or code](http://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics)) is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), before [Ahrefs website-checker](https://ahrefs.com/website-checker) can be used. [Read more](http://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
 
-Updated 27.10.2023
+Updated 30.10.2023

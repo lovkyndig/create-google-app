@@ -19,9 +19,9 @@ useServerSeoMeta({
   ogTitle: config.site.title,
   ogType: 'website',
   ogUrl: pkg.homepage,
-  ogImage: `${pkg.homepage}/seo-meta/1200x720.PNG`,
+  ogImage: `${pkg.homepage}/img/seo-meta/1200x720.webp`,
   ogImageAlt: pkg.name,
-  twitterImage: `${pkg.homepage}/seo-meta/800x425.PNG`,
+  twitterImage: `${pkg.homepage}/img/seo-meta/800x425.webp`,
   twitterSite: '@nuxt_js',
   twitterCreator: '@nuxt_js',
   twitterCard: 'summary_large_image',
@@ -47,7 +47,7 @@ useHead({
   ]
 })
 
-if (appConfig.site.scrollSmooth) {
+if (appConfig.scrollSmooth) {
   useHead({
     style: [
       'html, body { scroll-behavior: smooth }'

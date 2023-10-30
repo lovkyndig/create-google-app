@@ -65,8 +65,7 @@ export default defineNuxtConfig({
           output: 'mathml' // the default value is `htmlAndMathml`
         }
       }
-    },
-    ignores: [/* ['images', 'attachment'] */]
+    }
   },
   typescript: {
     shim: false,
@@ -80,7 +79,7 @@ export default defineNuxtConfig({
     site: { // renamed from rss
       title: capitalize(pkg.name),
       description: 'Guide to Create Google App in one day or one week, depending on the programming skills.',
-      image: `${pkg.homepage}/svg/avatar.svg`, // avatar also in appconfig
+      image: `${pkg.homepage}/img/svg/avatar.svg`, // avatar also in appconfig
       favicon: `${pkg.homepage}/favicon.svg`, // favicon also in appconfig
       copyright: `All rights reserved ${(new Date()).getFullYear()}, Kyrie Eleison`
     },
@@ -105,7 +104,7 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html,webp}', 'svg/*.*', 'favicon.*'],
+      globPatterns: ['**/*.{js,css,html,webp}', 'img/**/*.{svg,webp}', 'favicon.*'],
       globIgnores: ['google*.*'],
       navigateFallbackDenylist: [/^\/api/],
       runtimeCaching: [

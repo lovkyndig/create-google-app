@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const searchString = useState('searchString')
-const clickOnFindBtn = useState('clickOnFindBtn')
 
 const findNext = () => {
   const divElement = document.querySelector('#findNext')
@@ -98,15 +97,7 @@ onMounted(() => {
 
 <template>
   <div id="findNext" class="text-purple-600">
-    <img
-      id="findNextHeader"
-      src="/svg/find-next.svg"
-      alt="img"
-      width="50"
-      height="50"
-      :title="tooltip"
-      @click="findNext()"
-    >
+    <svgo-custom-find-next id="findNextImg" class="text-xl" alt="img" :font-controlled="false" @click="findNext()" />
     <input
       id="findIndput"
       ref="searchInput"
@@ -129,7 +120,7 @@ onMounted(() => {
   z-index: 51;
 }
 
-#findNext > img {
+#findNextImg {
   cursor: move
 }
 

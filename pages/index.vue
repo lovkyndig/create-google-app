@@ -208,21 +208,26 @@ useSeoMeta({
         <div class="sm:px-10 py-16">
           <ContentDoc>
             <template #empty>
-              <IntroCard :avatar="'/svg/avatar.svg'" />
+              <IntroCard :avatar="appConfig.site.avatar" />
             </template>
             <template #not-found>
               <h1 class="py-4 text-3xl sm:text-5xl font-bold text-center text-purple-500">
                 {{ appConfig.myLayer.seoMeta.home.title }}
               </h1>
-              <img src="/svg/front-page.svg" alt="img">
               <div class="grid place-items-center text-purple-700">
                 <p class="mt-8">
-                  No content here!
+                  The <b>index.md</b> in <b>content</b>-folder is missing!
+                  <br>
                   <br>
                   Read the <b>
-                    <NuxtLink href="https://create-google-app.vercel.app"> documentation </NuxtLink>
-                  </b>
-                  and the <i>guidelines</i> about how to setup the project.
+                    <a
+                      :href="appConfig.myLayer.meta.homepage"
+                      target="_blank"
+                      class="text-blue-500 hover:text-blue-600 underline font-bold transition-colors duration-300"
+                    >
+                      Documentation
+                    </a> </b>
+                  and guidelines, about how to set up the project.
                 </p>
               </div>
             </template>

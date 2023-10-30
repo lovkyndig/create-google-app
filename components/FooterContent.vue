@@ -6,17 +6,17 @@ const appConfig = useAppConfig()
 <template>
   <div class="py-4 flex justify-center items-center">
     <div class="flex flex-col md:flex-row gap-4 text-xs text-green-800 text-center">
-      <p v-if="appConfig.site.author">
+      <p v-if="appConfig.myLayer.meta.author">
         Copyright © {{ (new Date()).getFullYear() }}
 
         <a
-          v-if="appConfig.site.email"
-          :href="`mailto:${appConfig.site.email}`"
+          v-if="appConfig.myLayer.meta.email"
+          :href="`mailto:${appConfig.myLayer.meta.email}`"
           class="text-blue-700"
           style="border-bottom:1px solid #166534"
         >{{
-          appConfig.site.author }}</a>
-        <span v-else>{{ appConfig.site.author }}</span>
+          appConfig.myLayer.meta.author }}</a>
+        <span v-else>{{ appConfig.myLayer.meta.author }}</span>
       </p>
       <p>
         Template <a
