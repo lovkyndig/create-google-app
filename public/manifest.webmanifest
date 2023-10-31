@@ -87,42 +87,42 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/narrow-notepad.png",
+      "src": "/pwa/screenshots/narrow-notepad.png",
       "sizes": "540x720",
       "type": "image/png",
       "platform": "narrow",
       "label": "Notepad narrow"
     },
     {
-      "src": "/screenshots/wide-notepad.png",
+      "src": "/pwa/screenshots/wide-notepad.png",
       "sizes": "720x540",
       "type": "image/png",
       "platform": "wide",
       "label": "Notepad wide"
     },
     {
-      "src": "/screenshots/mobile-front.png",
+      "src": "/pwa/screenshots/mobile-front.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "platform": "narrow",
       "label": "Frontpage mobile"
     },
     {
-      "src": "/screenshots/mobile-list.png",
+      "src": "/pwa/screenshots/mobile-list.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "platform": "narrow",
       "label": "List-page mobile"
     },
     {
-      "src": "/screenshots/mobile-article.png",
+      "src": "/pwa/screenshots/mobile-article.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "platform": "narrow",
       "label": "List-page mobile"
     },
     {
-      "src": "/screenshots/wide-front.PNG",
+      "src": "/pwa/screenshots/wide-front.PNG",
       "sizes": "1920x1080",
       "type": "image/png",
       "platform": "wide",
@@ -130,14 +130,14 @@
       "label": "Front wide"
     },
     {
-      "src": "/screenshots/wide-list.PNG",
+      "src": "/pwa/screenshots/wide-list.PNG",
       "sizes": "1920x1080",
       "type": "image/png",
       "platform": "wide",
       "label": "List wide"
     },
     {
-      "src": "/screenshots/wide-article.PNG",
+      "src": "/pwa/screenshots/wide-article.PNG",
       "sizes": "1920x1080",
       "type": "image/png",
       "platform": "wide",
@@ -150,21 +150,21 @@
       "short_name": "About",
       "description": "About this amazing app",
       "url": "/about",
-      "icons": [{ "src": "/shortcuts/about.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/pwa/shortcuts/about.png", "sizes": "96x96" }]
     },
     {
       "name": "Privacy Policy",
       "short_name": "Privacy",
       "description": "Privacy Statement",
       "url": "/privacy",
-      "icons": [{ "src": "/shortcuts/privacy.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/pwa/shortcuts/privacy.png", "sizes": "96x96" }]
     },
     {
       "name": "Content-list",
       "short_name": "List",
       "description": "List of the content",
       "url": "/list",
-      "icons": [{ "src": "/shortcuts/list.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/pwa/shortcuts/list.png", "sizes": "96x96" }]
     }
   ],
   "id": "/",
