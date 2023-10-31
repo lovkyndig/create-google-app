@@ -14,6 +14,7 @@ dist
 .playground/.nuxt
 .playground/.output
 .playground/dist
+.playground/node_modules
 
 # Yarn
 yarn.lock

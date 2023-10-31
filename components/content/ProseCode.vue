@@ -245,11 +245,11 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <!-- eslint-disable-next-line vue/no-v-html -->
+    <!-- removed v-html="mermaidGraph" from mermaid-div -->
     <div
       v-if="props.language === 'mermaid'"
+      id="mermaid"
       class="mermaid p-4 rounded-b-lg"
-      v-html="mermaidGraph"
     />
     <div
       v-else
