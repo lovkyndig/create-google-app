@@ -40,7 +40,7 @@ useHead({
   link: [
     { rel: 'icon', href: appConfig?.site?.favicon },
     { rel: 'apple-touch-icon', href: appConfig?.site?.avatar },
-    { rel: 'manifest', href: 'manifest.webmanifest', crossorigin: 'use-credentials' }
+    { rel: 'manifest', href: `${pkg.homepage}/manifest.webmanifest`, crossorigin: 'use-credentials' }
   ],
   meta: [
     { name: 'id', content: `${pkg.version}` }
