@@ -383,7 +383,7 @@ watch(showCatalog, () => {
           v-if="theme"
           :to="{ path: '/list', query: { theme: theme } }"
           target="_blank"
-          class="p-2 flex items-center gap-1 text-gray-400 hover:text-white hover:bg-purple-500 focus:outline-purple-500 focus:outline-none rounded transition-colors duration-300"
+          class="p-2 flex items-center gap-1 text-gray-600 hover:text-white hover:bg-purple-500 focus:outline-purple-500 focus:outline-none rounded transition-colors duration-300"
         >
           <svgo-material-symbols-category-rounded
             class="shrink-0 w-4 h-4"
@@ -419,7 +419,7 @@ watch(showCatalog, () => {
         <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-4">
           <button
             v-if="props.data.series"
-            class="p-2 flex items-center gap-1 text-gray-400 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
+            class="p-2 flex items-center gap-1 text-gray-600 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
             @click="showSeriesModal=true"
           >
             <svgo-bi-collection
@@ -431,7 +431,7 @@ watch(showCatalog, () => {
           <button
             v-if="props.data.tags"
             class="p-2 hidden sm:flex items-center gap-1 focus:outline-blue-500 rounded transition-colors duration-300"
-            :class="showTags ? 'bg-blue-500 hover:bg-blue-400 text-white' : 'text-gray-400 hover:text-white hover:bg-blue-500 '"
+            :class="showTags ? 'bg-blue-500 hover:bg-blue-400 text-white' : 'text-gray-600 hover:text-white hover:bg-blue-500 '"
             @click="showTags = !showTags"
           >
             <svgo-bi-collection
