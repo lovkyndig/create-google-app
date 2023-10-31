@@ -491,7 +491,7 @@ watch(showCatalog, () => {
           :key="tag"
           :to="{ path: '/list', query: { tags: [tag] } }"
           target="_blank"
-          class="px-2 py-1 text-xs text-gray-400 hover:text-white hover:bg-blue-500 rounded focus:outline-blue-500 transition-colors duration-300"
+          class="px-2 py-1 text-xs text-gray-600 hover:text-white hover:bg-blue-500 rounded focus:outline-blue-500 transition-colors duration-300"
         >
           #{{ tag }}
         </NuxtLink>

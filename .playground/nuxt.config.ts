@@ -22,3 +22,14 @@ export default defineNuxtConfig({
     typeCheck: false
   }
 })
+
+/*
+Credits:
+https://nuxt.com/docs/getting-started/layers
+https://nuxt.com/docs/guide/going-further/layers
+https://tairo.cssninja.io/documentation/setup/nuxt-and-layers
+https://github.com/nuxt/nuxt/issues/13367
+https://github.com/nuxt/starter/tree/layer
+https://github.com/nuxt-themes/starter
+https://github.com/viandwi24/nuxt3-awesome-starter/tree/v2
+*/
