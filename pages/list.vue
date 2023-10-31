@@ -9,9 +9,8 @@ interface MyCustomParsedContent extends ParsedContent {
 }
 const route = useRoute()
 
-const { $webnoti } = useNuxtApp()
 onMounted(() => {
-  $webnoti(appConfig.myLayer.notification.list)
+  useNuxtApp().$webnoti(appConfig.myLayer.notification.list)
 })
 
 /**

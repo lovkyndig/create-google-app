@@ -9,7 +9,7 @@ const articleContainerDOM = ref<null | HTMLElement>(null)
  *
  * math formula
  *
- */
+ *
 // #region math
 const clipboard = ref<null | Clipboard>(null)
 
@@ -79,6 +79,7 @@ if (process.client) {
   })
 }
 // #endregion
+*/
 </script>
 
 <template>

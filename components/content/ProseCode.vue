@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-import mermaid from 'mermaid'
+// import mermaid from 'mermaid'
+// add mermaid as dependencies if you want to use this and
+// remove commend in the bottom of scripts.
 
 const props = defineProps({
   code: {
@@ -134,7 +136,7 @@ const urlRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-
  *
  * mermaid
  *
- */
+ *
 // convert mermaid code to svg
 const mermaidGraph = ref('')
 onMounted(() => {
@@ -143,6 +145,7 @@ onMounted(() => {
     mermaidGraph.value = mermaid.mermaidAPI.render('graphDiv', props.code)
   }
 })
+*/
 </script>
 
 <template>

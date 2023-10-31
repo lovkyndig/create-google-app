@@ -2,9 +2,8 @@
 const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()
 
-const { $webnoti } = useNuxtApp() as any
 onMounted(() => {
-  $webnoti(appConfig.myLayer.notification.about)
+  useNuxtApp().$webnoti(appConfig.myLayer.notification.about)
 })
 
 useSeoMeta({

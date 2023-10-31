@@ -4,7 +4,6 @@ const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()
 
 onMounted(() => {
-  // @ts-ignore
   useNuxtApp().$webnoti(appConfig.myLayer.notification.privacy)
 })
 

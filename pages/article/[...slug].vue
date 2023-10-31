@@ -90,6 +90,7 @@ useSeoMeta({
       >
         <button
           v-show="!showFooterNavMoreOptions && !showFooterNavThemeOptions"
+          id="showCatalogBtn"
           class="grow px-2 py-3 flex justify-center items-center space-y-1 bg-gray-50"
           :class="showCatalog ? 'text-purple-500' : 'text-gray-500'"
           @click="showCatalog = !showCatalog"

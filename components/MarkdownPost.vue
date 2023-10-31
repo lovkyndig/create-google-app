@@ -281,18 +281,13 @@ provide('expandAllHeadingsHandler', expandAllHeadingsHandler)
 const detailNodeArr = ref<null | NodeListOf<HTMLDetailsElement>>(null)
 const anchorNodeArr = ref<null | NodeListOf<HTMLAnchorElement>>(null) // added 20.10.23
 
-const {
-  $anchorClickListener,
-  $closeAllHeadings,
-  $closeOtherSiblings
-} = useNuxtApp() as any // added 21.10.23
 const anchorClick = useState('anchorClick', () => false) // added 20.10.23
 
 const addDetailsClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
   list.forEach((element) => {
     element.addEventListener('click', (event) => {
       if (anchorClick.value === false) { // added 20.10.23
-        $closeOtherSiblings(event) // added 04.10.23
+        useNuxtApp().$closeOtherSiblings(event) // added 04.10.23
       }
       event.stopPropagation()
       // if toggle the heading manually (by click)
@@ -328,9 +323,9 @@ onMounted(() => {
       // add click event listener for each <details> element
       addDetailsClickListener(detailNodeArr.value)
       // added 21.10.23
-      anchorClick.value = $anchorClickListener(anchorNodeArr.value)
+      anchorClick.value = useNuxtApp().$anchorClickListener(anchorNodeArr.value) as any
       // added 03.10.23
-      $closeAllHeadings() // if not searchString
+      useNuxtApp().$closeAllHeadings() // if not searchString
     }
   }
 })
@@ -355,6 +350,18 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
 //   unWatchHeading()
 // })
 // #endregion
+
+/**
+ * Loading LazyMarkdownPostCatalog wehn showCatalog.value = true
+ * added 31.10.2023 to create-google-app v1.0.0-rc.84
+ */
+const catalogListener = useState('catalogListener', () => false)
+watch(showCatalog, () => {
+  const treeCatalog = props.data?.body?.toc && props.data.body.toc.links.length > 0
+  if (treeCatalog && showCatalog.value) {
+    catalogListener.value = true // loading LazyMarkdownPostCatalog
+  }
+})
 </script>
 
 <template>
@@ -545,8 +552,8 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
       </NuxtLink>
     </div>
 
-    <MarkdownPostCatalog
-      v-if="props.data?.body?.toc && props.data.body.toc.links.length > 0"
+    <LazyMarkdownPostCatalog
+      v-if="catalogListener"
       v-show="showCatalog"
       :catalogs="props.data.body.toc.links"
     />

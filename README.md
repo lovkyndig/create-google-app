@@ -43,13 +43,14 @@ _Extra Futures_
 
 ## To do-list (plan)
 ### Priority'
+- Create github-package of this repo.[^19]
 - Create bundle with _Bubblewrap_ and add it to _Google Play Console_.
 
 ### On available capacity
 - Add [giscus](https://giscus.app/) - Follow this [tutorial](https://www.freecodecamp.org/news/github-discussions-as-chat-system/).
 - Add dark-light-themetoggle.
 - Add a copy-module to copy rss.txt (and sistemap) to public, ref. [ahrefs](https://ahrefs.com/seo/glossary/sitemap).
-- Maybe add Google Translate option (not auto-translate).
+- Maybe add [Google Translate](https://www.npmjs.com/package/@google-translate-select/vue3) option (not auto-translate).
 
 ## License
 [MIT](./LICENSE)
@@ -72,5 +73,6 @@ _Extra Futures_
 [^16]: Planning to create a plugin that to this (copy-job) when the site opens in the browser.
 [^17]: Vercel Analytics don't use cookies and this app isn't using cookies at all, therefore it's not need for a plugin that pop up with a question if you accept cookies. See the [doc](http://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
 [^18]: _google.site-verification_-file ([or code](http://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics)) is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), before [Ahrefs website-checker](https://ahrefs.com/website-checker) can be used. [Read more](http://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
+[^19]: Creating `GitHub-Package` of this repo and using it in `layer2`, my new _PWA Starter App_. If template (layer1) is not a package then all the packages in layer1 have to be installed in layer2. Check if Rss and Sitemap is working properly in layer2.
 
-Updated 30.10.2023
+Updated 31.10.2023

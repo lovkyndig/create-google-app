@@ -23,10 +23,8 @@ const capitalize = (string) => {
 
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  app: { /* baseURL: '/' */ },
-  css: [
-    join(currentDir, './assets/style.css')
-  ],
+  css: [join(currentDir, './assets/style.css')],
+  svgo: { autoImportPath: join(currentDir, './assets/icons') },
   modules: [
     // The first module only clean the public/article-folder if exists.
     [resolve('./modules/copy-image-files'), { cleanFolders: ['public/article'] }],
@@ -57,13 +55,6 @@ export default defineNuxtConfig({
       toc: {
         depth: 5,
         searchDepth: 5
-      },
-      remarkPlugins: ['remark-math', 'remark-sub', 'remark-super'],
-      rehypePlugins: {
-        'rehype-katex': {
-          // https://katex.org/docs/options.html#:~:text=output
-          output: 'mathml' // the default value is `htmlAndMathml`
-        }
       }
     }
   },
@@ -130,10 +121,9 @@ export default defineNuxtConfig({
       navigateFallbackAllowlist: [/^\/$/],
       suppressWarnings: true
     }
-  },
-  svgo: {
-    autoImportPath: join(currentDir, './assets/icons')
   }
+  // remarkPlugins: ['remark-math', 'remark-sub', 'remark-super'],
+  // rehypePlugins: { 'rehype-katex': { output: 'mathml' } },
 })
 
 /*
