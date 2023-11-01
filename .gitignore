@@ -3,6 +3,8 @@
 node_modules
 *.log*
 .env
+
+# Using .npmrc in localhost to publish package to GitHub
 .npmrc
 
 # dev, build and generate

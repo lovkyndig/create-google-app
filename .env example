@@ -1,0 +1,9 @@
+GSITE_VERIFICATION=${GSITE_VERIFICATION}
+GITHUB_TOKEN_WRITE=${GITHUB_TOKEN_WRITE}
+
+# Rename this file to ".env"
+# The .env files don't follow to GitHub
+# The variables have to be inserted manually in Vercel
+# GITHUB_TOKEN_WRITE is only needed when publishing packages to GitHub.
+# Read the following about how to use the variables on windows in localhost.
+# https://help.knapsack.cloud/article/83-github-personal-access-tokens-local-dev
