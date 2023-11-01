@@ -2,6 +2,9 @@
 Clone this repository or use it as a template for a website.
 - The [documentation](https://create-google-app.vercel.app)/ guidlines shows how to install, setup and publish it on Google Play.
 
+## Packages
+This repo can be downloaded or installed as a package. V1.0.0-rc.6 is ok.
+
 ## Futures
 | 100% Healt Score | Lighthouse => 99% |
 | --- | --- |
@@ -73,6 +76,6 @@ _Extra Futures_
 [^16]: Planning to create a plugin that to this (copy-job) when the site opens in the browser.
 [^17]: Vercel Analytics don't use cookies and this app isn't using cookies at all, therefore it's not need for a plugin that pop up with a question if you accept cookies. See the [doc](http://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
 [^18]: _google.site-verification_-file ([or code](http://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics)) is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), before [Ahrefs website-checker](https://ahrefs.com/website-checker) can be used. [Read more](http://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
-[^19]: Creating `GitHub-Package` of this repo and using it in `layer2`, my new _PWA Starter App_. If template (layer1) is not a package then all the packages in layer1 have to be installed in layer2. Check if Rss and Sitemap is working properly in layer2.
+[^19]: Creating `GitHub-Package` of this repo and using it in `layer2`, my new _PWA Starter App_. Package v1.0.0 isn't ok. v1.0.0-rc.6 is.
 
-Updated 31.10.2023
+Updated 01.11.2023

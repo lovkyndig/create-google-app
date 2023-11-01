@@ -9,6 +9,7 @@
 import pkg from './package.json'
 const appConfig = useAppConfig()
 const config = useRuntimeConfig()
+
 /**
  *
  * set head meta for all pages
@@ -30,8 +31,6 @@ useServerSeoMeta({
   // NB! Add verification-code to Vercel "Settings" Environments Variables
 })
 
-// definePageMeta({ doctype: 'html' })
-
 useHead({
   htmlAttrs: { lang: 'en' },
   noscript: [{ children: 'Turn on javascript to use this app!' }],
@@ -40,7 +39,7 @@ useHead({
   link: [
     { rel: 'icon', href: appConfig?.site?.favicon },
     { rel: 'apple-touch-icon', href: appConfig?.site?.avatar },
-    { rel: 'manifest', href: `${pkg.homepage}/manifest.webmanifest`, crossorigin: 'use-credentials' }
+    { rel: 'manifest', href: `${config.public.hostname}/manifest.webmanifest`, crossorigin: 'use-credentials' }
   ],
   meta: [
     { name: 'id', content: `${pkg.version}` }
