@@ -24,15 +24,15 @@ export default defineAppConfig({
         description: 'How to Create a Google App in less than a week, with no programming skills? Answer: Follow my guidelines and read this documentation:)'
       },
       about: {
-        title: 'Information about this Google App, and going on "Google App Store"',
-        description: 'About the guidelines and description of how to create a google app'
+        title: 'Information about this App, and going on Google Play Store',
+        description: 'About the guidelines and description of the app "Create Google app", and the creator - the laywer Kyrie Eleison.'
       },
       privacy: {
         title: 'Privacy Policy following because this is an Google App.',
         description: 'The Privacy Policy, Sitemap and Rss for "Create Google App". Privacy Policy is requrid for all Google Apps.'
       },
       list: {
-        tags: 'Documentation/guidelines in "Create Google App" with tag: ',
+        tags: 'Guidelines in "Create Google App" with tag: ',
         tags_all: 'All guidelines"',
         description: 'This is the list of content in the "Create Google App" - with responsive design for mobile and laptop.'
       },
@@ -79,3 +79,8 @@ declare module '@nuxt/schema' {
     }
   }
 }
+/*
+ahrefs guide:
+Title: 50-60
+Descriptionn 110-130
+*/
