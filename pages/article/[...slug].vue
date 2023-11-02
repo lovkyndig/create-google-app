@@ -47,11 +47,9 @@ useSeoMeta({
 
 <template>
   <div>
-    <!-- Trying to get rid of the duplicate title
     <Head>
       <Title>{{ data?.title || 'Article' }}</Title>
     </Head>
-    -->
     <NuxtLayout
       name="base"
       :footer-catalog="data?.body?.toc && data.body.toc.links.length > 0"
