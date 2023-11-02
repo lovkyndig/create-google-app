@@ -41,9 +41,9 @@ const getCoverUrl = (relativeURL:(string)) => {
         Heading elements are not in a sequentially-descending order
         26.10.2023 Changed h3 with h1
       -->
-      <h1 class="font-bold">
+      <h2 class="font-bold">
         {{ props.article.title || "This Post Hasn't Title Yet" }}
-      </h1>
+      </h2>
       <p v-if="props.article.description" class="text-gray-600 text-sm h-32">
         {{ props.article.description }}
       </p>
