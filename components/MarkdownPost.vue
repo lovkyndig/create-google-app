@@ -375,9 +375,9 @@ watch(showCatalog, () => {
       :style="`background-image: url('${props.data.cover}')`"
     />
     <div class="py-8 selection:text-white selection:bg-purple-400">
-      <h1 class="py-4 text-3xl md:text-5xl font-bold text-center">
+      <p class="py-4 text-3xl md:text-5xl font-bold text-center">
         {{ props.data.title || "Article" }}
-      </h1>
+      </p>
       <div class="py-2 flex flex-wrap justify-center items-center gap-2 sm:gap-4">
         <NuxtLink
           v-if="theme"
