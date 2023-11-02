@@ -6,12 +6,12 @@ Clone this repository and/or use it as a template for a website.
 This repo can be downloaded or installed as a [package](https://github.com/lovkyndig?tab=packages&repo_name=create-google-app). I am using the package in [PWA Starter App](https://github.com/lovkyndig/pwa-starter-app), and all my other apps on Google Play.
 
 ## Futures
-| 100% Healt Score | Lighthouse => 99% |
+| 100% Healt Score | Lighthouse => 99.6% |
 | --- | --- |
 |![](https://raw.githubusercontent.com/lovkyndig/create-google-app/main/public/img/webp/ahrefs-website-checker.webp) |![](https://raw.githubusercontent.com/lovkyndig/create-google-app/main/public/img/webp/lighthouse-report.webp)|  
 
 1. _100% Health Score_ with [ahrefs website-checker](https://ahrefs.com/website-checker):[^1]
-2. 100% in _Accessibility_, _Best Practices_, _SEO_ and _PWA_ (Progressive Web App) on [Lighthouse-report](https://pagespeed.web.dev/). 95% on _Performance_. Total 99%.[^2]
+2. 100% in _Accessibility_, _Best Practices_, _SEO_ and _PWA_ (Progressive Web App) on [Lighthouse-report](https://pagespeed.web.dev/). 98% on _Performance_. Total 99.6%.[^2]
 
 _Full search functionality_  
 
@@ -58,8 +58,8 @@ _Extra Futures_
 ## License
 [MIT](./LICENSE)
 
-[^1]: Prov from 25.10.2023 - version 1.0.0-rc.66.
-[^2]: _((4 x 100)% + 95)%/5_ = **99%**. The use of Nuxt3 as framework prevents 100% on performance (as I can see of the report from Lighthouse).
+[^1]: Prov from 02.11.2023 - version 1.0.1-rc.13.
+[^2]: _((4 x 100)% + 98)%/5_ = **99.6%**.
 [^3]: The bundle that is used for searching is normally created on generate. If you are using .playground (and want to test it there), you can use this command to create the bundle: `- npx -y pagefind --site .output/public --output-path public/_pagefind`. - Maybe you need to change `--site .output/public` to `--site ../.output/public`.
 [^4]: The style and the _find-next-btn_ isn't good, and you are welcome to do it better. See FindNext-component and the find-next.svg.
 [^5]: Most of the accordion functions are from [BlogiNote](https://github.com/Benbinbin/BlogiNote). - style.css is added in assets-folder with style for the accordions. - All headers is collapsed and the Catalog (Table of contents) is closed on load, except; - The headers is not collapsed when using the search-functionality.
@@ -78,4 +78,4 @@ _Extra Futures_
 [^18]: _google.site-verification_-file ([or code](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics)) is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), before [Ahrefs website-checker](https://ahrefs.com/website-checker) can be used. [Read more](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
 [^19]: Creating `GitHub-Package` of this repo and using it in `layer2`, my new _PWA Starter App_. Package v1.0.0 isn't ok. v1.0.0-rc.6 is.
 
-Updated 01.11.2023
+Updated 02.11.2023
