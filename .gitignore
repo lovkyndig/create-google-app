@@ -22,10 +22,8 @@ dist
 yarn.lock
 
 # Service-Worker
-sw.js
-sw.js.map
-workbox-ab116399.js
-workbox-ad213f2f.js.map
+public/sw*
+public/workbox*
 
 # Original images (converted to webp)
 public/convert

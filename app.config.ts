@@ -1,10 +1,12 @@
+import pkg from './package.json'
 export default defineAppConfig({
   myLayer: {
     name: 'Create Google App',
     meta: {
-      homepage: 'https://create-google-app.vercel.app/',
-      author: 'Kyrie Eleison',
-      email: 'jur.eleison@gmail.com'
+      homepage: pkg.homepage,
+      author: pkg.author,
+      email: 'jur.eleison@gmail.com',
+      version: pkg.version
     },
     menu: {
       btn1: 'Google'
@@ -42,7 +44,7 @@ export default defineAppConfig({
   site: {
     logo: '/img/svg/text-logo.svg',
     avatar: '/img/svg/avatar.svg',
-    favicon: '/favicon.svg' // favicon.ico
+    favicon: '/favicon.svg'
   },
   homePage: {
     showBlogPosts: true,

@@ -1,5 +1,6 @@
 {
   "name": "@lovkyndig/create-google-app-playground",
-  "version": "1.0.1-rc.8",
-  "homepage": "https://pwa-starter-app-playground.vercel.app"
+  "version": "1",
+  "homepage": "https://pwa-starter-app-playground.vercel.app",
+  "author": "Kyrie Eleison <jur.eleison@gmail.com> (https://github.com/lovkyndig)"
 }
