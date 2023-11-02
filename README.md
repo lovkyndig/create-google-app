@@ -58,7 +58,7 @@ _Extra Futures_
 ## License
 [MIT](./LICENSE)
 
-[^1]: Prov from 02.11.2023 - version 1.0.1-rc.13.
+[^1]: Prov from 02.11.2023 - version 1.0.1-rc.15.
 [^2]: _((4 x 100)% + 98)%/5_ = **99.6%**.
 [^3]: The bundle that is used for searching is normally created on generate. If you are using .playground (and want to test it there), you can use this command to create the bundle: `- npx -y pagefind --site .output/public --output-path public/_pagefind`. - Maybe you need to change `--site .output/public` to `--site ../.output/public`.
 [^4]: The style and the _find-next-btn_ isn't good, and you are welcome to do it better. See FindNext-component and the find-next.svg.

@@ -5,13 +5,13 @@ const props = defineProps<{
 }>()
 /*
 THIS COMPONENT CAN ONLY BE USED IN THIS TEMPLATE IN ONE CONDITIONS;
-THE ICONS HAVE TO BE SAVED IN USERS FOLDER: ASSETS/ICONS 
+THE ICONS HAVE TO BE SAVED IN USERS FOLDER: ASSETS/ICONS
 */
 </script>
 <template>
-  <span v-if="props.name === 'sidebarList'" > 
+  <span v-if="props.name === 'sidebarList'">
     <SvgoMingcuteMiniplayerLine :class="props.iconClass" />
-  </span> 
+  </span>
   <span v-else>
     <SvgoMingcuteExpandPlayerLine :class="props.iconClass" />
   </span>
