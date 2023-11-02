@@ -1,9 +1,9 @@
 # Create Google App
-Clone this repository or use it as a template for a website.
-- The [documentation](https://create-google-app.vercel.app)/ guidlines shows how to install, setup and publish it on Google Play.
+Clone this repository and/or use it as a template for a website.
+- The [documentation](https://create-google-app.vercel.app)/ guidelines shows how to install, setup and publish it on Google Play.
 
-## Packages
-This repo can be downloaded or installed as a package. V1.0.0-rc.6 is ok.
+## Package
+This repo can be downloaded or installed as a [package](https://github.com/lovkyndig?tab=packages&repo_name=create-google-app). I am using the package in [PWA Starter App](https://github.com/lovkyndig/pwa-starter-app), and all my other apps on Google Play.
 
 ## Futures
 | 100% Healt Score | Lighthouse => 99% |

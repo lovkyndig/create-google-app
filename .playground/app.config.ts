@@ -19,11 +19,11 @@ export default defineAppConfig({
     seoMeta: {
       home: {
         title: 'How to Create an App and go on Google App Store?',
-        description: 'How to Create a Google App in less than a week, with no programming skills? Answer: Follow my guidlines and read this documentation:)'
+        description: 'How to Create a Google App in less than a week, with no programming skills? Answer: Follow my guidelines and read this documentation:)'
       },
       about: {
         title: 'Information about this Google App, and going on "Google App Store"',
-        description: 'About the guidlines and description of how to create a google app'
+        description: 'About the guidelines and description of how to create a google app'
       },
       privacy: {
         title: 'Privacy Policy following because this is an Google App.',

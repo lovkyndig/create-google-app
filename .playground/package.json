@@ -1,11 +1,5 @@
 {
   "name": "@lovkyndig/create-google-app-playground",
-  "version": "1.0.0",
-  "description": "This playground is used to check if this layer2 kan overwrite the template (layer1).",
-  "main": "./nuxt.config.ts",
-  "homepage": "https://pwa-starter-app-playground.vercel.app",
-  "keywords": [
-    "starter"
-  ],
-  "license": "MIT"
+  "version": "1.0.1-rc.8",
+  "homepage": "https://pwa-starter-app-playground.vercel.app"
 }
