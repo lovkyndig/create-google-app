@@ -37,7 +37,7 @@ export default defineAppConfig({
         description: 'This is the list of content in the "Create Google App" - with responsive design for mobile and laptop.'
       },
       slug: {
-        description: 'Guidelines and documentation for "Create Google App" - a tutorial for non-programmers/non-developers!'
+        description: 'Guidelines and documentation for "Create Google App" with url: '
       }
     }
   },
