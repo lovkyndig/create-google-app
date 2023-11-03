@@ -43,11 +43,12 @@ export default defineAppConfig({
     giscus: {
       repo: 'lovkyndig/create-google-app',
       repoId: 'R_kgDOKfRikA',
-      category: 'Q&A',
-      categoryId: 'DIC_kwDOKfRikM4CapTf',
-      mapping: 'title',
+      category: 'Comments',
+      categoryId: 'DIC_kwDOKfRikM4Capmi',
+      mapping: 'url',
       reactionsEnabled: '1',
       emitMetadata: '0',
+      inputPosition: 'bottom',
       theme: 'noborder_dark',
       lang: 'en'
     }
