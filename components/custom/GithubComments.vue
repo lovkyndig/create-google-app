@@ -21,10 +21,12 @@ input-position="bottom"
     :category="appConfig.myLayer.giscus.category"
     :category-id="appConfig.myLayer.giscus.categoryId"
     :mapping="appConfig.myLayer.giscus.mapping"
+    strict="0"
     :reactions-enabled="appConfig.myLayer.giscus.reactions"
     :emit-metadata="appConfig.myLayer.giscus.emitMetadata"
     :theme="appConfig.myLayer.giscus.theme"
     :lang="appConfig.myLayer.giscus.lang"
+    crossorigin="anonymous"
   />
 </template>
 
