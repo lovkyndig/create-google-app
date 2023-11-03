@@ -81,6 +81,12 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener('keydown', ModalKeyListener)
 })
+
+watch(() => route.fullPath, () => {
+  // console.log('route was changing')
+  // useNuxtApp().$webnoti('testing testing')
+})
+
 </script>
 
 <template>

@@ -206,9 +206,10 @@ onMounted(() => {
 const { pending, data: articleList } = await useAsyncData('articles', () => {
   return queryContent<MyCustomParsedContent>('article')
     .only(['title', 'description', '_type', '_path', 'contentType', '_type', 'series', 'seriesOrder', 'tags'])
-    .sort({ seriesOrder: 1, $numeric: true })
+    .sort({ created: 1 })
     .find()
 })
+// original: .sort({ seriesOrder: 1, $numeric: true })
 
 // filter articles data
 const filterArticleList = ref([])
@@ -341,7 +342,6 @@ const echoQueryParam = (queryObj) => {
   if (process.client) {
     const querystring = window.location.search
     if (querystring.substring(1)) { // set searchString.value
-      console.log('there is something here')
       searchString.value = querystring.substring(1)
     } else { /* console.log('No searchstring here!') */ }
   }
