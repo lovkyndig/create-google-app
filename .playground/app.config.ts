@@ -4,7 +4,7 @@ export default defineAppConfig({
     name: 'PWA Starter App',
     meta: {
       homepage: pkg.homepage,
-      author: pkg.author,
+      author: 'Kyrie Eleison',
       email: 'jur.eleison@gmail.com',
       version: `Playground ${pkg.version}`
     },
@@ -39,6 +39,17 @@ export default defineAppConfig({
       slug: {
         description: 'Guidelines and documentation for "PWA Starter App"; a starter-kit for non-programmers/non-developers!'
       }
+    },
+    giscus: {
+      repo: 'lovkyndig/create-google-app',
+      repoId: 'R_kgDOKfRikA',
+      category: 'Q&A',
+      categoryId: 'DIC_kwDOKfRikM4CapTf',
+      mapping: 'title',
+      reactionsEnabled: '1',
+      emitMetadata: '0',
+      theme: 'noborder_dark',
+      lang: 'en'
     }
   }
 })

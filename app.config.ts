@@ -4,7 +4,7 @@ export default defineAppConfig({
     name: 'Create Google App',
     meta: {
       homepage: pkg.homepage,
-      author: pkg.author,
+      author: 'Kyrie Eleison',
       email: 'jur.eleison@gmail.com',
       version: pkg.version
     },
@@ -39,6 +39,17 @@ export default defineAppConfig({
       slug: {
         description: 'Guidelines and documentation for "Create Google App" with url: '
       }
+    },
+    giscus: {
+      repo: 'lovkyndig/create-google-app',
+      repoId: 'R_kgDOKfRikA',
+      category: 'Q&A',
+      categoryId: 'DIC_kwDOKfRikM4CapTf',
+      mapping: 'title',
+      reactionsEnabled: '1',
+      emitMetadata: '0',
+      theme: 'noborder_dark',
+      lang: 'en'
     }
   },
   site: {

@@ -40,19 +40,13 @@ _Arrangement for PWA_
 
 _Extra Futures_  
 
-16. To get the caching to work in dev-mode, copy the sw-files in _sw-dev-dist_ from ._nuxt_-folder (manually) to the _public_-folder.[16]
+16. Caching in dev-mode: Run `rss-sitemap.bat` after _build_ or _generate_.[16]
 17. [Vercel Analytics](https://vercel.com/analytics), can be used when hosted on vercel.[^17]  
 18. Verification of ownership with `google-site-verification`-file in _public_-folder, and code in `.env`-file.[^18]
+19. GitHub-Comments, [giscus](https://giscus.app).[^19]
 
 ## To do-list (plan)
-### Priority'
-- Create github-package of this repo.[^19]
-- Create bundle with _Bubblewrap_ and add it to _Google Play Console_.
-
-### On available capacity
-- Add [giscus](https://giscus.app/) - Follow this [tutorial](https://www.freecodecamp.org/news/github-discussions-as-chat-system/).
-- Add dark-light-themetoggle.
-- Add a copy-module to copy rss.txt (and sistemap) to public, ref. [ahrefs](https://ahrefs.com/seo/glossary/sitemap).
+- Add dark-light-theme-toggle.
 - Maybe add [Google Translate](https://www.npmjs.com/package/@google-translate-select/vue3) option (not auto-translate).
 
 ## License
@@ -73,9 +67,9 @@ _Extra Futures_
 [^13]: PWA is the first step on the way to Google Store. Remember to host your site ([vercel](https://vercel.com/docs/deployments/git/vercel-for-github)). Se more in pkt 15 below.
 [^14]: Bubblewrap has to be used to create the aab-package before uploading it to Google App Store. - Bubblewrap are installed Globally on the local mashine, for use on development, because; - I'm using bubblewrap in a subfolder under the root, because the bubblewrap are creating so many files that have to be keeped away from the github-repo-files. - Guide-folder with links and info about using bubblewrap is added inside the assets-folder. - bubblewrap-folder is added to .gitignore-file. [Read more](https://create-google-app.vercel.app/article/create-and-upload/create-app/bubblewrap).
 [^15]: All public repos on github can be hosted on [vercel](https://vercel.com/docs/deployments/git/vercel-for-github) for free.
-[^16]: Planning to create a plugin that to this (copy-job) when the site opens in the browser.
+[^16]: The `bat`-file is copying the _dev_-files to _public_-folder (and then it's working). To run _bat_-files in **Git-Bash** write `./rss-sitemap.bat` + enter. 
 [^17]: Vercel Analytics don't use cookies and this app isn't using cookies at all, therefore it's not need for a plugin that pop up with a question if you accept cookies. See the [doc](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
 [^18]: _google.site-verification_-file ([or code](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics)) is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), before [Ahrefs website-checker](https://ahrefs.com/website-checker) can be used. [Read more](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
-[^19]: Creating `GitHub-Package` of this repo and using it in `layer2`, my new _PWA Starter App_. Package v1.0.0 isn't ok. v1.0.0-rc.6 is.
+[^19]: Added in version 1.0.1 as component with [@giscus/vue](https://github.com/giscus/giscus-component/tree/main). The `id` etc. have to be set in `app.config.ts`.
 
-Updated 02.11.2023
+Updated 03.11.2023
