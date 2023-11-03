@@ -500,6 +500,8 @@ watch(showCatalog, () => {
 
     <MarkdownPostContent :data="props.data" />
 
+    <GithubComments class="giscus" />
+
     <div
       v-if="(prevArticleUrl || nextArticleUrl)"
       class="container lg:max-w-4xl mx-auto px-6 md:px-12 py-4 grid grid-cols-1 sm:grid-cols-2 gap-4"
