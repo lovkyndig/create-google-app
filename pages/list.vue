@@ -341,6 +341,7 @@ const echoQueryParam = (queryObj) => {
   if (process.client) {
     const querystring = window.location.search
     if (querystring.substring(1)) { // set searchString.value
+      console.log('there is something here')
       searchString.value = querystring.substring(1)
     } else { /* console.log('No searchstring here!') */ }
   }

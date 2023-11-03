@@ -28,6 +28,7 @@ input-position="bottom"
     :theme="appConfig.myLayer.giscus.theme"
     :lang="appConfig.myLayer.giscus.lang"
     crossorigin="anonymous"
+    loading="lazy"
   />
 </template>
 
