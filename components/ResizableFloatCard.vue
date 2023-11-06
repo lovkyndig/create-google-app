@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const props = defineProps<{
-  showResetButton: boolean;
-  startWidth: number;
-  startHeight: number;
-  positionPoint: 'leftTop' | 'rightTop' | 'leftBottom' | 'rightBottom';
-  startX: number;
-  startY: number;
+  showResetButton: boolean
+  startWidth: number
+  startHeight: number
+  positionPoint: 'leftTop' | 'rightTop' | 'leftBottom' | 'rightBottom'
+  startX: number
+  startY: number
 }>()
 
 const floatDOM = ref(null)
@@ -19,22 +19,22 @@ const contentWidth = ref(props.startWidth || 0)
 const contentHeight = ref(props.startHeight || 0)
 
 const locationCoordinate = computed(() => {
-  let styleStr;
+  let styleStr
   switch (props.positionPoint) {
     case 'leftTop':
       styleStr = `left: ${containerX.value}px; top: ${containerY.value}px`
-      break;
+      break
     case 'leftBottom':
       styleStr = `left: ${containerX.value}px; bottom: ${containerY.value}px`
-      break;
+      break
     case 'rightTop':
       styleStr = `right: ${containerX.value}px; top: ${containerY.value}px`
-      break;
+      break
     case 'rightBottom':
       styleStr = `right: ${containerX.value}px; bottom: ${containerY.value}px`
-      break;
+      break
     default:
-      break;
+      break
   }
   return styleStr
 })
@@ -113,7 +113,7 @@ const resizePointerMoveHandler = (event: PointerEvent) => {
       if (resizeDirection.value === 'left' || resizeDirection.value === 'up-left' || resizeDirection.value === 'bottom-left') {
         contentWidth.value = startContentWidth - distanceX
 
-        if(props.positionPoint === 'leftTop' || props.positionPoint === 'leftBottom') {
+        if (props.positionPoint === 'leftTop' || props.positionPoint === 'leftBottom') {
           // if pointer is moving the left handlers
           // and the location position is on left
           // adjust the "containerX" at the same time
@@ -122,14 +122,13 @@ const resizePointerMoveHandler = (event: PointerEvent) => {
       } else {
         contentWidth.value = startContentWidth + distanceX
 
-        if(props.positionPoint === 'rightTop' || props.positionPoint === 'rightBottom') {
+        if (props.positionPoint === 'rightTop' || props.positionPoint === 'rightBottom') {
           // if pointer is moving the right handlers
           // and the location position is on right
           // adjust the "containerX" at the same time
           containerX.value = startContainerX - distanceX
         }
       }
-
     }
   }
 }
@@ -170,13 +169,13 @@ const dragPointerMoveHandler = (event: PointerEvent) => {
     const dx = currentDragPointer.x - startDragPointer.x
     const dy = currentDragPointer.y - startDragPointer.y
 
-    if(props.positionPoint === 'leftTop' || props.positionPoint === 'leftBottom') {
+    if (props.positionPoint === 'leftTop' || props.positionPoint === 'leftBottom') {
       containerX.value = startContainerX + dx
     } else {
       containerX.value = startContainerX - dx
     }
 
-    if(props.positionPoint === 'leftTop' || props.positionPoint === 'rightTop') {
+    if (props.positionPoint === 'leftTop' || props.positionPoint === 'rightTop') {
       containerY.value = startContainerY + dy
     } else {
       containerY.value = startContainerY - dy
@@ -407,7 +406,3 @@ const resetFloatCardHandler = () => {
     </Teleport>
   </aside>
 </template>
-
-<style scoped>
-
-</style>

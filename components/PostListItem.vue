@@ -30,12 +30,12 @@ const getCoverUrl = (relativeURL:string) => {
         style="background: linear-gradient(135deg, rgba(249,250,251,1) 40%, rgba(249,250,251,0.6) 80%, rgba(249,250,251,0.9) 100%)"
       />
     </div>
-
+    <!-- h3 changed after lighthouse-test 26.10.2023 -->
     <NuxtLink :to="props.article._path" class="group block py-4 transition-colors duration-300 space-y-2">
-      <h3 class="font-bold text-2xl text-gray-600 group-hover:text-blue-400 transition-colors duration-500">
+      <h2 class="font-bold text-2xl text-gray-600 group-hover:text-blue-400 transition-colors duration-500">
         {{ props.article.title || "This Post Hasn't Title Yet" }}
-      </h3>
-      <p v-if="props.article.description" class="text-gray-600">
+      </h2>
+      <p v-if="props.article.description" class="text-gray-600 short-description">
         {{ props.article.description }}
       </p>
     </NuxtLink>
@@ -45,7 +45,7 @@ const getCoverUrl = (relativeURL:string) => {
         v-for="tag in props.article.tags"
         :key="tag"
         :to="{ path: '/list', query: { tags: [tag] } }"
-        class="px-2 py-1 text-xs text-blue-400 hover:text-blue-500 bg-blue-50 transition-colors duration-300 rounded"
+        class="px-2 py-1 text-xs text-blue-700 hover:text-blue-950 bg-purple-100 transition-colors duration-300 rounded"
       >
         #{{ tag }}
       </NuxtLink>
@@ -53,7 +53,7 @@ const getCoverUrl = (relativeURL:string) => {
     <NuxtLink
       v-if="props.article.series"
       :to="{ path: '/list', query: { series: props.article.series } }"
-      class="w-fit px-2 py-1 flex justify-center items-center space-x-1 text-green-400 hover:text-green-500 bg-green-50 transition-colors duration-300 rounded"
+      class="w-fit px-2 py-1 flex justify-center items-center space-x-1 text-green-700 hover:text-green-950 bg-purple-100 transition-colors duration-300 rounded"
     >
       <nuxt-icon name="bi/collection" />
       <p class="text-xs">
@@ -64,5 +64,14 @@ const getCoverUrl = (relativeURL:string) => {
 </template>
 
 <style scoped>
-
+/* short-description here and in list.vue. Added 29.03.23 in Church Postil v1.0.0 beta 4. */
+.short-description {
+  max-lines: 3;
+  overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   max-height: 5rem;      /* fallback (5rem, 5em or 68px) */
+   -webkit-line-clamp: 3; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
 </style>

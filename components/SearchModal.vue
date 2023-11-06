@@ -6,20 +6,20 @@ const baseURL = runtimeConfig.app.baseURL
 
 let pagefind: any
 
-if (!process.dev) {
-  try {
-    pagefind = await import(/* @vite-ignore */pagefindPath)
+// if (!process.dev) {
+try {
+  pagefind = await import(/* @vite-ignore */pagefindPath)
 
-    if (baseURL !== '/') {
-      await pagefind.options({
-        // eslint-disable-next-line
-        baseURL: baseURL
-      })
-    }
-  } catch (error) {
-    console.log(error)
+  if (baseURL !== '/') {
+    await pagefind.options({
+      // eslint-disable-next-line
+      baseURL: baseURL
+    })
   }
+} catch (error) {
+  console.log(error)
 }
+// }
 
 // search modal
 const showSearchModal = useState<Boolean>('showSearchModal', () => false)
@@ -106,12 +106,17 @@ const debouncedSearch = (key: string, delay: number = 300) => {
   }
 }
 
+// added in create-google-app v1.0.0 beta 7
+const searchString = useState('searchString') // transfered to findNext.vue as queryparam
+const { $checkSearchString } = useNuxtApp()
+
 const inputHandler = (event: Event) => {
   const target = event.target as HTMLInputElement
   if (pagefind) {
     pagefind.preload(target.value)
     debouncedSearch(target.value)
   }
+  searchString.value = $checkSearchString(target.value) // added
 }
 
 const clearInputTextHandler = () => {
@@ -147,7 +152,7 @@ const clearInputTextHandler = () => {
           class="grow focus:outline-none"
           @input="inputHandler"
         >
-
+        <!-- This button shows on big screens -->
         <button
           class="shrink-0 hidden sm:block px-2 py-1 text-xs text-gray-400 hover:text-gray-600 font-mono font-bold hover:bg-gray-50 border border-gray-400 hover:border-gray-600 rounded transition-colors duration-300"
           title="hide the search modal"
@@ -155,14 +160,14 @@ const clearInputTextHandler = () => {
         >
           Esc
         </button>
-
+        <!-- This button shows on mobile screens -->
         <button
           class="flex sm:hidden justify-center items-center text-gray-200 hover:text-gray-400 transition-colors"
           @click="clearInputTextHandler"
         >
           <nuxt-icon
             name="ion/close-circle"
-            class="text-2xl"
+            class="text-5xl"
           />
         </button>
       </div>

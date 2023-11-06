@@ -1,6 +1,6 @@
 # Create Google App
 Clone this repository and/or use it as a template for a website.
-- The [documentation](https://create-google-app.vercel.app)/ guidelines shows how to install, setup and publish it on Google Play.
+- The [documentation/ guidelines](https://create-google-app.vercel.app) shows how to install, setup and publish it on Google Play.
 
 ## Package
 This repo can be downloaded or installed as a [package](https://github.com/lovkyndig?tab=packages&repo_name=create-google-app). I am using the package in [PWA Starter App](https://github.com/lovkyndig/pwa-starter-app), and all my other apps on Google Play.
@@ -22,7 +22,7 @@ _Style and icons_
 
 5. Accordion style.[^5]  
 6. Home- and list-page with good readability for mobil and notebook.[^6]  
-7. Offline icons, [nuxt-svgo](https://www.npmjs.com/package/nuxt-svgo), so the app looks nice offline.[^7]
+7. Offline icons, [nuxt-icons](https://www.npmjs.com/package/nuxt-icons), so the app looks nice offline.[^7]
 
 _Helpers (functions/methods)_  
 
@@ -58,7 +58,7 @@ _Extra Futures_
 [^4]: The style and the _find-next-btn_ isn't good, and you are welcome to do it better. See FindNext-component and the find-next.svg.
 [^5]: Most of the accordion functions are from [BlogiNote](https://github.com/Benbinbin/BlogiNote). - style.css is added in assets-folder with style for the accordions. - All headers is collapsed and the Catalog (Table of contents) is closed on load, except; - The headers is not collapsed when using the search-functionality.
 [^6]: The length of articles on the home- and list-page is reduced. Style is changed in PostCardItem (see scss), and .short-description is added in list-page and PostListItem.
-[^7]: _Nuxt-svgo_ is used for instead. All icons are downloaded and saved in assets/icons-folder. Two svg-compoents is added because _nuxt-svgo_ v2 has the name as a _tag_-name, not om a _attribute_.
+[^7]: All icons are downloaded and saved in assets/icons-folder. I don't think the icons is working in .playground.
 [^8]: Most of my functions and methods are located in plugin-folder as helpers.
 [^9]: If the notifications don't shows, changed the settings. Add the sites url in the `allow`-settings. - In Chrome: chrome://settings/content/notifications - In Edge: edge://settings/content/notifications
 [^10]: Typescript-issues in my base theme ([BlogiNote](https://github.com/Benbinbin/BlogiNote))-files are fixed and javascript is converted to typescript.
@@ -72,4 +72,4 @@ _Extra Futures_
 [^18]: _google.site-verification_-file ([or code](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics)) is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), before [Ahrefs website-checker](https://ahrefs.com/website-checker) can be used. [Read more](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
 [^19]: Added in version 1.0.1 as component with [@giscus/vue](https://github.com/giscus/giscus-component/tree/main). The `id` etc. have to be set in `app.config.ts`.
 
-Updated 03.11.2023
+Updated 07.11.2023

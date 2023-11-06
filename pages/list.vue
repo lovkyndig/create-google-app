@@ -386,7 +386,7 @@ onMounted(() => {
                 <li class="shrink-0">
                   <button
                     class="px-2 py-1 flex items-center space-x-1 transition-colors duration-300 rounded"
-                    :class="currentTheme === 'all' ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-400 hover:text-purple-500 bg-purple-100'"
+                    :class="currentTheme === 'all' ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-600 hover:text-purple-800 bg-purple-100'"
                     @click="toggleTheme('all')"
                   >
                     <nuxt-icon
@@ -403,7 +403,7 @@ onMounted(() => {
                 >
                   <button
                     class="px-2 py-1 flex items-center space-x-1 transition-colors duration-300 rounded"
-                    :class="currentTheme === getTheme(item._path) ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-400 hover:text-purple-500 bg-purple-100'"
+                    :class="currentTheme === getTheme(item._path) ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-600 hover:text-purple-800 bg-purple-100'"
                     @click="toggleTheme(getTheme(item._path))"
                   >
                     <nuxt-icon
@@ -455,7 +455,7 @@ onMounted(() => {
                     >
                       <button
                         class="px-2 py-1 flex items-center space-x-1 transition-colors duration-300 rounded disabled:opacity-30"
-                        :class="(currentTags.length === 0 && tag === 'all') || currentTags.includes(tag) ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-400 hover:text-purple-500 bg-purple-100'"
+                        :class="(currentTags.length === 0 && tag === 'all') || currentTags.includes(tag) ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-600 hover:text-purple-800 bg-purple-100'"
                         :disabled="(tag === 'all' || currentTheme === 'all' || themeTags[currentTheme]?.includes(tag)) ? false : true"
                         @click="toggleTag(tag)"
                       >
@@ -489,7 +489,7 @@ onMounted(() => {
                     >
                       <button
                         class="px-2 py-1 flex items-center space-x-1 transition-colors duration-300 rounded disabled:opacity-30"
-                        :class="currentSeries === series ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-400 hover:text-purple-500 bg-purple-100'"
+                        :class="currentSeries === series ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-600 hover:text-purple-800 bg-purple-100'"
                         :disabled="(series === 'all' || currentTheme === 'all' || themeSeries[currentTheme]?.includes(series)) ? false : true"
                         @click="toggleSeries(series)"
                       >
@@ -549,7 +549,7 @@ onMounted(() => {
 
       <div class="shrink-0 mx-4 sm:mx-8 hidden sm:flex justify-between items-center text-sm">
         <button
-          class="p-2 flex items-center text-red-400 hover:text-red-500 bg-red-50 hover:bg-red-100 transition-colors duration-300 rounded"
+          class="p-2 flex items-center text-red-500 hover:text-red-600 bg-red-50 hover:bg-red-100 transition-colors duration-300 rounded"
           @click="toggleTheme('all')"
         >
           <nuxt-icon
@@ -562,7 +562,7 @@ onMounted(() => {
         </button>
         <button
           class="p-2 flex items-center transition-colors duration-300 rounded"
-          :class="showListDetail ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-50 hover:bg-green-100'"
+          :class="showListDetail ? 'text-white bg-green-600 hover:bg-green-800' : 'text-green-400 hover:text-green-500 bg-green-50 hover:bg-green-100'"
           @click="showListDetail = !showListDetail"
         >
           <nuxt-icon
@@ -635,7 +635,7 @@ onMounted(() => {
                 v-for="tag in item.tags"
                 :key="tag"
                 class="px-2 py-1 transition-colors duration-300 rounded"
-                :class="(currentTags.length === 0 && tag === 'all') || currentTags.includes(tag) ? 'text-white bg-blue-500 hover:bg-blue-400' : 'text-blue-400 hover:text-blue-500 bg-blue-100'"
+                :class="(currentTags.length === 0 && tag === 'all') || currentTags.includes(tag) ? 'text-white bg-blue-500 hover:bg-blue-400' : 'text-blue-700 hover:text-blue-950 bg-purple-100'"
                 @click="toggleTag(tag)"
               >
                 #{{ tag }}
@@ -643,7 +643,7 @@ onMounted(() => {
               <button
                 v-if="item.series"
                 class="px-2 py-1 flex justify-center items-center space-x-1 transition-colors duration-300 rounded"
-                :class="currentSeries === item.series ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-100'"
+                :class="currentSeries === item.series ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-700 hover:text-green-950 bg-purple-100'"
                 @click="toggleSeries(item.series)"
               >
                 <nuxt-icon
