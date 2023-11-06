@@ -16,7 +16,7 @@ const isAssetType = ref(false)
 
 if(isRelative) {
   const appConfig = useAppConfig()
-  const extensionArr = appConfig.bloginote.assetTypes
+  const extensionArr = appConfig.myLayer.assetTypes
 
   const result = props.href.match(/\.(\w+)$/)
 

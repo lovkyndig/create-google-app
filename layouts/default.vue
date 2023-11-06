@@ -13,12 +13,12 @@ useHead({
   link: [
     {
       rel: 'icon',
-      href: appConfig.bloginote.favicon
+      href: appConfig.myLayer.favicon
     }
   ]
 })
 
-if (appConfig.bloginote.scrollSmooth) {
+if (appConfig.myLayer.scrollSmooth) {
   useHead({
     style: [
       'html, body { scroll-behavior: smooth }'

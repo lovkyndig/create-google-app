@@ -1,7 +1,7 @@
 import pkg from './package.json'
 
 export default defineAppConfig({
-  bloginote: {
+  myLayer: {
     meta: {
       name: 'Create Goocle App',
       description: pkg.description,
@@ -34,7 +34,7 @@ export default defineAppConfig({
       showBlogPosts: true,
       postItemLimit: 20
     },
-    subscribePage: true,
+    privacyPage: true,
     articlePage: {
       showTime: true,
       outdated: {
@@ -47,7 +47,7 @@ export default defineAppConfig({
       exclude: [
         '/',
         '/about/',
-        '/subscribe/',
+        '/privacy/',
         '/list/'
       ]
     }

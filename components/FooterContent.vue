@@ -5,30 +5,23 @@ const appConfig = useAppConfig()
 <template>
   <div class="py-4 flex justify-center items-center">
     <div class="flex flex-col md:flex-row gap-4 text-xs text-gray-400 text-center">
-      <p v-if="appConfig.bloginote.author">
-        Copyright &copy {{ (new Date()).getFullYear() }}
+      <p v-if="appConfig.myLayer.author">
+        Copyright {{ (new Date()).getFullYear() }}
 
         <a
-          v-if="appConfig.bloginote.email"
-          :href="`mailto:${appConfig.bloginote.email}`"
+          v-if="appConfig.myLayer.email"
+          :href="`mailto:${appConfig.myLayer.email}`"
           class="text-blue-400"
         >{{
-          appConfig.bloginote.author }}</a>
-        <span v-else>{{ appConfig.bloginote.author }}</span>
+          appConfig.myLayer.author }}</a>
+        <span v-else>{{ appConfig.myLayer.author }}</span>
       </p>
       <p>
         Theme <a
-          href="https://github.com/Benbinbin/BlogiNote"
+          :href="appConfig.myLayer.meta.url"
           target="_blank"
           class="text-blue-400"
-        >BlogiNote</a>
-      </p>
-      <p>
-        Icons from <a
-          href="https://icones.js.org/"
-          target="_blank"
-          class="text-blue-400"
-        >Icônes</a>
+        >{{ appConfig.myLayer.meta.name }}</a>
       </p>
     </div>
   </div>

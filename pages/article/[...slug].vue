@@ -15,7 +15,7 @@ const { data, pending } = await useAsyncData(`${route.path}`, () => queryContent
  *
  */
 const showCatalog = useState<Boolean>('showCatalog', () => {
-  return appConfig.bloginote.articlePage.showCatalog
+  return appConfig.myLayer.articlePage.showCatalog
 })
 
 const showFooterNavMoreOptions = useState('showFooterNavMoreOptions')

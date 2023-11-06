@@ -29,7 +29,7 @@ if (props.data._path) {
  */
 let showTime = true
 // show created and updated time or not decided by appConfig
-showTime = appConfig.bloginote.articlePage.showTime
+showTime = appConfig.myLayer.articlePage.showTime
 // show created and updated time or not decided by page metadata
 if ('showTime' in props.data) {
   // eslint-disable-next-line vue/no-setup-props-destructure
@@ -43,7 +43,7 @@ if ('showTime' in props.data) {
  */
 let showOutdatedWarningComponent = true
 // show expire warning or not decided by appConfig
-showOutdatedWarningComponent = appConfig.bloginote.articlePage.outdated.show
+showOutdatedWarningComponent = appConfig.myLayer.articlePage.outdated.show
 if ('showOutdatedWarning' in props.data) {
   // show expire warning or not decided by page metadata
   // eslint-disable-next-line vue/no-setup-props-destructure

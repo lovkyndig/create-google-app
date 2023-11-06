@@ -79,7 +79,7 @@ const showSearchModal = useState('showSearchModal')
       >
         <div class="flex flex-col justify-center items-center gap-1">
           <img
-            :src="appConfig.bloginote.avatar"
+            :src="appConfig.myLayer.avatar"
             alt="avatar"
             class="w-6 h-6"
           >
@@ -116,12 +116,12 @@ const showSearchModal = useState('showSearchModal')
             About
           </NuxtLink>
           <NuxtLink
-            v-if="appConfig.bloginote.subscribePage"
-            to="/subscribe"
+            v-if="appConfig.myLayer.privacyPage"
+            to="/privacy"
             class="option-item text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-500"
             @click="showFooterNavMoreOptions = false"
           >
-            Subscribe
+            Privacy
           </NuxtLink>
         </div>
       </Transition>

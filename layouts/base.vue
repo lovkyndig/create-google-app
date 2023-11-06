@@ -37,8 +37,8 @@ useHead({
   script: [],
   style: ['body { overflow: overlay }'],
   link: [
-    { rel: 'icon', href: appConfig?.bloginote?.favicon },
-    { rel: 'apple-touch-icon', href: appConfig?.bloginote?.avatar },
+    { rel: 'icon', href: appConfig?.myLayer?.favicon },
+    { rel: 'apple-touch-icon', href: appConfig?.myLayer?.avatar },
     { rel: 'manifest', href: '/manifest.webmanifest', crossorigin: 'use-credentials' }
   ],
   meta: [
@@ -46,7 +46,7 @@ useHead({
   ]
 })
 
-if (appConfig.bloginote.scrollSmooth) {
+if (appConfig.myLayer.scrollSmooth) {
   useHead({
     style: [
       'html, body { scroll-behavior: smooth }'

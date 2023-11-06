@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 // use d3-hierarchy module to build the catalog tree
 // d3-hierarchy documentation https://github.com/d3/d3-hierarchy/
 // refer to https://observablehq.com/@d3/collapsible-tree
@@ -32,13 +32,13 @@ const props = defineProps({
 // ⚠️ because the heading nodes tree is grow from left to right
 // so the 'dx' is the node height actually
 // and the 'dy' is the node width actually
-const dx = 48; // node height
-const dy = 128; // node width
+const dx = 48 // node height
+const dy = 128 // node width
 
 const viewBox = computed(() => {
   // 41.33 is the height of control buttons container
-  return `${-dy}, ${-(props.height-41.33) / 2}, ${props.width}, ${(props.height - 41.33)}`;
-});
+  return `${-dy}, ${-(props.height - 41.33) / 2}, ${props.width}, ${(props.height - 41.33)}`
+})
 
 /**
  *
@@ -46,14 +46,14 @@ const viewBox = computed(() => {
  *
  */
 // hierarchy data
-const treeData = hierarchy({ text: 'catalog', depth: 0, children: props.catalogs });
+const treeData = hierarchy({ text: 'catalog', depth: 0, children: props.catalogs })
 treeData.descendants().forEach((d, i) => {
   // add 'id' property for each node as the identify
-  d.id = i;
+  d.id = i
   // add '_children' as the copy fo 'children' property
-  if (d.children) d._children = d.children;
-  // if (d.children && d.depth >= 2) d.children = null;
-});
+  if (d.children) { d._children = d.children }
+  // if (d.children && d.depth >= 2) d.children = null
+})
 
 /**
  *
@@ -64,10 +64,10 @@ treeData.descendants().forEach((d, i) => {
 const nodesData = ref([])
 const linksData = ref([])
 const buildTree = () => {
-  if(treeData) {
-    const tinyTree = tree().nodeSize([dx, dy])(treeData);
-    nodesData.value = tinyTree.descendants();
-    linksData.value = tinyTree.links();
+  if (treeData) {
+    const tinyTree = tree().nodeSize([dx, dy])(treeData)
+    nodesData.value = tinyTree.descendants()
+    linksData.value = tinyTree.links()
   }
 }
 
@@ -77,10 +77,10 @@ buildTree()
 // generate svg path based on link data
 const linkPathGenerator = (link) => {
   const linkGenerator = linkHorizontal()
-    .x((d) => d.y)
-    .y((d) => d.x);
-  return linkGenerator(link);
-};
+    .x(d => d.y)
+    .y(d => d.x)
+  return linkGenerator(link)
+}
 
 /**
  *
@@ -91,27 +91,27 @@ const linkPathGenerator = (link) => {
 const headingColorMap = {
   0: {
     text: 'text-gray-500',
-    hoverBg: 'hover:bg-gray-100',
+    hoverBg: 'hover:bg-gray-100'
   },
   2: {
     text: 'text-purple-500',
-    hoverBg: 'hover:bg-purple-100',
+    hoverBg: 'hover:bg-purple-100'
   },
   3: {
     text: 'text-red-500',
-    hoverBg: 'hover:bg-red-100',
+    hoverBg: 'hover:bg-red-100'
   },
   4: {
     text: 'text-green-500',
-    hoverBg: 'hover:bg-green-100',
+    hoverBg: 'hover:bg-green-100'
   },
   5: {
     text: 'text-blue-500',
-    hoverBg: 'hover:bg-blue-100',
+    hoverBg: 'hover:bg-blue-100'
   },
   6: {
     text: 'text-gray-500',
-    hoverBg: 'hover:bg-gray-100',
+    hoverBg: 'hover:bg-gray-100'
   }
 }
 
@@ -160,29 +160,29 @@ const activeHeadings = {
 
 const pathColorMap = {
   0: {
-    normal:'stroke-gray-200',
-    active:'stroke-gray-400',
+    normal: 'stroke-gray-200',
+    active: 'stroke-gray-400'
   },
   2: {
-    normal:'stroke-purple-200',
-    active:'stroke-purple-400',
+    normal: 'stroke-purple-200',
+    active: 'stroke-purple-400'
   },
   3: {
-    normal:'stroke-red-200',
-    active:'stroke-red-400',
+    normal: 'stroke-red-200',
+    active: 'stroke-red-400'
   },
   4: {
-    normal:'stroke-green-200',
-    active:'stroke-green-400',
+    normal: 'stroke-green-200',
+    active: 'stroke-green-400'
   },
   5: {
-    normal:'stroke-blue-200',
-    active:'stroke-blue-400',
+    normal: 'stroke-blue-200',
+    active: 'stroke-blue-400'
   },
   6: {
-    normal:'stroke-gray-200',
-    active:'stroke-gray-400'
-  },
+    normal: 'stroke-gray-200',
+    active: 'stroke-gray-400'
+  }
 }
 // #endregion
 
@@ -195,46 +195,46 @@ const pathColorMap = {
 const transform = ref({
   x: 0,
   y: 0,
-  k: 1,
+  k: 1
 })
 
 // zoom
-let zoomController;
+let zoomController
 onMounted(() => {
-  zoomController = zoom().scaleExtent([0.5, 5]).on("zoom", (event) => {
-    transform.value = event.transform;
-  });
-  select("#tree-catalog").call(zoomController);
-});
+  zoomController = zoom().scaleExtent([0.5, 5]).on('zoom', (event) => {
+    transform.value = event.transform
+  })
+  select('#tree-catalog').call(zoomController)
+})
 
 const resetTransform = () => {
-  select("#tree-catalog")
+  select('#tree-catalog')
     .transition()
     .duration(200)
-    .call(zoomController.transform, zoomIdentity);
-};
+    .call(zoomController.transform, zoomIdentity)
+}
 
 // toggle heading
 const targetHeadingNode = ref(null)
 // record and sync collapse headings
-const collapsedHeadingsSet = inject('collapsedHeadingsSet')
-const collapseHeadingHandler = inject('collapseHeadingHandler')
-const expandHeadingHandler = inject('expandHeadingHandler')
+const collapsedHeadingsSet = inject('collapsedHeadingsSet') as any
+const collapseHeadingHandler = inject('collapseHeadingHandler') as any
+const expandHeadingHandler = inject('expandHeadingHandler') as any
 
 const recursiveCheck = (node) => {
   if (node._children) {
     if (collapsedHeadingsSet.value.has(node.data.id)) {
-
       node.children = null
     } else {
       node.children = node._children
     }
-    node._children.forEach(subNode => {
+    node._children.forEach((subNode) => {
       recursiveCheck(subNode)
     })
   }
 }
 
+// Try to change this back to the old system.
 watch(collapsedHeadingsSet, () => {
   // if (toggleAllCatalogItemState.value === 'expand') {
   //   treeData.descendants().forEach((node) => {
@@ -250,74 +250,73 @@ watch(collapsedHeadingsSet, () => {
 
   treeData.descendants().forEach((node) => {
     // recursiveExpandHeadingNode(node)
-      recursiveCheck(node)
+    recursiveCheck(node)
   })
 
-  buildTree();
+  buildTree()
   // resetTransform()
-  if(targetHeadingNode.value) {
+  if (targetHeadingNode.value) {
     adjustTransform(targetHeadingNode.value)
     targetHeadingNode.value = null
   }
   // changeToggleAllCatalogItemState('')
 }, { deep: true, immediate: true })
 
-
 // adjust tree transform (translate) when manually toggle heading
 const adjustTransform = (node) => {
-  // const scale = 1;
-  // let targetX, targetY;
+  // const scale = 1
+  // let targetX, targetY
   // if (isExpand) {
   //   // if expand heading, the target node is current heading node
-  //   targetX = node.y;
-  //   targetY = node.x;
+  //   targetX = node.y
+  //   targetY = node.x
   // } else {
   //   // if collapse heading, the target node is the parent heading node
-  //   targetX = node.parent.y;
-  //   targetY = node.parent.x;
+  //   targetX = node.parent.y
+  //   targetY = node.parent.x
   // }
 
   // move the target heading node to center
   // with 'dy' offset in x axis
   // to show the target heading node and the children heading nodes
-  select("#tree-catalog")
+  select('#tree-catalog')
     .transition()
     .duration(200)
-    .call(zoomController.translateTo, node.y + dy, node.x);
-};
+    .call(zoomController.translateTo, node.y + dy, node.x)
+}
 
 // manually toggle heading
 const currentClickNodeId = ref(null)
 const toggleHeadingHandler = (node) => {
-  if (!node.parent) return;
+  if (!node.parent) { return }
   currentClickNodeId.value = node.id
   if (node.children) {
     targetHeadingNode.value = node.parent
     collapseHeadingHandler(node.data.id)
     // if the heading node has already show the children
     // collapse it
-    // node.children = null;
+    // node.children = null
     // then rebuild the tree to refresh all node coordinate
-    // buildTree();
-    // adjustTransform(node, false);
+    // buildTree()
+    // adjustTransform(node, false)
   } else {
     // if the heading node don't show the children
     // expand it
-    // node.children = node._children;
+    // node.children = node._children
     // then rebuild the tree to refresh all node coordinate
     targetHeadingNode.value = node
     expandHeadingHandler(node.data.id)
-    // buildTree();
-    // adjustTransform(node, true);
+    // buildTree()
+    // adjustTransform(node, true)
   }
-};
+}
 
 // const toggleAllCatalogItemState = inject('toggleAllCatalogItemState')
 
 // const changeToggleAllCatalogItemState = inject('changeToggleAllCatalogItemState')
 
-const collapseAllHeadingsHandler = inject('collapseAllHeadingsHandler')
-const expandAllHeadingsHandler = inject('expandAllHeadingsHandler')
+const collapseAllHeadingsHandler = inject('collapseAllHeadingsHandler') as any
+const expandAllHeadingsHandler = inject('expandAllHeadingsHandler') as any
 
 // const recursiveExpandHeadingNode = (node) => {
 //   if(node._children) {
@@ -343,7 +342,7 @@ const expandAllHeadingsHandler = inject('expandAllHeadingsHandler')
 //     })
 //   }
 
-//   buildTree();
+//   buildTree()
 //   resetTransform()
 //   changeToggleAllCatalogItemState('')
 // })
@@ -447,9 +446,7 @@ const toggleCatalogFloatHandler = () => {
                 width="7rem"
                 height="3rem"
               >
-                <div
-                  class="w-full h-full flex items-center gap-0.5"
-                >
+                <div class="w-full h-full flex items-center gap-0.5">
                   <button
                     v-if="node.data.depth !== 0 && node._children"
                     class="shrink-0 w-4 h-4 flex justify-center items-center border-2 rounded-full"
@@ -462,16 +459,14 @@ const toggleCatalogFloatHandler = () => {
                       class="text-white transition-transform duration-200"
                       :class="node.children ? 'rotate-45' : 'rotate-0'"
                     />
-
                   </button>
                   <div
                     v-else
                     class="shrink-0 w-4 h-4 flex justify-center items-center"
-                  >
-                    <div
-                      class="w-2 h-2 rounded-full"
-                      :class="`${btnColorMap[node.data.depth].withoutChildrenBg}`"
-                    />
+                  ><div
+                    class="w-2 h-2 rounded-full"
+                    :class="`${btnColorMap[node.data.depth].withoutChildrenBg}`"
+                  />
                   </div>
                   <a
                     v-if="node.data.id"
@@ -491,7 +486,6 @@ const toggleCatalogFloatHandler = () => {
             </g>
           </TransitionGroup>
         </g>
-
 
       </g>
     </svg>
@@ -562,10 +556,10 @@ const toggleCatalogFloatHandler = () => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
 .catalog-btn-container {
   &::-webkit-scrollbar {
-    display: none;
+    display: none
   }
 }
 .catalog-btn {

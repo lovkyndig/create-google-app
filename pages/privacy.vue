@@ -4,13 +4,13 @@ const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()
 
 onMounted(() => {
-  useNuxtApp().$webnoti(appConfig.bloginote.privacy.notification)
+  useNuxtApp().$webnoti(appConfig.myLayer.privacy.notification)
 })
 
 useSeoMeta({
-  titleTemplate: appConfig.bloginote.privacy.title,
-  description: appConfig.bloginote.privacy.description,
-  ogDescription: appConfig.bloginote.privacy.description,
+  titleTemplate: appConfig.myLayer.privacy.title,
+  description: appConfig.myLayer.privacy.description,
+  ogDescription: appConfig.myLayer.privacy.description,
   ogUrl: `${runtimeConfig.public.hostname}/privacy`
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 
@@ -19,7 +19,7 @@ useSeoMeta({
 <template>
   <div>
     <Head>
-      <Title>{{ appConfig.bloginote.privacy.title }}</Title>
+      <Title>{{ appConfig.myLayer.privacy.title }}</Title>
     </Head>
     <NuxtLayout name="base">
       <div class="privacy-content-container container mx-auto lg:max-w-4xl px-6 md:px-12 py-12">
@@ -37,7 +37,7 @@ useSeoMeta({
                 aria-label="privacy.txt"
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
               >
-                <nuxt-icon name="custom/privaty-policy" class="text-green-400 text-9xl" />
+                <nuxt-icon name="custom/privacy-policy" class="text-green-400 text-9xl" />
                 <br>
                 <span class="flex flex-col items-center">Privacy Policy</span>
               </a>

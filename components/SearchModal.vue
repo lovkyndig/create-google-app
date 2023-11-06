@@ -1,22 +1,23 @@
 <script setup lang="ts">
-const pagefindPath = "/_pagefind/pagefind.js"
+const pagefindPath = '/_pagefind/pagefind.js'
 
 const runtimeConfig = useRuntimeConfig()
 const baseURL = runtimeConfig.app.baseURL
 
-let pagefind: any;
+let pagefind: any
 
 if (!process.dev) {
   try {
-    pagefind = await import(/* @vite-ignore */pagefindPath);
+    pagefind = await import(/* @vite-ignore */pagefindPath)
 
     if (baseURL !== '/') {
       await pagefind.options({
+        // eslint-disable-next-line
         baseURL: baseURL
       })
     }
   } catch (error) {
-      console.log(error);
+    console.log(error)
   }
 }
 
@@ -74,7 +75,7 @@ const debouncedSearch = (key: string, delay: number = 300) => {
     timer = setTimeout(async () => {
       if (pagefind) {
         try {
-          const metaResults = await pagefind.search(key);
+          const metaResults = await pagefind.search(key)
 
           timer = null
           if (metaResults.results.length > 0) {
@@ -82,16 +83,16 @@ const debouncedSearch = (key: string, delay: number = 300) => {
 
             let filterResults = []
 
-            if (appConfig?.bloginote?.search?.exclude && appConfig.bloginote.search.exclude.length > 0) {
-              filterResults = resultsData.filter(item => !appConfig.bloginote.search.exclude.includes(item.url))
+            if (appConfig?.myLayer?.search?.exclude && appConfig.myLayer.search.exclude.length > 0) {
+              filterResults = resultsData.filter(item => !appConfig.myLayer.search.exclude.includes(item.url))
             }
 
-            searchResults.value = filterResults;
+            searchResults.value = filterResults
           } else {
             searchResults.value = []
           }
         } catch (error) {
-          console.log(error);
+          console.log(error)
         } finally {
           searchState.value = 'solved'
         }
@@ -108,7 +109,7 @@ const debouncedSearch = (key: string, delay: number = 300) => {
 const inputHandler = (event: Event) => {
   const target = event.target as HTMLInputElement
   if (pagefind) {
-    pagefind.preload(target.value);
+    pagefind.preload(target.value)
     debouncedSearch(target.value)
   }
 }

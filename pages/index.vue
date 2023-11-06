@@ -40,11 +40,11 @@ const articleFolderFiles:NavItem[] = []
 // render blog posts or not
 let showBlogPosts = true
 // if ('homePage' in themeOptions.value && 'showBlogPosts' in themeOptions.value.homePage) {
-showBlogPosts = appConfig.bloginote.homePage.showBlogPosts
+showBlogPosts = appConfig.myLayer.homePage.showBlogPosts
 // }
 
 const queryPostsWhere = { _type: 'markdown' }
-const queryPostsLimit = appConfig.bloginote.homePage.postItemLimit || 5
+const queryPostsLimit = appConfig.myLayer.homePage.postItemLimit || 5
 const queryPostsOnly = ['title', 'description', '_type', '_path', 'cover', 'series', 'seriesOrder', 'tags']
 
 if (showBlogPosts && Array.isArray(navTree.value)) {
