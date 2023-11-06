@@ -1,12 +1,43 @@
 <script setup lang="ts">
+import pkg from '../package.json'
 const props = defineProps({
   footerCatalog: {
     type: Boolean,
     default: false
-  }
+  },
 })
 
 const route = useRoute()
+
+const appConfig = useAppConfig()
+
+/**
+ *
+ * set head meta for almost all page
+ *
+ */
+useHead({
+  htmlAttrs: { lang: 'en' },
+  noscript: [{ children: 'Turn on javascript to use this app!' }],
+  script: [],
+  style: ['body { overflow: overlay }'],
+  link: [
+    { rel: 'icon', href: appConfig?.bloginote?.favicon },
+    { rel: 'apple-touch-icon', href: appConfig?.bloginote?.avatar },
+    { rel: 'manifest', href: '/manifest.webmanifest', crossorigin: 'use-credentials' }
+  ],
+  meta: [
+    { name: 'id', content: `${pkg.version}` }
+  ]
+})
+
+if(appConfig.bloginote.scrollSmooth) {
+  useHead({
+    style: [
+      'html, body { scroll-behavior: smooth }'
+    ]
+  })
+}
 
 /**
  *
@@ -33,7 +64,7 @@ onMounted(() => {
 
       resizeTimer = null
     }, 300)
-  }, { passive: true })
+  })
 })
 
 /**
@@ -56,7 +87,7 @@ onMounted(() => {
 
         scrollTimer = null
       }, 100)
-    }, { passive: true })
+    })
   }
 })
 
@@ -64,7 +95,7 @@ const showSearchModal = useState('showSearchModal')
 
 // keyboard shortcuts for search modal
 const ModalKeyListener = function (event: KeyboardEvent) {
-  if (event.ctrlKey && event.key === 'k') {
+  if(event.ctrlKey && event.key ==='k') {
     event.preventDefault()
     showSearchModal.value = !showSearchModal.value
   } else if (showSearchModal.value && event.key === 'Escape') {
@@ -74,24 +105,17 @@ const ModalKeyListener = function (event: KeyboardEvent) {
 
 onMounted(() => {
   if (document) {
-    document.addEventListener('keydown', ModalKeyListener, { passive: true })
+    document.addEventListener('keydown', ModalKeyListener)
   }
 })
 
 onUnmounted(() => {
   document.removeEventListener('keydown', ModalKeyListener)
 })
-
-watch(() => route.fullPath, () => {
-  // console.log('route was changing')
-  // useNuxtApp().$webnoti('testing testing')
-})
-
 </script>
 
 <template>
   <div class="pb-20 sm:pb-0 bg-gray-50 flex flex-col min-h-screen">
-    <!-- <VitePwaManifest /> -->
     <header
       class="hidden sm:block shrink-0"
       :class="route.path === '/' ? 'sm:sticky top-0 inset-x-0 z-30' : 'relative z-40'"
@@ -136,5 +160,19 @@ watch(() => route.fullPath, () => {
 </template>
 
 <style lang="scss">
-/* This style from base.vue is moved to app.vue */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(156, 163, 175, 1);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(107, 114, 128, 1);
+}
 </style>

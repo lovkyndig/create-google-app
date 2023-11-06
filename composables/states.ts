@@ -65,19 +65,18 @@ export const useZoomImageList = () => useState<ZoomImageType[]>('zoomImageList',
 
 // file type mapping
 export const useFileTypeMap = () => useState('fileTypeMap', () => {
-  // removed bi: in front of all the icon-names
   return {
     default: {
-      iconName: 'file-earmark-text' // bi:
+      iconName: 'bi/file-earmark-text'
     },
     markdown: {
-      iconName: 'markdown-fill' // bi:
+      iconName: 'bi/markdown-fill'
     },
     json: {
-      iconName: 'filetype-json' // bi:
+      iconName: 'bi/filetype-json'
     },
     csv: {
-      iconName: 'filetype-csv' // bi:
+      iconName: 'bi/filetype-csv'
     }
   }
 })

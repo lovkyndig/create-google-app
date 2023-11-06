@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-// import mermaid from 'mermaid'
-// add mermaid as dependencies if you want to use this and
-// remove commend in the bottom of scripts.
+import mermaid from 'mermaid'
 
 const props = defineProps({
   code: {
@@ -48,8 +46,9 @@ const toggleExpand = () => {
   expand.value = !expand.value
   if (!expand.value && codeBlockContainer.value) {
     nextTick(() => {
-      codeBlockContainer.value.scrollIntoView({ block: 'nearest' })
+      codeBlockContainer.value.scrollIntoView({ block: "nearest" })
     })
+
   }
 }
 
@@ -76,7 +75,7 @@ const languageColorMap = {
 
 const programLanguage = ref('')
 
-if (props.language) {
+if(props.language) {
   programLanguage.value = props.language.toLowerCase()
 }
 
@@ -95,7 +94,7 @@ if (props.filename) {
  */
 type CopyState = 'wait' | 'process' | 'success' | 'fail'
 const copyState = ref<CopyState>('wait')
-const clipboard = ref<Clipboard | Navigator>(null) // ref<null | Navigator>(null)
+const clipboard = ref<null | Navigator>(null)
 
 onMounted(() => {
   clipboard.value = navigator.clipboard
@@ -104,7 +103,7 @@ onMounted(() => {
 const copyHandler = () => {
   copyState.value = 'process'
   if (clipboard.value) {
-    navigator.clipboard.writeText(props.code).then(() => {
+    clipboard.value.writeText(props.code).then(() => {
       copyState.value = 'success'
 
       const timer = setTimeout(() => {
@@ -136,7 +135,7 @@ const urlRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-
  *
  * mermaid
  *
- *
+ */
 // convert mermaid code to svg
 const mermaidGraph = ref('')
 onMounted(() => {
@@ -145,7 +144,6 @@ onMounted(() => {
     mermaidGraph.value = mermaid.mermaidAPI.render('graphDiv', props.code)
   }
 })
-*/
 </script>
 
 <template>
@@ -163,11 +161,10 @@ onMounted(() => {
           v-show="codeLines > 3 && props.language !== 'mermaid'"
           @click="toggleExpand"
         >
-          <!-- If this isn't working - import it as component -->
-          <svgo-material-symbols-keyboard-arrow-down-rounded
+          <IconCustom
+            name="material-symbols:keyboard-arrow-down-rounded"
             class="w-4 h-4 text-gray-400 transition-transform duration-300"
             :class="expand ? '' : '-rotate-90'"
-            :font-controlled="false"
           />
         </button>
       </div>
@@ -183,9 +180,9 @@ onMounted(() => {
           class=" no-underline transition-colors duration-300"
           style="text-decoration-line: none; color: #94a3b8;"
         >
-          <svgo-bi-link-45deg
+          <IconCustom
+            name="bi:link-45deg"
             class="shrink-0 w-4 h-4"
-            :font-controlled="false"
           />
           <!-- <span class="shrink-0 text-xs">{{ props.filename }}</span> -->
         </NuxtLink>
@@ -193,9 +190,9 @@ onMounted(() => {
           v-else
           class=" flex items-center gap-2 text-gray-400 "
         >
-          <svgo-bi-file-earmark-code
-            class="shrink-0 w-4 h-4"
-            :font-controlled="false"
+          <IconCustom
+            name="bi:file-earmark-code"
+            class="shrink-0 w-4 h-4 "
           />
           <span class="shrink-0 text-xs">{{ props.filename }}</span>
         </div>
@@ -208,29 +205,25 @@ onMounted(() => {
           :disabled="copyState !== 'wait' || !clipboard"
           @click="copyHandler"
         >
-          <SvgoUilCopy
+          <IconCustom
             v-show="copyState === 'wait'"
-            name="copy"
+            name="uil:copy"
             class="w-4 h-4"
-            :font-controlled="false"
           />
-          <SvgoEosIconsLoading
+          <IconCustom
             v-show="copyState === 'process'"
-            name="icons-loading"
+            name="eos-icons:loading"
             class="w-4 h-4 text-purple-500"
-            :font-controlled="false"
           />
-          <SvgoUilCheck
+          <IconCustom
             v-show="copyState === 'success'"
-            name="check"
+            name="uil:check"
             class="w-4 h-4 text-green-500"
-            :font-controlled="false"
           />
-          <LazySvgoIconParkOutlineFileFailedOne
+          <IconCustom
             v-show="copyState === 'fail'"
-            name="file-failed-one"
+            name="icon-park-outline:file-failed-one"
             class="w-4 h-4 text-red-500"
-            :font-controlled="false"
           />
         </button>
 
@@ -245,11 +238,11 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <!-- removed v-html="mermaidGraph" from mermaid-div -->
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <div
       v-if="props.language === 'mermaid'"
-      id="mermaid"
       class="mermaid p-4 rounded-b-lg"
+      v-html="mermaidGraph"
     />
     <div
       v-else

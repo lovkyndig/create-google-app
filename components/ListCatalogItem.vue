@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
-// @ts-ignore
-import IconComponent from '../assets/icons/ion/add.svg?component' // <svgo-ion-add
+
+const props = defineProps<{
+  item: CatalogItemType,
+  depth: number
+}>()
 
 interface CatalogItemType {
   id: string;
@@ -9,11 +12,6 @@ interface CatalogItemType {
   text: string;
   children?: CatalogItemType[]
 }
-
-const props = defineProps<{
-  item: CatalogItemType,
-  depth: number
-}>()
 
 const catalogType = useState('catalogType')
 
@@ -171,7 +169,7 @@ const toggleCatalogHandler = () => {
   // expand.value = !expand.value
   // changeToggleAllCatalogItemState('')
 
-  if (collapsedHeadingsSet.value.has(props.item.id)) {
+  if(collapsedHeadingsSet.value.has(props.item.id)) {
     expandHeadingHandler(props.item.id)
   } else {
     collapseHeadingHandler(props.item.id)
@@ -202,13 +200,11 @@ const toggleCatalogHandler = () => {
         :disabled="!props.item.children"
         @click="toggleCatalogHandler"
       >
-        <!-- <svgo-ion-add have to be imported as component -->
-        <IconComponent
+        <IconCustom
           v-if="props.item.children"
-          name="add"
+          name="ion:add"
           class="w-3.5 h-3.5 text-white transition-transform duration-500 delay-300"
           :class="expand ? 'rotate-45' : 'rotate-0'"
-          :font-controlled="false"
         />
         <div
           v-else

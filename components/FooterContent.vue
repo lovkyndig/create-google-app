@@ -1,30 +1,34 @@
 <script setup lang="ts">
-import pkg from '../package.json'
 const appConfig = useAppConfig()
 </script>
 
 <template>
   <div class="py-4 flex justify-center items-center">
-    <div class="flex flex-col md:flex-row gap-4 text-xs text-green-800 text-center">
-      <p v-if="appConfig.myLayer.meta.author">
-        Copyright © {{ (new Date()).getFullYear() }}
+    <div class="flex flex-col md:flex-row gap-4 text-xs text-gray-400 text-center">
+      <p v-if="appConfig.bloginote.author">
+        Copyright &copy {{ (new Date()).getFullYear() }}
 
         <a
-          v-if="appConfig.myLayer.meta.email"
-          :href="`mailto:${appConfig.myLayer.meta.email}`"
-          class="text-blue-700"
-          style="border-bottom:1px solid #166534"
+          v-if="appConfig.bloginote.email"
+          :href="`mailto:${appConfig.bloginote.email}`"
+          class="text-blue-400"
         >{{
-          appConfig.myLayer.meta.author }}</a>
-        <span v-else>{{ appConfig.myLayer.meta.author }}</span>
+          appConfig.bloginote.author }}</a>
+        <span v-else>{{ appConfig.bloginote.author }}</span>
       </p>
       <p>
-        Template <a
-          :href="pkg.repository.url"
+        Theme <a
+          href="https://github.com/Benbinbin/BlogiNote"
           target="_blank"
-          class="text-blue-700"
-          style="border-bottom:1px solid #166534"
-        >Create Google App</a>
+          class="text-blue-400"
+        >BlogiNote</a>
+      </p>
+      <p>
+        Icons from <a
+          href="https://icones.js.org/"
+          target="_blank"
+          class="text-blue-400"
+        >Icônes</a>
       </p>
     </div>
   </div>

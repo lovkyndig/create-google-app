@@ -1,7 +1,6 @@
 import { Feed } from 'feed'
 import { defineEventHandler, appendHeader } from 'h3'
 import { serverQueryContent } from '#content/server'
-// @ts-ignore (vue-tsc giv error on the following line somethimes)
 import { useRuntimeConfig } from '#imports'
 
 // refer to https://mokkapps.de/blog/create-an-rss-feed-with-nuxt-3-and-nuxt-content-v2/
@@ -11,11 +10,11 @@ export default defineEventHandler(async (event) => {
   // feed information
   const feed = new Feed({
     id: config.public.hostname,
-    title: config.site.title,
-    description: config.site.description,
+    title: config.rss.title,
+    description: config.rss.description,
     link: config.public.hostname,
-    image: config.site.image,
-    copyright: config.site.copyright
+    image: config.rss.image,
+    copyright: config.rss.copyright
   })
 
   // feed items

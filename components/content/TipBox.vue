@@ -36,49 +36,48 @@ interface DefaultType {
 // good
 // bad
 const defaultTypeMap: DefaultType = {
-  // bi:is removed in front of all icon-names
   tip: {
-    icon: 'lightbulb-fill',
+    icon: 'bi:lightbulb-fill',
     name: 'Tip',
     boxClass: 'text-amber-500 bg-amber-50 border-amber-400'
   },
   announce: {
-    icon: 'megaphone-fill',
+    icon: 'bi:megaphone-fill',
     name: 'Announce',
     boxClass: 'text-purple-600 bg-purple-50 border-purple-400'
   },
   warning: {
-    icon: 'exclamation-triangle-fill',
+    icon: 'bi:exclamation-triangle-fill',
     name: 'Warning',
     boxClass: 'text-red-500 bg-red-50 border-red-400'
   },
   fun: {
-    icon: 'balloon-fill',
+    icon: 'bi:balloon-fill',
     name: 'Fun',
     boxClass: 'text-sky-600 bg-cyan-50 border-cyan-400'
   },
   achieve: {
-    icon: 'award-fill',
+    icon: 'bi:award-fill',
     name: 'Achieve',
     boxClass: 'text-orange-600 bg-orange-50 border-orange-400'
   },
   question: {
-    icon: 'question-circle-fill',
+    icon: 'bi:question-circle-fill',
     name: 'Question',
     boxClass: 'text-fuchsia-600 bg-fuchsia-50 border-fuchsia-400'
   },
   good: {
-    icon: 'hand-thumbs-up-fill',
+    icon: 'bi:hand-thumbs-up-fill',
     name: 'Good',
     boxClass: 'text-green-600 bg-green-100 border-green-500'
   },
   bad: {
-    icon: 'hand-thumbs-down-fill',
+    icon: 'bi:hand-thumbs-down-fill',
     name: 'Bad',
     boxClass: 'text-red-500 bg-red-50 border-red-400'
   },
   tldr: {
-    icon: 'chat-left-text-fill',
+    icon: 'bi:chat-left-text-fill',
     name: 'TL;DR',
     boxClass: 'text-gray-800 bg-gray-100 border-gray-400'
   }
@@ -203,10 +202,10 @@ if(boxStyleValue.value) {
     <summary
       class="my-4 font-bold flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity duration-300"
     >
-      <SvgTipBox
-        :name="iconValue"
-        class="text-base"
-      /> <!-- w-4 h-4 bi:lightbulb-fill -->
+      <IconCustom
+        :name="iconValue || 'bi:lightbulb-fill'"
+        class="w-4 h-4"
+      />
       <span>{{ nameValue || 'Tip' }}</span>
     </summary>
 

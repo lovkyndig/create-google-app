@@ -1,7 +1,5 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
-const runtimeConfig = useRuntimeConfig()
-
 const route = useRoute()
 
 /**
@@ -17,32 +15,11 @@ const { data, pending } = await useAsyncData(`${route.path}`, () => queryContent
  *
  */
 const showCatalog = useState<Boolean>('showCatalog', () => {
-  return appConfig.articlePage.showCatalog
+  return appConfig.bloginote.articlePage.showCatalog
 })
 
 const showFooterNavMoreOptions = useState('showFooterNavMoreOptions')
 const showFooterNavThemeOptions = useState('showFooterNavThemeOptions')
-
-/**
- * Added oktober 2023
- * Get the change search-param from the searchString, originaly set in SearchModal
- * source:
- * https://codybontecou.com/using-url-query-params-in-nuxt-3.html
- *
- */
-
-const { $getAndChangeSearchparam } = useNuxtApp() as any
-const searchString = $getAndChangeSearchparam()
-
-const { $webnoti } = useNuxtApp()
-onMounted(() => {
-  $webnoti(appConfig.myLayer.notification.slug)
-})
-useSeoMeta({
-  description: `${appConfig.myLayer.seoMeta.slug.description} ${route.fullPath.slice(6)}`,
-  ogDescription: `${appConfig.myLayer.seoMeta.slug.description} ${route.fullPath.slice(6)}`,
-  ogUrl: `${runtimeConfig.public.hostname}${route.fullPath}`
-}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 </script>
 
 <template>
@@ -64,7 +41,10 @@ useSeoMeta({
           :class="showCatalog ? 'text-purple-500 bg-purple-100 hover:bg-purple-50 border-purple-200' : 'text-gray-500 bg-white hover:bg-gray-100 border-gray-200'"
           @click="showCatalog = !showCatalog"
         >
-          <svgo-entypo-list class="w-5 h-5" :font-controlled="false" />
+          <IconCustom
+            name="entypo:list"
+            class="w-5 h-5"
+          />
         </button>
       </template>
       <MarkdownPost
@@ -90,13 +70,15 @@ useSeoMeta({
       >
         <button
           v-show="!showFooterNavMoreOptions && !showFooterNavThemeOptions"
-          id="showCatalogBtn"
           class="grow px-2 py-3 flex justify-center items-center space-y-1 bg-gray-50"
           :class="showCatalog ? 'text-purple-500' : 'text-gray-500'"
           @click="showCatalog = !showCatalog"
         >
           <div class="flex flex-col justify-center items-center gap-1">
-            <svgo-entypo-list class="w-6 h-6" :font-controlled="false" />
+            <IconCustom
+              name="entypo:list"
+              class="w-6 h-6"
+            />
             <p class="text-xs">
               Catalog
             </p>
@@ -104,9 +86,6 @@ useSeoMeta({
         </button>
       </template>
     </NuxtLayout>
-    <!-- *****************************  FIND-NEXT ********************************* -->
-    <FindNext v-if="searchString" />
-    <!-- *****************************  FIND-NEXT ********************************* -->
   </div>
 </template>
 

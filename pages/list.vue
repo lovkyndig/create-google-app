@@ -1,17 +1,11 @@
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
-const appConfig = useAppConfig()
-const runtimeConfig = useRuntimeConfig()
-
 interface MyCustomParsedContent extends ParsedContent {
   tags: string[]
 }
-const route = useRoute()
 
-onMounted(() => {
-  useNuxtApp().$webnoti(appConfig.myLayer.notification.list)
-})
+const route = useRoute()
 
 /**
  *
@@ -194,7 +188,6 @@ onMounted(() => {
 
   const series = route.query?.series as string || 'all'
   currentSeries.value = series
-  echoQueryParam(route.query) // lovkyndig coded 2023
 })
 
 /**
@@ -206,10 +199,9 @@ onMounted(() => {
 const { pending, data: articleList } = await useAsyncData('articles', () => {
   return queryContent<MyCustomParsedContent>('article')
     .only(['title', 'description', '_type', '_path', 'contentType', '_type', 'series', 'seriesOrder', 'tags'])
-    .sort({ created: 1 })
+    .sort({ seriesOrder: 1, $numeric: true })
     .find()
 })
-// original: .sort({ seriesOrder: 1, $numeric: true })
 
 // filter articles data
 const filterArticleList = ref([])
@@ -283,109 +275,13 @@ const getFileTypeIcon = (type) => {
     return fileType.iconName
   }
 }
-
-/**
- * Added 29.09.23 in v1.0.0 beta 4 to only show open filter on pc-screen.
- * Also removed the title of the three different type of tags - see below in template.
- */
-onMounted(() => {
-  if (window) {
-    if (window.innerWidth > 640) { // or window.outerWidth
-      showMoreFilter.value = true
-      showListDetail.value = true
-    } else {
-      showMoreFilter.value = false
-      showListDetail.value = false
-    }
-  }
-})
-const windowSize = useWindowSize()
-watch(() => windowSize.value.width, () => {
-  const width = windowSize.value.width
-  if (width < 640) {
-    showMoreFilter.value = false
-  } else {
-    showMoreFilter.value = true
-  }
-})
-
-/** ----------------------------------------------------------------------------- */
-useServerSeoMeta({
-  ogDescription: `${appConfig.myLayer.seoMeta.list.description} ${route.fullPath.slice(6)}`
-}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
-
-/**
- *
- * Publishing the TITLE.
- * Using route.path as argument to this function.
- * Using this function five times below, from here to the script end.
- *
- */
-const publishTitle = (value) => { // using this function 5 times below
-  const title = ref(value)
-  titles.value = title
-  useSeoMeta({
-    title: title.value,
-    description: `${appConfig.myLayer.seoMeta.list.description} ${route.fullPath.slice(6)}`,
-    ogDescription: `${appConfig.myLayer.seoMeta.list.description} ${route.fullPath.slice(6)}`,
-    ogUrl: `${runtimeConfig.public.hostname}${route.fullPath}`
-  })
-  useHead({ link: [{ rel: 'canonical', href: `${runtimeConfig.public.hostname}${route.fullPath}` }] })
-}
-const titles = useSearchString()
-/**
- * Loading echoQueryParam above onMounted
- */
-const searchString = useState('searchString')
-const echoQueryParam = (queryObj) => {
-  /* const cat = queryObj.category; const tag = queryObj.tags; const serie = queryObj.series */
-  if (process.client) {
-    const querystring = window.location.search
-    if (querystring.substring(1)) { // set searchString.value
-      searchString.value = querystring.substring(1)
-    } else { /* console.log('No searchstring here!') */ }
-  }
-  publishTitle(`${appConfig.myLayer.seoMeta.list.tags} ${searchString.value}`)
-}
-
-const getAndUseSearchparam = () => { // only on load
-  if (route.fullPath === route.path) {
-    publishTitle(appConfig.myLayer.seoMeta.list.tags_all)
-  } else {
-    publishTitle(`${appConfig.myLayer.seoMeta.list.tags} ${route.fullPath.slice(6)}`)
-  }
-}
-getAndUseSearchparam()
-
-watch(() => route.fullPath, () => { // only on change after load
-  if (route.path === route.fullPath) {
-    publishTitle(appConfig.myLayer.seoMeta.list.tags_all)
-  } else {
-    publishTitle(`${appConfig.myLayer.seoMeta.list.tags} ${route.fullPath.slice(6)}`)
-  }
-})
-
-/**
- * Added 20.09.23 in v3.10-rc.19 to only show open filter on pc-screen.
- */
-onMounted(() => {
-  if (window) {
-    if (window.innerWidth > 640) { // or window.outerWidth
-      showMoreFilter.value = true
-    }
-  }
-})
-
 </script>
 
 <template>
   <div>
     <Head>
-      <Title>{{ titles }}</Title>
+      <Title>List</Title>
     </Head>
-    <h1 style="display: none">
-      {{ titles }}
-    </h1>
     <NuxtLayout name="base">
       <div class="shrink-0 px-4 sm:px-8 py-4 space-y-4 sm:sticky top-0 inset-x-0 z-10 bg-gray-50">
         <div class="flex items-start sm:space-x-2">
@@ -394,7 +290,10 @@ onMounted(() => {
             :class="showMoreFilter ? 'bg-purple-500 hover:bg-purple-400 text-white' : 'bg-purple-100 text-purple-400 hover:text-purple-500'"
             @click="showMoreFilter = !showMoreFilter"
           >
-            <svgo-mdi-filter-plus-outline class="w-6 h-6" :font-controlled="false" />
+            <IconCustom
+              name="mdi:filter-plus-outline"
+              class="w-6 h-6"
+            />
           </button>
           <div class="grow max-w-full space-y-2 ">
             <div class="p-2 flex items-start text-sm bg-gray-100 sm:space-x-4">
@@ -402,14 +301,18 @@ onMounted(() => {
                 class="shrink-0 px-2 py-1 hidden sm:flex items-center text-gray-500 hover:bg-gray-200 rounded"
                 @click="showMoreTheme = !showMoreTheme"
               >
-                <svgo-ic-round-keyboard-arrow-right
+                <IconCustom
+                  name="ic:round-keyboard-arrow-right"
                   class="w-5 h-5 transition-transform duration-300"
                   :class="showMoreTheme ? 'rotate-90' : 'rotate-0'"
-                  :font-controlled="false"
                 />
-                <!-- <p>Theme</p> -->
+                <p>
+                  Theme
+                </p>
               </button>
-              <!-- <p class="px-2 py-1 sm:hidden">Theme</p> -->
+              <p class="px-2 py-1 sm:hidden">
+                Theme
+              </p>
               <ul
                 class="filter-list-container"
                 :class="showMoreTheme ? 'max-h-96' : 'max-h-8'"
@@ -420,7 +323,10 @@ onMounted(() => {
                     :class="currentTheme === 'all' ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-400 hover:text-purple-500 bg-purple-100'"
                     @click="toggleTheme('all')"
                   >
-                    <svgo-material-symbols-category-rounded class="w-5 h-5" :font-controlled="false" />
+                    <IconCustom
+                      name="material-symbols:category-rounded"
+                      class="w-5 h-5"
+                    />
                     <p>all</p>
                   </button>
                 </li>
@@ -434,7 +340,10 @@ onMounted(() => {
                     :class="currentTheme === getTheme(item._path) ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-400 hover:text-purple-500 bg-purple-100'"
                     @click="toggleTheme(getTheme(item._path))"
                   >
-                    <svgo-material-symbols-category-rounded class="shrink-0 w-5 h-5" :font-controlled="false" />
+                    <IconCustom
+                      name="material-symbols:category-rounded"
+                      class="shrink-0 w-5 h-5"
+                    />
                     <p>
                       {{ getTheme(item._path) }}
                     </p>
@@ -460,14 +369,18 @@ onMounted(() => {
                     class="shrink-0 px-2 py-1 hidden sm:flex items-center text-gray-500 hover:bg-gray-200 rounded"
                     @click="showMoreTag = !showMoreTag"
                   >
-                    <svgo-ic-round-keyboard-arrow-right
+                    <IconCustom
+                      name="ic:round-keyboard-arrow-right"
                       class="w-5 h-5 transition-transform duration-300"
                       :class="showMoreTag ? 'rotate-90' : 'rotate-0'"
-                      :font-controlled="false"
                     />
-                    <!-- <p>Tags</p> -->
+                    <p>
+                      Tags
+                    </p>
                   </button>
-                  <!-- <p class="px-2 py-1 sm:hidden">Tags</p> -->
+                  <p class="px-2 py-1 sm:hidden">
+                    Tags
+                  </p>
                   <ul
                     v-if="tagSet"
                     class="filter-list-container"
@@ -484,7 +397,7 @@ onMounted(() => {
                         :disabled="(tag === 'all' || currentTheme === 'all' || themeTags[currentTheme]?.includes(tag)) ? false : true"
                         @click="toggleTag(tag)"
                       >
-                        <p>{{ tag }}</p>
+                        <p>#{{ tag }}</p>
                       </button>
                     </li>
                   </ul>
@@ -494,14 +407,18 @@ onMounted(() => {
                     class="shrink-0 px-2 py-1 hidden sm:flex items-center text-gray-500 hover:bg-gray-200 rounded"
                     @click="showMoreSeries = !showMoreSeries"
                   >
-                    <svgo-ic-round-keyboard-arrow-right
+                    <IconCustom
+                      name="ic:round-keyboard-arrow-right"
                       class="w-5 h-5 transition-transform duration-300"
                       :class="showMoreSeries ? 'rotate-90' : 'rotate-0'"
-                      :font-controlled="false"
                     />
-                    <!-- <p>Series</p> -->
+                    <p>
+                      Series
+                    </p>
                   </button>
-                  <!-- <p class="px-2 py-1 sm:hidden">Series</p> -->
+                  <p class="px-2 py-1 sm:hidden">
+                    Series
+                  </p>
                   <ul
                     v-if="seriesSet"
                     class="filter-list-container"
@@ -518,7 +435,10 @@ onMounted(() => {
                         :disabled="(series === 'all' || currentTheme === 'all' || themeSeries[currentTheme]?.includes(series)) ? false : true"
                         @click="toggleSeries(series)"
                       >
-                        <svgo-bi-collection class="shrink-0 w-5 h-5" :font-controlled="false" />
+                        <IconCustom
+                          name="bi:collection"
+                          class="shrink-0 w-5 h-5"
+                        />
                         <p>{{ series }}</p>
                       </button>
                     </li>
@@ -532,21 +452,24 @@ onMounted(() => {
                 class="px-4 py-1 sm:hidden text-red-400 hover:text-red-500 bg-red-50 hover:bg-red-100 transition-colors duration-300 rounded"
                 @click="toggleTheme('all')"
               >
-                <svgo-ant-design-clear-outlined class="w-4 h-4" :font-controlled="false" />
+                <IconCustom
+                  name="ant-design:clear-outlined"
+                  class="w-4 h-4"
+                />
               </button>
               <button
                 class="grow py-1 sm:hidden text-purple-500 bg-purple-100 rounded"
                 @click="showMoreFilter = !showMoreFilter"
               >
-                <svgo-ic-round-keyboard-arrow-down
+                <IconCustom
                   v-show="!showMoreFilter"
+                  name="ic:round-keyboard-arrow-down"
                   class="w-4 h-4"
-                  :font-controlled="false"
                 />
-                <svgo-ic-round-keyboard-arrow-up
+                <IconCustom
                   v-show="showMoreFilter"
+                  name="ic:round-keyboard-arrow-up"
                   class="w-4 h-4"
-                  :font-controlled="false"
                 />
               </button>
               <button
@@ -554,15 +477,15 @@ onMounted(() => {
                 :class="showListDetail ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-50 hover:bg-green-100'"
                 @click="showListDetail = !showListDetail"
               >
-                <svgo-ic-round-unfold-less
+                <IconCustom
                   v-show="showListDetail"
+                  name="ic:round-unfold-less"
                   class="w-4 h-4"
-                  :font-controlled="false"
                 />
-                <svgo-ic-round-unfold-more
+                <IconCustom
                   v-show="!showListDetail"
+                  name="ic:round-unfold-more"
                   class="w-4 h-4"
-                  :font-controlled="false"
                 />
               </button>
             </div>
@@ -576,7 +499,10 @@ onMounted(() => {
           class="p-2 flex items-center text-red-400 hover:text-red-500 bg-red-50 hover:bg-red-100 transition-colors duration-300 rounded"
           @click="toggleTheme('all')"
         >
-          <svgo-ant-design-clear-outlined class="w-5 h-5" :font-controlled="false" />
+          <IconCustom
+            name="ant-design:clear-outlined"
+            class="w-5 h-5"
+          />
           <p class="hidden sm:block">
             Clear Filter
           </p>
@@ -586,15 +512,15 @@ onMounted(() => {
           :class="showListDetail ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-50 hover:bg-green-100'"
           @click="showListDetail = !showListDetail"
         >
-          <svgo-ic-round-unfold-less
+          <IconCustom
             v-show="showListDetail"
+            name="ic:round-unfold-less"
             class="w-5 h-5"
-            :font-controlled="false" 
           />
-          <svgo-ic-round-unfold-more
+          <IconCustom
             v-show="!showListDetail"
+            name="ic:round-unfold-more"
             class="w-5 h-5"
-            :font-controlled="false"
           />
           <p class="hidden sm:block">
             {{ showListDetail ? 'Less' : 'More' }} Detail
@@ -606,7 +532,10 @@ onMounted(() => {
         v-if="pending"
         class="grow flex flex-col justify-center items-center space-y-2 text-gray-400"
       >
-        <svgo-eos-icons-loading class="w-10 h-10" :font-controlled="false" />
+        <IconCustom
+          name="eos-icons:loading"
+          class="w-10 h-10"
+        />
         <p class="text-xl">
           Loading
         </p>
@@ -625,13 +554,13 @@ onMounted(() => {
           >
             <NuxtLink
               :to="item._path"
-              class="block px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-blue-100 transition-colors duration-300 rounded-lg space-y-2"
+              class="block px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-blue-100 transition-colors duration-300 rounded-lg space-y-2"
             >
               <div class="flex items-start">
-                <FileType
+                <IconCustom
                   :name="getFileTypeIcon(item._type)"
-                  class="shrink-0 p-1 text-xl sm:w-7 sm:h-7"
-                /> <!-- font-size have to be used instead of h-6 w-6 -->
+                  class="shrink-0 p-1 w-6 h-6 sm:w-7 sm:h-7"
+                />
                 <h2 class="grow font-bold text-base sm:text-lg">
                   {{ item.title }}
                 </h2>
@@ -639,7 +568,7 @@ onMounted(() => {
               <p
                 v-if="item.description"
                 v-show="showListDetail"
-                class="px-6 text-sm opacity-60 short-description"
+                class="px-6 text-sm opacity-60"
               >
                 {{ item.description }}
               </p>
@@ -661,10 +590,13 @@ onMounted(() => {
               <button
                 v-if="item.series"
                 class="px-2 py-1 flex justify-center items-center space-x-1 transition-colors duration-300 rounded"
-                :class="currentSeries === item.series ? 'text-white bg-green-600 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-100'"
+                :class="currentSeries === item.series ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-100'"
                 @click="toggleSeries(item.series)"
               >
-                <svgo-bi-collection class="shrink-0 w-4 h-4" :font-controlled="false" />
+                <IconCustom
+                  name="bi:collection"
+                  class="shrink-0 w-4 h-4"
+                />
                 <p>{{ item.series }}</p>
               </button>
             </div>
@@ -683,18 +615,5 @@ onMounted(() => {
 
 .filter-list-container::-webkit-scrollbar {
   display: none;
-}
-</style>
-
-<style scoped>
-/* short-description here and in PostListItem.vue. Added 29.03.23 in Church Postil v1.0.0 beta 4. */
-.short-description {
-  max-lines: 3;
-  overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   max-height: 5rem;      /* fallback (5rem, 5em or 68px) */
-   -webkit-line-clamp: 3; /* number of lines to show */
-   -webkit-box-orient: vertical;
 }
 </style>

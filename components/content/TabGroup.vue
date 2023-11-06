@@ -1,12 +1,11 @@
 <script lang="ts">
-import TabGroupHeader from './TabGroupHeader.vue'
-// @ts-ignore (vue-tsc giv error on the following line somethimes)
 import { defineComponent, h, nextTick, ref } from '#imports'
+import TabGroupHeader from './TabGroupHeader.vue'
 
 // refer to @nuxt-themes/docus-edge module component: components/content/CodeGroup.vue
 export default defineComponent({
-  // maybe set the script to setup and change this setup?
-  setup (props, { slots }) {
+  setup(props, { slots }) {
+
     /**
      *
      * change active tab index
@@ -20,8 +19,8 @@ export default defineComponent({
 
       nextTick(() => {
         if (tabGroupContainer.value) {
-          tabGroupContainer.value.scrollIntoView({ block: 'nearest' })
-        }
+            tabGroupContainer.value.scrollIntoView({ block: "nearest" })
+          }
       })
     }
 
@@ -52,7 +51,7 @@ export default defineComponent({
             TabGroupHeader,
             {
               activeTabIndex: activeTabIndex.value,
-              tabNameArr,
+              tabNameArr: tabNameArr,
               'onUpdate:activeTabIndex': changeActiveTabIndexHandler,
             }
           ),
@@ -64,6 +63,7 @@ export default defineComponent({
 
             // map tabs to content children
             tabNodes.map((node: any, index) => {
+
               return h(
                 'div',
                 {

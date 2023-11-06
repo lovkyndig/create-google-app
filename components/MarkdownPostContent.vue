@@ -9,7 +9,7 @@ const articleContainerDOM = ref<null | HTMLElement>(null)
  *
  * math formula
  *
- *
+ */
 // #region math
 const clipboard = ref<null | Clipboard>(null)
 
@@ -58,7 +58,7 @@ const addClickListener = (list: NodeListOf<Element>, prefix: string, suffix: str
           clearTimeout(timer)
         }, 800)
       }
-    }, { passive: true })
+    })
   })
 }
 
@@ -79,7 +79,6 @@ if (process.client) {
   })
 }
 // #endregion
-*/
 </script>
 
 <template>

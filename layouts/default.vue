@@ -1,5 +1,30 @@
 <script setup lang="ts">
-/* No scripts in default.vue */
+const appConfig = useAppConfig()
+
+/**
+ *
+ * set head meta for almost all page
+ *
+ */
+useHead({
+  style: [
+    'body { overflow: overlay }'
+  ],
+  link: [
+    {
+      rel: 'icon',
+      href: appConfig.bloginote.favicon
+    }
+  ]
+})
+
+if (appConfig.bloginote.scrollSmooth) {
+  useHead({
+    style: [
+      'html, body { scroll-behavior: smooth }'
+    ]
+  })
+}
 </script>
 
 <template>
@@ -9,5 +34,19 @@
 </template>
 
 <style lang="scss">
-/* This style from default.vue is moved to app.vue */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(156, 163, 175, 1);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(107, 114, 128, 1);
+}
 </style>

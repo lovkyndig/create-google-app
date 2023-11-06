@@ -1,25 +1,24 @@
 <script setup lang="ts">
-const pagefindPath = '/_pagefind/pagefind.js'
+const pagefindPath = "/_pagefind/pagefind.js"
 
 const runtimeConfig = useRuntimeConfig()
 const baseURL = runtimeConfig.app.baseURL
 
-let pagefind: any
+let pagefind: any;
 
-// if (!process.dev) {
-try {
-  pagefind = await import(/* @vite-ignore */pagefindPath)
+if (!process.dev) {
+  try {
+    pagefind = await import(/* @vite-ignore */pagefindPath);
 
-  if (baseURL !== '/') {
-    await pagefind.options({
-      // eslint-disable-next-line object-shorthand
-      baseURL: baseURL
-    })
+    if (baseURL !== '/') {
+      await pagefind.options({
+        baseURL: baseURL
+      })
+    }
+  } catch (error) {
+      console.log(error);
   }
-} catch (error) {
-  console.log(error)
 }
-// }
 
 // search modal
 const showSearchModal = useState<Boolean>('showSearchModal', () => false)
@@ -83,8 +82,8 @@ const debouncedSearch = (key: string, delay: number = 300) => {
 
             let filterResults = []
 
-            if (appConfig?.search?.exclude && appConfig.search.exclude.length > 0) {
-              filterResults = resultsData.filter(item => !appConfig.search.exclude.includes(item.url))
+            if (appConfig?.bloginote?.search?.exclude && appConfig.bloginote.search.exclude.length > 0) {
+              filterResults = resultsData.filter(item => !appConfig.bloginote.search.exclude.includes(item.url))
             }
 
             searchResults.value = filterResults;
@@ -106,17 +105,12 @@ const debouncedSearch = (key: string, delay: number = 300) => {
   }
 }
 
-// added in create-google-app v1.0.0 beta 7
-const searchString = useState('searchString') // transfered to findNext.vue as queryparam
-const { $checkSearchString } = useNuxtApp() as any
-
 const inputHandler = (event: Event) => {
   const target = event.target as HTMLInputElement
   if (pagefind) {
     pagefind.preload(target.value);
     debouncedSearch(target.value)
   }
-  searchString.value = $checkSearchString(target.value) // added
 }
 
 const clearInputTextHandler = () => {
@@ -138,9 +132,9 @@ const clearInputTextHandler = () => {
           class="flex justify-center items-center"
           @click="focusInputHandler"
         >
-          <svgo-tabler-search
+          <IconCustom
+            name="tabler:search"
             class="shrink-0 w-6 h-6 text-gray-600"
-            :font-controlled="false"
           />
         </button>
 
@@ -152,7 +146,7 @@ const clearInputTextHandler = () => {
           class="grow focus:outline-none"
           @input="inputHandler"
         >
-        <!-- This button shows on big screens -->
+
         <button
           class="shrink-0 hidden sm:block px-2 py-1 text-xs text-gray-400 hover:text-gray-600 font-mono font-bold hover:bg-gray-50 border border-gray-400 hover:border-gray-600 rounded transition-colors duration-300"
           title="hide the search modal"
@@ -160,14 +154,14 @@ const clearInputTextHandler = () => {
         >
           Esc
         </button>
-        <!-- This button shows on mobile screens -->
+
         <button
           class="flex sm:hidden justify-center items-center text-gray-200 hover:text-gray-400 transition-colors"
           @click="clearInputTextHandler"
         >
-          <svgo-ion-close-circle
+          <IconCustom
+            name="ion:close-circle"
             class="w-6 h-6"
-            :font-controlled="false"
           />
         </button>
       </div>
@@ -177,9 +171,9 @@ const clearInputTextHandler = () => {
           v-show="!inputText"
           class="p-16 flex flex-col justify-center items-center gap-y-8 text-purple-400"
         >
-          <svgo-fluent-text-t-28-filled
+          <IconCustom
+            name="fluent:text-t-28-filled"
             class="w-12 h-12"
-            :font-controlled="false"
           />
           <p>Type to Search</p>
         </div>
@@ -187,9 +181,9 @@ const clearInputTextHandler = () => {
           v-show="inputText && searchState === 'waiting'"
           class="p-16 flex flex-col justify-center items-center gap-y-8 text-purple-400"
         >
-          <svgo-fluent-slide-search-28-filled
+          <IconCustom
+            name="fluent:slide-search-28-filled"
             class="w-12 h-12 animate-bounce"
-            :font-controlled="false"
           />
           <p>Searching</p>
         </div>
@@ -202,11 +196,8 @@ const clearInputTextHandler = () => {
             :key="item.url"
             class="p-4 hover:text-white hover:bg-purple-500 rounded"
           >
-            <!-- inserted target=_blank and changed showSearchModal from false to true -->
-            <!-- :to="item.url" -->
             <NuxtLink
-              :to="`${item.url+'?searchparam='+searchString}`"
-              aria-label="searchStringParam"
+              :to="item.url"
               @click.exact="showSearchModal=false"
             >
               <p class="font-bold">
@@ -223,9 +214,9 @@ const clearInputTextHandler = () => {
           v-show="inputText && searchState === 'solved' && !(searchResults.length > 0)"
           class="p-16 flex flex-col justify-center items-center gap-y-8 text-red-400"
         >
-          <svgo-fluent-mail-inbox-dismiss-28-filled
-            class="w-12 h-12"
-            :font-controlled="false"
+          <IconCustom
+            name="fluent:mail-inbox-dismiss-28-filled"
+            class="w-12 h-12 "
           />
           <p>Oops! There is no result.</p>
         </div>

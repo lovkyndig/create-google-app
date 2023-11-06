@@ -29,9 +29,10 @@ if (props.data._path) {
  */
 let showTime = true
 // show created and updated time or not decided by appConfig
-showTime = appConfig.articlePage.showTime
+showTime = appConfig.bloginote.articlePage.showTime
 // show created and updated time or not decided by page metadata
 if ('showTime' in props.data) {
+  // eslint-disable-next-line vue/no-setup-props-destructure
   showTime = props.data.showTime
 }
 
@@ -42,9 +43,10 @@ if ('showTime' in props.data) {
  */
 let showOutdatedWarningComponent = true
 // show expire warning or not decided by appConfig
-showOutdatedWarningComponent = appConfig.articlePage.outdated.show
+showOutdatedWarningComponent = appConfig.bloginote.articlePage.outdated.show
 if ('showOutdatedWarning' in props.data) {
   // show expire warning or not decided by page metadata
+  // eslint-disable-next-line vue/no-setup-props-destructure
   showOutdatedWarningComponent = props.data.showOutdatedWarning
 }
 
@@ -160,16 +162,16 @@ provide('activeH4Heading', activeH4Heading)
 provide('activeH5Heading', activeH5Heading)
 provide('activeH6Heading', activeH6Heading)
 
-function setActiveHeading (heading: HTMLElement) {
+function setActiveHeading(heading: HTMLElement) {
   const headingPathStr = heading?.dataset?.headingPath
 
   if (headingPathStr) {
     const headingPathObj = JSON.parse(headingPathStr)
-    activeH2Heading.value = headingPathObj.h2
-    activeH3Heading.value = headingPathObj.h3
-    activeH4Heading.value = headingPathObj.h4
-    activeH5Heading.value = headingPathObj.h5
-    activeH6Heading.value = headingPathObj.h6
+    activeH2Heading.value = headingPathObj['h2']
+    activeH3Heading.value = headingPathObj['h3']
+    activeH4Heading.value = headingPathObj['h4']
+    activeH5Heading.value = headingPathObj['h5']
+    activeH6Heading.value = headingPathObj['h6']
   }
 }
 
@@ -195,16 +197,16 @@ onMounted(() => {
           // when the heading disappear at the bottom
           // it mean the user scroll up to see the previous content
           // so we should fallback to the previous heading
-          let index
+          let index;
           for (let i = 0; i < headingDomList.length; i++) {
             const item = headingDomList[i]
-            if (item.id === id) {
+            if(item.id === id) {
               index = i
-              break
+              break;
             }
           }
-          if (index && index - 1 >= 0) {
-            const prevHeading = headingDomList[index - 1]
+          if(index && index-1>= 0) {
+            const prevHeading = headingDomList[index-1]
             setActiveHeading(prevHeading as HTMLElement)
           }
         }
@@ -225,6 +227,7 @@ onUnmounted(() => {
   }
 })
 
+
 // get all heading id (with children)
 interface CatalogItem {
   id: string;
@@ -237,7 +240,7 @@ const headingArr: string[] = []
 const recursiveGetHeadingWithChildren = (heading: CatalogItem) => {
   if (heading.children) {
     headingArr.push(heading.id)
-    heading.children.forEach((subHeading) => {
+    heading.children.forEach(subHeading => {
       recursiveGetHeadingWithChildren(subHeading)
     })
   }
@@ -279,37 +282,30 @@ provide('expandHeadingHandler', expandHeadingHandler)
 provide('expandAllHeadingsHandler', expandAllHeadingsHandler)
 
 const detailNodeArr = ref<null | NodeListOf<HTMLDetailsElement>>(null)
-const anchorNodeArr = ref<null | NodeListOf<HTMLAnchorElement>>(null) // added 20.10.23
 
-const anchorClick = useState('anchorClick', () => false) // added 20.10.23
-
-const addDetailsClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
+const addClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
   list.forEach((element) => {
     element.addEventListener('click', (event) => {
-      if (anchorClick.value === false) { // added 20.10.23
-        useNuxtApp().$closeOtherSiblings(event) // added 04.10.23
-      }
       event.stopPropagation()
       // if toggle the heading manually (by click)
-      if (syncCatalogToggleState.value) {
+      if(syncCatalogToggleState.value) {
         // and sync catalog toggle state is true
         const detailsElem = event.currentTarget as HTMLDetailsElement
         const headingId = detailsElem?.dataset?.headingId
 
-        if (headingId && headingArr.includes(headingId)) {
+        if(headingId && headingArr.includes(headingId)) {
           event.preventDefault() // prevent the default toggle action
           // change the collapsed heading set instead
           // let programming toggle (open or collapse) <details>
           // (see the next watch function 👇)
-          if (detailsElem.open) {
+          if(detailsElem.open) {
             collapseHeadingHandler(headingId)
           } else {
             expandHeadingHandler(headingId)
           }
         }
       }
-      anchorClick.value = false // added 20.10.2023
-    }, { passive: true })
+    })
   })
 }
 
@@ -317,27 +313,23 @@ onMounted(() => {
   if (articleDOM.value) {
     // get all <details> elements
     detailNodeArr.value = articleDOM.value.querySelectorAll('details')
-    anchorNodeArr.value = articleDOM.value.querySelectorAll('a') // added 20.10.23
 
-    if (detailNodeArr.value && detailNodeArr.value.length > 0) {
+    if(detailNodeArr.value && detailNodeArr.value.length > 0) {
       // add click event listener for each <details> element
-      addDetailsClickListener(detailNodeArr.value)
-      // added 21.10.23
-      anchorClick.value = useNuxtApp().$anchorClickListener(anchorNodeArr.value) as any
-      // added 03.10.23
-      useNuxtApp().$closeAllHeadings() // if not searchString
+      addClickListener(detailNodeArr.value)
     }
   }
 })
 
 // watch collapsed heading set change
 watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
-  if (syncCatalogToggleState.value && detailNodeArr.value && detailNodeArr.value.length > 0) {
-    detailNodeArr.value.forEach((node) => {
+  if(syncCatalogToggleState.value && detailNodeArr.value && detailNodeArr.value.length > 0) {
+
+    detailNodeArr.value.forEach(node => {
       const headingId = node?.dataset?.headingId
       // then programming toggle (open or collapse) <details>
       // refer to https://web.dev/learn/html/details/
-      if (headingId && collapsedHeadingsSet.value.has(headingId)) {
+      if(headingId && collapsedHeadingsSet.value.has(headingId)) {
         node.removeAttribute('open')
       } else {
         node.setAttribute('open', 'true')
@@ -350,18 +342,6 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
 //   unWatchHeading()
 // })
 // #endregion
-
-/**
- * Loading LazyMarkdownPostCatalog wehn showCatalog.value = true
- * added 31.10.2023 to create-google-app v1.0.0-rc.84
- */
-const catalogListener = useState('catalogListener', () => false)
-watch(showCatalog, () => {
-  const treeCatalog = props.data?.body?.toc && props.data.body.toc.links.length > 0
-  if (treeCatalog && showCatalog.value) {
-    catalogListener.value = true // loading LazyMarkdownPostCatalog
-  }
-})
 </script>
 
 <template>
@@ -375,19 +355,19 @@ watch(showCatalog, () => {
       :style="`background-image: url('${props.data.cover}')`"
     />
     <div class="py-8 selection:text-white selection:bg-purple-400">
-      <p class="py-4 text-3xl md:text-5xl font-bold text-center">
+      <h1 class="py-4 text-3xl md:text-5xl font-bold text-center">
         {{ props.data.title || "Article" }}
-      </p>
+      </h1>
       <div class="py-2 flex flex-wrap justify-center items-center gap-2 sm:gap-4">
         <NuxtLink
           v-if="theme"
           :to="{ path: '/list', query: { theme: theme } }"
           target="_blank"
-          class="p-2 flex items-center gap-1 text-gray-600 hover:text-white hover:bg-purple-500 focus:outline-purple-500 focus:outline-none rounded transition-colors duration-300"
+          class="p-2 flex items-center gap-1 text-gray-300 hover:text-white hover:bg-purple-500 focus:outline-purple-500 focus:outline-none rounded transition-colors duration-300"
         >
-          <svgo-material-symbols-category-rounded
+          <IconCustom
+            name="material-symbols:category-rounded"
             class="shrink-0 w-4 h-4"
-            :font-controlled="false"
           />
           <span class="text-xs">{{ theme }}</span>
         </NuxtLink>
@@ -397,21 +377,21 @@ watch(showCatalog, () => {
         >
           <div
             v-if="props.data.created || props.data.git_time_created"
-            class="flex items-center gap-1 text-gray-400 hover:text-gray-400 transition-colors duration-300"
+            class="flex items-center gap-1 text-gray-300 hover:text-gray-400 transition-colors duration-300"
           >
-            <svgo-mdi-pencil-circle
+            <IconCustom
+              name="mdi:pencil-circle"
               class="w-4 h-4"
-              :font-controlled="false"
             />
             <span class="text-xs">Created {{ (new Date(props.data.created || props.data.git_time_created)).toLocaleDateString() }}</span>
           </div>
           <div
             v-if="props.data.updated || props.data.git_time_updated"
-            class="flex items-center gap-1 text-gray-400 hover:text-gray-400 transition-colors duration-300"
+            class="flex items-center gap-1 text-gray-300 hover:text-gray-400 transition-colors duration-300"
           >
-            <svgo-mdi-clock
+            <IconCustom
+              name="mdi:clock"
               class="w-4 h-4"
-              :font-controlled="false"
             />
             <span class="text-xs">Updated {{ (new Date(props.data.updated || props.data.git_time_updated)).toLocaleDateString() }}</span>
           </div>
@@ -419,24 +399,24 @@ watch(showCatalog, () => {
         <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-4">
           <button
             v-if="props.data.series"
-            class="p-2 flex items-center gap-1 text-gray-600 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
+            class="p-2 flex items-center gap-1 text-gray-300 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
             @click="showSeriesModal=true"
           >
-            <svgo-bi-collection
+            <IconCustom
+              name="bi:collection"
               class="shrink-0 w-4 h-4"
-              :font-controlled="false"
             />
             <span class="text-xs">{{ props.data.series }}</span>
           </button>
           <button
             v-if="props.data.tags"
             class="p-2 hidden sm:flex items-center gap-1 focus:outline-blue-500 rounded transition-colors duration-300"
-            :class="showTags ? 'bg-blue-500 hover:bg-blue-400 text-white' : 'text-gray-600 hover:text-white hover:bg-blue-500 '"
+            :class="showTags ? 'bg-blue-500 hover:bg-blue-400 text-white' : 'text-gray-300 hover:text-white hover:bg-blue-500 '"
             @click="showTags = !showTags"
           >
-            <svgo-bi-collection
+            <IconCustom
+              name="bi:collection"
               class="shrink-0 w-4 h-4"
-              :font-controlled="false"
             />
             <span class="text-xs">Tags</span>
           </button>
@@ -460,23 +440,23 @@ watch(showCatalog, () => {
         <NuxtLink
           v-if="prevArticleUrl"
           :to="prevArticleUrl"
-          class="p-2 flex items-center gap-1 text-xs text-gray-400 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
+          class="p-2 flex items-center gap-1 text-xs text-gray-300 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
         >
-          <svgo-ic-round-keyboard-arrow-left
+          <IconCustom
+            name="ic:round-keyboard-arrow-left"
             class="w-4 h-4"
-            :font-controlled="false"
           />
           <span>Prev Article</span>
         </NuxtLink>
         <NuxtLink
           v-if="nextArticleUrl"
           :to="nextArticleUrl"
-          class="p-2 flex items-center gap-1 text-xs text-gray-400 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
+          class="p-2 flex items-center gap-1 text-xs text-gray-300 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
         >
           <span>Next Article</span>
-          <svgo-ic-round-keyboard-arrow-right
+          <IconCustom
+            name="ic:round-keyboard-arrow-right"
             class="w-4 h-4"
-            :font-controlled="false"
           />
         </NuxtLink>
       </div>
@@ -491,7 +471,7 @@ watch(showCatalog, () => {
           :key="tag"
           :to="{ path: '/list', query: { tags: [tag] } }"
           target="_blank"
-          class="px-2 py-1 text-xs text-gray-600 hover:text-white hover:bg-blue-500 rounded focus:outline-blue-500 transition-colors duration-300"
+          class="px-2 py-1 text-xs text-gray-300 hover:text-white hover:bg-blue-500 rounded focus:outline-blue-500 transition-colors duration-300"
         >
           #{{ tag }}
         </NuxtLink>
@@ -499,8 +479,6 @@ watch(showCatalog, () => {
     </div>
 
     <MarkdownPostContent :data="props.data" />
-
-    <GithubComments class="giscus" />
 
     <div
       v-if="(prevArticleUrl || nextArticleUrl)"
@@ -512,9 +490,9 @@ watch(showCatalog, () => {
         class="px-4 py-6 flex justify-start items-center text-gray-600 hover:text-white hover:bg-green-500 border border-gray-400 hover:border-green-500 focus:outline-none rounded-lg transition-colors duration-300"
       >
         <div class="flex items-center gap-1">
-          <svgo-ic-round-keyboard-arrow-left
+          <IconCustom
+            name="ic:round-keyboard-arrow-left"
             class="shrink-0 w-8 h-8 opacity-70"
-            :font-controlled="false"
           />
           <div class="flex flex-col gap-2">
             <p class="text-lg font-bold">
@@ -546,16 +524,16 @@ watch(showCatalog, () => {
               {{ nextArticleName }}
             </p>
           </div>
-          <svgo-ic-round-keyboard-arrow-right
+          <IconCustom
+            name="ic:round-keyboard-arrow-right"
             class="shrink-0 w-8 h-8 opacity-70"
-            :font-controlled="false"
           />
         </div>
       </NuxtLink>
     </div>
 
-    <LazyMarkdownPostCatalog
-      v-if="catalogListener"
+    <MarkdownPostCatalog
+      v-if="props.data?.body?.toc && props.data.body.toc.links.length > 0"
       v-show="showCatalog"
       :catalogs="props.data.body.toc.links"
     />
@@ -576,9 +554,9 @@ watch(showCatalog, () => {
           :class="showCatalog ? 'text-purple-500 bg-purple-100 hover:bg-purple-50 border-purple-200' : 'text-gray-500 bg-white hover:bg-gray-100 border-gray-200'"
           @click="showCatalog = !showCatalog"
         >
-          <svgo-entypo-list
+          <IconCustom
+            name="entypo:list"
             class="w-5 h-5"
-            :font-controlled="false"
           />
         </button>
       </Transition>

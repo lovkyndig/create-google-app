@@ -14,13 +14,13 @@ const props = defineProps({
 const isRelative = /^(\.\/|\.\.\/|\/|@\/|~\/)/.test(props.href)
 const isAssetType = ref(false)
 
-if (isRelative) {
+if(isRelative) {
   const appConfig = useAppConfig()
-  const extensionArr = appConfig.assetTypes
+  const extensionArr = appConfig.bloginote.assetTypes
 
   const result = props.href.match(/\.(\w+)$/)
 
-  if (result) {
+  if(result) {
     const ext = result[1]
     isAssetType.value = extensionArr.includes(ext)
   }

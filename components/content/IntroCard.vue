@@ -10,7 +10,7 @@ const props = defineProps({
   },
   colorClass: {
     type: String,
-    default: 'text-purple-700 bg-purple-100/20 border-purple-100'
+    default: 'text-purple-500 bg-purple-100/20 border-purple-100'
   },
   colorStyle: {
     type: String,
@@ -39,7 +39,7 @@ const props = defineProps({
       v-if="props.avatar"
       :src="props.avatar"
       :class="avatarClass"
-      alt="img"
+      alt="avatar"
     >
   </div>
 </template>
@@ -51,10 +51,6 @@ const props = defineProps({
 }
 
 :slotted(p), p {
-    @apply text-lg sm:text-2xl opacity-100;
-    em {
-      color: #581c87
-    }
+    @apply text-lg sm:text-2xl opacity-95;
 }
-/* added color and changeded opacity from 95 - 26.10.2023 */
 </style>

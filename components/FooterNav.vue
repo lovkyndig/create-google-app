@@ -79,8 +79,8 @@ const showSearchModal = useState('showSearchModal')
       >
         <div class="flex flex-col justify-center items-center gap-1">
           <img
-            :src="appConfig.site.favicon"
-            alt="img"
+            :src="appConfig.bloginote.avatar"
+            alt="avatar"
             class="w-6 h-6"
           >
           <p
@@ -103,25 +103,25 @@ const showSearchModal = useState('showSearchModal')
         >
           <NuxtLink
             to="/"
-            class="option-item text-purple-600 bg-purple-50 hover:bg-purple-100 border-purple-500"
+            class="option-item text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-500"
             @click="showFooterNavMoreOptions = false"
           >
             Home
           </NuxtLink>
           <NuxtLink
             to="/about"
-            class="option-item text-purple-600 bg-purple-50 hover:bg-purple-100 border-purple-500"
+            class="option-item text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-500"
             @click="showFooterNavMoreOptions = false"
           >
             About
           </NuxtLink>
           <NuxtLink
-            v-if="appConfig.privacyPage"
-            to="/privacy"
-            class="option-item text-purple-600 bg-purple-50 hover:bg-purple-100 border-purple-500"
+            v-if="appConfig.bloginote.subscribePage"
+            to="/subscribe"
+            class="option-item text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-500"
             @click="showFooterNavMoreOptions = false"
           >
-            Privacy
+            Subscribe
           </NuxtLink>
         </div>
       </Transition>
@@ -134,11 +134,14 @@ const showSearchModal = useState('showSearchModal')
         @click="showFooterNavThemeOptions = !showFooterNavThemeOptions"
       >
         <div class="flex flex-col justify-center items-center gap-1">
-          <svgo-ic-round-category class="w-6 h-6" :font-controlled="false" />
+          <IconCustom
+            name="ic:round-category"
+            class="w-6 h-6"
+          />
           <p
             class="text-xs"
           >
-            {{ appConfig.myLayer.menu.btn1 }}
+            Theme
           </p>
         </div>
       </button>
@@ -177,8 +180,10 @@ const showSearchModal = useState('showSearchModal')
         @click="showSearchModal=true"
       >
         <div class="flex flex-col justify-center items-center gap-1">
-          <!-- tabler:search (original in BlogiNote) -->
-          <svgo-akar-search class="w-6 h-6" :font-controlled="false" />
+          <IconCustom
+            name="tabler:search"
+            class="w-6 h-6"
+          />
           <p class="text-xs">
             Search
           </p>
