@@ -9,8 +9,8 @@ export default defineAppConfig({
     },
     author: 'Benbinbin',
     email: 'benthomsonbin@gmail.com',
-    avatar: '/default-avatar.png',
-    favicon: '/default-favicon.ico',
+    avatar: '/img/svg/avatar.svg',
+    favicon: '/favicon.svg',
     scrollSmooth: true,
     homePage: {
       showBlogPosts: true,

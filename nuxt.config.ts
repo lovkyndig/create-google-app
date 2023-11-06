@@ -1,8 +1,11 @@
 import { isProduction } from 'std-env'
+import { createResolver } from '@nuxt/kit'
 import pkg from './package.json'
 
+const { resolve } = createResolver(import.meta.url)
+
 // grepper capitalize first letter in all words in a string, separeted with space ' ' or hyphen '-' (like name in package.json)
-const capitalize = (string) => {
+const capitalize = (string: any) => {
   const words = string.split(/[\s-]+/)
   for (const i in words) {
     words[i] = words[i][0].toUpperCase() + words[i].substring(1)
@@ -42,9 +45,10 @@ export default defineNuxtConfig({
     }
   },
   modules: [
-    ['bloginote-copy-files-module', { cleanFolders: ['public/article'] }],
+    [resolve('./modules/copy-image-files'), { cleanFolders: ['public/article'] }],
     '@nuxt/content',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@vite-pwa/nuxt'
   ],
   // https://content.nuxtjs.org
   content: {
@@ -61,6 +65,40 @@ export default defineNuxtConfig({
         depth: 5,
         searchDepth: 5
       }
+    }
+  },
+  pwa: {
+    manifest: false, // public/manifest.webmanifest
+    strategies: 'generateSW',
+    injectRegister: 'script',
+    registerType: 'autoUpdate',
+    workbox: {
+      navigateFallback: '/',
+      globPatterns: ['**/*.{js,css,html}', 'img/**/*.{svg,webp}', 'article/**/*.{webp}', 'favicon.*'],
+      globIgnores: ['google*.*'],
+      navigateFallbackDenylist: [/^\/api/],
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
+          handler: 'CacheFirst' as const,
+          options: {
+            cacheName: 'api-cache',
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        }
+      ]
+    },
+    client: {
+      installPrompt: true,
+      periodicSyncForUpdates: 3600 // 360 for testing only
+    },
+    devOptions: {
+      enabled: true,
+      navigateFallback: '/',
+      navigateFallbackAllowlist: [/^\/$/],
+      suppressWarnings: true
     }
   }
 })

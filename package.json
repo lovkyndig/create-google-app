@@ -1,11 +1,11 @@
 {
   "name": "@lovkyndig/create-google-app",
-  "version": "1.0.1-rc.24",
+  "version": "1.0.1-rc.25",
   "type": "module",
   "main": "./nuxt.config.ts",
   "description": "⚡Nuxt layer with nuxt-content, full search-functionality, pwa and guide to how to publish to Google Play Store.",
   "homepage": "https://create-google-app.vercel.app",
-  "author": "Kyrie Eleison <jur.eleison@gmail.com> (https://github.com/lovkyndig)",
+  "author": "Kyrie Eleison",
   "repository": {
     "type": "git",
     "url": "https://github.com/lovkyndig/create-google-app"
