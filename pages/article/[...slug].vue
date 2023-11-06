@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
+const config = useRuntimeConfig()
 const route = useRoute()
 
 /**
@@ -20,6 +21,27 @@ const showCatalog = useState<Boolean>('showCatalog', () => {
 
 const showFooterNavMoreOptions = useState('showFooterNavMoreOptions')
 const showFooterNavThemeOptions = useState('showFooterNavThemeOptions')
+
+/**
+ * Added oktober 2023
+ * Get the change search-param from the searchString, originaly set in SearchModal
+ * source:
+ * https://codybontecou.com/using-url-query-params-in-nuxt-3.html
+ *
+ */
+
+// const { $getAndChangeSearchparam } = useNuxtApp() as any
+// const searchString = $getAndChangeSearchparam()
+
+const { $webnoti } = useNuxtApp()
+onMounted(() => {
+  $webnoti(appConfig.myLayer.slug.notification)
+})
+useSeoMeta({
+  description: `${appConfig.myLayer.slug.description} ${route.fullPath.slice(6)}`,
+  ogDescription: `${appConfig.myLayer.slug.description} ${route.fullPath.slice(6)}`,
+  ogUrl: `${config.public.hostname}${route.fullPath}`
+}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 </script>
 
 <template>

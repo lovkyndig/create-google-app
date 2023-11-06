@@ -141,7 +141,7 @@ const showSearchModal = useState('showSearchModal')
           <p
             class="text-xs"
           >
-            Theme
+            {{ appConfig.myLayer.menu.btn }}
           </p>
         </div>
       </button>

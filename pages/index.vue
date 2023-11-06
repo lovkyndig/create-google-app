@@ -2,6 +2,9 @@
 import type { NavItem } from '@nuxt/content/dist/runtime/types'
 // import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 
+const appConfig = useAppConfig()
+const config = useRuntimeConfig()
+
 /**
  *
  * switch the homepage layout mode
@@ -13,7 +16,7 @@ const homepageLayoutMode = useHomepageLayoutMode()
 const changeHomepageLayoutMode = () => {
   if (homepageLayoutMode.value === 'post') {
     homepageLayoutMode.value = 'folder'
-  } else if(homepageLayoutMode.value === 'folder') {
+  } else if (homepageLayoutMode.value === 'folder') {
     homepageLayoutMode.value = 'post'
   }
 }
@@ -26,7 +29,6 @@ const changeHomepageLayoutMode = () => {
 const { data: navTree } = await useAsyncData('rootFolder', () => fetchContentNavigation())
 
 // const themeOptions = useTheme()
-const appConfig = useAppConfig()
 
 /**
  *
@@ -151,6 +153,19 @@ const getFileTypeIcon = (type:string) => {
     return fileType.iconName
   }
 }
+
+// added in create-google-app v1.0.0 beta 10 (30.09.2023)s
+onMounted(() => {
+  useNuxtApp().$webnoti(`${appConfig.myLayer.home.notification}`)
+})
+
+useSeoMeta({
+  titleTemplate: `v${appConfig.myLayer.meta.version} - ${appConfig.myLayer.home.title}`,
+  description: appConfig.myLayer.home.description,
+  ogDescription: appConfig.myLayer.home.description,
+  ogUrl: `${config.public.hostname}`
+}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
+
 </script>
 
 <template>

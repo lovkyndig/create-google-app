@@ -107,7 +107,7 @@ const showSearchModal = useState('showSearchModal')
           @mouseleave="setSubNav(false)"
           @click="showSubNav=!showSubNav"
         >
-          Theme
+          {{ appConfig.myLayer.menu.btn }}
         </button>
         <NuxtLink
           to="/about"
