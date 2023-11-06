@@ -199,9 +199,9 @@ onMounted(() => {
 const { pending, data: articleList } = await useAsyncData('articles', () => {
   return queryContent<MyCustomParsedContent>('article')
     .only(['title', 'description', '_type', '_path', 'contentType', '_type', 'series', 'seriesOrder', 'tags'])
-    .sort({ seriesOrder: 1, $numeric: true })
+    .sort({ created: 1 })
     .find()
-})
+}) // Original: .sort({ seriesOrder: 1, $numeric: true })
 
 // filter articles data
 const filterArticleList = ref([])
@@ -275,6 +275,76 @@ const getFileTypeIcon = (type) => {
     return fileType.iconName
   }
 }
+
+/** ----------------------------------------------------------------------------- */
+const appConfig = useAppConfig()
+const config = useRuntimeConfig()
+useServerSeoMeta({
+  ogDescription: `${appConfig.myLayer.list.description} ${route.fullPath.slice(6)}`
+}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
+
+/**
+ *
+ * Publishing the TITLE.
+ * Using route.path as argument to this function.
+ * Using this function five times below, from here to the script end.
+ *
+ */
+const publishTitle = (value) => { // using this function 5 times below
+  const title = ref(value)
+  titles.value = title
+  useSeoMeta({
+    title: title.value,
+    description: `${appConfig.myLayer.list.description} ${route.fullPath.slice(6)}`,
+    ogDescription: `${appConfig.myLayer.list.description} ${route.fullPath.slice(6)}`,
+    ogUrl: `${config.public.hostname}${route.fullPath}`
+  })
+  useHead({ link: [{ rel: 'canonical', href: `${config.public.hostname}${route.fullPath}` }] })
+}
+const titles = useSearchString()
+/**
+ * Loading echoQueryParam above onMounted
+ */
+const searchString = useState('searchString')
+const echoQueryParam = (queryObj) => {
+  /* const cat = queryObj.category; const tag = queryObj.tags; const serie = queryObj.series */
+  if (process.client) {
+    const querystring = window.location.search
+    if (querystring.substring(1)) { // set searchString.value
+      searchString.value = querystring.substring(1)
+    } else { /* console.log('No searchstring here!') */ }
+  }
+  publishTitle(`${appConfig.myLayer.list.tags} ${searchString.value}`)
+}
+
+const getAndUseSearchparam = () => { // only on load
+  if (route.fullPath === route.path) {
+    publishTitle(appConfig.myLayer.list.tags_all)
+  } else {
+    publishTitle(`${appConfig.myLayer.list.tags} ${route.fullPath.slice(6)}`)
+  }
+}
+getAndUseSearchparam()
+
+watch(() => route.fullPath, () => { // only on change after load
+  if (route.path === route.fullPath) {
+    publishTitle(appConfig.myLayer.list.tags_all)
+  } else {
+    publishTitle(`${appConfig.myLayer.list.tags} ${route.fullPath.slice(6)}`)
+  }
+})
+
+/**
+ * Added 20.09.23 in v3.10-rc.19 to only show open filter on pc-screen.
+ */
+onMounted(() => {
+  if (window) {
+    if (window.innerWidth > 640) { // or window.outerWidth
+      showMoreFilter.value = true
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -306,13 +376,9 @@ const getFileTypeIcon = (type) => {
                   class="text-xl transition-transform duration-300"
                   :class="showMoreTheme ? 'rotate-90' : 'rotate-0'"
                 />
-                <p>
-                  Theme
-                </p>
+              <!-- <p>Theme</p> -->
               </button>
-              <p class="px-2 py-1 sm:hidden">
-                Theme
-              </p>
+              <!-- <p class="px-2 py-1 sm:hidden">Theme</p> -->
               <ul
                 class="filter-list-container"
                 :class="showMoreTheme ? 'max-h-96' : 'max-h-8'"
@@ -374,13 +440,9 @@ const getFileTypeIcon = (type) => {
                       class="text-xl transition-transform duration-300"
                       :class="showMoreTag ? 'rotate-90' : 'rotate-0'"
                     />
-                    <p>
-                      Tags
-                    </p>
+                  <!-- <p>Tags</p> -->
                   </button>
-                  <p class="px-2 py-1 sm:hidden">
-                    Tags
-                  </p>
+                  <!-- <p class="px-2 py-1 sm:hidden">Tags</p> -->
                   <ul
                     v-if="tagSet"
                     class="filter-list-container"
@@ -412,13 +474,9 @@ const getFileTypeIcon = (type) => {
                       class="text-xl transition-transform duration-300"
                       :class="showMoreSeries ? 'rotate-90' : 'rotate-0'"
                     />
-                    <p>
-                      Series
-                    </p>
+                  <!-- <p>Series</p> -->
                   </button>
-                  <p class="px-2 py-1 sm:hidden">
-                    Series
-                  </p>
+                  <!-- <p class="px-2 py-1 sm:hidden">Series</p> -->
                   <ul
                     v-if="seriesSet"
                     class="filter-list-container"
@@ -563,7 +621,7 @@ const getFileTypeIcon = (type) => {
               <p
                 v-if="item.description"
                 v-show="showListDetail"
-                class="px-6 text-sm opacity-60"
+                class="px-6 text-sm opacity-60 short-description"
               >
                 {{ item.description }}
               </p>
@@ -610,5 +668,18 @@ const getFileTypeIcon = (type) => {
 
 .filter-list-container::-webkit-scrollbar {
   display: none;
+}
+</style>
+
+<style scoped>
+/* short-description here and in PostListItem.vue. Added 29.03.23 in Church Postil v1.0.0 beta 4. */
+.short-description {
+  max-lines: 3;
+  overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   max-height: 5rem;      /* fallback (5rem, 5em or 68px) */
+   -webkit-line-clamp: 3; /* number of lines to show */
+   -webkit-box-orient: vertical;
 }
 </style>

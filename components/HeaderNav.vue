@@ -94,9 +94,9 @@ const showSearchModal = useState('showSearchModal')
       <div class="flex justify-start items-center">
         <NuxtLink to="/">
           <img
-            :src="appConfig.myLayer.avatar"
-            alt="avatar"
-            class="w-10 h-10 rounded-full"
+            :src="appConfig.myLayer.meta.logo"
+            alt="logo"
+            class="w-96 h-10 rounded-full"
           >
         </NuxtLink>
       </div>

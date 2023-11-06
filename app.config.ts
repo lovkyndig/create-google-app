@@ -6,7 +6,8 @@ export default defineAppConfig({
       name: 'Create Goocle App',
       version: pkg.version,
       description: pkg.description,
-      url: pkg.homepage
+      homepage: pkg.homepage,
+      logo: '/img/svg/text-logo.svg'
     },
     menu: { btn: 'Google' },
     author: pkg.author,
@@ -44,6 +45,12 @@ export default defineAppConfig({
     slug: {
       description: 'Guidelines and documentation for "Create Google App" with url: ',
       notification: 'Read the documentation with guidelines about how to create a Google App in one week.'
+    },
+    list: {
+      tags: 'Guidelines in "Create Google App" with tag: ',
+      tags_all: 'All guidelines"',
+      description: 'This is the list of content in the "Create Google App" - with responsive design for mobile and laptop.',
+      notification: 'Search and find what you are locking for - with the amazing search-functionality on this Google App.'
     },
     scrollSmooth: true,
     homePage: {

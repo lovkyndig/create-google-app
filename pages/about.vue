@@ -20,7 +20,7 @@ const appConfig = useAppConfig()
               <br>
               Read the <b>
                 <a
-                  :href="appConfig.myLayer.meta.url"
+                  :href="appConfig.myLayer.meta.homepage"
                   target="_blank"
                   class="text-blue-500 hover:text-blue-600 underline font-bold transition-colors duration-300"
                 >

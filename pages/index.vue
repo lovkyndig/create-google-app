@@ -207,12 +207,28 @@ useSeoMeta({
         <div class="sm:px-10 py-16">
           <ContentDoc>
             <template #empty>
-              <IntroCard :avatar="'/default-avatar.png'" />
+              <IntroCard :avatar="appConfig.myLayer.avatar" />
             </template>
             <template #not-found>
               <h1 class="py-4 text-3xl sm:text-5xl font-bold text-center text-purple-500">
-                BlogiNote
+                {{ appConfig.myLayer.home.title }}
               </h1>
+              <div class="grid place-items-center text-purple-700">
+                <p class="mt-8">
+                  The <b>index.md</b> in <b>content</b>-folder is missing!
+                  <br>
+                  <br>
+                  Read the <b>
+                    <a
+                      :href="appConfig.myLayer.meta.homepage"
+                      target="_blank"
+                      class="text-blue-500 hover:text-blue-600 underline font-bold transition-colors duration-300"
+                    >
+                      Documentation
+                    </a> </b>
+                  and guidelines, about how to set up the project.
+                </p>
+              </div>
             </template>
           </ContentDoc>
         </div>
@@ -277,7 +293,7 @@ useSeoMeta({
                 <div class="flex justify-between items-start">
                   <h2 class="border-l-8 border-purple-500 rounded-l-sm">
                     <button
-                      class="p-1 font-bold text-lg text-purple-500 hover:bg-purple-100 border rounded-r-sm transition-colors duration-300 "
+                      class="p-1 font-bold text-lg text-purple-600 hover:bg-slate-100 border rounded-r-sm transition-colors duration-300 "
                       :class="hidePostThemeSections.has(theme._path) ? 'border-purple-500' : 'border-transparent'"
                       @click="togglePostThemeSectionsHandler(theme._path)"
                     >
@@ -286,9 +302,9 @@ useSeoMeta({
                   </h2>
                   <NuxtLink
                     :to="{ path: '/list', query: { theme: getTheme(theme._path) } }"
-                    class="p-2 text-xs font-bold transition-colors duration-300 rounded-lg text-purple-500 bg-purple-100 hover:bg-purple-50"
+                    class="p-2 text-xs font-bold transition-colors duration-300 rounded-lg text-purple-700 bg-purple-200 hover:bg-purple-50"
                   >
-                    More
+                    Open folder
                   </NuxtLink>
                 </div>
                 <div

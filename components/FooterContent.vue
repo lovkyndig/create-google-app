@@ -18,7 +18,7 @@ const appConfig = useAppConfig()
       </p>
       <p>
         Theme <a
-          :href="appConfig.myLayer.meta.url"
+          :href="appConfig.myLayer.meta.homepage"
           target="_blank"
           class="text-blue-400"
         >{{ appConfig.myLayer.meta.name }}</a>
