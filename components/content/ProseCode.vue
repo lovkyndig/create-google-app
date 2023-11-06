@@ -74,7 +74,7 @@ const languageColorMap = {
 
 const programLanguage = ref('')
 
-if(props.language) {
+if (props.language) {
   programLanguage.value = props.language.toLowerCase()
 }
 

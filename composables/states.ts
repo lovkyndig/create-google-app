@@ -16,7 +16,6 @@ export const useWindowSize = () => useState<WindowSize>('windowSize', () => {
   }
 })
 
-
 /**
  *
  * page scroll distance
@@ -90,3 +89,12 @@ export const useFileTypeMap = () => useState('fileTypeMap', () => {
  */
 // export const useSearchString = () => useState<String>('searchString', () => { return '' })
 export const useSearchString = () => useState<String>('searchString', () => '')
+
+/**
+ * Added 2023
+ */
+declare global {
+  interface Window {
+    find: any
+  }
+}

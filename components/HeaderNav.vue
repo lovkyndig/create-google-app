@@ -102,7 +102,7 @@ const showSearchModal = useState('showSearchModal')
       </div>
       <div class="flex justify-center items-center gap-6">
         <button
-          class="btn hidden sm:block text-purple-500 hover:bg-purple-100"
+          class="btn hidden sm:block text-purple-600 hover:bg-purple-100"
           @mouseover="setSubNav(true)"
           @mouseleave="setSubNav(false)"
           @click="showSubNav=!showSubNav"
@@ -111,14 +111,14 @@ const showSearchModal = useState('showSearchModal')
         </button>
         <NuxtLink
           to="/about"
-          class="btn text-purple-500 hover:bg-purple-100"
+          class="btn text-purple-600 hover:bg-purple-100"
         >
           About
         </NuxtLink>
         <NuxtLink
           v-if="appConfig.myLayer.privacyPage"
           to="/privacy"
-          class="btn text-purple-500 hover:bg-purple-100"
+          class="btn text-purple-600 hover:bg-purple-100"
         >
           Privacy
         </NuxtLink>

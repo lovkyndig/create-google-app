@@ -30,8 +30,8 @@ const showFooterNavThemeOptions = useState('showFooterNavThemeOptions')
  *
  */
 
-// const { $getAndChangeSearchparam } = useNuxtApp() as any
-// const searchString = $getAndChangeSearchparam()
+const { $getAndChangeSearchparam } = useNuxtApp() as any
+const searchString = $getAndChangeSearchparam()
 
 const { $webnoti } = useNuxtApp()
 onMounted(() => {
@@ -108,6 +108,9 @@ useSeoMeta({
         </button>
       </template>
     </NuxtLayout>
+    <!-- *****************************  FIND-NEXT ********************************* -->
+    <FindNext v-if="searchString" />
+    <!-- *****************************  FIND-NEXT ********************************* -->
   </div>
 </template>
 

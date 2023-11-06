@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
-
-const props = defineProps<{
-  item: CatalogItemType,
-  depth: number
-}>()
-
 interface CatalogItemType {
   id: string;
   depth: number;
   text: string;
   children?: CatalogItemType[]
 }
+const props = defineProps<{
+  item: CatalogItemType,
+  depth: number
+}>()
 
 const catalogType = useState('catalogType')
 
@@ -33,23 +31,23 @@ interface BtnBgColorMapType {
 const btnBgColorMap: BtnBgColorMapType = {
   2: {
     withChildren: 'bg-purple-500',
-    withoutChildren: 'bg-purple-200',
+    withoutChildren: 'bg-purple-200'
   },
   3: {
     withChildren: 'bg-red-500',
-    withoutChildren: 'bg-red-200',
+    withoutChildren: 'bg-red-200'
   },
   4: {
     withChildren: 'bg-green-500',
-    withoutChildren: 'bg-green-200',
+    withoutChildren: 'bg-green-200'
   },
   5: {
     withChildren: 'bg-blue-500',
-    withoutChildren: 'bg-blue-200',
+    withoutChildren: 'bg-blue-200'
   },
   6: {
     withChildren: 'bg-gray-500',
-    withoutChildren: 'bg-gray-200',
+    withoutChildren: 'bg-gray-200'
   }
 }
 
@@ -169,7 +167,7 @@ const toggleCatalogHandler = () => {
   // expand.value = !expand.value
   // changeToggleAllCatalogItemState('')
 
-  if(collapsedHeadingsSet.value.has(props.item.id)) {
+  if (collapsedHeadingsSet.value.has(props.item.id)) {
     expandHeadingHandler(props.item.id)
   } else {
     collapseHeadingHandler(props.item.id)

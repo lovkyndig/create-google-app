@@ -100,6 +100,12 @@ export default defineNuxtConfig({
       suppressWarnings: true
     }
   },
+  components: [
+    { path: './components/custom', pathPrefix: false },
+    { path: './components/content', pathPrefix: false },
+    { path: './components' }
+    // https://nuxt.com/docs/guide/directory-structure/components
+  ],
   typescript: {
     shim: false,
     typeCheck: true

@@ -1,14 +1,13 @@
 <script setup lang="ts">
-const props = defineProps<{
-  catalogs: CatalogItem[]
-}>()
-
 interface CatalogItem {
   id: string;
   depth: number;
   text: string;
   children?: CatalogItem[]
 }
+const props = defineProps<{
+  catalogs: CatalogItem[]
+}>()
 
 const showCatalog = useState<boolean>('showCatalog')
 

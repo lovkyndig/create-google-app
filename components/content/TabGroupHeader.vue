@@ -2,12 +2,12 @@
 const props = defineProps({
   tabNameArr: {
     type: Array,
-    required: true,
+    required: true
   },
   activeTabIndex: {
     type: Number,
-    required: true,
-  },
+    required: true
+  }
 })
 
 const emits = defineEmits(['update:activeTabIndex'])

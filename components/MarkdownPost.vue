@@ -32,7 +32,6 @@ let showTime = true
 showTime = appConfig.myLayer.articlePage.showTime
 // show created and updated time or not decided by page metadata
 if ('showTime' in props.data) {
-  // eslint-disable-next-line vue/no-setup-props-destructure
   showTime = props.data.showTime
 }
 
@@ -46,7 +45,6 @@ let showOutdatedWarningComponent = true
 showOutdatedWarningComponent = appConfig.myLayer.articlePage.outdated.show
 if ('showOutdatedWarning' in props.data) {
   // show expire warning or not decided by page metadata
-  // eslint-disable-next-line vue/no-setup-props-destructure
   showOutdatedWarningComponent = props.data.showOutdatedWarning
 }
 
@@ -111,22 +109,15 @@ if (props.data?.series) {
 // if the page metadata has the information about previous or next article
 // rewrite the default value
 if (props.data?.prevArticleUrl) {
-  // eslint-disable-next-line vue/no-setup-props-destructure
   prevArticleUrl.value = props.data.prevArticleUrl
 }
-
 if (props.data?.prevArticleName) {
-  // eslint-disable-next-line vue/no-setup-props-destructure
   prevArticleName.value = props.data.prevArticleName
 }
-
 if (props.data?.nextArticleUrl) {
-  // eslint-disable-next-line vue/no-setup-props-destructure
   nextArticleUrl.value = props.data.nextArticleUrl
 }
-
 if (props.data?.nextArticleName) {
-  // eslint-disable-next-line vue/no-setup-props-destructure
   nextArticleName.value = props.data.nextArticleName
 }
 // #endregion
@@ -167,11 +158,11 @@ function setActiveHeading(heading: HTMLElement) {
 
   if (headingPathStr) {
     const headingPathObj = JSON.parse(headingPathStr)
-    activeH2Heading.value = headingPathObj['h2']
-    activeH3Heading.value = headingPathObj['h3']
-    activeH4Heading.value = headingPathObj['h4']
-    activeH5Heading.value = headingPathObj['h5']
-    activeH6Heading.value = headingPathObj['h6']
+    activeH2Heading.value = headingPathObj.h2
+    activeH3Heading.value = headingPathObj.h3
+    activeH4Heading.value = headingPathObj.h4
+    activeH5Heading.value = headingPathObj.h5
+    activeH6Heading.value = headingPathObj.h6
   }
 }
 
@@ -197,15 +188,15 @@ onMounted(() => {
           // when the heading disappear at the bottom
           // it mean the user scroll up to see the previous content
           // so we should fallback to the previous heading
-          let index;
+          let index
           for (let i = 0; i < headingDomList.length; i++) {
             const item = headingDomList[i]
-            if(item.id === id) {
+            if (item.id === id) {
               index = i
-              break;
+              break
             }
           }
-          if(index && index-1>= 0) {
+          if (index && index - 1 >= 0) {
             const prevHeading = headingDomList[index-1]
             setActiveHeading(prevHeading as HTMLElement)
           }
@@ -227,7 +218,6 @@ onUnmounted(() => {
   }
 })
 
-
 // get all heading id (with children)
 interface CatalogItem {
   id: string;
@@ -240,7 +230,7 @@ const headingArr: string[] = []
 const recursiveGetHeadingWithChildren = (heading: CatalogItem) => {
   if (heading.children) {
     headingArr.push(heading.id)
-    heading.children.forEach(subHeading => {
+    heading.children.forEach((subHeading) => {
       recursiveGetHeadingWithChildren(subHeading)
     })
   }
@@ -288,17 +278,17 @@ const addClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
     element.addEventListener('click', (event) => {
       event.stopPropagation()
       // if toggle the heading manually (by click)
-      if(syncCatalogToggleState.value) {
+      if (syncCatalogToggleState.value) {
         // and sync catalog toggle state is true
         const detailsElem = event.currentTarget as HTMLDetailsElement
         const headingId = detailsElem?.dataset?.headingId
 
-        if(headingId && headingArr.includes(headingId)) {
+        if (headingId && headingArr.includes(headingId)) {
           event.preventDefault() // prevent the default toggle action
           // change the collapsed heading set instead
           // let programming toggle (open or collapse) <details>
           // (see the next watch function 👇)
-          if(detailsElem.open) {
+          if (detailsElem.open) {
             collapseHeadingHandler(headingId)
           } else {
             expandHeadingHandler(headingId)
@@ -314,7 +304,7 @@ onMounted(() => {
     // get all <details> elements
     detailNodeArr.value = articleDOM.value.querySelectorAll('details')
 
-    if(detailNodeArr.value && detailNodeArr.value.length > 0) {
+    if (detailNodeArr.value && detailNodeArr.value.length > 0) {
       // add click event listener for each <details> element
       addClickListener(detailNodeArr.value)
     }
@@ -323,13 +313,12 @@ onMounted(() => {
 
 // watch collapsed heading set change
 watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
-  if(syncCatalogToggleState.value && detailNodeArr.value && detailNodeArr.value.length > 0) {
-
-    detailNodeArr.value.forEach(node => {
+  if (syncCatalogToggleState.value && detailNodeArr.value && detailNodeArr.value.length > 0) {
+    detailNodeArr.value.forEach((node) => {
       const headingId = node?.dataset?.headingId
       // then programming toggle (open or collapse) <details>
       // refer to https://web.dev/learn/html/details/
-      if(headingId && collapsedHeadingsSet.value.has(headingId)) {
+      if (headingId && collapsedHeadingsSet.value.has(headingId)) {
         node.removeAttribute('open')
       } else {
         node.setAttribute('open', 'true')
@@ -355,15 +344,15 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
       :style="`background-image: url('${props.data.cover}')`"
     />
     <div class="py-8 selection:text-white selection:bg-purple-400">
-      <h1 class="py-4 text-3xl md:text-5xl font-bold text-center">
+      <p class="py-4 text-3xl md:text-5xl font-bold text-center">
         {{ props.data.title || "Article" }}
-      </h1>
+      </p>
       <div class="py-2 flex flex-wrap justify-center items-center gap-2 sm:gap-4">
         <NuxtLink
           v-if="theme"
           :to="{ path: '/list', query: { theme: theme } }"
           target="_blank"
-          class="p-2 flex items-center gap-1 text-gray-300 hover:text-white hover:bg-purple-500 focus:outline-purple-500 focus:outline-none rounded transition-colors duration-300"
+          class="p-2 flex items-center gap-1 text-gray-600 hover:text-white hover:bg-purple-500 focus:outline-purple-500 focus:outline-none rounded transition-colors duration-300"
         >
           <nuxt-icon
             name="material-symbols/category-rounded"
@@ -377,7 +366,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
         >
           <div
             v-if="props.data.created || props.data.git_time_created"
-            class="flex items-center gap-1 text-gray-300 hover:text-gray-400 transition-colors duration-300"
+            class="flex items-center gap-1 text-gray-400 hover:text-gray-400 transition-colors duration-300"
           >
             <nuxt-icon
               name="mdi/pencil-circle"
@@ -386,7 +375,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           </div>
           <div
             v-if="props.data.updated || props.data.git_time_updated"
-            class="flex items-center gap-1 text-gray-300 hover:text-gray-400 transition-colors duration-300"
+            class="flex items-center gap-1 text-gray-400 hover:text-gray-400 transition-colors duration-300"
           >
             <nuxt-icon
               name="mdi/clock"
@@ -397,7 +386,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
         <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-4">
           <button
             v-if="props.data.series"
-            class="p-2 flex items-center gap-1 text-gray-300 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
+            class="p-2 flex items-center gap-1 text-gray-600 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
             @click="showSeriesModal=true"
           >
             <nuxt-icon
@@ -409,7 +398,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           <button
             v-if="props.data.tags"
             class="p-2 hidden sm:flex items-center gap-1 focus:outline-blue-500 rounded transition-colors duration-300"
-            :class="showTags ? 'bg-blue-500 hover:bg-blue-400 text-white' : 'text-gray-300 hover:text-white hover:bg-blue-500 '"
+            :class="showTags ? 'bg-blue-500 hover:bg-blue-400 text-white' : 'text-gray-600 hover:text-white hover:bg-blue-500 '"
             @click="showTags = !showTags"
           >
             <nuxt-icon
@@ -438,7 +427,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
         <NuxtLink
           v-if="prevArticleUrl"
           :to="prevArticleUrl"
-          class="p-2 flex items-center gap-1 text-xs text-gray-300 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
+          class="p-2 flex items-center gap-1 text-xs text-gray-400 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
         >
           <nuxt-icon
             name="ic/round-keyboard-arrow-left"
@@ -448,7 +437,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
         <NuxtLink
           v-if="nextArticleUrl"
           :to="nextArticleUrl"
-          class="p-2 flex items-center gap-1 text-xs text-gray-300 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
+          class="p-2 flex items-center gap-1 text-xs text-gray-400 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
         >
           <span>Next Article</span>
           <nuxt-icon
@@ -467,7 +456,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           :key="tag"
           :to="{ path: '/list', query: { tags: [tag] } }"
           target="_blank"
-          class="px-2 py-1 text-xs text-gray-300 hover:text-white hover:bg-blue-500 rounded focus:outline-blue-500 transition-colors duration-300"
+          class="px-2 py-1 text-xs text-gray-600 hover:text-white hover:bg-blue-500 rounded focus:outline-blue-500 transition-colors duration-300"
         >
           #{{ tag }}
         </NuxtLink>
@@ -475,6 +464,10 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
     </div>
 
     <MarkdownPostContent :data="props.data" />
+
+    <!--              -->
+    <GithubComments class="giscus" />
+    <!--              -->
 
     <div
       v-if="(prevArticleUrl || nextArticleUrl)"

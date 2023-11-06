@@ -1,14 +1,13 @@
 <script setup lang="ts">
-const props = defineProps<{
-  catalogs: CatalogItem[]
-}>()
-
 interface CatalogItem {
   id: string;
   depth: number;
   text: string;
   children?: CatalogItem[]
 }
+const props = defineProps<{
+  catalogs: CatalogItem[]
+}>()
 
 /**
  *
@@ -19,7 +18,7 @@ const catalogType = useState('catalogType')
 const toggleCatalogFloat = useState('toggleCatalogFloat')
 
 const changeCatalogType = (value: 'floatList' | 'floatTree' | 'sidebarList') => {
-  if(value === 'sidebarList') {
+  if (value === 'sidebarList') {
     toggleCatalogFloat.value = false
   } else {
     toggleCatalogFloat.value = true
@@ -28,7 +27,7 @@ const changeCatalogType = (value: 'floatList' | 'floatTree' | 'sidebarList') => 
 }
 
 const toggleFloatCatalogTypeHandler = () => {
-  if(catalogType.value === 'floatTree') {
+  if (catalogType.value === 'floatTree') {
     changeCatalogType('floatList')
   } else {
     changeCatalogType('floatTree')
@@ -36,7 +35,7 @@ const toggleFloatCatalogTypeHandler = () => {
 }
 
 const toggleCatalogFloatHandler = () => {
-  if(catalogType.value === 'sidebarList') {
+  if (catalogType.value === 'sidebarList') {
     changeCatalogType('floatList')
   } else {
     changeCatalogType('sidebarList')

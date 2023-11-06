@@ -48,7 +48,7 @@ const getCoverUrl = (relativeURL:(string)) => {
         <NuxtLink
           v-for="tag in props.article.tags"
           :key="tag"
-          :to="{ path: '/list', query: { tags: [tag, 'HTML'] } }"
+          :to="{ path: '/list', query: { tags: [tag] } }"
           class="shrink-0 px-2 py-1 text-xs text-blue-400 hover:text-blue-500 bg-blue-50 transition-colors duration-300 rounded"
         >
           #{{ tag }}
