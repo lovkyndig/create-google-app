@@ -10,11 +10,11 @@ export default defineEventHandler(async (event) => {
   // feed information
   const feed = new Feed({
     id: config.public.hostname,
-    title: config.rss.title,
-    description: config.rss.description,
+    title: config.site.title,
+    description: config.site.description,
     link: config.public.hostname,
-    image: config.rss.image,
-    copyright: config.rss.copyright
+    image: config.site.image,
+    copyright: config.site.copyright
   })
 
   // feed items

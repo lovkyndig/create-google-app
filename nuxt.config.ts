@@ -19,9 +19,6 @@ export default defineNuxtConfig({
   app: {
     // baseURL: '/'
   },
-  typescript: {
-    shim: false
-  },
   nitro: {
     prerender: {
       routes: ['/rss.xml', '/sitemap.xml']
@@ -102,5 +99,9 @@ export default defineNuxtConfig({
       navigateFallbackAllowlist: [/^\/$/],
       suppressWarnings: true
     }
+  },
+  typescript: {
+    shim: false,
+    typeCheck: true
   }
 })

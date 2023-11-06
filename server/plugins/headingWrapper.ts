@@ -100,7 +100,7 @@ function getParentWrapper(level: number) {
 }
 
 // eslint-disable-next-line no-inner-declarations
-function cleanDeepWrapper(level: number) {
+function cleanDeepWrapper (level: number) {
   currentHeadingWrapperMap[`h${level + 1}` as ('h3' | 'h4' | 'h5' | 'h6')] = null
 
   if (level + 1 < 6) {
@@ -110,6 +110,7 @@ function cleanDeepWrapper(level: number) {
 }
 
 export default defineNitroPlugin((nitroApp) => {
+  // @ts-ignore
   nitroApp.hooks.hook('content:file:afterParse', (file) => {
     // manipulate the tree (the parsed result of markdown file)
     if (file?._path?.startsWith('/article/') && file?._extension === 'md') {

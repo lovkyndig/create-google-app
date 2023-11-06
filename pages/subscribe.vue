@@ -1,66 +1,80 @@
 <script setup lang="ts">
-const config = useRuntimeConfig()
+// const config = useRuntimeConfig()
+const appConfig = useAppConfig()
+const runtimeConfig = useRuntimeConfig()
+
+onMounted(() => {
+  useNuxtApp().$webnoti(appConfig.bloginote.privacy.notification)
+})
+
+useSeoMeta({
+  titleTemplate: appConfig.bloginote.privacy.title,
+  description: appConfig.bloginote.privacy.description,
+  ogDescription: appConfig.bloginote.privacy.description,
+  ogUrl: `${runtimeConfig.public.hostname}/privacy`
+}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
+
 </script>
 
 <template>
   <div>
     <Head>
-      <Title>Subscribe</Title>
+      <Title>{{ appConfig.bloginote.privacy.title }}</Title>
     </Head>
     <NuxtLayout name="base">
-      <!-- <ContentDoc class="subscribe-content-container container mx-auto lg:max-w-4xl px-6 md:px-12 py-12"> -->
-      <!-- <template #not-found> -->
-      <div class="subscribe-content-container container mx-auto lg:max-w-4xl px-6 md:px-12 py-12">
-        <div class="subscribe-content-container">
+      <div class="privacy-content-container container mx-auto lg:max-w-4xl px-6 md:px-12 py-12">
+        <div class="privacy-content-container">
           <h1>
-            Subscribe
+            Privacy Policy (GDPR) and more
           </h1>
           <p class="text-center">
-            <span class="text-sm text-gray-400">click the following icons to copy</span>
+            <span class="text-sm text-gray-400">Click the links or the icons to load the page.</span>
           </p>
           <div class="mx-auto p-8 flex flex-wrap justify-center items-center gap-16">
             <div class="flex flex-col items-center gap-2">
-              <CopyContent
-                :content="`${config.public.hostname}/rss.xml`"
-                :icon-name="'fa-solid:rss-square'"
-                :icon-color-class="'text-orange-400'"
-                :icon-size-class="'w-36 h-36'"
-              />
-              <NuxtLink
-                to="/rss.xml"
-                target="_blank"
+              <a
+                :href="`./privacy.txt`"
+                aria-label="privacy.txt"
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
               >
-                RSS
-              </NuxtLink>
+                <nuxt-icon name="custom/privaty-policy" class="text-green-400 text-9xl" />
+                <br>
+                <span class="flex flex-col items-center">Privacy Policy</span>
+              </a>
             </div>
 
             <div class="flex flex-col items-center gap-2">
-              <CopyContent
-                :content="`${config.public.hostname}/sitemap.xml`"
-                :icon-name="'majesticons:sitemap'"
-                :icon-color-class="'text-purple-400'"
-                :icon-size-class="'w-36 h-36'"
-              />
-              <NuxtLink
-                to="/sitemap.xml"
-                target="_blank"
+              <a
+                :href="`./sitemap.xml`"
+                aria-label="sitemap.xml"
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
               >
-                Sitemap
-              </NuxtLink>
+                <nuxt-icon name="majesticons/sitemap" class="text-purple-400 text-9xl" />
+                <br>
+                <span class="flex flex-col items-center">Sitemap</span>
+              </a>
+            </div>
+
+            <div class="flex flex-col items-center gap-2">
+              <a
+                :href="`./rss.xml`"
+                aria-label="rss.xml"
+                class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
+              >
+                <nuxt-icon name="fa-solid/rss-square" class="text-orange-400 h-1/2 text-9xl" />
+                <br>
+                <span class="flex flex-col items-center">Rss</span>
+              </a>
             </div>
           </div>
         </div>
       </div>
-      <!-- </template>
-      </ContentDoc> -->
     </NuxtLayout>
   </div>
 </template>
 
 <style lang="scss">
-.subscribe-content-container {
+.privacy-content-container {
   h1 {
     @apply py-8 text-3xl sm:text-5xl text-purple-500 font-bold text-center
   }

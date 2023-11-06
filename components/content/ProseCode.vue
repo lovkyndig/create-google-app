@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import mermaid from 'mermaid'
+// import mermaid from 'mermaid'
 
 const props = defineProps({
   code: {
@@ -46,9 +46,8 @@ const toggleExpand = () => {
   expand.value = !expand.value
   if (!expand.value && codeBlockContainer.value) {
     nextTick(() => {
-      codeBlockContainer.value.scrollIntoView({ block: "nearest" })
+      codeBlockContainer.value.scrollIntoView({ block: 'nearest' })
     })
-
   }
 }
 
@@ -97,12 +96,14 @@ const copyState = ref<CopyState>('wait')
 const clipboard = ref<null | Navigator>(null)
 
 onMounted(() => {
+  // @ts-ignore
   clipboard.value = navigator.clipboard
 })
 
 const copyHandler = () => {
   copyState.value = 'process'
   if (clipboard.value) {
+    // @ts-ignore
     clipboard.value.writeText(props.code).then(() => {
       copyState.value = 'success'
 

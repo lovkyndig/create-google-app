@@ -122,7 +122,7 @@ const setTreeHandler = (path: number[], type = 'drill-down') => {
     }
   ]
 
-   // the start folderNavPath just contain empty array
+  // the start folderNavPath just contain empty array
   let folderNavPathTemp:number[] = []
 
   if (folderNavPath.length > 0) {
@@ -236,13 +236,13 @@ const getFileTypeIcon = (type:string) => {
                 >
                   <template #default="{ data }">
                     <PostListItem
-                      v-for="article in data"
+                      v-for="article in (data as any)"
                       :key="article._path"
                       :article="article"
                       class="hidden sm:block"
                     />
                     <PostCardItem
-                      v-for="article in data"
+                      v-for="article in (data as any)"
                       :key="article._path"
                       :article="article"
                       :list-len="articleFolderFiles.length"
@@ -289,13 +289,13 @@ const getFileTypeIcon = (type:string) => {
                   >
                     <template #default="{ data }">
                       <PostListItem
-                        v-for="article in data"
+                        v-for="article in (data as any)"
                         :key="article._path"
                         :article="article"
                         class="hidden sm:block"
                       />
                       <PostCardItem
-                        v-for="article in data"
+                        v-for="article in (data as any)"
                         :key="article._path"
                         :article="article"
                         :list-len="data.length"
