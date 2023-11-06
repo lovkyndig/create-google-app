@@ -1,3 +1,17 @@
+import { isProduction } from 'std-env'
+import pkg from './package.json'
+
+// grepper capitalize first letter in all words in a string, separeted with space ' ' or hyphen '-' (like name in package.json)
+const capitalize = (string) => {
+  const words = string.split(/[\s-]+/)
+  for (const i in words) {
+    words[i] = words[i][0].toUpperCase() + words[i].substring(1)
+  }
+  return words.join(' ')
+}
+// console.log('The pkg.name is now changed to: ' + capitalize(pkg.name))
+// end grepper
+
 export default defineNuxtConfig({
   app: {
     // baseURL: '/'
@@ -15,15 +29,16 @@ export default defineNuxtConfig({
       created: false,
       updated: false
     },
-    rss: {
-      title: 'BlogiNote',
-      description: 'BlogiNote is a Nuxt Theme to build a static website for showing blog and note with flexible layouts and fancy interaction.',
-      image: 'https://bloginote.benbinbin.com/default-avatar.png',
-      favicon: 'https://bloginote.benbinbin.com/default-favicon.ico',
-      copyright: `All rights reserved ${(new Date()).getFullYear()}, Benbinbin`
+    site: { // renamed from rss
+      title: capitalize(pkg.name),
+      description: 'Guide to Create Google App in one day or one week, depending on the programming skills.',
+      image: `${pkg.homepage}/img/svg/avatar.svg`, // avatar also in appconfig
+      favicon: `${pkg.homepage}/favicon.svg`, // favicon also in appconfig
+      copyright: `All rights reserved ${(new Date()).getFullYear()}, Kyrie Eleison`
     },
     public: {
-      hostname: 'https://bloginote.benbinbin.com'
+      hostname: pkg.homepage,
+      production_mode: isProduction
     }
   },
   modules: [
@@ -39,28 +54,13 @@ export default defineNuxtConfig({
     highlight: {
       // See the available themes on https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
       theme: 'one-dark-pro',
-      // check out https://content.nuxtjs.org/api/configuration#highlightpreload for the default preload languages
-      // ['diff', 'json', 'js', 'ts', 'css', 'shell', 'html', 'md', 'yaml']
-      // check out https://github.com/shikijs/shiki/blob/main/docs/languages.md for the available program language
-      preload: ['vue', 'python', 'tsx']
+      preload: ['vue', 'markdown', 'md']
     },
     markdown: {
       toc: {
         depth: 5,
         searchDepth: 5
-      },
-      remarkPlugins: ['remark-math', 'remark-sub', 'remark-super'],
-      rehypePlugins: {
-        'rehype-katex': {
-          // the math formula will render as HTML and Mathml
-          // because the Mathml <annotation> contain the formula text content
-          // and enable to copy the formula from the web page
-          // refer to https://katex.org/docs/options.html#:~:text=output
-          output: 'mathml' // the default value is `htmlAndMathml`
-        }
       }
-    },
-    // ignores: ['images', 'attachment']
-    ignores: [],
+    }
   }
 })
