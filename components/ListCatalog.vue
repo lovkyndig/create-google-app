@@ -68,9 +68,8 @@ const expandAllHeadingsHandler = inject('expandAllHeadingsHandler') as () => voi
           :class="syncCatalogToggleState ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-500 hover:text-white bg-purple-100 hover:bg-purple-500'"
           @click="syncCatalogToggleState = !syncCatalogToggleState"
         >
-          <IconCustom
-            name="ic:outline-link"
-            class="w-4 h-4"
+          <nuxt-icon
+            name="ic/outline-link"
           />
         </button>
 
@@ -78,9 +77,8 @@ const expandAllHeadingsHandler = inject('expandAllHeadingsHandler') as () => voi
           class="catalog-btn flex text-green-400 hover:text-green-500 active:text-white bg-green-100 active:bg-green-500 border-green-400"
           @click="expandAllHeadingsHandler"
         >
-          <IconCustom
-            name="ic:outline-unfold-more"
-            class="w-4 h-4"
+          <nuxt-icon
+            name="ic/outline-unfold-more"
           />
         </button>
 
@@ -88,9 +86,8 @@ const expandAllHeadingsHandler = inject('expandAllHeadingsHandler') as () => voi
           class="catalog-btn flex text-red-400 hover:text-red-500 bg-red-100 active:text-white active:bg-red-500 border-red-400"
           @click="collapseAllHeadingsHandler"
         >
-          <IconCustom
-            name="ic:outline-unfold-less"
-            class="w-4 h-4"
+          <nuxt-icon
+            name="ic/outline-unfold-less"
           />
         </button>
       </div>
@@ -101,9 +98,8 @@ const expandAllHeadingsHandler = inject('expandAllHeadingsHandler') as () => voi
           :class="catalogType === 'floatTree' ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-500 hover:text-white bg-purple-100 hover:bg-purple-500'"
           @click="toggleFloatCatalogTypeHandler"
         >
-          <IconCustom
-            name="ic:outline-account-tree"
-            class="w-4 h-4"
+          <nuxt-icon
+            name="ic/outline-account-tree"
           />
         </button>
         <button
@@ -111,9 +107,8 @@ const expandAllHeadingsHandler = inject('expandAllHeadingsHandler') as () => voi
           :class="(catalogType === 'floatTree' || catalogType === 'floatList') ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-500 hover:text-white bg-purple-100 hover:bg-purple-500'"
           @click="toggleCatalogFloatHandler"
         >
-          <IconCustom
-            :name="catalogType === 'sidebarList' ? 'mingcute:miniplayer-line' : 'mingcute:expand-player-line'"
-            class="w-4 h-4"
+          <nuxt-icon
+            :name="catalogType === 'sidebarList' ? 'mingcute/miniplayer-line' : 'mingcute/expand-player-line'"
           />
         </button>
       </div>

@@ -320,9 +320,9 @@ const getFileTypeIcon = (type:string) => {
       >
         <div class="flex py-8 justify-between">
           <div class="folder-nav-container flex sm:flex-wrap items-center gap-1 overflow-x-auto">
-            <IconCustom
-              name="ph:folder-open-fill"
-              class="shrink-0 w-6 h-6 text-yellow-400"
+            <nuxt-icon
+              name="ph/folder-open-fill"
+              class="shrink-0 text-2xl text-yellow-400"
             />
             <div
               v-for="(folder, index) in folderNavArr"
@@ -355,9 +355,9 @@ const getFileTypeIcon = (type:string) => {
               target="_blank"
               class="self-start px-4 py-2 flex items-start gap-1 hover:text-blue-500 hover:bg-blue-100 transition-colors duration-300 rounded-lg"
             >
-              <IconCustom
+              <nuxt-icon
                 :name="getFileTypeIcon(item._type)"
-                class="shrink-0 w-6 h-6"
+                class="shrink-0 text-2xl"
               />
               <span class="line-camp-2 break-all">
                 {{ item.title }}

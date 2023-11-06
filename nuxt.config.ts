@@ -48,7 +48,9 @@ export default defineNuxtConfig({
     [resolve('./modules/copy-image-files'), { cleanFolders: ['public/article'] }],
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
-    '@vite-pwa/nuxt'
+    '@vite-pwa/nuxt',
+    '@vueuse/nuxt',
+    'nuxt-icons'
   ],
   // https://content.nuxtjs.org
   content: {

@@ -106,9 +106,8 @@ const tabsHeaderScrollingHandler = () => {
         :class="scrollPos === 'start' ? 'opacity-30' : ''"
         @click="scrollTabsHeaderHandler('left')"
       >
-        <IconCustom
-          name="ic:round-keyboard-arrow-left"
-          class="w-4 h-4"
+        <nuxt-icon
+          name="ic/round-keyboard-arrow-left"
         />
       </button>
       <button
@@ -118,9 +117,8 @@ const tabsHeaderScrollingHandler = () => {
         :class="scrollPos === 'end' ? 'opacity-30' : ''"
         @click="scrollTabsHeaderHandler('right')"
       >
-        <IconCustom
-          name="ic:round-keyboard-arrow-right"
-          class="w-4 h-4"
+        <nuxt-icon
+          name="ic/round-keyboard-arrow-right"
         />
       </button>
     </div>

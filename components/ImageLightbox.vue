@@ -540,9 +540,8 @@ const pointerCancelHandler = (event:PointerEvent) => {
         @click.stop.prevent="clickHandler(false)"
       >
         <span>Esc</span>
-        <IconCustom
-          name="ic:round-close"
-          class="w-4 h-4"
+        <nuxt-icon
+          name="ic/round-close"
         />
       </button>
     </Transition>
@@ -567,9 +566,9 @@ const pointerCancelHandler = (event:PointerEvent) => {
           :class="scrollPos === 'start' ? ' opacity-30' : ('opacity-100')"
           @click.stop.prevent="scrollHandler('left')"
         >
-          <IconCustom
-            name="material-symbols:arrow-left-rounded"
-            class="w-6 h-6"
+          <nuxt-icon
+            name="material-symbols/arrow-left-rounded"
+            class="text-2xl"
           />
         </button>
         <div
@@ -598,9 +597,9 @@ const pointerCancelHandler = (event:PointerEvent) => {
           :class="scrollPos === 'end' ? 'opacity-30' : 'opacity-100'"
           @click.stop.prevent="scrollHandler('right')"
         >
-          <IconCustom
-            name="material-symbols:arrow-right-rounded"
-            class="w-6 h-6"
+          <nuxt-icon
+            name="material-symbols/arrow-right-rounded"
+            class="text-2xl"
           />
         </button>
       </div>

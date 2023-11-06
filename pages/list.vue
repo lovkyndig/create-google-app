@@ -290,9 +290,9 @@ const getFileTypeIcon = (type) => {
             :class="showMoreFilter ? 'bg-purple-500 hover:bg-purple-400 text-white' : 'bg-purple-100 text-purple-400 hover:text-purple-500'"
             @click="showMoreFilter = !showMoreFilter"
           >
-            <IconCustom
-              name="mdi:filter-plus-outline"
-              class="w-6 h-6"
+            <nuxt-icon
+              name="mdi/filter-plus-outline"
+              class="text-3xl"
             />
           </button>
           <div class="grow max-w-full space-y-2 ">
@@ -301,9 +301,9 @@ const getFileTypeIcon = (type) => {
                 class="shrink-0 px-2 py-1 hidden sm:flex items-center text-gray-500 hover:bg-gray-200 rounded"
                 @click="showMoreTheme = !showMoreTheme"
               >
-                <IconCustom
-                  name="ic:round-keyboard-arrow-right"
-                  class="w-5 h-5 transition-transform duration-300"
+                <nuxt-icon
+                  name="ic/round-keyboard-arrow-right"
+                  class="text-xl transition-transform duration-300"
                   :class="showMoreTheme ? 'rotate-90' : 'rotate-0'"
                 />
                 <p>
@@ -323,9 +323,9 @@ const getFileTypeIcon = (type) => {
                     :class="currentTheme === 'all' ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-400 hover:text-purple-500 bg-purple-100'"
                     @click="toggleTheme('all')"
                   >
-                    <IconCustom
-                      name="material-symbols:category-rounded"
-                      class="w-5 h-5"
+                    <nuxt-icon
+                      name="material-symbols/category-rounded"
+                      class="text-xl"
                     />
                     <p>all</p>
                   </button>
@@ -340,9 +340,9 @@ const getFileTypeIcon = (type) => {
                     :class="currentTheme === getTheme(item._path) ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-400 hover:text-purple-500 bg-purple-100'"
                     @click="toggleTheme(getTheme(item._path))"
                   >
-                    <IconCustom
-                      name="material-symbols:category-rounded"
-                      class="shrink-0 w-5 h-5"
+                    <nuxt-icon
+                      name="material-symbols/category-rounded"
+                      class="shrink-0 text-xl"
                     />
                     <p>
                       {{ getTheme(item._path) }}
@@ -369,9 +369,9 @@ const getFileTypeIcon = (type) => {
                     class="shrink-0 px-2 py-1 hidden sm:flex items-center text-gray-500 hover:bg-gray-200 rounded"
                     @click="showMoreTag = !showMoreTag"
                   >
-                    <IconCustom
-                      name="ic:round-keyboard-arrow-right"
-                      class="w-5 h-5 transition-transform duration-300"
+                    <nuxt-icon
+                      name="ic/round-keyboard-arrow-right"
+                      class="text-xl transition-transform duration-300"
                       :class="showMoreTag ? 'rotate-90' : 'rotate-0'"
                     />
                     <p>
@@ -407,9 +407,9 @@ const getFileTypeIcon = (type) => {
                     class="shrink-0 px-2 py-1 hidden sm:flex items-center text-gray-500 hover:bg-gray-200 rounded"
                     @click="showMoreSeries = !showMoreSeries"
                   >
-                    <IconCustom
-                      name="ic:round-keyboard-arrow-right"
-                      class="w-5 h-5 transition-transform duration-300"
+                    <nuxt-icon
+                      name="ic/round-keyboard-arrow-right"
+                      class="text-xl transition-transform duration-300"
                       :class="showMoreSeries ? 'rotate-90' : 'rotate-0'"
                     />
                     <p>
@@ -435,9 +435,9 @@ const getFileTypeIcon = (type) => {
                         :disabled="(series === 'all' || currentTheme === 'all' || themeSeries[currentTheme]?.includes(series)) ? false : true"
                         @click="toggleSeries(series)"
                       >
-                        <IconCustom
-                          name="bi:collection"
-                          class="shrink-0 w-5 h-5"
+                        <nuxt-icon
+                          name="bi/collection"
+                          class="shrink-0 text-xl"
                         />
                         <p>{{ series }}</p>
                       </button>
@@ -452,24 +452,21 @@ const getFileTypeIcon = (type) => {
                 class="px-4 py-1 sm:hidden text-red-400 hover:text-red-500 bg-red-50 hover:bg-red-100 transition-colors duration-300 rounded"
                 @click="toggleTheme('all')"
               >
-                <IconCustom
-                  name="ant-design:clear-outlined"
-                  class="w-4 h-4"
+                <nuxt-icon
+                  name="ant-design/clear-outlined"
                 />
               </button>
               <button
                 class="grow py-1 sm:hidden text-purple-500 bg-purple-100 rounded"
                 @click="showMoreFilter = !showMoreFilter"
               >
-                <IconCustom
+                <nuxt-icon
                   v-show="!showMoreFilter"
-                  name="ic:round-keyboard-arrow-down"
-                  class="w-4 h-4"
+                  name="ic/round-keyboard-arrow-down"
                 />
-                <IconCustom
+                <nuxt-icon
                   v-show="showMoreFilter"
-                  name="ic:round-keyboard-arrow-up"
-                  class="w-4 h-4"
+                  name="ic/round-keyboard-arrow-up"
                 />
               </button>
               <button
@@ -477,15 +474,13 @@ const getFileTypeIcon = (type) => {
                 :class="showListDetail ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-50 hover:bg-green-100'"
                 @click="showListDetail = !showListDetail"
               >
-                <IconCustom
+                <nuxt-icon
                   v-show="showListDetail"
-                  name="ic:round-unfold-less"
-                  class="w-4 h-4"
+                  name="ic/round-unfold-less"
                 />
-                <IconCustom
+                <nuxt-icon
                   v-show="!showListDetail"
-                  name="ic:round-unfold-more"
-                  class="w-4 h-4"
+                  name="ic/round-unfold-more"
                 />
               </button>
             </div>
@@ -499,9 +494,9 @@ const getFileTypeIcon = (type) => {
           class="p-2 flex items-center text-red-400 hover:text-red-500 bg-red-50 hover:bg-red-100 transition-colors duration-300 rounded"
           @click="toggleTheme('all')"
         >
-          <IconCustom
-            name="ant-design:clear-outlined"
-            class="w-5 h-5"
+          <nuxt-icon
+            name="ant-design/clear-outlined"
+            class="text-lg"
           />
           <p class="hidden sm:block">
             Clear Filter
@@ -512,15 +507,15 @@ const getFileTypeIcon = (type) => {
           :class="showListDetail ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-50 hover:bg-green-100'"
           @click="showListDetail = !showListDetail"
         >
-          <IconCustom
+          <nuxt-icon
             v-show="showListDetail"
-            name="ic:round-unfold-less"
-            class="w-5 h-5"
+            name="ic/round-unfold-less"
+            class="text-xl"
           />
-          <IconCustom
+          <nuxt-icon
             v-show="!showListDetail"
-            name="ic:round-unfold-more"
-            class="w-5 h-5"
+            name="ic/round-unfold-more"
+            class="text-xl"
           />
           <p class="hidden sm:block">
             {{ showListDetail ? 'Less' : 'More' }} Detail
@@ -532,9 +527,9 @@ const getFileTypeIcon = (type) => {
         v-if="pending"
         class="grow flex flex-col justify-center items-center space-y-2 text-gray-400"
       >
-        <IconCustom
-          name="eos-icons:loading"
-          class="w-10 h-10"
+        <nuxt-icon
+          name="eos-icons/loading"
+          class="text-4xl"
         />
         <p class="text-xl">
           Loading
@@ -557,9 +552,9 @@ const getFileTypeIcon = (type) => {
               class="block px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-blue-100 transition-colors duration-300 rounded-lg space-y-2"
             >
               <div class="flex items-start">
-                <IconCustom
+                <nuxt-icon
                   :name="getFileTypeIcon(item._type)"
-                  class="shrink-0 p-1 w-6 h-6 sm:w-7 sm:h-7"
+                  class="shrink-0 p-1 text-2xl sm:w-7 sm:h-7"
                 />
                 <h2 class="grow font-bold text-base sm:text-lg">
                   {{ item.title }}
@@ -593,9 +588,9 @@ const getFileTypeIcon = (type) => {
                 :class="currentSeries === item.series ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-100'"
                 @click="toggleSeries(item.series)"
               >
-                <IconCustom
-                  name="bi:collection"
-                  class="shrink-0 w-4 h-4"
+                <nuxt-icon
+                  name="bi/collection"
+                  class="shrink-0"
                 />
                 <p>{{ item.series }}</p>
               </button>

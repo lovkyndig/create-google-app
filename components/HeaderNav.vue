@@ -128,9 +128,8 @@ const showSearchModal = useState('showSearchModal')
           class="self-stretch px-4 py-1.5 flex justify-center items-center gap-2 text-gray-600 border border-gray-400 rounded-md opacity-50 hover:opacity-100 transition-opacity duration-300"
           @click="showSearchModal=true"
         >
-          <IconCustom
-            name="tabler:search"
-            class="w-4 h-4"
+          <nuxt-icon
+            name="tabler/search"
           />
           <span class="hidden lg:block text-sm">Search</span>
           <span class="hidden md:flex justify-center items-center gap-1 text-xs ">
@@ -166,9 +165,9 @@ const showSearchModal = useState('showSearchModal')
             class="sub-nav-item-card text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-100"
             @click="showSubNav=false"
           >
-            <IconCustom
-              name="material-symbols:category-rounded"
-              class="w-8 h-8"
+            <nuxt-icon
+              name="material-symbols/category-rounded"
+              class="text-3xl"
             />
             <p class="py-2 font-bold text-center">
               All
@@ -181,9 +180,9 @@ const showSearchModal = useState('showSearchModal')
             class="sub-nav-item-card text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-100"
             @click="showSubNav=false"
           >
-            <IconCustom
-              name="material-symbols:category-rounded"
-              class="w-8 h-8"
+            <nuxt-icon
+              name="material-symbols/category-rounded"
+              class="text-3xl"
             />
             <p class="py-2 font-bold text-center">
               {{ theme.title }}

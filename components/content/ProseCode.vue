@@ -138,12 +138,14 @@ const urlRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-
  */
 // convert mermaid code to svg
 const mermaidGraph = ref('')
+/*
 onMounted(() => {
   if (props.language === 'mermaid' && props.code && document) {
     mermaid.mermaidAPI.initialize({ startOnLoad: false })
     mermaidGraph.value = mermaid.mermaidAPI.render('graphDiv', props.code)
   }
 })
+*/
 </script>
 
 <template>
@@ -161,9 +163,9 @@ onMounted(() => {
           v-show="codeLines > 3 && props.language !== 'mermaid'"
           @click="toggleExpand"
         >
-          <IconCustom
-            name="material-symbols:keyboard-arrow-down-rounded"
-            class="w-4 h-4 text-gray-400 transition-transform duration-300"
+          <nuxt-icon
+            name="material-symbols/keyboard-arrow-down-rounded"
+            class="text-gray-400 transition-transform duration-300"
             :class="expand ? '' : '-rotate-90'"
           />
         </button>
@@ -180,9 +182,9 @@ onMounted(() => {
           class=" no-underline transition-colors duration-300"
           style="text-decoration-line: none; color: #94a3b8;"
         >
-          <IconCustom
-            name="bi:link-45deg"
-            class="shrink-0 w-4 h-4"
+          <nuxt-icon
+            name="bi/link-45deg"
+            class="shrink-0"
           />
           <!-- <span class="shrink-0 text-xs">{{ props.filename }}</span> -->
         </NuxtLink>
@@ -190,9 +192,9 @@ onMounted(() => {
           v-else
           class=" flex items-center gap-2 text-gray-400 "
         >
-          <IconCustom
-            name="bi:file-earmark-code"
-            class="shrink-0 w-4 h-4 "
+          <nuxt-icon
+            name="bi/file-earmark-code"
+            class="shrink-0"
           />
           <span class="shrink-0 text-xs">{{ props.filename }}</span>
         </div>
@@ -205,25 +207,24 @@ onMounted(() => {
           :disabled="copyState !== 'wait' || !clipboard"
           @click="copyHandler"
         >
-          <IconCustom
+          <nuxt-icon
             v-show="copyState === 'wait'"
-            name="uil:copy"
-            class="w-4 h-4"
+            name="uil/copy"
           />
-          <IconCustom
+          <nuxt-icon
             v-show="copyState === 'process'"
-            name="eos-icons:loading"
-            class="w-4 h-4 text-purple-500"
+            name="eos-icons/loading"
+            class="text-purple-500"
           />
-          <IconCustom
+          <nuxt-icon
             v-show="copyState === 'success'"
-            name="uil:check"
-            class="w-4 h-4 text-green-500"
+            name="uil/check"
+            class="text-green-500"
           />
-          <IconCustom
+          <nuxt-icon
             v-show="copyState === 'fail'"
-            name="icon-park-outline:file-failed-one"
-            class="w-4 h-4 text-red-500"
+            name="icon-park-outline/file-failed-one"
+            class="text-red-500"
           />
         </button>
 

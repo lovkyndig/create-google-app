@@ -25,9 +25,9 @@ if (intervalDays > outdatedThreshold) {
     v-if="showOutdatedWarning"
     class="w-fit mx-auto mb-2 px-2 py-1 flex items-center gap-1 text-xs text-red-300 hover:text-red-500 bg-red-50 hover:bg-red-100 rounded transition-colors duration-30"
   >
-    <IconCustom
-      name="bi:exclamation-triangle-fill"
-      class="shrink-0 w-4 h-4"
+    <nuxt-icon
+      name="bi/exclamation-triangle-fill"
+      class="shrink-0"
     />
     <p class="text-center">
       {{ intervalDays }} day(s) have passed since this article {{ props.type }} and it may be outdated

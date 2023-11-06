@@ -1,21 +1,36 @@
 <script setup lang="ts">
 import pkg from '../package.json'
+
 const props = defineProps({
   footerCatalog: {
     type: Boolean,
     default: false
-  },
+  }
 })
-
-const route = useRoute()
-
 const appConfig = useAppConfig()
+const config = useRuntimeConfig()
+const route = useRoute()
 
 /**
  *
- * set head meta for almost all page
+ * set head meta for all pages
+ * https://nuxt.com/docs/getting-started/seo-meta#useseometa
  *
  */
+useServerSeoMeta({
+  ogTitle: config.site.title,
+  ogType: 'website',
+  ogUrl: pkg.homepage,
+  ogImage: `${pkg.homepage}/img/seo-meta/1200x720.webp`,
+  ogImageAlt: pkg.name,
+  twitterImage: `${pkg.homepage}/img/seo-meta/800x425.webp`,
+  twitterSite: '@nuxt_js',
+  twitterCreator: '@nuxt_js',
+  twitterCard: 'summary_large_image',
+  themeColor: '#f9fafb',
+  googleSiteVerification: process.env.GSITE_VERIFICATION
+  // NB! Add verification-code to Vercel "Settings" Environments Variables
+})
 useHead({
   htmlAttrs: { lang: 'en' },
   noscript: [{ children: 'Turn on javascript to use this app!' }],
@@ -31,7 +46,7 @@ useHead({
   ]
 })
 
-if(appConfig.bloginote.scrollSmooth) {
+if (appConfig.bloginote.scrollSmooth) {
   useHead({
     style: [
       'html, body { scroll-behavior: smooth }'
@@ -95,7 +110,7 @@ const showSearchModal = useState('showSearchModal')
 
 // keyboard shortcuts for search modal
 const ModalKeyListener = function (event: KeyboardEvent) {
-  if(event.ctrlKey && event.key ==='k') {
+  if (event.ctrlKey && event.key === 'k') {
     event.preventDefault()
     showSearchModal.value = !showSearchModal.value
   } else if (showSearchModal.value && event.key === 'Escape') {

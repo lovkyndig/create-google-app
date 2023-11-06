@@ -174,9 +174,9 @@ const folderNavScrollingHandler = () => {
       class="group w-full px-4 py-2 flex items-start gap-1 hover:text-yellow-500 hover:bg-yellow-50 rounded-lg transition-colors duration-300"
       @click="expand = true"
     >
-      <IconCustom
-        name="ph:folder-fill"
-        class="shrink-0 w-6 h-6 text-yellow-400"
+      <nuxt-icon
+        name="ph/folder-fill"
+        class="shrink-0 text-2xl text-yellow-400"
       />
       <span class="line-camp-2 break-all">
         {{ props.rootName }}
@@ -191,9 +191,9 @@ const folderNavScrollingHandler = () => {
           class="shrink-0 group w-fit p-2 flex items-center gap-1 relative z-10 text-xs hover:text-yellow-500 active:text-white bg-white hover:bg-yellow-50 active:bg-yellow-500 border-t border-x rounded-t transition-colors duration-300 translate-y-px"
           @click="setTreeHandler"
         >
-          <IconCustom
-            name="ph:folder-open-fill"
-            class="w-4 h-4 text-yellow-400 group-active:text-white"
+          <nuxt-icon
+            name="ph/folder-open-fill"
+            class="text-yellow-400 group-active:text-white"
           />
           {{ folderNavArr[0].title }}
         </button>
@@ -221,9 +221,9 @@ const folderNavScrollingHandler = () => {
             :class="scrollPos === 'start' ? 'opacity-30' : ''"
             @click="scrollFolderNavHandler('left')"
           >
-            <IconCustom
-              name="ic:round-keyboard-arrow-left"
-              class="w-3.5 h-3.5"
+            <nuxt-icon
+              name="ic/round-keyboard-arrow-left"
+              class="text-sm"
             />
           </button>
           <button
@@ -233,18 +233,18 @@ const folderNavScrollingHandler = () => {
             :class="scrollPos === 'end' ? 'opacity-30' : ''"
             @click="scrollFolderNavHandler('right')"
           >
-            <IconCustom
-              name="ic:round-keyboard-arrow-right"
-              class="w-3.5 h-3.5"
+            <nuxt-icon
+              name="ic/round-keyboard-arrow-right"
+              class="text-sm"
             />
           </button>
           <button
             class="p-1 flex items-center text-red-300 hover:text-red-400 bg-red-50 hover:bg-red-100 rounded-full transition-colors duration-300"
             @click="expand = false"
           >
-            <IconCustom
-              name="ion:close"
-              class="w-3.5 h-3.5"
+            <nuxt-icon
+              name="ion/close"
+              class="text-sm"
             />
           </button>
         </div>
@@ -261,9 +261,9 @@ const folderNavScrollingHandler = () => {
             target="_blank"
             class="p-2 flex items-start gap-1 rounded hover:text-blue-500 active:text-white hover:bg-blue-100 active:bg-blue-500 transition-colors duration-300"
           >
-            <IconCustom
+            <nuxt-icon
               :name="getFileTypeIcon(item._type)"
-              class="shrink-0 w-5 h-5"
+              class="shrink-0 text-xl"
             />
             <span class="text-sm break-all">
               {{ item.title }}
@@ -275,9 +275,9 @@ const folderNavScrollingHandler = () => {
             class="group p-2 flex items-start gap-1 rounded hover:text-yellow-500 active:text-white hover:bg-yellow-50 active:bg-yellow-500 transition-colors duration-300"
             @click="addFolderNav(item.title, index)"
           >
-            <IconCustom
-              name="ph:folder-fill"
-              class="shrink-0 w-5 h-5 text-yellow-400 group-active:text-white"
+            <nuxt-icon
+              name="ph/folder-fill"
+              class="shrink-0 text-xl text-yellow-400 group-active:text-white"
             />
             <span class="text-sm break-all">
               {{ item.title }}

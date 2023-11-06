@@ -200,10 +200,10 @@ const toggleCatalogHandler = () => {
         :disabled="!props.item.children"
         @click="toggleCatalogHandler"
       >
-        <IconCustom
+        <nuxt-icon
           v-if="props.item.children"
-          name="ion:add"
-          class="w-3.5 h-3.5 text-white transition-transform duration-500 delay-300"
+          name="ion/add"
+          class="text-sm text-white transition-transform duration-500 delay-300"
           :class="expand ? 'rotate-45' : 'rotate-0'"
         />
         <div

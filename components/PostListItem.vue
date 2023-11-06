@@ -55,7 +55,7 @@ const getCoverUrl = (relativeURL:string) => {
       :to="{ path: '/list', query: { series: props.article.series } }"
       class="w-fit px-2 py-1 flex justify-center items-center space-x-1 text-green-400 hover:text-green-500 bg-green-50 transition-colors duration-300 rounded"
     >
-      <IconCustom name="bi:collection" class="w-4 h-4" />
+      <nuxt-icon name="bi/collection" />
       <p class="text-xs">
         {{ props.article.series }}
       </p>
