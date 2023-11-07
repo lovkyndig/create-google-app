@@ -29,7 +29,7 @@ if (props.data._path) {
  */
 let showTime = true
 // show created and updated time or not decided by appConfig
-showTime = appConfig.articlePage.showTime
+showTime = appConfig.myLayer.articlePage.showTime
 // show created and updated time or not decided by page metadata
 if ('showTime' in props.data) {
   showTime = props.data.showTime
@@ -42,7 +42,7 @@ if ('showTime' in props.data) {
  */
 let showOutdatedWarningComponent = true
 // show expire warning or not decided by appConfig
-showOutdatedWarningComponent = appConfig.articlePage.outdated.show
+showOutdatedWarningComponent = appConfig.myLayer.articlePage.outdated.show
 if ('showOutdatedWarning' in props.data) {
   // show expire warning or not decided by page metadata
   showOutdatedWarningComponent = props.data.showOutdatedWarning
@@ -109,22 +109,15 @@ if (props.data?.series) {
 // if the page metadata has the information about previous or next article
 // rewrite the default value
 if (props.data?.prevArticleUrl) {
-  // eslint-disable-next-line vue/no-setup-props-destructure
   prevArticleUrl.value = props.data.prevArticleUrl
 }
-
 if (props.data?.prevArticleName) {
-  // eslint-disable-next-line vue/no-setup-props-destructure
   prevArticleName.value = props.data.prevArticleName
 }
-
 if (props.data?.nextArticleUrl) {
-  // eslint-disable-next-line vue/no-setup-props-destructure
   nextArticleUrl.value = props.data.nextArticleUrl
 }
-
 if (props.data?.nextArticleName) {
-  // eslint-disable-next-line vue/no-setup-props-destructure
   nextArticleName.value = props.data.nextArticleName
 }
 // #endregion
@@ -160,7 +153,7 @@ provide('activeH4Heading', activeH4Heading)
 provide('activeH5Heading', activeH5Heading)
 provide('activeH6Heading', activeH6Heading)
 
-function setActiveHeading (heading: HTMLElement) {
+function setActiveHeading(heading: HTMLElement) {
   const headingPathStr = heading?.dataset?.headingPath
 
   if (headingPathStr) {
@@ -204,7 +197,7 @@ onMounted(() => {
             }
           }
           if (index && index - 1 >= 0) {
-            const prevHeading = headingDomList[index - 1]
+            const prevHeading = headingDomList[index-1]
             setActiveHeading(prevHeading as HTMLElement)
           }
         }
@@ -281,12 +274,13 @@ provide('expandAllHeadingsHandler', expandAllHeadingsHandler)
 const detailNodeArr = ref<null | NodeListOf<HTMLDetailsElement>>(null)
 const anchorNodeArr = ref<null | NodeListOf<HTMLAnchorElement>>(null) // added 20.10.23
 
-const anchorClick = useState('anchorClick', () => false) // added 20.10.23
+// added 20.10.23
+const anchorClick = useState('anchorClick', () => false)
 
 const addDetailsClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
   list.forEach((element) => {
     element.addEventListener('click', (event) => {
-      if (anchorClick.value === false) { // added 20.10.23
+      if (!anchorClick.value) { // added 20.10.23
         useNuxtApp().$closeOtherSiblings(event) // added 04.10.23
       }
       event.stopPropagation()
@@ -308,10 +302,14 @@ const addDetailsClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
           }
         }
       }
-      anchorClick.value = false // added 20.10.2023
-    }, { passive: true })
+    })
   })
 }
+
+const {
+  $anchorClickListener,
+  $closeAllHeadings
+} = useNuxtApp() as any
 
 onMounted(() => {
   if (articleDOM.value) {
@@ -323,9 +321,9 @@ onMounted(() => {
       // add click event listener for each <details> element
       addDetailsClickListener(detailNodeArr.value)
       // added 21.10.23
-      anchorClick.value = useNuxtApp().$anchorClickListener(anchorNodeArr.value) as any
+      anchorClick.value = $anchorClickListener(anchorNodeArr.value)
       // added 03.10.23
-      useNuxtApp().$closeAllHeadings() // if not searchString
+      $closeAllHeadings() // if not searchString
     }
   }
 })
@@ -350,18 +348,6 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
 //   unWatchHeading()
 // })
 // #endregion
-
-/**
- * Loading LazyMarkdownPostCatalog wehn showCatalog.value = true
- * added 31.10.2023 to create-google-app v1.0.0-rc.84
- */
-const catalogListener = useState('catalogListener', () => false)
-watch(showCatalog, () => {
-  const treeCatalog = props.data?.body?.toc && props.data.body.toc.links.length > 0
-  if (treeCatalog && showCatalog.value) {
-    catalogListener.value = true // loading LazyMarkdownPostCatalog
-  }
-})
 </script>
 
 <template>
@@ -385,9 +371,9 @@ watch(showCatalog, () => {
           target="_blank"
           class="p-2 flex items-center gap-1 text-gray-600 hover:text-white hover:bg-purple-500 focus:outline-purple-500 focus:outline-none rounded transition-colors duration-300"
         >
-          <svgo-material-symbols-category-rounded
-            class="shrink-0 w-4 h-4"
-            :font-controlled="false"
+          <nuxt-icon
+            name="material-symbols/category-rounded"
+            class="shrink-0"
           />
           <span class="text-xs">{{ theme }}</span>
         </NuxtLink>
@@ -399,9 +385,8 @@ watch(showCatalog, () => {
             v-if="props.data.created || props.data.git_time_created"
             class="flex items-center gap-1 text-gray-400 hover:text-gray-400 transition-colors duration-300"
           >
-            <svgo-mdi-pencil-circle
-              class="w-4 h-4"
-              :font-controlled="false"
+            <nuxt-icon
+              name="mdi/pencil-circle"
             />
             <span class="text-xs">Created {{ (new Date(props.data.created || props.data.git_time_created)).toLocaleDateString() }}</span>
           </div>
@@ -409,9 +394,8 @@ watch(showCatalog, () => {
             v-if="props.data.updated || props.data.git_time_updated"
             class="flex items-center gap-1 text-gray-400 hover:text-gray-400 transition-colors duration-300"
           >
-            <svgo-mdi-clock
-              class="w-4 h-4"
-              :font-controlled="false"
+            <nuxt-icon
+              name="mdi/clock"
             />
             <span class="text-xs">Updated {{ (new Date(props.data.updated || props.data.git_time_updated)).toLocaleDateString() }}</span>
           </div>
@@ -422,9 +406,9 @@ watch(showCatalog, () => {
             class="p-2 flex items-center gap-1 text-gray-600 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
             @click="showSeriesModal=true"
           >
-            <svgo-bi-collection
-              class="shrink-0 w-4 h-4"
-              :font-controlled="false"
+            <nuxt-icon
+              name="bi/collection"
+              class="shrink-0"
             />
             <span class="text-xs">{{ props.data.series }}</span>
           </button>
@@ -434,9 +418,9 @@ watch(showCatalog, () => {
             :class="showTags ? 'bg-blue-500 hover:bg-blue-400 text-white' : 'text-gray-600 hover:text-white hover:bg-blue-500 '"
             @click="showTags = !showTags"
           >
-            <svgo-bi-collection
-              class="shrink-0 w-4 h-4"
-              :font-controlled="false"
+            <nuxt-icon
+              name="bi/collection"
+              class="shrink-0"
             />
             <span class="text-xs">Tags</span>
           </button>
@@ -462,9 +446,8 @@ watch(showCatalog, () => {
           :to="prevArticleUrl"
           class="p-2 flex items-center gap-1 text-xs text-gray-400 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
         >
-          <svgo-ic-round-keyboard-arrow-left
-            class="w-4 h-4"
-            :font-controlled="false"
+          <nuxt-icon
+            name="ic/round-keyboard-arrow-left"
           />
           <span>Prev Article</span>
         </NuxtLink>
@@ -474,9 +457,8 @@ watch(showCatalog, () => {
           class="p-2 flex items-center gap-1 text-xs text-gray-400 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
         >
           <span>Next Article</span>
-          <svgo-ic-round-keyboard-arrow-right
-            class="w-4 h-4"
-            :font-controlled="false"
+          <nuxt-icon
+            name="ic/round-keyboard-arrow-right"
           />
         </NuxtLink>
       </div>
@@ -500,7 +482,9 @@ watch(showCatalog, () => {
 
     <MarkdownPostContent :data="props.data" />
 
+    <!--    **************************************************    -->
     <GithubComments class="giscus" />
+    <!--    **************************************************    -->
 
     <div
       v-if="(prevArticleUrl || nextArticleUrl)"
@@ -512,9 +496,9 @@ watch(showCatalog, () => {
         class="px-4 py-6 flex justify-start items-center text-gray-600 hover:text-white hover:bg-green-500 border border-gray-400 hover:border-green-500 focus:outline-none rounded-lg transition-colors duration-300"
       >
         <div class="flex items-center gap-1">
-          <svgo-ic-round-keyboard-arrow-left
-            class="shrink-0 w-8 h-8 opacity-70"
-            :font-controlled="false"
+          <nuxt-icon
+            name="ic/round-keyboard-arrow-left"
+            class="shrink-0 text-3xl opacity-70"
           />
           <div class="flex flex-col gap-2">
             <p class="text-lg font-bold">
@@ -546,16 +530,16 @@ watch(showCatalog, () => {
               {{ nextArticleName }}
             </p>
           </div>
-          <svgo-ic-round-keyboard-arrow-right
-            class="shrink-0 w-8 h-8 opacity-70"
-            :font-controlled="false"
+          <nuxt-icon
+            name="ic/round-keyboard-arrow-right"
+            class="shrink-0 text-3xl opacity-70"
           />
         </div>
       </NuxtLink>
     </div>
 
     <LazyMarkdownPostCatalog
-      v-if="catalogListener"
+      v-if="props.data?.body?.toc && props.data.body.toc.links.length > 0"
       v-show="showCatalog"
       :catalogs="props.data.body.toc.links"
     />
@@ -576,9 +560,9 @@ watch(showCatalog, () => {
           :class="showCatalog ? 'text-purple-500 bg-purple-100 hover:bg-purple-50 border-purple-200' : 'text-gray-500 bg-white hover:bg-gray-100 border-gray-200'"
           @click="showCatalog = !showCatalog"
         >
-          <svgo-entypo-list
-            class="w-5 h-5"
-            :font-controlled="false"
+          <nuxt-icon
+            name="entypo/list"
+            class="text-xl"
           />
         </button>
       </Transition>

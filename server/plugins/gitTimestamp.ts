@@ -5,7 +5,7 @@ import { execSync } from 'node:child_process'
 const runtimeConfig = useRuntimeConfig()
 const isGetCreated = runtimeConfig.timestamp.created
 const isGetUpdated = runtimeConfig.timestamp.updated
-// @ts-ignore (of unknown reson this error is showing from time to)
+
 export default defineNitroPlugin((nitroApp) => {
   if (isGetCreated || isGetUpdated) {
     // @ts-ignore

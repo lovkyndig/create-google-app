@@ -18,7 +18,7 @@ const catalogType = useState('catalogType')
 const toggleCatalogFloat = useState('toggleCatalogFloat')
 
 const changeCatalogType = (value: 'floatList' | 'floatTree' | 'sidebarList') => {
-  if(value === 'sidebarList') {
+  if (value === 'sidebarList') {
     toggleCatalogFloat.value = false
   } else {
     toggleCatalogFloat.value = true
@@ -27,7 +27,7 @@ const changeCatalogType = (value: 'floatList' | 'floatTree' | 'sidebarList') => 
 }
 
 const toggleFloatCatalogTypeHandler = () => {
-  if(catalogType.value === 'floatTree') {
+  if (catalogType.value === 'floatTree') {
     changeCatalogType('floatList')
   } else {
     changeCatalogType('floatTree')
@@ -63,27 +63,31 @@ const expandAllHeadingsHandler = inject('expandAllHeadingsHandler') as () => voi
     >
       <div class="flex items-center gap-2">
         <button
-          id="toggleAllHeadings"
           class="catalog-btn flex border-purple-400"
           :class="syncCatalogToggleState ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-500 hover:text-white bg-purple-100 hover:bg-purple-500'"
           @click="syncCatalogToggleState = !syncCatalogToggleState"
         >
-          <svgo-c-outline-link class="w-4 h-4" :font-controlled="false" />
+          <nuxt-icon
+            name="ic/outline-link"
+          />
         </button>
 
         <button
           class="catalog-btn flex text-green-400 hover:text-green-500 active:text-white bg-green-100 active:bg-green-500 border-green-400"
           @click="expandAllHeadingsHandler"
         >
-          <svgo-ic-outline-unfold-more class="w-4 h-4" :font-controlled="false" />
+          <nuxt-icon
+            name="ic/outline-unfold-more"
+          />
         </button>
 
         <button
-          id="collapseAllHeadings"
           class="catalog-btn flex text-red-400 hover:text-red-500 bg-red-100 active:text-white active:bg-red-500 border-red-400"
           @click="collapseAllHeadingsHandler"
         >
-          <svgo-ic-outline-unfold-less class="w-4 h-4" :font-controlled="false" />
+          <nuxt-icon
+            name="ic/outline-unfold-less"
+          />
         </button>
       </div>
 
@@ -93,17 +97,18 @@ const expandAllHeadingsHandler = inject('expandAllHeadingsHandler') as () => voi
           :class="catalogType === 'floatTree' ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-500 hover:text-white bg-purple-100 hover:bg-purple-500'"
           @click="toggleFloatCatalogTypeHandler"
         >
-          <svgo-ic-outline-account-tree class="w-4 h-4" :font-controlled="false" />
+          <nuxt-icon
+            name="ic/outline-account-tree"
+          />
         </button>
         <button
           class="catalog-btn hidden xl:flex border-purple-400"
           :class="(catalogType === 'floatTree' || catalogType === 'floatList') ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-500 hover:text-white bg-purple-100 hover:bg-purple-500'"
           @click="toggleCatalogFloatHandler"
         >
-          s<SvgSidebar
-            :name="`${catalogType}`"
-            class="text-base"
-          /> <!-- w-4 h-4 mingcute:[icon-name] -->
+          <nuxt-icon
+            :name="catalogType === 'sidebarList' ? 'mingcute/miniplayer-line' : 'mingcute/expand-player-line'"
+          />
         </button>
       </div>
     </div>

@@ -11,7 +11,7 @@ const props = defineProps({
   colorClass: {
     type: String,
     default: 'text-purple-700 bg-purple-100/20 border-purple-100'
-  },
+  }, // text-purple-500 changed to 700
   colorStyle: {
     type: String,
     default: ''
@@ -39,22 +39,22 @@ const props = defineProps({
       v-if="props.avatar"
       :src="props.avatar"
       :class="avatarClass"
-      alt="img"
+      alt="avatar"
     >
   </div>
 </template>
 
 <style scoped lang="scss">
 :slotted(h1), h1 {
-    @apply pb-6 sm:pb-10 font-bold text-3xl sm:text-5xl;
-    word-wrap: break-word;
+  @apply pb-6 sm:pb-10 font-bold text-3xl sm:text-5xl;
+  word-wrap: break-word;
 }
 
 :slotted(p), p {
-    @apply text-lg sm:text-2xl opacity-100;
-    em {
-      color: #581c87
-    }
+  @apply text-lg sm:text-2xl opacity-100;
+  em {
+    color: #581c87
+  }
 }
 /* added color and changeded opacity from 95 - 26.10.2023 */
 </style>

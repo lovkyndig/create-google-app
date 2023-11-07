@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const props = defineProps<{
-  showResetButton: boolean;
-  startWidth: number;
-  startHeight: number;
-  positionPoint: 'leftTop' | 'rightTop' | 'leftBottom' | 'rightBottom';
-  startX: number;
-  startY: number;
+  showResetButton: boolean
+  startWidth: number
+  startHeight: number
+  positionPoint: 'leftTop' | 'rightTop' | 'leftBottom' | 'rightBottom'
+  startX: number
+  startY: number
 }>()
 
 const floatDOM = ref(null)
@@ -19,22 +19,22 @@ const contentWidth = ref(props.startWidth || 0)
 const contentHeight = ref(props.startHeight || 0)
 
 const locationCoordinate = computed(() => {
-  let styleStr;
+  let styleStr
   switch (props.positionPoint) {
     case 'leftTop':
       styleStr = `left: ${containerX.value}px; top: ${containerY.value}px`
-      break;
+      break
     case 'leftBottom':
       styleStr = `left: ${containerX.value}px; bottom: ${containerY.value}px`
-      break;
+      break
     case 'rightTop':
       styleStr = `right: ${containerX.value}px; top: ${containerY.value}px`
-      break;
+      break
     case 'rightBottom':
       styleStr = `right: ${containerX.value}px; bottom: ${containerY.value}px`
-      break;
+      break
     default:
-      break;
+      break
   }
   return styleStr
 })
@@ -113,7 +113,7 @@ const resizePointerMoveHandler = (event: PointerEvent) => {
       if (resizeDirection.value === 'left' || resizeDirection.value === 'up-left' || resizeDirection.value === 'bottom-left') {
         contentWidth.value = startContentWidth - distanceX
 
-        if(props.positionPoint === 'leftTop' || props.positionPoint === 'leftBottom') {
+        if (props.positionPoint === 'leftTop' || props.positionPoint === 'leftBottom') {
           // if pointer is moving the left handlers
           // and the location position is on left
           // adjust the "containerX" at the same time
@@ -122,14 +122,13 @@ const resizePointerMoveHandler = (event: PointerEvent) => {
       } else {
         contentWidth.value = startContentWidth + distanceX
 
-        if(props.positionPoint === 'rightTop' || props.positionPoint === 'rightBottom') {
+        if (props.positionPoint === 'rightTop' || props.positionPoint === 'rightBottom') {
           // if pointer is moving the right handlers
           // and the location position is on right
           // adjust the "containerX" at the same time
           containerX.value = startContainerX - distanceX
         }
       }
-
     }
   }
 }
@@ -170,13 +169,13 @@ const dragPointerMoveHandler = (event: PointerEvent) => {
     const dx = currentDragPointer.x - startDragPointer.x
     const dy = currentDragPointer.y - startDragPointer.y
 
-    if(props.positionPoint === 'leftTop' || props.positionPoint === 'leftBottom') {
+    if (props.positionPoint === 'leftTop' || props.positionPoint === 'leftBottom') {
       containerX.value = startContainerX + dx
     } else {
       containerX.value = startContainerX - dx
     }
 
-    if(props.positionPoint === 'leftTop' || props.positionPoint === 'rightTop') {
+    if (props.positionPoint === 'leftTop' || props.positionPoint === 'rightTop') {
       containerY.value = startContainerY + dy
     } else {
       containerY.value = startContainerY - dy
@@ -297,7 +296,9 @@ const resetFloatCardHandler = () => {
           @pointercancel="dragPointerCancelHandler"
           @pointerup="dragPointerCancelHandler"
         >
-          <svgo-akar-drag-horizontal class="w-4 h-4" :font-controlled="false" />
+          <nuxt-icon
+            name="akar/drag-horizontal"
+          />
         </button>
 
         <!-- content -->
@@ -396,13 +397,12 @@ const resetFloatCardHandler = () => {
           class="p-3 sm:p-2 flex justify-center items-center fixed bottom-[8.5rem] sm:bottom-28 right-2 sm:right-4 z-40 active:text-white rounded-lg text-purple-400 hover:text-purple-500 bg-purple-100 active:bg-purple-500 border border-purple-200"
           @click="resetFloatCardHandler"
         >
-          <svgo-bi-layout-sidebar-inset class="w-5 h-5" :font-controlled="false" />
+          <nuxt-icon
+            name="bi/layout-sidebar-inset"
+            class="text-xl"
+          />
         </button>
       </Transition>
     </Teleport>
   </aside>
 </template>
-
-<style scoped>
-
-</style>

@@ -2,12 +2,12 @@
 const props = defineProps({
   tabNameArr: {
     type: Array,
-    required: true,
+    required: true
   },
   activeTabIndex: {
     type: Number,
-    required: true,
-  },
+    required: true
+  }
 })
 
 const emits = defineEmits(['update:activeTabIndex'])
@@ -106,7 +106,9 @@ const tabsHeaderScrollingHandler = () => {
         :class="scrollPos === 'start' ? 'opacity-30' : ''"
         @click="scrollTabsHeaderHandler('left')"
       >
-        <svgo-ic-round-keyboard-arrow-left class="w-4 h-4" :font-controlled="false" />
+        <nuxt-icon
+          name="ic/round-keyboard-arrow-left"
+        />
       </button>
       <button
         v-show="showScrollBtn"
@@ -115,7 +117,9 @@ const tabsHeaderScrollingHandler = () => {
         :class="scrollPos === 'end' ? 'opacity-30' : ''"
         @click="scrollTabsHeaderHandler('right')"
       >
-        <svgo-ic-round-keyboard-arrow-right class="w-4 h-4" :font-controlled="false" />
+        <nuxt-icon
+          name="ic/round-keyboard-arrow-right"
+        />
       </button>
     </div>
   </div>

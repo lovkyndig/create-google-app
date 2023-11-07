@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
-// @ts-ignore
-import IconComponent from '../assets/icons/ion/add.svg?component' // <svgo-ion-add
-
 interface CatalogItemType {
   id: string;
   depth: number;
   text: string;
   children?: CatalogItemType[]
 }
-
 const props = defineProps<{
   item: CatalogItemType,
   depth: number
@@ -35,23 +31,23 @@ interface BtnBgColorMapType {
 const btnBgColorMap: BtnBgColorMapType = {
   2: {
     withChildren: 'bg-purple-500',
-    withoutChildren: 'bg-purple-200',
+    withoutChildren: 'bg-purple-200'
   },
   3: {
     withChildren: 'bg-red-500',
-    withoutChildren: 'bg-red-200',
+    withoutChildren: 'bg-red-200'
   },
   4: {
     withChildren: 'bg-green-500',
-    withoutChildren: 'bg-green-200',
+    withoutChildren: 'bg-green-200'
   },
   5: {
     withChildren: 'bg-blue-500',
-    withoutChildren: 'bg-blue-200',
+    withoutChildren: 'bg-blue-200'
   },
   6: {
     withChildren: 'bg-gray-500',
-    withoutChildren: 'bg-gray-200',
+    withoutChildren: 'bg-gray-200'
   }
 }
 
@@ -202,13 +198,11 @@ const toggleCatalogHandler = () => {
         :disabled="!props.item.children"
         @click="toggleCatalogHandler"
       >
-        <!-- <svgo-ion-add have to be imported as component -->
-        <IconComponent
+        <nuxt-icon
           v-if="props.item.children"
-          name="add"
-          class="w-3.5 h-3.5 text-white transition-transform duration-500 delay-300"
+          name="ion/add"
+          class="text-sm text-white transition-transform duration-500 delay-300"
           :class="expand ? 'rotate-45' : 'rotate-0'"
-          :font-controlled="false"
         />
         <div
           v-else

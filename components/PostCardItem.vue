@@ -36,11 +36,7 @@ const getCoverUrl = (relativeURL:(string)) => {
       :to="props.article._path"
       class="grow text-xl p-6 text-gray-600 hover:text-blue-400 transition-colors duration-300 space-y-4"
     >
-      <!--
-        ACCESSIBILITY:
-        Heading elements are not in a sequentially-descending order
-        26.10.2023 Changed h3 with h1
-      -->
+      <!-- h3 changed to h2 and h-32 added to p-element -->
       <h2 class="font-bold">
         {{ props.article.title || "This Post Hasn't Title Yet" }}
       </h2>
@@ -48,38 +44,23 @@ const getCoverUrl = (relativeURL:(string)) => {
         {{ props.article.description }}
       </p>
     </NuxtLink>
-    <div id="footer" class="shrink-0 px-6 pb-1 flex justify-between items-start gap-2 my-footer">
-      <div v-if="props.article.tags" class="scroll-container grow flex sm:flex-wrap gap-1 overflow-x-auto my-footer">
-        <!--
-          changed query: { tags: [tag, 'HTML']}
-          'HTML' created error on ahrefs website-checker
-          SEO:
-          Tap targets are not sized appropriately
-          added m-8 to class 26.10.2023
-        -->
+    <div class="shrink-0 px-6 pb-6 flex justify-between items-start gap-2">
+      <div v-if="props.article.tags" class="scroll-container grow flex sm:flex-wrap gap-1 overflow-x-auto">
         <NuxtLink
           v-for="tag in props.article.tags"
           :key="tag"
           :to="{ path: '/list', query: { tags: [tag] } }"
-          class="mt-2 shrink-0 px-2 py-1 text-xs text-blue-700 hover:text-blue-950 bg-purple-100 transition-colors duration-300 rounded"
+          class="shrink-0 px-2 py-1 text-xs text-blue-700 hover:text-blue-950 bg-purple-100 transition-colors duration-300 rounded"
         >
           #{{ tag }}
         </NuxtLink>
       </div>
-      <!--
-        Style for pc-screen, for link above and below, is in PostCrdItem
-        -----
-        NAMES AND LABELS: Links do not have a discernible name
-        https://stackoverflow.com/questions/51683761/how-to-fix-lighthouse-links-do-not-have-a-discernible-name
-        added title 26.10.2023
-      -->
       <NuxtLink
         v-if="props.article.series"
         :to="{ path: '/list', query: { series: props.article.series } }"
-        title="Open up the folder series!"
         class="shrink-0 px-2 py-1 flex justify-center items-center text-green-700 hover:text-green-950 bg-purple-100 transition-colors duration-300 rounded"
       >
-        <svgo-bi-collection class="w-4 h-4" :font-controlled="false" />
+        <nuxt-icon name="bi/collection" />
       </NuxtLink>
     </div>
   </div>

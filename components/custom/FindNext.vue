@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const searchString = useState('searchString')
 
+console.log('<FindNext is started')
+
 const findNext = () => {
   const divElement = document.querySelector('#findNext')
   const text = searchString.value
@@ -30,11 +32,13 @@ onMounted(() => {
  * source:
  * http://help.dottoro.com/ljkjvqqo.php
  */
+// eslint-disable-next-line
 const tooltip = 'Click to find next search-string!'
 
 const inputText = ref<string>('')
 
 const inputHandler = (event: Event) => {
+  // eslint-disable-next-line
   const target = event.target as HTMLInputElement
   // Not using this. The inputvalue is saved in "searchInput", defined below as ref.
 }
@@ -53,6 +57,7 @@ onMounted(() => {
     let pos4 = 0
     if (document.getElementById(elmnt.id + 'Header')) {
       // if present, the header is where you move the DIV from:
+      // @ts-ignore
       document.getElementById(elmnt.id + 'Header').onmousedown = dragMouseDown
     } else {
       // otherwise, move the DIV from anywhere inside the DIV:
@@ -91,11 +96,25 @@ onMounted(() => {
   }
 })
 
+/*
+Remember to insert the following tag in SearchModal.vue (line 208)
+<NuxtLink
+  :to="`${item.url+'?searchparam='+searchString}`"
+  aria-label="searchStringParam"
+  @click.exact="showSearchModal=false"
+/>
+*/
 </script>
 
 <template>
   <div id="findNext" class="text-purple-600">
-    <svgo-custom-find-next id="findNextImg" class="text-xl" alt="img" :font-controlled="false" @click="findNext()" />
+    <nuxt-icon
+      id="findNextImg"
+      name="custom/find-next"
+      class="text-6xl"
+      alt="img"
+      @click="findNext()"
+    />
     <input
       id="findIndput"
       ref="searchInput"

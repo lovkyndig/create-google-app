@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 // import mermaid from 'mermaid'
-// add mermaid as dependencies if you want to use this and
-// remove commend in the bottom of scripts.
 
 const props = defineProps({
   code: {
@@ -95,16 +93,18 @@ if (props.filename) {
  */
 type CopyState = 'wait' | 'process' | 'success' | 'fail'
 const copyState = ref<CopyState>('wait')
-const clipboard = ref<Clipboard | Navigator>(null) // ref<null | Navigator>(null)
+const clipboard = ref<null | Navigator>(null)
 
 onMounted(() => {
+  // @ts-ignore
   clipboard.value = navigator.clipboard
 })
 
 const copyHandler = () => {
   copyState.value = 'process'
   if (clipboard.value) {
-    navigator.clipboard.writeText(props.code).then(() => {
+    // @ts-ignore
+    clipboard.value.writeText(props.code).then(() => {
       copyState.value = 'success'
 
       const timer = setTimeout(() => {
@@ -136,9 +136,10 @@ const urlRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-
  *
  * mermaid
  *
- *
+ */
 // convert mermaid code to svg
 const mermaidGraph = ref('')
+/*
 onMounted(() => {
   if (props.language === 'mermaid' && props.code && document) {
     mermaid.mermaidAPI.initialize({ startOnLoad: false })
@@ -163,11 +164,10 @@ onMounted(() => {
           v-show="codeLines > 3 && props.language !== 'mermaid'"
           @click="toggleExpand"
         >
-          <!-- If this isn't working - import it as component -->
-          <svgo-material-symbols-keyboard-arrow-down-rounded
-            class="w-4 h-4 text-gray-400 transition-transform duration-300"
+          <nuxt-icon
+            name="material-symbols/keyboard-arrow-down-rounded"
+            class="text-gray-400 transition-transform duration-300"
             :class="expand ? '' : '-rotate-90'"
-            :font-controlled="false"
           />
         </button>
       </div>
@@ -183,9 +183,9 @@ onMounted(() => {
           class=" no-underline transition-colors duration-300"
           style="text-decoration-line: none; color: #94a3b8;"
         >
-          <svgo-bi-link-45deg
-            class="shrink-0 w-4 h-4"
-            :font-controlled="false"
+          <nuxt-icon
+            name="bi/link-45deg"
+            class="shrink-0"
           />
           <!-- <span class="shrink-0 text-xs">{{ props.filename }}</span> -->
         </NuxtLink>
@@ -193,9 +193,9 @@ onMounted(() => {
           v-else
           class=" flex items-center gap-2 text-gray-400 "
         >
-          <svgo-bi-file-earmark-code
-            class="shrink-0 w-4 h-4"
-            :font-controlled="false"
+          <nuxt-icon
+            name="bi/file-earmark-code"
+            class="shrink-0"
           />
           <span class="shrink-0 text-xs">{{ props.filename }}</span>
         </div>
@@ -208,29 +208,24 @@ onMounted(() => {
           :disabled="copyState !== 'wait' || !clipboard"
           @click="copyHandler"
         >
-          <SvgoUilCopy
+          <nuxt-icon
             v-show="copyState === 'wait'"
-            name="copy"
-            class="w-4 h-4"
-            :font-controlled="false"
+            name="uil/copy"
           />
-          <SvgoEosIconsLoading
+          <nuxt-icon
             v-show="copyState === 'process'"
-            name="icons-loading"
-            class="w-4 h-4 text-purple-500"
-            :font-controlled="false"
+            name="eos-icons/loading"
+            class="text-purple-500"
           />
-          <SvgoUilCheck
+          <nuxt-icon
             v-show="copyState === 'success'"
-            name="check"
-            class="w-4 h-4 text-green-500"
-            :font-controlled="false"
+            name="uil/check"
+            class="text-green-500"
           />
-          <LazySvgoIconParkOutlineFileFailedOne
+          <nuxt-icon
             v-show="copyState === 'fail'"
-            name="file-failed-one"
-            class="w-4 h-4 text-red-500"
-            :font-controlled="false"
+            name="icon-park-outline/file-failed-one"
+            class="text-red-500"
           />
         </button>
 
@@ -245,11 +240,11 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <!-- removed v-html="mermaidGraph" from mermaid-div -->
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <div
       v-if="props.language === 'mermaid'"
-      id="mermaid"
       class="mermaid p-4 rounded-b-lg"
+      v-html="mermaidGraph"
     />
     <div
       v-else

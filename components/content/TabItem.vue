@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// eslint-disable-next-line
 const props = defineProps({
   name: {
     default: 'Tab',

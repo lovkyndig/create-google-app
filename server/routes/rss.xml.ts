@@ -1,7 +1,6 @@
 import { Feed } from 'feed'
 import { defineEventHandler, appendHeader } from 'h3'
 import { serverQueryContent } from '#content/server'
-// @ts-ignore (vue-tsc giv error on the following line somethimes)
 import { useRuntimeConfig } from '#imports'
 
 // refer to https://mokkapps.de/blog/create-an-rss-feed-with-nuxt-3-and-nuxt-content-v2/

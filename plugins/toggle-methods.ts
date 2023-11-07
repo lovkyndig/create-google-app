@@ -14,7 +14,7 @@ export default defineNuxtPlugin(() => {
         if (document) {
           // first step: set attributes (style is set in assets/style.css)
           const detailEl = document.querySelectorAll('details')
-          detailEl.forEach((element) => { // adding //tooltip 
+          detailEl.forEach((element) => { // adding //tooltip
             element.setAttribute('title', 'Click beside the Header - to toggle the content!') 
             element.setAttribute('style', 'position:relative;')
             const summary = element.querySelector('summary')

@@ -79,8 +79,8 @@ const showSearchModal = useState('showSearchModal')
       >
         <div class="flex flex-col justify-center items-center gap-1">
           <img
-            :src="appConfig.site.favicon"
-            alt="img"
+            :src="appConfig.myLayer.avatar"
+            alt="avatar"
             class="w-6 h-6"
           >
           <p
@@ -116,7 +116,7 @@ const showSearchModal = useState('showSearchModal')
             About
           </NuxtLink>
           <NuxtLink
-            v-if="appConfig.privacyPage"
+            v-if="appConfig.myLayer.privacyPage"
             to="/privacy"
             class="option-item text-purple-600 bg-purple-50 hover:bg-purple-100 border-purple-500"
             @click="showFooterNavMoreOptions = false"
@@ -134,11 +134,14 @@ const showSearchModal = useState('showSearchModal')
         @click="showFooterNavThemeOptions = !showFooterNavThemeOptions"
       >
         <div class="flex flex-col justify-center items-center gap-1">
-          <svgo-ic-round-category class="w-6 h-6" :font-controlled="false" />
+          <nuxt-icon
+            name="ic/round-category"
+            class="text-2xl"
+          />
           <p
             class="text-xs"
           >
-            {{ appConfig.myLayer.menu.btn1 }}
+            {{ appConfig.myLayer.menu.btn }}
           </p>
         </div>
       </button>
@@ -177,8 +180,10 @@ const showSearchModal = useState('showSearchModal')
         @click="showSearchModal=true"
       >
         <div class="flex flex-col justify-center items-center gap-1">
-          <!-- tabler:search (original in BlogiNote) -->
-          <svgo-akar-search class="w-6 h-6" :font-controlled="false" />
+          <nuxt-icon
+            name="tabler/search"
+            class="text-2xl"
+          />
           <p class="text-xs">
             Search
           </p>

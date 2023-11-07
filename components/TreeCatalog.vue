@@ -1,4 +1,4 @@
-<script setup lang="js">
+<script setup lang="ts">
 // use d3-hierarchy module to build the catalog tree
 // d3-hierarchy documentation https://github.com/d3/d3-hierarchy/
 // refer to https://observablehq.com/@d3/collapsible-tree
@@ -217,9 +217,9 @@ const resetTransform = () => {
 // toggle heading
 const targetHeadingNode = ref(null)
 // record and sync collapse headings
-const collapsedHeadingsSet = inject('collapsedHeadingsSet')
-const collapseHeadingHandler = inject('collapseHeadingHandler')
-const expandHeadingHandler = inject('expandHeadingHandler')
+const collapsedHeadingsSet = inject('collapsedHeadingsSet') as any
+const collapseHeadingHandler = inject('collapseHeadingHandler') as any
+const expandHeadingHandler = inject('expandHeadingHandler') as any
 
 const recursiveCheck = (node) => {
   if (node._children) {
@@ -315,8 +315,8 @@ const toggleHeadingHandler = (node) => {
 
 // const changeToggleAllCatalogItemState = inject('changeToggleAllCatalogItemState')
 
-const collapseAllHeadingsHandler = inject('collapseAllHeadingsHandler')
-const expandAllHeadingsHandler = inject('expandAllHeadingsHandler')
+const collapseAllHeadingsHandler = inject('collapseAllHeadingsHandler') as any
+const expandAllHeadingsHandler = inject('expandAllHeadingsHandler') as any
 
 // const recursiveExpandHeadingNode = (node) => {
 //   if(node._children) {
@@ -454,11 +454,10 @@ const toggleCatalogFloatHandler = () => {
                     :disabled="!node._children"
                     @click="toggleHeadingHandler(node)"
                   >
-                    <!-- If this isn't working - import is as component  -->
-                    <svgo-ion-add
+                    <nuxt-icon
+                      name="ion/add"
                       class="text-white transition-transform duration-200"
                       :class="node.children ? 'rotate-45' : 'rotate-0'"
-                      :font-controlled="false"
                     />
                   </button>
                   <div
@@ -500,9 +499,8 @@ const toggleCatalogFloatHandler = () => {
           :class="syncCatalogToggleState ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-500 hover:text-white bg-purple-100 hover:bg-purple-500'"
           @click="syncCatalogToggleState = !syncCatalogToggleState"
         >
-          <svgo-ic-outline-link
-            class="w-4 h-4"
-            :font-controlled="false"
+          <nuxt-icon
+            name="ic/outline-link"
           />
         </button>
 
@@ -510,9 +508,8 @@ const toggleCatalogFloatHandler = () => {
           class="catalog-btn flex text-green-400 hover:text-green-500 active:text-white bg-green-100 active:bg-green-500 border-green-400"
           @click="expandAllHeadingsHandler"
         >
-          <svgo-ic-outline-unfold-more
-            class="w-4 h-4"
-            :font-controlled="false"
+          <nuxt-icon
+            name="ic/outline-unfold-more"
           />
         </button>
 
@@ -520,9 +517,8 @@ const toggleCatalogFloatHandler = () => {
           class="catalog-btn flex text-red-400 hover:text-red-500 bg-red-100 active:text-white active:bg-red-500 border-red-400"
           @click="collapseAllHeadingsHandler"
         >
-          <svgo-ic-outline-unfold-less
-            class="w-4 h-4"
-            :font-controlled="false"
+          <nuxt-icon
+            name="ic/outline-unfold-less"
           />
         </button>
 
@@ -530,9 +526,8 @@ const toggleCatalogFloatHandler = () => {
           class="catalog-btn flex text-purple-400 hover:text-purple-500 bg-purple-100 active:text-white active:bg-purple-500 border-purple-400"
           @click="resetTransform"
         >
-          <svgo-ic-round-settings-backup-restore
-            class="w-4 h-4"
-            :font-controlled="false"
+          <nuxt-icon
+            name="ic/round-settings-backup-restore"
           />
         </button>
       </div>
@@ -543,9 +538,8 @@ const toggleCatalogFloatHandler = () => {
           :class="catalogType === 'floatTree' ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-500 hover:text-white bg-purple-100 hover:bg-purple-500'"
           @click="toggleFloatCatalogTypeHandler"
         >
-          <svgo-ic-outline-account-tree
-            class="w-4 h-4"
-            :font-controlled="false"
+          <nuxt-icon
+            name="ic/outline-account-tree"
           />
         </button>
         <button
@@ -553,14 +547,9 @@ const toggleCatalogFloatHandler = () => {
           :class="(catalogType === 'floatTree' || catalogType === 'floatList') ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-500 hover:text-white bg-purple-100 hover:bg-purple-500'"
           @click="toggleCatalogFloatHandler"
         >
-          <SvgoMingcuteMiniplayerLine
-            v-if="catalogType === 'sidebarList'"
-            class="text-lg"
-          /> <!--
-            w-4 h-4
-            :name='catalogType === 'sidebarList' ? 'mingcute:miniplayer-line' : 'mingcute:expand-player-line''
-          -->
-          <SvgoMingcuteExpandPlayerLine v-else class="text-lg" />
+          <nuxt-icon
+            :name="catalogType === 'sidebarList' ? 'mingcute/miniplayer-line' : 'mingcute/expand-player-line'"
+          />
         </button>
       </div>
     </div>

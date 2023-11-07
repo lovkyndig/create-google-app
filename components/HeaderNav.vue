@@ -72,7 +72,7 @@ const onAfterEnter = (el:HTMLElement) => {
 // fix the overscroll bug
 const subNavDOM = ref<null | HTMLElement>(null)
 const scrollWheelHandler = (event: WheelEvent) => {
-  if (subNavDOM.value) {
+  if(subNavDOM.value) {
     overscrollWheelHandler(event, subNavDOM.value)
   }
 }
@@ -94,8 +94,8 @@ const showSearchModal = useState('showSearchModal')
       <div class="flex justify-start items-center">
         <NuxtLink to="/">
           <img
-            :src="appConfig.site.logo"
-            alt="img"
+            :src="appConfig.myLayer.meta.logo"
+            alt="logo"
             class="w-96 h-10 rounded-full"
           >
         </NuxtLink>
@@ -107,7 +107,7 @@ const showSearchModal = useState('showSearchModal')
           @mouseleave="setSubNav(false)"
           @click="showSubNav=!showSubNav"
         >
-          {{ appConfig.myLayer.menu.btn1 }}
+          {{ appConfig.myLayer.menu.btn }}
         </button>
         <NuxtLink
           to="/about"
@@ -116,7 +116,7 @@ const showSearchModal = useState('showSearchModal')
           About
         </NuxtLink>
         <NuxtLink
-          v-if="appConfig.privacyPage"
+          v-if="appConfig.myLayer.privacyPage"
           to="/privacy"
           class="btn text-purple-600 hover:bg-purple-100"
         >
@@ -128,8 +128,9 @@ const showSearchModal = useState('showSearchModal')
           class="self-stretch px-4 py-1.5 flex justify-center items-center gap-2 text-gray-600 border border-gray-400 rounded-md opacity-50 hover:opacity-100 transition-opacity duration-300"
           @click="showSearchModal=true"
         >
-          <!-- tabler:search (original in BlogiNote) -->
-          <svgo-akar-search class="w-6 h-6" :font-controlled="false" />
+          <nuxt-icon
+            name="tabler/search"
+          />
           <span class="hidden lg:block text-sm">Search</span>
           <span class="hidden md:flex justify-center items-center gap-1 text-xs ">
             <code class="px-2 py-0.5 border rounded bg-gray-200">Ctrl</code>
@@ -164,7 +165,10 @@ const showSearchModal = useState('showSearchModal')
             class="sub-nav-item-card text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-100"
             @click="showSubNav=false"
           >
-            <svgo-material-symbols-category-rounded class="w-8 h-8" :font-controlled="false" />
+            <nuxt-icon
+              name="material-symbols/category-rounded"
+              class="text-3xl"
+            />
             <p class="py-2 font-bold text-center">
               All
             </p>
@@ -176,7 +180,10 @@ const showSearchModal = useState('showSearchModal')
             class="sub-nav-item-card text-purple-500 bg-purple-50 hover:bg-purple-100 border-purple-100"
             @click="showSubNav=false"
           >
-            <svgo-material-symbols-category-rounded class="w-8 h-8" :font-controlled="false" />
+            <nuxt-icon
+              name="material-symbols/category-rounded"
+              class="text-3xl"
+            />
             <p class="py-2 font-bold text-center">
               {{ theme.title }}
             </p>

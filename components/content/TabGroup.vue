@@ -1,12 +1,11 @@
 <script lang="ts">
 import TabGroupHeader from './TabGroupHeader.vue'
-// @ts-ignore (vue-tsc giv error on the following line somethimes)
 import { defineComponent, h, nextTick, ref } from '#imports'
 
 // refer to @nuxt-themes/docus-edge module component: components/content/CodeGroup.vue
 export default defineComponent({
-  // maybe set the script to setup and change this setup?
-  setup (props, { slots }) {
+  // eslint-disable-next-line
+  setup(props, { slots }) {
     /**
      *
      * change active tab index
@@ -52,8 +51,9 @@ export default defineComponent({
             TabGroupHeader,
             {
               activeTabIndex: activeTabIndex.value,
-              tabNameArr,
-              'onUpdate:activeTabIndex': changeActiveTabIndexHandler,
+              // eslint-disable-next-line
+              tabNameArr: tabNameArr,
+              'onUpdate:activeTabIndex': changeActiveTabIndexHandler
             }
           ),
           h(
@@ -74,7 +74,7 @@ export default defineComponent({
                 },
                 [h(
                   'div',
-                  [node.children?.default?.() || h('div')],
+                  [node.children?.default?.() || h('div')]
                 )]
               )
             })

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
-const runtimeConfig = useRuntimeConfig()
-
+const config = useRuntimeConfig()
 const route = useRoute()
 
 /**
@@ -17,7 +16,7 @@ const { data, pending } = await useAsyncData(`${route.path}`, () => queryContent
  *
  */
 const showCatalog = useState<Boolean>('showCatalog', () => {
-  return appConfig.articlePage.showCatalog
+  return appConfig.myLayer.articlePage.showCatalog
 })
 
 const showFooterNavMoreOptions = useState('showFooterNavMoreOptions')
@@ -36,12 +35,12 @@ const searchString = $getAndChangeSearchparam()
 
 const { $webnoti } = useNuxtApp()
 onMounted(() => {
-  $webnoti(appConfig.myLayer.notification.slug)
+  $webnoti(appConfig.myLayer.slug.notification)
 })
 useSeoMeta({
-  description: `${appConfig.myLayer.seoMeta.slug.description} ${route.fullPath.slice(6)}`,
-  ogDescription: `${appConfig.myLayer.seoMeta.slug.description} ${route.fullPath.slice(6)}`,
-  ogUrl: `${runtimeConfig.public.hostname}${route.fullPath}`
+  description: `${appConfig.myLayer.slug.description} ${route.fullPath.slice(6)}`,
+  ogDescription: `${appConfig.myLayer.slug.description} ${route.fullPath.slice(6)}`,
+  ogUrl: `${config.public.hostname}${route.fullPath}`
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 </script>
 
@@ -64,7 +63,10 @@ useSeoMeta({
           :class="showCatalog ? 'text-purple-500 bg-purple-100 hover:bg-purple-50 border-purple-200' : 'text-gray-500 bg-white hover:bg-gray-100 border-gray-200'"
           @click="showCatalog = !showCatalog"
         >
-          <svgo-entypo-list class="w-5 h-5" :font-controlled="false" />
+          <nuxt-icon
+            name="entypo/list"
+            class="text-xl"
+          />
         </button>
       </template>
       <MarkdownPost
@@ -90,13 +92,15 @@ useSeoMeta({
       >
         <button
           v-show="!showFooterNavMoreOptions && !showFooterNavThemeOptions"
-          id="showCatalogBtn"
           class="grow px-2 py-3 flex justify-center items-center space-y-1 bg-gray-50"
           :class="showCatalog ? 'text-purple-500' : 'text-gray-500'"
           @click="showCatalog = !showCatalog"
         >
           <div class="flex flex-col justify-center items-center gap-1">
-            <svgo-entypo-list class="w-6 h-6" :font-controlled="false" />
+            <nuxt-icon
+              name="entypo/list"
+              class="text-2xl"
+            />
             <p class="text-xs">
               Catalog
             </p>

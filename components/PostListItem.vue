@@ -30,11 +30,11 @@ const getCoverUrl = (relativeURL:string) => {
         style="background: linear-gradient(135deg, rgba(249,250,251,1) 40%, rgba(249,250,251,0.6) 80%, rgba(249,250,251,0.9) 100%)"
       />
     </div>
-    <!-- h3 changed to h1 after lighthouse-test 26.10.2023 s-->
+    <!-- h3 changed after lighthouse-test 26.10.2023 -->
     <NuxtLink :to="props.article._path" class="group block py-4 transition-colors duration-300 space-y-2">
-      <h1 class="font-bold text-2xl text-gray-600 group-hover:text-blue-400 transition-colors duration-500">
+      <h2 class="font-bold text-2xl text-gray-600 group-hover:text-blue-400 transition-colors duration-500">
         {{ props.article.title || "This Post Hasn't Title Yet" }}
-      </h1>
+      </h2>
       <p v-if="props.article.description" class="text-gray-600 short-description">
         {{ props.article.description }}
       </p>
@@ -50,13 +50,12 @@ const getCoverUrl = (relativeURL:string) => {
         #{{ tag }}
       </NuxtLink>
     </div>
-    <!-- Style for mobile, for link above and below, is in PostCrdItem -->
     <NuxtLink
       v-if="props.article.series"
       :to="{ path: '/list', query: { series: props.article.series } }"
-      class="w-fit px-2 py-1 flex justify-center items-center space-x-1 text-green-700 hover:text-green-950 bg-green-50 transition-colors duration-300 rounded"
+      class="w-fit px-2 py-1 flex justify-center items-center space-x-1 text-green-700 hover:text-green-950 bg-purple-100 transition-colors duration-300 rounded"
     >
-      <svgo-bi-collection class="w-4 h-4" :font-controlled="false" />
+      <nuxt-icon name="bi/collection" />
       <p class="text-xs">
         {{ props.article.series }}
       </p>

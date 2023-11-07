@@ -1,18 +1,5 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
-const runtimeConfig = useRuntimeConfig()
-
-onMounted(() => {
-  useNuxtApp().$webnoti(appConfig.myLayer.notification.about)
-})
-
-useSeoMeta({
-  titleTemplate: appConfig.myLayer.seoMeta.about.title,
-  description: appConfig.myLayer.seoMeta.about.description,
-  ogDescription: appConfig.myLayer.seoMeta.about.description,
-  ogUrl: `${runtimeConfig.public.hostname}/about`
-}) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
-
 </script>
 
 <template>
@@ -25,7 +12,7 @@ useSeoMeta({
         <template #not-found>
           <div class="about-me-content-container">
             <h1 style="display: none">
-              {{ appConfig.myLayer.seoMeta.about.title }}
+              {{ appConfig.myLayer.about.title }}
             </h1>
             <p class="max-w-prose mx-auto p-4 mt-8">
               The <b>about.md</b> in <b>content</b>-folder is missing!
@@ -57,24 +44,5 @@ useSeoMeta({
   p {
     @apply py-4 text-lg
   }
-}
-
-.svg {
-  display: block;
-  margin-right: auto;
-  width: 75%;
-}
-
-.svgo-custom-about-not-found {
-  display: block;
-  margin-right: auto;
-  width: 75%;
-}
-
-.content {
-  margin-left: 5%;
-}
-.logo {
-  margin-left: 10%;
 }
 </style>

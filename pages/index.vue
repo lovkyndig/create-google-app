@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import type { NavItem } from '@nuxt/content/dist/runtime/types'
+// import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 
 const appConfig = useAppConfig()
-const runtimeConfig = useRuntimeConfig()
+const config = useRuntimeConfig()
 
 /**
  *
@@ -42,11 +42,11 @@ const articleFolderFiles:NavItem[] = []
 // render blog posts or not
 let showBlogPosts = true
 // if ('homePage' in themeOptions.value && 'showBlogPosts' in themeOptions.value.homePage) {
-showBlogPosts = appConfig.homePage.showBlogPosts
+showBlogPosts = appConfig.myLayer.homePage.showBlogPosts
 // }
 
 const queryPostsWhere = { _type: 'markdown' }
-const queryPostsLimit = appConfig.homePage.postItemLimit || 5
+const queryPostsLimit = appConfig.myLayer.homePage.postItemLimit || 5
 const queryPostsOnly = ['title', 'description', '_type', '_path', 'cover', 'series', 'seriesOrder', 'tags']
 
 if (showBlogPosts && Array.isArray(navTree.value)) {
@@ -156,14 +156,14 @@ const getFileTypeIcon = (type:string) => {
 
 // added in create-google-app v1.0.0 beta 10 (30.09.2023)s
 onMounted(() => {
-  useNuxtApp().$webnoti(`${appConfig.myLayer.notification.frontpage}`)
+  useNuxtApp().$webnoti(`${appConfig.myLayer.home.notification}`)
 })
 
 useSeoMeta({
-  titleTemplate: `v${appConfig.myLayer.meta.version} - ${appConfig.myLayer.seoMeta.home.title}`,
-  description: appConfig.myLayer.seoMeta.home.description,
-  ogDescription: appConfig.myLayer.seoMeta.home.description,
-  ogUrl: `${runtimeConfig.public.hostname}`
+  titleTemplate: `v${appConfig.myLayer.meta.version} - ${appConfig.myLayer.home.title}`,
+  description: appConfig.myLayer.home.description,
+  ogDescription: appConfig.myLayer.home.description,
+  ogUrl: `${config.public.hostname}`
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 
 </script>
@@ -173,7 +173,9 @@ useSeoMeta({
     <Head>
       <Title>Home</Title>
     </Head>
-    <NuxtLayout name="base">
+    <NuxtLayout
+      name="base"
+    >
       <template #header-nav-right>
         <button
           title="toggle homepage layout mode"
@@ -205,11 +207,11 @@ useSeoMeta({
         <div class="sm:px-10 py-16">
           <ContentDoc>
             <template #empty>
-              <IntroCard :avatar="appConfig.site.avatar" />
+              <IntroCard :avatar="appConfig.myLayer.avatar" />
             </template>
             <template #not-found>
               <h1 class="py-4 text-3xl sm:text-5xl font-bold text-center text-purple-500">
-                {{ appConfig.myLayer.seoMeta.home.title }}
+                {{ appConfig.myLayer.home.title }}
               </h1>
               <div class="grid place-items-center text-purple-700">
                 <p class="mt-8">
@@ -234,6 +236,17 @@ useSeoMeta({
           v-if="articleFolder"
           class="py-8"
         >
+          <!-- <h2 class="flex justify-center items-center font-bold text-xl sm:text-3xl text-gray-600">
+            <button
+              class="px-4 py-2 rounded-md transition-colors duration-300"
+              :class="showRecentPosts ? 'text-purple-500 hover:bg-purple-100' : 'text-white bg-purple-500 hover:bg-purple-400'"
+              @click="showRecentPosts = !showRecentPosts"
+            >
+              Blog Post
+            </button>
+          </h2>
+          <hr class="w-1/5 my-6 mx-auto bg-purple-200"> -->
+
           <div class="space-y-8">
             <section class="w-full sm:w-4/5 mx-auto space-y-4">
               <!-- <NuxtLink
@@ -287,14 +300,9 @@ useSeoMeta({
                       {{ theme.title }}
                     </button>
                   </h2>
-                  <!--
-                    CONTENT BEST PRACTICES:
-                    Links do not have descriptive text
-                    https://developer.chrome.com/docs/lighthouse/seo/link-text/?utm_source=lighthouse&utm_medium=devtools
-                  -->
                   <NuxtLink
                     :to="{ path: '/list', query: { theme: getTheme(theme._path) } }"
-                    class="p-2 text-xs font-bold transition-colors duration-300 rounded-lg text-purple-700 bg-purple-200 hover:bg-purple-100"
+                    class="p-2 text-xs font-bold transition-colors duration-300 rounded-lg text-purple-700 bg-purple-200 hover:bg-purple-50"
                   >
                     Open folder
                   </NuxtLink>
@@ -343,7 +351,10 @@ useSeoMeta({
       >
         <div class="flex py-8 justify-between">
           <div class="folder-nav-container flex sm:flex-wrap items-center gap-1 overflow-x-auto">
-            <svgo-ph-folder-open-fill class="shrink-0 w-6 h-6 text-yellow-400" :font-controlled="false" />
+            <nuxt-icon
+              name="ph/folder-open-fill"
+              class="shrink-0 text-2xl text-yellow-400"
+            />
             <div
               v-for="(folder, index) in folderNavArr"
               :key="folderNavArr.length>1 ? folder.path.join() : 'root'"
@@ -375,10 +386,10 @@ useSeoMeta({
               target="_blank"
               class="self-start px-4 py-2 flex items-start gap-1 hover:text-blue-500 hover:bg-blue-100 transition-colors duration-300 rounded-lg"
             >
-              <FileType
+              <nuxt-icon
                 :name="getFileTypeIcon(item._type)"
-                class="shrink-0 text-xl"
-              /> <!--  w-6 h-6 -->
+                class="shrink-0 text-2xl"
+              />
               <span class="line-camp-2 break-all">
                 {{ item.title }}
               </span>
@@ -445,78 +456,4 @@ useSeoMeta({
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-
-/* Tab content - closed */
-.tab-content {
-  max-height: 0;
-  -webkit-transition: max-height 0.35s;
-  -o-transition: max-height 0.35s;
-  transition: max-height 0.35s;
-}
-
-/* :checked - resize to full height */
-.tab input:checked ~ .tab-content {
-  max-height: 100vh;
-}
-
-/* Label formatting when open */
-.tab input:checked + label {
-  /*@apply border-l-2 border-indigo-500 bg-gray-100 text-indigo*/
-  border-left-width: 2px; 
-  border-color: #a855f7;
-  background-color: #f8fafc;
-  color: #7e22ce; /* text-purple-600 */
-}
-
-/* Icon */
-.tab label::after {
-  float: right;
-  right: 0;
-  top: 0;
-  display: block;
-  width: 1.5em;
-  height: 1.5em;
-  line-height: 1.5;
-  font-size: 1.25rem;
-  text-align: center;
-  -webkit-transition: all 0.35s;
-  -o-transition: all 0.35s;
-  transition: all 0.35s;
-}
-
-/* Open Multiple Icon Formatting - Closed */
-.tab input[type="checkbox"] + label::after {
-  content: ">";
-  font-weight: bold; /*.font-bold*/
-  border-width: 1px; /*.border*/
-  border-radius: 9999px; /*.rounded-full */
-  border-color: #b8c2cc; /*.border-grey*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Open Multiple Icon Formatting - Open */
-.tab input[type="checkbox"]:checked + label::after {
-  transform: rotate(90deg);
-  background-color: #a855f7; /* text-purple-500 */
-  color: #f8fafc; /*.text-grey-lightest*/
-}
-
-/* Open One Icon Formatting - Closed */
-.tab input[type="radio"] + label::after {
-  content: "\25BE";
-  font-weight: bold; /*.font-bold*/
-  border-width: 1px; /*.border*/
-  border-radius: 9999px; /*.rounded-full */
-  border-color: #b8c2cc; /*.border-grey*/
-}
-
-/* Open One Icon Formatting - Open */
-.tab input[type="radio"]:checked + label::after {
-  transform: rotateX(180deg);
-  background-color: #a855f7; /* text-purple-500 */
-  color: #f8fafc; /*.text-grey-lightest*/
-}
-
 </style>
