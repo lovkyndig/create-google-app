@@ -272,10 +272,17 @@ provide('expandHeadingHandler', expandHeadingHandler)
 provide('expandAllHeadingsHandler', expandAllHeadingsHandler)
 
 const detailNodeArr = ref<null | NodeListOf<HTMLDetailsElement>>(null)
+const anchorNodeArr = ref<null | NodeListOf<HTMLAnchorElement>>(null) // added 20.10.23
 
-const addClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
+// added 20.10.23
+const anchorClick = useState('anchorClick', () => false)
+
+const addDetailsClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
   list.forEach((element) => {
     element.addEventListener('click', (event) => {
+      if (!anchorClick.value) { // added 20.10.23
+        useNuxtApp().$closeOtherSiblings(event) // added 04.10.23
+      }
       event.stopPropagation()
       // if toggle the heading manually (by click)
       if (syncCatalogToggleState.value) {
@@ -299,14 +306,24 @@ const addClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
   })
 }
 
+const {
+  $anchorClickListener,
+  $closeAllHeadings
+} = useNuxtApp() as any
+
 onMounted(() => {
   if (articleDOM.value) {
     // get all <details> elements
     detailNodeArr.value = articleDOM.value.querySelectorAll('details')
+    anchorNodeArr.value = articleDOM.value.querySelectorAll('a') // added 20.10.23
 
     if (detailNodeArr.value && detailNodeArr.value.length > 0) {
       // add click event listener for each <details> element
-      addClickListener(detailNodeArr.value)
+      addDetailsClickListener(detailNodeArr.value)
+      // added 21.10.23
+      anchorClick.value = $anchorClickListener(anchorNodeArr.value)
+      // added 03.10.23
+      $closeAllHeadings() // if not searchString
     }
   }
 })
@@ -465,9 +482,9 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
 
     <MarkdownPostContent :data="props.data" />
 
-    <!--              -->
+    <!--    **************************************************    -->
     <GithubComments class="giscus" />
-    <!--              -->
+    <!--    **************************************************    -->
 
     <div
       v-if="(prevArticleUrl || nextArticleUrl)"
