@@ -61,7 +61,7 @@ const getCoverUrl = (relativeURL:(string)) => {
         title="Open up the folder series!"
         class="shrink-0 px-2 py-1 flex justify-center items-center text-green-700 hover:text-green-950 bg-purple-100 transition-colors duration-300 rounded"
       >
-        <nuxt-icon name="bi/collection" />
+        <svgo-bi-collection class="w-4 h-4" :font-controlled="false" />
       </NuxtLink>
     </div>
   </div>

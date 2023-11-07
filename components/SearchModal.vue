@@ -138,9 +138,9 @@ const clearInputTextHandler = () => {
           class="flex justify-center items-center"
           @click="focusInputHandler"
         >
-          <nuxt-icon
-            name="tabler/search"
-            class="shrink-0 text-2xl text-gray-600"
+          <svgo-tabler-search
+            class="shrink-0 w-6 h-6 text-gray-600"
+            :font-controlled="false"
           />
         </button>
 
@@ -165,9 +165,9 @@ const clearInputTextHandler = () => {
           class="flex sm:hidden justify-center items-center text-gray-200 hover:text-gray-400 transition-colors"
           @click="clearInputTextHandler"
         >
-          <nuxt-icon
-            name="ion/close-circle"
-            class="text-5xl"
+          <svgo-ion-close-circle
+            class="w-6 h-6"
+            :font-controlled="false"
           />
         </button>
       </div>
@@ -177,9 +177,9 @@ const clearInputTextHandler = () => {
           v-show="!inputText"
           class="p-16 flex flex-col justify-center items-center gap-y-8 text-purple-400"
         >
-          <nuxt-icon
-            name="fluent/text-t-28-filled"
-            class="text-5xl"
+          <svgo-fluent-text-t-28-filled
+            class="w-12 h-12"
+            :font-controlled="false"
           />
           <p>Type to Search</p>
         </div>
@@ -187,9 +187,9 @@ const clearInputTextHandler = () => {
           v-show="inputText && searchState === 'waiting'"
           class="p-16 flex flex-col justify-center items-center gap-y-8 text-purple-400"
         >
-          <nuxt-icon
-            name="fluent/slide-search-28-filled"
-            class="text-5xl animate-bounce"
+          <svgo-fluent-slide-search-28-filled
+            class="w-12 h-12 animate-bounce"
+            :font-controlled="false"
           />
           <p>Searching</p>
         </div>
@@ -223,9 +223,9 @@ const clearInputTextHandler = () => {
           v-show="inputText && searchState === 'solved' && !(searchResults.length > 0)"
           class="p-16 flex flex-col justify-center items-center gap-y-8 text-red-400"
         >
-          <nuxt-icon
-            name="fluent/mail-inbox-dismiss-28-filled"
-            class="text 5xl"
+          <svgo-fluent-mail-inbox-dismiss-28-filled
+            class="w-12 h-12"
+            :font-controlled="false"
           />
           <p>Oops! There is no result.</p>
         </div>

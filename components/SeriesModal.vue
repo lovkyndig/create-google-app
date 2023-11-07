@@ -134,10 +134,7 @@ onUnmounted(() => {
         v-else
         class="p-4 flex flex-col justify-center items-center space-y-2 bg-white rounded-t-lg"
       >
-        <nuxt-icon
-          name="fluent/mail-inbox-dismiss-28-filled"
-          class="text-4xl"
-        />
+        <svgo-fluent-mail-inbox-dismiss-28-filled class="w-10 h-10" :font-controlled="false" />
         <p>Oops! There is no series.</p>
       </div>
       <div

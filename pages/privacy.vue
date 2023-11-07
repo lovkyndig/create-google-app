@@ -36,8 +36,10 @@ useSeoMeta({
                 :href="`./privacy.txt`"
                 aria-label="privacy.txt"
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
-              > <span class="flex flex-col items-center">Privacy Policy</span>
-                <nuxt-icon name="custom/privacy-policy" class="text-green-400 text-9xl" />
+              > <!-- icon="iconoir:privacy-policy" class="w-36 h-36" -->
+                <SvgoCustomPrivacyPolicy class="text-green-400 text-9xl" />
+                <br>
+                <span class="flex flex-col items-center">Privacy Policy</span>
               </a>
             </div>
 
@@ -46,8 +48,10 @@ useSeoMeta({
                 :href="`./sitemap.xml`"
                 aria-label="sitemap.xml"
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
-              > <span class="flex flex-col items-center">Sitemap</span>
-                <nuxt-icon name="majesticons/sitemap" class="text-purple-400 text-9xl" />
+              > <!-- icon="majesticons:sitemap" class="w-36 h-36" -->
+                <SvgoMajesticonsSitemap class="text-purple-400 text-9xl" />
+                <br>
+                <span class="flex flex-col items-center">Sitemap</span>
               </a>
             </div>
 
@@ -56,8 +60,10 @@ useSeoMeta({
                 :href="`./rss.xml`"
                 aria-label="rss.xml"
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
-              > <span class="flex flex-col items-center">Rss</span>
-                <nuxt-icon name="fa-solid/rss-square" class="text-orange-400 h-1/2 text-9xl" />
+              > <!-- icon="fa-solid:rss-square" class="w-36 h-36" -->
+                <SvgoFaSolidRssSquare class="text-orange-400 h-1/2 text-9xl" />
+                <br>
+                <span class="flex flex-col items-center">Rss</span>
               </a>
             </div>
           </div>

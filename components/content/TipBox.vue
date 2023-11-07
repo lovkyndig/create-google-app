@@ -183,9 +183,10 @@ if (boxStyleValue.value) {
     <summary
       class="my-4 font-bold flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity duration-300"
     >
-      <nuxt-icon
-        :name="iconValue || 'bi/lightbulb-fill'"
-      />
+      <SvgTipBox
+        :name="iconValue"
+        class="text-base"
+      /> <!-- w-4 h-4 bi:lightbulb-fill -->
       <span>{{ nameValue || 'Tip' }}</span>
     </summary>
 

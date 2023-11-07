@@ -540,9 +540,7 @@ const pointerCancelHandler = (event:PointerEvent) => {
         @click.stop.prevent="clickHandler(false)"
       >
         <span>Esc</span>
-        <nuxt-icon
-          name="ic/round-close"
-        />
+        <svgo-ic-round-close class="w-4 h-4" :font-controlled="false" />
       </button>
     </Transition>
 
@@ -566,10 +564,7 @@ const pointerCancelHandler = (event:PointerEvent) => {
           :class="scrollPos === 'start' ? ' opacity-30' : ('opacity-100')"
           @click.stop.prevent="scrollHandler('left')"
         >
-          <nuxt-icon
-            name="material-symbols/arrow-left-rounded"
-            class="text-2xl"
-          />
+          <svgo-material-symbols-arrow-left-rounded class="w-6 h-6" :font-controlled="false" />
         </button>
         <div
           ref="zoomImageListContainer"
@@ -597,10 +592,7 @@ const pointerCancelHandler = (event:PointerEvent) => {
           :class="scrollPos === 'end' ? 'opacity-30' : 'opacity-100'"
           @click.stop.prevent="scrollHandler('right')"
         >
-          <nuxt-icon
-            name="material-symbols/arrow-right-rounded"
-            class="text-2xl"
-          />
+          <svgo-material-symbols-arrow-right-rounded class="w-6 h-6" :font-controlled="false" />
         </button>
       </div>
     </Transition>

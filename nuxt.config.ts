@@ -1,8 +1,12 @@
-import { isProduction } from 'std-env'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
 import { createResolver } from '@nuxt/kit'
+import { isProduction } from 'std-env'
 import pkg from './package.json'
 
 const { resolve } = createResolver(import.meta.url)
+
+const currentDir = dirname(fileURLToPath(import.meta.url))
 
 // grepper capitalize first letter in all words in a string, separeted with space ' ' or hyphen '-' (like name in package.json)
 const capitalize = (string: any) => {
@@ -16,9 +20,11 @@ const capitalize = (string: any) => {
 // end grepper
 
 export default defineNuxtConfig({
-  app: {
-    // baseURL: '/'
-  },
+  app: { /* */ },
+  css: [join(currentDir, './assets/style.css')],
+  // @ts-ignore
+  svgo: { autoImportPath: join(currentDir, './assets/icons') },
+  devtools: { enabled: false },
   nitro: {
     prerender: {
       routes: ['/rss.xml', '/sitemap.xml']
@@ -47,7 +53,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@vite-pwa/nuxt',
     '@vueuse/nuxt',
-    'nuxt-icons'
+    'nuxt-svgo'
   ],
   // https://content.nuxtjs.org
   content: {
@@ -55,7 +61,7 @@ export default defineNuxtConfig({
       fields: ['_id', '_type', 'series', 'tags']
     },
     highlight: {
-      // See the available themes on https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
+      // https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
       theme: 'one-dark-pro',
       preload: ['vue', 'markdown', 'md']
     },

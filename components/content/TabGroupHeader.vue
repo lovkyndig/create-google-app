@@ -106,9 +106,7 @@ const tabsHeaderScrollingHandler = () => {
         :class="scrollPos === 'start' ? 'opacity-30' : ''"
         @click="scrollTabsHeaderHandler('left')"
       >
-        <nuxt-icon
-          name="ic/round-keyboard-arrow-left"
-        />
+        <svgo-ic-round-keyboard-arrow-left class="w-4 h-4" :font-controlled="false" />
       </button>
       <button
         v-show="showScrollBtn"
@@ -117,9 +115,7 @@ const tabsHeaderScrollingHandler = () => {
         :class="scrollPos === 'end' ? 'opacity-30' : ''"
         @click="scrollTabsHeaderHandler('right')"
       >
-        <nuxt-icon
-          name="ic/round-keyboard-arrow-right"
-        />
+        <svgo-ic-round-keyboard-arrow-right class="w-4 h-4" :font-controlled="false" />
       </button>
     </div>
   </div>
