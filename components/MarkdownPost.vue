@@ -371,9 +371,9 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           target="_blank"
           class="p-2 flex items-center gap-1 text-gray-600 hover:text-white hover:bg-purple-500 focus:outline-purple-500 focus:outline-none rounded transition-colors duration-300"
         >
-          <nuxt-icon
-            name="material-symbols/category-rounded"
-            class="shrink-0"
+          <svgo-material-symbols-category-rounded
+            class="shrink-0 w-4 h-4"
+            :font-controlled="false"
           />
           <span class="text-xs">{{ theme }}</span>
         </NuxtLink>
@@ -385,8 +385,9 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
             v-if="props.data.created || props.data.git_time_created"
             class="flex items-center gap-1 text-gray-400 hover:text-gray-400 transition-colors duration-300"
           >
-            <nuxt-icon
-              name="mdi/pencil-circle"
+            <svgo-mdi-pencil-circle
+              class="w-4 h-4"
+              :font-controlled="false"
             />
             <span class="text-xs">Created {{ (new Date(props.data.created || props.data.git_time_created)).toLocaleDateString() }}</span>
           </div>
@@ -394,8 +395,9 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
             v-if="props.data.updated || props.data.git_time_updated"
             class="flex items-center gap-1 text-gray-400 hover:text-gray-400 transition-colors duration-300"
           >
-            <nuxt-icon
-              name="mdi/clock"
+            <svgo-mdi-clock
+              class="w-4 h-4"
+              :font-controlled="false"
             />
             <span class="text-xs">Updated {{ (new Date(props.data.updated || props.data.git_time_updated)).toLocaleDateString() }}</span>
           </div>
@@ -406,9 +408,9 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
             class="p-2 flex items-center gap-1 text-gray-600 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
             @click="showSeriesModal=true"
           >
-            <nuxt-icon
-              name="bi/collection"
-              class="shrink-0"
+            <svgo-bi-collection
+              class="shrink-0 w-4 h-4"
+              :font-controlled="false"
             />
             <span class="text-xs">{{ props.data.series }}</span>
           </button>
@@ -418,9 +420,9 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
             :class="showTags ? 'bg-blue-500 hover:bg-blue-400 text-white' : 'text-gray-600 hover:text-white hover:bg-blue-500 '"
             @click="showTags = !showTags"
           >
-            <nuxt-icon
-              name="bi/collection"
-              class="shrink-0"
+            <svgo-bi-collection
+              class="shrink-0 w-4 h-4"
+              :font-controlled="false"
             />
             <span class="text-xs">Tags</span>
           </button>
@@ -446,8 +448,9 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           :to="prevArticleUrl"
           class="p-2 flex items-center gap-1 text-xs text-gray-400 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
         >
-          <nuxt-icon
-            name="ic/round-keyboard-arrow-left"
+          <svgo-ic-round-keyboard-arrow-left
+            class="w-4 h-4"
+            :font-controlled="false"
           />
           <span>Prev Article</span>
         </NuxtLink>
@@ -457,8 +460,9 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           class="p-2 flex items-center gap-1 text-xs text-gray-400 hover:text-white hover:bg-green-500 focus:outline-none rounded transition-colors duration-300"
         >
           <span>Next Article</span>
-          <nuxt-icon
-            name="ic/round-keyboard-arrow-right"
+          <svgo-ic-round-keyboard-arrow-right
+            class="w-4 h-4"
+            :font-controlled="false"
           />
         </NuxtLink>
       </div>
@@ -496,9 +500,9 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
         class="px-4 py-6 flex justify-start items-center text-gray-600 hover:text-white hover:bg-green-500 border border-gray-400 hover:border-green-500 focus:outline-none rounded-lg transition-colors duration-300"
       >
         <div class="flex items-center gap-1">
-          <nuxt-icon
-            name="ic/round-keyboard-arrow-left"
-            class="shrink-0 text-3xl opacity-70"
+          <svgo-ic-round-keyboard-arrow-left
+            class="shrink-0 w-8 h-8 opacity-70"
+            :font-controlled="false"
           />
           <div class="flex flex-col gap-2">
             <p class="text-lg font-bold">
@@ -530,9 +534,9 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
               {{ nextArticleName }}
             </p>
           </div>
-          <nuxt-icon
-            name="ic/round-keyboard-arrow-right"
-            class="shrink-0 text-3xl opacity-70"
+          <svgo-ic-round-keyboard-arrow-right
+            class="shrink-0 w-8 h-8 opacity-70"
+            :font-controlled="false"
           />
         </div>
       </NuxtLink>
@@ -560,9 +564,9 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           :class="showCatalog ? 'text-purple-500 bg-purple-100 hover:bg-purple-50 border-purple-200' : 'text-gray-500 bg-white hover:bg-gray-100 border-gray-200'"
           @click="showCatalog = !showCatalog"
         >
-          <nuxt-icon
-            name="entypo/list"
-            class="text-xl"
+          <svgo-entypo-list
+            class="w-5 h-5"
+            :font-controlled="false"
           />
         </button>
       </Transition>

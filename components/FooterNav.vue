@@ -134,10 +134,7 @@ const showSearchModal = useState('showSearchModal')
         @click="showFooterNavThemeOptions = !showFooterNavThemeOptions"
       >
         <div class="flex flex-col justify-center items-center gap-1">
-          <nuxt-icon
-            name="ic/round-category"
-            class="text-2xl"
-          />
+          <svgo-ic-round-category class="w-6 h-6" :font-controlled="false" />
           <p
             class="text-xs"
           >
@@ -180,10 +177,7 @@ const showSearchModal = useState('showSearchModal')
         @click="showSearchModal=true"
       >
         <div class="flex flex-col justify-center items-center gap-1">
-          <nuxt-icon
-            name="tabler/search"
-            class="text-2xl"
-          />
+          <svgo-akar-search class="w-6 h-6" :font-controlled="false" />
           <p class="text-xs">
             Search
           </p>

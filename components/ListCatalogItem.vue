@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
+// @ts-ignore
+import IconComponent from '../assets/icons/ion/add.svg?component' // <svgo-ion-add
 interface CatalogItemType {
   id: string;
   depth: number;
@@ -198,11 +200,13 @@ const toggleCatalogHandler = () => {
         :disabled="!props.item.children"
         @click="toggleCatalogHandler"
       >
-        <nuxt-icon
+        <!-- <svgo-ion-add have to be imported as component -->
+        <IconComponent
           v-if="props.item.children"
-          name="ion/add"
-          class="text-sm text-white transition-transform duration-500 delay-300"
+          name="add"
+          class="w-3.5 h-3.5 text-white transition-transform duration-500 delay-300"
           :class="expand ? 'rotate-45' : 'rotate-0'"
+          :font-controlled="false"
         />
         <div
           v-else

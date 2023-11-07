@@ -351,10 +351,7 @@ useSeoMeta({
       >
         <div class="flex py-8 justify-between">
           <div class="folder-nav-container flex sm:flex-wrap items-center gap-1 overflow-x-auto">
-            <nuxt-icon
-              name="ph/folder-open-fill"
-              class="shrink-0 text-2xl text-yellow-400"
-            />
+            <svgo-ph-folder-open-fill class="shrink-0 w-6 h-6 text-yellow-400" :font-controlled="false" />
             <div
               v-for="(folder, index) in folderNavArr"
               :key="folderNavArr.length>1 ? folder.path.join() : 'root'"
@@ -386,10 +383,10 @@ useSeoMeta({
               target="_blank"
               class="self-start px-4 py-2 flex items-start gap-1 hover:text-blue-500 hover:bg-blue-100 transition-colors duration-300 rounded-lg"
             >
-              <nuxt-icon
+              <FileType
                 :name="getFileTypeIcon(item._type)"
-                class="shrink-0 text-2xl"
-              />
+                class="shrink-0 text-xl"
+              /> <!--  w-6 h-6 -->
               <span class="line-camp-2 break-all">
                 {{ item.title }}
               </span>

@@ -164,10 +164,11 @@ onMounted(() => {
           v-show="codeLines > 3 && props.language !== 'mermaid'"
           @click="toggleExpand"
         >
-          <nuxt-icon
-            name="material-symbols/keyboard-arrow-down-rounded"
-            class="text-gray-400 transition-transform duration-300"
+          <!-- If this isn't working - import it as component -->
+          <svgo-material-symbols-keyboard-arrow-down-rounded
+            class="w-4 h-4 text-gray-400 transition-transform duration-300"
             :class="expand ? '' : '-rotate-90'"
+            :font-controlled="false"
           />
         </button>
       </div>
@@ -183,9 +184,9 @@ onMounted(() => {
           class=" no-underline transition-colors duration-300"
           style="text-decoration-line: none; color: #94a3b8;"
         >
-          <nuxt-icon
-            name="bi/link-45deg"
-            class="shrink-0"
+          <svgo-bi-link-45deg
+            class="shrink-0 w-4 h-4"
+            :font-controlled="false"
           />
           <!-- <span class="shrink-0 text-xs">{{ props.filename }}</span> -->
         </NuxtLink>
@@ -193,9 +194,9 @@ onMounted(() => {
           v-else
           class=" flex items-center gap-2 text-gray-400 "
         >
-          <nuxt-icon
-            name="bi/file-earmark-code"
-            class="shrink-0"
+          <svgo-bi-file-earmark-code
+            class="shrink-0 w-4 h-4"
+            :font-controlled="false"
           />
           <span class="shrink-0 text-xs">{{ props.filename }}</span>
         </div>
@@ -208,24 +209,29 @@ onMounted(() => {
           :disabled="copyState !== 'wait' || !clipboard"
           @click="copyHandler"
         >
-          <nuxt-icon
+          <SvgoUilCopy
             v-show="copyState === 'wait'"
-            name="uil/copy"
+            name="copy"
+            class="w-4 h-4"
+            :font-controlled="false"
           />
-          <nuxt-icon
+          <SvgoEosIconsLoading
             v-show="copyState === 'process'"
-            name="eos-icons/loading"
-            class="text-purple-500"
+            name="icons-loading"
+            class="w-4 h-4 text-purple-500"
+            :font-controlled="false"
           />
-          <nuxt-icon
+          <SvgoUilCheck
             v-show="copyState === 'success'"
-            name="uil/check"
-            class="text-green-500"
+            name="check"
+            class="w-4 h-4 text-green-500"
+            :font-controlled="false"
           />
-          <nuxt-icon
+          <LazySvgoIconParkOutlineFileFailedOne
             v-show="copyState === 'fail'"
-            name="icon-park-outline/file-failed-one"
-            class="text-red-500"
+            name="file-failed-one"
+            class="w-4 h-4 text-red-500"
+            :font-controlled="false"
           />
         </button>
 

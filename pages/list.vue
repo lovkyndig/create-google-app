@@ -360,10 +360,7 @@ onMounted(() => {
             :class="showMoreFilter ? 'bg-purple-500 hover:bg-purple-400 text-white' : 'bg-purple-100 text-purple-400 hover:text-purple-500'"
             @click="showMoreFilter = !showMoreFilter"
           >
-            <nuxt-icon
-              name="mdi/filter-plus-outline"
-              class="text-3xl"
-            />
+            <svgo-mdi-filter-plus-outline class="w-6 h-6" :font-controlled="false" />
           </button>
           <div class="grow max-w-full space-y-2 ">
             <div class="p-2 flex items-start text-sm bg-gray-100 sm:space-x-4">
@@ -371,10 +368,10 @@ onMounted(() => {
                 class="shrink-0 px-2 py-1 hidden sm:flex items-center text-gray-500 hover:bg-gray-200 rounded"
                 @click="showMoreTheme = !showMoreTheme"
               >
-                <nuxt-icon
-                  name="ic/round-keyboard-arrow-right"
-                  class="text-xl transition-transform duration-300"
+                <svgo-ic-round-keyboard-arrow-right
+                  class="w-5 h-5 transition-transform duration-300"
                   :class="showMoreTheme ? 'rotate-90' : 'rotate-0'"
+                  :font-controlled="false"
                 />
               <!-- <p>Theme</p> -->
               </button>
@@ -389,10 +386,7 @@ onMounted(() => {
                     :class="currentTheme === 'all' ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-600 hover:text-purple-800 bg-purple-100'"
                     @click="toggleTheme('all')"
                   >
-                    <nuxt-icon
-                      name="material-symbols/category-rounded"
-                      class="text-xl"
-                    />
+                    <svgo-material-symbols-category-rounded class="w-5 h-5" :font-controlled="false" />
                     <p>all</p>
                   </button>
                 </li>
@@ -406,10 +400,7 @@ onMounted(() => {
                     :class="currentTheme === getTheme(item._path) ? 'text-white bg-purple-500 hover:bg-purple-400' : 'text-purple-600 hover:text-purple-800 bg-purple-100'"
                     @click="toggleTheme(getTheme(item._path))"
                   >
-                    <nuxt-icon
-                      name="material-symbols/category-rounded"
-                      class="shrink-0 text-xl"
-                    />
+                    <svgo-material-symbols-category-rounded class="shrink-0 w-5 h-5" :font-controlled="false" />
                     <p>
                       {{ getTheme(item._path) }}
                     </p>
@@ -435,10 +426,10 @@ onMounted(() => {
                     class="shrink-0 px-2 py-1 hidden sm:flex items-center text-gray-500 hover:bg-gray-200 rounded"
                     @click="showMoreTag = !showMoreTag"
                   >
-                    <nuxt-icon
-                      name="ic/round-keyboard-arrow-right"
-                      class="text-xl transition-transform duration-300"
+                    <svgo-ic-round-keyboard-arrow-right
+                      class="w-5 h-5 transition-transform duration-300"
                       :class="showMoreTag ? 'rotate-90' : 'rotate-0'"
+                      :font-controlled="false"
                     />
                   <!-- <p>Tags</p> -->
                   </button>
@@ -469,10 +460,10 @@ onMounted(() => {
                     class="shrink-0 px-2 py-1 hidden sm:flex items-center text-gray-500 hover:bg-gray-200 rounded"
                     @click="showMoreSeries = !showMoreSeries"
                   >
-                    <nuxt-icon
-                      name="ic/round-keyboard-arrow-right"
-                      class="text-xl transition-transform duration-300"
+                    <svgo-ic-round-keyboard-arrow-right
+                      class="w-5 h-5 transition-transform duration-300"
                       :class="showMoreSeries ? 'rotate-90' : 'rotate-0'"
+                      :font-controlled="false"
                     />
                   <!-- <p>Series</p> -->
                   </button>
@@ -493,10 +484,7 @@ onMounted(() => {
                         :disabled="(series === 'all' || currentTheme === 'all' || themeSeries[currentTheme]?.includes(series)) ? false : true"
                         @click="toggleSeries(series)"
                       >
-                        <nuxt-icon
-                          name="bi/collection"
-                          class="shrink-0 text-xl"
-                        />
+                        <svgo-bi-collection class="shrink-0 w-5 h-5" :font-controlled="false" />
                         <p>{{ series }}</p>
                       </button>
                     </li>
@@ -510,21 +498,21 @@ onMounted(() => {
                 class="px-4 py-1 sm:hidden text-red-400 hover:text-red-500 bg-red-50 hover:bg-red-100 transition-colors duration-300 rounded"
                 @click="toggleTheme('all')"
               >
-                <nuxt-icon
-                  name="ant-design/clear-outlined"
-                />
+                <svgo-ant-design-clear-outlined class="w-4 h-4" :font-controlled="false" />
               </button>
               <button
                 class="grow py-1 sm:hidden text-purple-500 bg-purple-100 rounded"
                 @click="showMoreFilter = !showMoreFilter"
               >
-                <nuxt-icon
+                <svgo-ic-round-keyboard-arrow-down
                   v-show="!showMoreFilter"
-                  name="ic/round-keyboard-arrow-down"
+                  class="w-4 h-4"
+                  :font-controlled="false"
                 />
-                <nuxt-icon
+                <svgo-ic-round-keyboard-arrow-up
                   v-show="showMoreFilter"
-                  name="ic/round-keyboard-arrow-up"
+                  class="w-4 h-4"
+                  :font-controlled="false"
                 />
               </button>
               <button
@@ -532,13 +520,15 @@ onMounted(() => {
                 :class="showListDetail ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-400 hover:text-green-500 bg-green-50 hover:bg-green-100'"
                 @click="showListDetail = !showListDetail"
               >
-                <nuxt-icon
+                <svgo-ic-round-unfold-less
                   v-show="showListDetail"
-                  name="ic/round-unfold-less"
+                  class="w-4 h-4"
+                  :font-controlled="false"
                 />
-                <nuxt-icon
+                <svgo-ic-round-unfold-more
                   v-show="!showListDetail"
-                  name="ic/round-unfold-more"
+                  class="w-4 h-4"
+                  :font-controlled="false"
                 />
               </button>
             </div>
@@ -552,10 +542,7 @@ onMounted(() => {
           class="p-2 flex items-center text-red-500 hover:text-red-600 bg-red-50 hover:bg-red-100 transition-colors duration-300 rounded"
           @click="toggleTheme('all')"
         >
-          <nuxt-icon
-            name="ant-design/clear-outlined"
-            class="text-lg"
-          />
+          <svgo-ant-design-clear-outlined class="w-5 h-5" :font-controlled="false" />
           <p class="hidden sm:block">
             Clear Filter
           </p>
@@ -565,15 +552,15 @@ onMounted(() => {
           :class="showListDetail ? 'text-white bg-green-600 hover:bg-green-800' : 'text-green-400 hover:text-green-500 bg-green-50 hover:bg-green-100'"
           @click="showListDetail = !showListDetail"
         >
-          <nuxt-icon
+          <svgo-ic-round-unfold-less
             v-show="showListDetail"
-            name="ic/round-unfold-less"
-            class="text-xl"
+            class="w-5 h-5"
+            :font-controlled="false" 
           />
-          <nuxt-icon
+          <svgo-ic-round-unfold-more
             v-show="!showListDetail"
-            name="ic/round-unfold-more"
-            class="text-xl"
+            class="w-5 h-5"
+            :font-controlled="false"
           />
           <p class="hidden sm:block">
             {{ showListDetail ? 'Less' : 'More' }} Detail
@@ -585,10 +572,7 @@ onMounted(() => {
         v-if="pending"
         class="grow flex flex-col justify-center items-center space-y-2 text-gray-400"
       >
-        <nuxt-icon
-          name="eos-icons/loading"
-          class="text-4xl"
-        />
+        <svgo-eos-icons-loading class="w-10 h-10" :font-controlled="false" />
         <p class="text-xl">
           Loading
         </p>
@@ -610,10 +594,10 @@ onMounted(() => {
               class="block px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-blue-100 transition-colors duration-300 rounded-lg space-y-2"
             >
               <div class="flex items-start">
-                <nuxt-icon
+                <FileType
                   :name="getFileTypeIcon(item._type)"
-                  class="shrink-0 p-1 text-2xl sm:w-7 sm:h-7"
-                />
+                  class="shrink-0 p-1 text-xl sm:w-7 sm:h-7"
+                /> <!-- font-size have to be used instead of h-6 w-6 -->
                 <h2 class="grow font-bold text-base sm:text-lg">
                   {{ item.title }}
                 </h2>
@@ -646,10 +630,7 @@ onMounted(() => {
                 :class="currentSeries === item.series ? 'text-white bg-green-500 hover:bg-green-400' : 'text-green-700 hover:text-green-950 bg-purple-100'"
                 @click="toggleSeries(item.series)"
               >
-                <nuxt-icon
-                  name="bi/collection"
-                  class="shrink-0"
-                />
+                <svgo-bi-collection class="shrink-0 w-4 h-4" :font-controlled="false" />
                 <p>{{ item.series }}</p>
               </button>
             </div>
