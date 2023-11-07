@@ -12,6 +12,7 @@ const appConfig = useAppConfig()
           v-if="appConfig.myLayer.email"
           :href="`mailto:${appConfig.myLayer.email}`"
           class="text-blue-700"
+          style="border-bottom:1px solid #166534"
         >{{
           appConfig.myLayer.author }}</a>
         <span v-else>{{ appConfig.myLayer.author }}</span>
@@ -21,6 +22,7 @@ const appConfig = useAppConfig()
           :href="appConfig.myLayer.meta.homepage"
           target="_blank"
           class="text-blue-700"
+          style="border-bottom:1px solid #166534"
         >{{ appConfig.myLayer.meta.name }}</a>
       </p>
     </div>

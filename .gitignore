@@ -17,6 +17,7 @@ dist
 .playground/.output
 .playground/dist
 .playground/node_modules
+.playground/assets/icons
 
 # Yarn
 yarn.lock
