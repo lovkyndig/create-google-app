@@ -44,8 +44,8 @@ const getCoverUrl = (relativeURL:(string)) => {
         {{ props.article.description }}
       </p>
     </NuxtLink>
-    <div class="shrink-0 px-6 pb-6 flex justify-between items-start gap-2">
-      <div v-if="props.article.tags" class="scroll-container grow flex sm:flex-wrap gap-1 overflow-x-auto">
+    <div class="shrink-0 px-6 pb-6 flex justify-between items-start gap-2 my-footer">
+      <div v-if="props.article.tags" class="scroll-container grow flex sm:flex-wrap gap-1 overflow-x-auto my-footer">
         <NuxtLink
           v-for="tag in props.article.tags"
           :key="tag"
@@ -58,6 +58,7 @@ const getCoverUrl = (relativeURL:(string)) => {
       <NuxtLink
         v-if="props.article.series"
         :to="{ path: '/list', query: { series: props.article.series } }"
+        title="Open up the folder series!"
         class="shrink-0 px-2 py-1 flex justify-center items-center text-green-700 hover:text-green-950 bg-purple-100 transition-colors duration-300 rounded"
       >
         <nuxt-icon name="bi/collection" />
