@@ -11,8 +11,8 @@ const capitalize = (string: any) => {
     words[i] = words[i][0].toUpperCase() + words[i].substring(1)
   }
   return words.join(' ')
+  // console.log('The pkg.name is now changed to: ' + capitalize(pkg.name))
 }
-// console.log('The pkg.name is now changed to: ' + capitalize(pkg.name))
 // end grepper
 
 export default defineNuxtConfig({
@@ -29,7 +29,7 @@ export default defineNuxtConfig({
       created: false,
       updated: false
     },
-    site: { // renamed from rss
+    site: {
       title: capitalize(pkg.name),
       description: 'Guide to Create Google App in one day or one week, depending on the programming skills.',
       image: `${pkg.homepage}/img/svg/avatar.svg`, // avatar also in appconfig
@@ -66,6 +66,7 @@ export default defineNuxtConfig({
       }
     }
   },
+  // experimental: { payloadExtraction: false },
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
@@ -75,7 +76,7 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html}', 'img/**/*.{svg,webp}', 'article/**/*.{webp}', 'favicon.*'],
       globIgnores: ['google*.*'],
-      navigateFallbackDenylist: [/^\/api/],
+      // navigateFallbackDenylist: [/^\/api/],
       runtimeCaching: [
         {
           urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },

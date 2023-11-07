@@ -202,8 +202,11 @@ const clearInputTextHandler = () => {
             :key="item.url"
             class="p-4 hover:text-white hover:bg-purple-500 rounded"
           >
+            <!-- Changed 2023 by Kyrie Eleison (to get FindNext-component working) -->
+            <!-- :to="item.url" -->
             <NuxtLink
-              :to="item.url"
+              :to="`${item.url+'?searchparam='+searchString}`"
+              aria-label="searchStringParam"
               @click.exact="showSearchModal=false"
             >
               <p class="font-bold">

@@ -297,7 +297,7 @@ const resetFloatCardHandler = () => {
           @pointerup="dragPointerCancelHandler"
         >
           <nuxt-icon
-            name="akar-icons/drag-horizontal"
+            name="akar/drag-horizontal"
           />
         </button>
 

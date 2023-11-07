@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const searchString = useState('searchString')
 
+console.log('<FindNext is started')
+
 const findNext = () => {
   const divElement = document.querySelector('#findNext')
   const text = searchString.value
@@ -94,11 +96,25 @@ onMounted(() => {
   }
 })
 
+/*
+Remember to insert the following tag in SearchModal.vue (line 208)
+<NuxtLink
+  :to="`${item.url+'?searchparam='+searchString}`"
+  aria-label="searchStringParam"
+  @click.exact="showSearchModal=false"
+/>
+*/
 </script>
 
 <template>
   <div id="findNext" class="text-purple-600">
-    <svgo-custom-find-next id="findNextImg" class="text-xl" alt="img" :font-controlled="false" @click="findNext()" />
+    <nuxt-icon
+      id="findNextImg"
+      name="custom/find-next"
+      class="text-6xl"
+      alt="img"
+      @click="findNext()"
+    />
     <input
       id="findIndput"
       ref="searchInput"

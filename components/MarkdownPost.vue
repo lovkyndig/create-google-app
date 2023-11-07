@@ -538,7 +538,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
       </NuxtLink>
     </div>
 
-    <MarkdownPostCatalog
+    <LazyMarkdownPostCatalog
       v-if="props.data?.body?.toc && props.data.body.toc.links.length > 0"
       v-show="showCatalog"
       :catalogs="props.data.body.toc.links"
