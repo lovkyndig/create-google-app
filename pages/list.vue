@@ -280,7 +280,7 @@ const getFileTypeIcon = (type) => {
 const appConfig = useAppConfig()
 const config = useRuntimeConfig()
 useServerSeoMeta({
-  ogDescription: `${appConfig.myLayer.list.description} ${route.fullPath.slice(6)}`
+  ogDescription: `${appConfig.myLayer.list.description} ${route.fullPath.slice(9)}`
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 
 /**
@@ -295,8 +295,8 @@ const publishTitle = (value) => { // using this function 5 times below
   titles.value = title
   useSeoMeta({
     title: title.value,
-    description: `${appConfig.myLayer.list.description} ${route.fullPath.slice(6)}`,
-    ogDescription: `${appConfig.myLayer.list.description} ${route.fullPath.slice(6)}`,
+    description: `${appConfig.myLayer.list.description} ${route.fullPath.slice(9)}`,
+    ogDescription: `${appConfig.myLayer.list.description} ${route.fullPath.slice(9)}`,
     ogUrl: `${config.public.hostname}${route.fullPath}`
   })
   useHead({ link: [{ rel: 'canonical', href: `${config.public.hostname}${route.fullPath}` }] })
@@ -321,7 +321,7 @@ const getAndUseSearchparam = () => { // only on load
   if (route.fullPath === route.path) {
     publishTitle(appConfig.myLayer.list.tags_all)
   } else {
-    publishTitle(`${appConfig.myLayer.list.tags} ${route.fullPath.slice(6)}`)
+    publishTitle(`${appConfig.myLayer.list.tags} ${route.fullPath.slice(9)}`)
   }
 }
 getAndUseSearchparam()
@@ -330,7 +330,7 @@ watch(() => route.fullPath, () => { // only on change after load
   if (route.path === route.fullPath) {
     publishTitle(appConfig.myLayer.list.tags_all)
   } else {
-    publishTitle(`${appConfig.myLayer.list.tags} ${route.fullPath.slice(6)}`)
+    publishTitle(`${appConfig.myLayer.list.tags} ${route.fullPath.slice(9)}`)
   }
 })
 

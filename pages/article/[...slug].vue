@@ -38,8 +38,8 @@ onMounted(() => {
   $webnoti(appConfig.myLayer.slug.notification)
 })
 useSeoMeta({
-  description: `${appConfig.myLayer.slug.description} ${route.fullPath.slice(6)}`,
-  ogDescription: `${appConfig.myLayer.slug.description} ${route.fullPath.slice(6)}`,
+  description: `${appConfig.myLayer.slug.description} ${route.fullPath.slice(9)}`,
+  ogDescription: `${appConfig.myLayer.slug.description} ${route.fullPath.slice(9)}`,
   ogUrl: `${config.public.hostname}${route.fullPath}`
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 </script>
