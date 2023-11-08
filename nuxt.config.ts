@@ -22,7 +22,28 @@ const capitalize = (string: any) => {
 export default defineNuxtConfig({
   devtools: { enabled: false },
   css: [join(currentDir, './assets/style.css')],
-  svgo: { autoImportPath: join(currentDir, './assets/icons') },
+  nitro: {
+    prerender: {
+      routes: ['/rss.xml', '/sitemap.xml']
+    }
+  },
+  runtimeConfig: {
+    timestamp: {
+      created: false,
+      updated: false
+    },
+    site: {
+      title: capitalize(pkg.name),
+      description: 'Guide to Create Google App in one day or one week, depending on the programming skills.',
+      image: `${pkg.homepage}/img/svg/avatar.svg`, // avatar also in appconfig
+      favicon: `${pkg.homepage}/favicon.svg`, // favicon also in appconfig
+      copyright: `All rights reserved ${(new Date()).getFullYear()}, Kyrie Eleison`
+    },
+    public: {
+      hostname: pkg.homepage,
+      production_mode: isProduction
+    }
+  },
   modules: [
     [resolve('./modules/copy-image-files'), { cleanFolders: ['public/article'] }],
     '@nuxt/content',
@@ -39,7 +60,7 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html}', 'img/**/*.{svg,webp}', 'article/**/*.{webp}', 'favicon.*'],
+      globPatterns: ['**/*.{js,css,html,svg,webp}'],
       globIgnores: ['google*.*'],
       // navigateFallbackDenylist: [/^\/api/, /^\/about/],
       runtimeCaching: [
@@ -66,44 +87,32 @@ export default defineNuxtConfig({
       suppressWarnings: true
     }
   },
-  nitro: {
-    prerender: {
-      routes: ['/rss.xml', '/sitemap.xml', '/']
-    }
-  },
-  // https://content.nuxtjs.org
-  content: {
-    navigation: { fields: ['_id', '_type', 'series', 'tags'] },
-    // https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
-    highlight: { preload: ['vue', 'markdown', 'md'], theme: 'one-dark-pro' },
-    markdown: { toc: { depth: 5, searchDepth: 5 } }
-  },
-  // https://nuxt.com/docs/guide/directory-structure/components
+  svgo: { autoImportPath: join(currentDir, './assets/icons') },
   components: [
     { path: './components/custom', pathPrefix: false },
     { path: './components/content', pathPrefix: false },
     { path: './components' }
   ],
+  // https://content.nuxtjs.org
+  content: {
+    navigation: {
+      fields: ['_id', '_type', 'series', 'tags']
+    },
+    highlight: {
+      // https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
+      theme: 'one-dark-pro',
+      preload: ['vue', 'markdown', 'md']
+    },
+    markdown: {
+      toc: {
+        depth: 5,
+        searchDepth: 5
+      }
+    }
+  },
   typescript: {
     shim: false,
     typeCheck: true
   },
-  runtimeConfig: {
-    timestamp: {
-      created: false,
-      updated: false
-    },
-    site: {
-      title: capitalize(pkg.name),
-      description: 'Guide to Create Google App in one day or one week, depending on the programming skills.',
-      image: `${pkg.homepage}/img/svg/avatar.svg`, // avatar also in appconfig
-      favicon: `${pkg.homepage}/favicon.svg`, // favicon also in appconfig
-      copyright: `All rights reserved ${(new Date()).getFullYear()}, Kyrie Eleison`
-    },
-    public: {
-      hostname: pkg.homepage,
-      production_mode: isProduction
-    }
-  },
-  app: { /* */ }
+  devtools: { enabled: false }
 })
