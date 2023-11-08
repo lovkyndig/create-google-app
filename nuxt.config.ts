@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   css: [join(currentDir, './assets/style.css')],
   nitro: {
     prerender: {
-      routes: ['/rss.xml', '/sitemap.xml']
+      routes: ['/rss.xml', '/sitemap.xml', '/']
     }
   },
   runtimeConfig: {
@@ -60,7 +60,7 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html,json,svg,webp}', '**/_payload.json'],
+      globPatterns: ['**/*.{js,css,html,json,svg,webp}'],
       globIgnores: ['google*.*'],
       // navigateFallbackDenylist: [/^\/api/],
       cleanupOutdatedCaches: true,

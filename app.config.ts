@@ -39,7 +39,7 @@ export default defineAppConfig({
       notification: 'A laywer from Norway, Kyrie Eleison, has made this app! Like it? Follow him on GitHub!'
     },
     home: {
-      title: 'How to Create an sApp and go on Google App Store?',
+      title: 'How to Create an App and go on Google App Store?',
       description: 'How to Create a Google App in less than a week, with no programming skills? Answer: Follow my guidelines and read this documentation:)',
       notification: 'How to create an google app in one week?'
     },
