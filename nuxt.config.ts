@@ -22,6 +22,7 @@ const capitalize = (string: any) => {
 export default defineNuxtConfig({
   app: { /* */ },
   css: [join(currentDir, './assets/style.css')],
+  // @ts-ignore
   svgo: { autoImportPath: join(currentDir, './assets/icons') },
   devtools: { enabled: false },
   nitro: {
@@ -81,7 +82,7 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html}', 'img/**/*.{svg,webp}', 'article/**/*.{webp}', 'favicon.*'],
       globIgnores: ['google*.*'],
-      // navigateFallbackDenylist: [/^\/api/],
+      navigateFallbackDenylist: [/^\/api/],
       runtimeCaching: [
         {
           urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },

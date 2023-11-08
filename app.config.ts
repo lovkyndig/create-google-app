@@ -25,7 +25,8 @@ export default defineAppConfig({
       emitMetadata: '0',
       inputPosition: 'top',
       theme: 'noborder_dark',
-      lang: 'en'
+      lang: 'en',
+      loading: 'lazy'
     },
     privacy: {
       title: 'Privacy Policy following because this is an Google App.',
