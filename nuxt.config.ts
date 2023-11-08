@@ -52,7 +52,9 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-svgo'
   ],
-  experimental: { payloadExtraction: false },
+  experimental: {
+    payloadExtraction: false
+  },
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
@@ -62,7 +64,7 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,svg,webp}'],
       globIgnores: ['google*.*'],
-      navigateFallbackDenylist: [/^\/api/],
+      // navigateFallbackDenylist: [/^\/api/],
       runtimeCaching: [
         {
           urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
@@ -83,8 +85,8 @@ export default defineNuxtConfig({
     devOptions: {
       enabled: true,
       navigateFallback: '/',
-      navigateFallbackAllowlist: [/^\/$/],
-      suppressWarnings: true
+      navigateFallbackAllowlist: [/^\/$/]
+      // suppressWarnings: true
     }
   },
   svgo: { autoImportPath: join(currentDir, './assets/icons') },
