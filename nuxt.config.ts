@@ -52,7 +52,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-svgo'
   ],
-  experimental: { payloadExtraction: false },
+  // experimental: { payloadExtraction: false },
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
@@ -60,7 +60,7 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html,svg,webp}'],
+      globPatterns: ['**/*.{js,css,html,json,svg,webp}'],
       globIgnores: ['google*.*'],
       // navigateFallbackDenylist: [/^\/giscus=*/],
       runtimeCaching: [

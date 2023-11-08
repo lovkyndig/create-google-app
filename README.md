@@ -20,8 +20,8 @@ _Full search functionality_
 
 _Style and icons_  
 
-5. Accordion style.[^5]  
-6. Home- and list-page with good readability for mobil and notebook.[^6]  
+5. Accordion style, all collapsed on start with better overview of content.[^5]  
+6. Advanced catalog or index to see the structure of the content in a hierarchy or graphical map.[^6]  
 7. Offline icons, [nuxt-svgo](https://www.npmjs.com/package/nuxt-svgo), so the app looks nice offline.[^7]
 
 _Helpers (functions/methods)_  
@@ -57,7 +57,7 @@ _Extra Futures_
 [^3]: The bundle that is used for searching is normally created on generate. If you are using .playground (and want to test it there), you can use this command to create the bundle: `- npx -y pagefind --site .output/public --output-path public/_pagefind`. - Maybe you need to change `--site .output/public` to `--site ../.output/public`.
 [^4]: The style and the _find-next-btn_ isn't good, and you are welcome to do it better. See FindNext-component and the find-next.svg.
 [^5]: Most of the accordion functions are from [BlogiNote](https://github.com/Benbinbin/BlogiNote). - style.css is added in assets-folder with style for the accordions. - All headers is collapsed and the Catalog (Table of contents) is closed on load, except; - The headers is not collapsed when using the search-functionality.
-[^6]: The length of articles on the home- and list-page is reduced. Style is changed in PostCardItem (see scss), and .short-description is added in list-page and PostListItem.
+[^6]: Four packages from [d3](https://github.com/d3) is making this possibly. Which ones? See the _package.json_.
 [^7]: All icons are downloaded and saved in assets/icons-folder. Don't try to use `nuxt-icons`, it will not work for layer 2
 [^8]: Most of my functions and methods are located in plugin-folder as helpers.
 [^9]: If the notifications don't shows, changed the settings. Add the sites url in the `allow`-settings. - In Chrome: chrome://settings/content/notifications - In Edge: edge://settings/content/notifications
@@ -72,4 +72,4 @@ _Extra Futures_
 [^18]: _google.site-verification_-file ([or code](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics)) is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), before [Ahrefs website-checker](https://ahrefs.com/website-checker) can be used. [Read more](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
 [^19]: Added in version 1.0.1 as component with [@giscus/vue](https://github.com/giscus/giscus-component/tree/main). The `id` etc. have to be set in `app.config.ts`.
 
-Updated 07.11.2023
+Updated 09.11.2023
