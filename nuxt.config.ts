@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   css: [join(currentDir, './assets/style.css')],
   nitro: {
     prerender: {
-      routes: ['/rss.xml', '/sitemap.xml']
+      routes: ['/rss.xml', '/sitemap.xml', '/']
     }
   },
   runtimeConfig: {
@@ -52,9 +52,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-svgo'
   ],
-  experimental: {
-    payloadExtraction: false
-  },
+  // experimental: { payloadExtraction: false },
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
