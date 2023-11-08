@@ -62,7 +62,7 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,json,svg,webp}'],
       globIgnores: ['google*.*'],
-      navigateFallbackDenylist: [/^\/api/],
+      // navigateFallbackDenylist: [/^\/api/],
       runtimeCaching: [
         {
           urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
@@ -71,6 +71,19 @@ export default defineNuxtConfig({
             cacheName: 'api-cache',
             cacheableResponse: {
               statuses: [0, 200]
+            }
+          }
+        },
+        { // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
+          handler: 'NetworkOnly',
+          urlPattern: /\/api\/.*\/*.json/,
+          method: 'POST',
+          options: {
+            backgroundSync: {
+              name: 'backgroundsync',
+              options: {
+                maxRetentionTime: 24 * 60
+              }
             }
           }
         }
