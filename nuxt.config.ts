@@ -62,7 +62,7 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,svg,webp}'],
       globIgnores: ['google*.*'],
-      // navigateFallbackDenylist: [/^\/api/],
+      // navigateFallbackDenylist: [/^\/giscus=*/],
       runtimeCaching: [
         {
           urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
@@ -116,3 +116,11 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: false }
 })
+
+/*
+Continue work withthis:
+https://vite-pwa-org.netlify.app/workbox/generate-sw.html
+See the network session for url-adr.
+See the discussion about url to discus back to the page
+Maybe this is removed by my code?
+*/
