@@ -62,7 +62,7 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,json,svg,webp}'],
       globIgnores: ['google*.*'],
-      // navigateFallbackDenylist: [/^\/giscus=*/],
+      navigateFallbackDenylist: [/^\/api/],
       runtimeCaching: [
         {
           urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
