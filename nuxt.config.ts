@@ -52,7 +52,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-svgo'
   ],
-  // experimental: { payloadExtraction: false },
+  experimental: { payloadExtraction: false },
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
