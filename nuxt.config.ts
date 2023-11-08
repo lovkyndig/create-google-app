@@ -22,7 +22,6 @@ const capitalize = (string: any) => {
 export default defineNuxtConfig({
   app: { /* */ },
   css: [join(currentDir, './assets/style.css')],
-  // @ts-ignore
   svgo: { autoImportPath: join(currentDir, './assets/icons') },
   devtools: { enabled: false },
   nitro: {

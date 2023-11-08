@@ -596,7 +596,7 @@ onMounted(() => {
               <div class="flex items-start">
                 <FileType
                   :name="getFileTypeIcon(item._type)"
-                  class="shrink-0 p-1 text-xl sm:w-7 sm:h-7"
+                  class="shrink-0 p-1 h-6 w-6 sm:w-7 sm:h-7"
                 /> <!-- font-size have to be used instead of h-6 w-6 -->
                 <h2 class="grow font-bold text-base sm:text-lg">
                   {{ item.title }}
