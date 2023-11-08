@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-svgo'
   ],
-  experimental: { payloadExtraction: false },
+  // experimental: { payloadExtraction: false },
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
@@ -42,7 +42,7 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html}', 'img/**/*.{svg,webp}', 'article/**/*.{webp}', 'favicon.*'],
       globIgnores: ['google*.*'],
-      navigateFallbackDenylist: [/^\/api/],
+      navigateFallbackDenylist: [/^\/api/, /^\/about/],
       runtimeCaching: [
         {
           urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
