@@ -20,7 +20,7 @@ const capitalize = (string: any) => {
 // end grepper
 
 export default defineNuxtConfig({
-  app: { /* */ },
+  devtools: { enabled: false },
   css: [join(currentDir, './assets/style.css')],
   nitro: {
     prerender: {
@@ -62,7 +62,7 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,svg,webp}'],
       globIgnores: ['google*.*'],
-      // navigateFallbackDenylist: [/^\/api/],
+      // navigateFallbackDenylist: [/^\/api/, /^\/about/],
       runtimeCaching: [
         {
           urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
@@ -92,7 +92,6 @@ export default defineNuxtConfig({
     { path: './components/custom', pathPrefix: false },
     { path: './components/content', pathPrefix: false },
     { path: './components' }
-    // https://nuxt.com/docs/guide/directory-structure/components
   ],
   // https://content.nuxtjs.org
   content: {
