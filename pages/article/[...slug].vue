@@ -33,7 +33,7 @@ const showFooterNavThemeOptions = useState('showFooterNavThemeOptions')
 const { $getAndChangeSearchparam } = useNuxtApp() as any
 const searchString = $getAndChangeSearchparam()
 
-const { $webnoti } = useNuxtApp()
+const { $webnoti } = useNuxtApp() as any
 onMounted(() => {
   $webnoti(appConfig.myLayer.slug.notification)
 })

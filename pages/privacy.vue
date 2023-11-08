@@ -2,9 +2,10 @@
 // const config = useRuntimeConfig()
 const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()
+const { $webnoti } = useNuxtApp() as any
 
 onMounted(() => {
-  useNuxtApp().$webnoti(appConfig.myLayer.privacy.notification)
+  $webnoti(appConfig.myLayer.privacy.notification)
 })
 
 useSeoMeta({

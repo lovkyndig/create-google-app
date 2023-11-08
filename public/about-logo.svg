@@ -1,0 +1,90 @@
+<!-- https://github.com/DenverCoder1/readme-typing-svg/ -->
+<svg xmlns='http://www.w3.org/2000/svg'
+  xmlns:xlink='http://www.w3.org/1999/xlink'
+  viewBox='0 0 400 50'
+  style='background-color: #00000000;'
+  width='400px' height='50px'>
+
+  <style>
+   <![CDATA[    
+          svg { visibility:visible }        
+          text {
+              font-family: "Roboto Condensed", sans-serif;
+              font-style: normal;
+              font-weight:600;
+              font-size:1.5rem;
+              align:center;    
+          }
+          .color-y { fill:#9333ea; }
+      ]]>
+  </style>
+
+  <path id='path0'>
+    <!-- Single line -->
+    <animate id='d0' attributeName='d' begin='0s;d3.end'
+      dur='5000ms' fill='remove'
+      values='m0,25 h0 ; m0,25 h380 ; m0,25 h380 ; m0,25 h0' keyTimes='0;0.64;0.84;1' />
+  </path>
+  <text
+    font-family='"Fira Code", monospace'
+    fill='#7e22ce' 
+    font-size='20'
+    dominant-baseline='auto'
+    x='50%' 
+    text-anchor='middle'
+  >
+    <textPath xlink:href='#path0'>
+      This is an NUXT3 PWA!
+    </textPath>
+  </text>
+  <path id='path1'>
+    <!-- Single line -->
+    <animate id='d1' attributeName='d' begin='d0.end'
+      dur='5000ms' fill='remove'
+      values='m0,25 h0 ; m0,25 h380 ; m0,25 h380 ; m0,25 h0' keyTimes='0;0.64;0.84;1' />
+  </path>
+  <text font-family='"Fira Code", monospace' 
+      fill='#7e22ce' 
+      font-size='20'
+      dominant-baseline='auto'
+      x='50%' 
+      text-anchor='middle'
+  >
+    <textPath xlink:href='#path1'>
+      Theme by Kyrie Eleison!
+    </textPath>
+  </text>
+  <path id='path2'>
+    <!-- Single line -->
+    <animate id='d2' attributeName='d' begin='d1.end'
+      dur='5000ms' fill='remove'
+      values='m0,25 h0 ; m0,25 h380 ; m0,25 h380 ; m0,25 h0' keyTimes='0;0.64;0.84;1' />
+  </path>
+  <text font-family='"Fira Code", monospace' 
+    fill='#7e22ce' 
+    font-size='20'
+    dominant-baseline='auto'
+    x='50%' 
+    text-anchor='middle'
+  >
+    <textPath xlink:href='#path2'>
+      Download it from GitHub!
+    </textPath>
+  </text>
+  <path id='path3'>
+    <!-- Single line -->
+    <animate id='d3' attributeName='d' begin='d2.end'
+      dur='5000ms' fill='remove'
+      values='m0,25 h0 ; m0,25 h380 ; m0,25 h380 ; m0,25 h0' keyTimes='0;0.64;0.84;1' />
+  </path>
+  <text font-family='"Fira Code", monospace' 
+    fill='#7e22ce' 
+    font-size='20'
+    dominant-baseline='auto'
+    x='50%' 
+    text-anchor='middle'>
+    <textPath xlink:href='#path3'>
+      And Publish it on Google Play!
+    </textPath>
+  </text>
+</svg>

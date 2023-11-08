@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   css: [join(currentDir, './assets/style.css')],
   nitro: {
     prerender: {
-      routes: ['/rss.xml', '/sitemap.xml', '/']
+      routes: ['/rss.xml', '/sitemap.xml']
     }
   },
   runtimeConfig: {

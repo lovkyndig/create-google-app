@@ -154,9 +154,10 @@ const getFileTypeIcon = (type:string) => {
   }
 }
 
-// added in create-google-app v1.0.0 beta 10 (30.09.2023)s
+// added in create-google-app v1.0.0 beta 10 (30.09.2023)
+const { $webnoti } = useNuxtApp() as any
 onMounted(() => {
-  useNuxtApp().$webnoti(`${appConfig.myLayer.home.notification}`)
+  $webnoti(`${appConfig.myLayer.home.notification}`)
 })
 
 useSeoMeta({

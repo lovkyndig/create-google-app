@@ -1,5 +1,11 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
+
+// added in create-google-app v1.0.0 beta 10 (30.09.2023)
+const { $webnoti } = useNuxtApp() as any
+onMounted(() => {
+  $webnoti(`${appConfig.myLayer.about.notification}`)
+})
 </script>
 
 <template>

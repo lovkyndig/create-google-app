@@ -276,12 +276,17 @@ const anchorNodeArr = ref<null | NodeListOf<HTMLAnchorElement>>(null) // added 2
 
 // added 20.10.23
 const anchorClick = useState('anchorClick', () => false)
+const {
+  $closeOtherSiblings,
+  $anchorClickListener,
+  $closeAllHeadings
+} = useNuxtApp() as any
 
 const addDetailsClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
   list.forEach((element) => {
     element.addEventListener('click', (event) => {
       if (!anchorClick.value) { // added 20.10.23
-        useNuxtApp().$closeOtherSiblings(event) // added 04.10.23
+        $closeOtherSiblings(event) // added 04.10.23
       }
       event.stopPropagation()
       // if toggle the heading manually (by click)
@@ -305,11 +310,6 @@ const addDetailsClickListener = (list: NodeListOf<HTMLDetailsElement>) => {
     })
   })
 }
-
-const {
-  $anchorClickListener,
-  $closeAllHeadings
-} = useNuxtApp() as any
 
 onMounted(() => {
   if (articleDOM.value) {
