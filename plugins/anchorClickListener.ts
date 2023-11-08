@@ -5,11 +5,12 @@ export default defineNuxtPlugin(() => {
         const clickIs = useState('clickIs', () => false)
         list.forEach((element) => {
           element.addEventListener('click', (event) => {
+            // console.log('Header is clicked says anchorClickListener.ts')
             event.stopPropagation()
             clickIs.value = true
             return clickIs.value
-          }, { once: true, passive: true })
-        }, { passive: true })
+          }, { once: true })
+        })
       }
     }
   }

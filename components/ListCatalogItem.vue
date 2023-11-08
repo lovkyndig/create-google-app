@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
-// @ts-ignore
-import IconComponent from '../assets/icons/ion/add.svg?component' // <svgo-ion-add
 interface CatalogItemType {
   id: string;
   depth: number;
@@ -94,7 +92,7 @@ const textDecorationColorMap: textDecorationOrBgColorMapType = {
   3: 'decoration-red-500',
   4: 'decoration-green-500',
   5: 'decoration-blue-500',
-  6: 'decoration-gray-500',
+  6: 'decoration-gray-500'
 }
 
 const textHoverBgColorMap: textDecorationOrBgColorMapType = {
@@ -102,7 +100,7 @@ const textHoverBgColorMap: textDecorationOrBgColorMapType = {
   3: 'hover:bg-red-100',
   4: 'hover:bg-green-100',
   5: 'hover:bg-blue-100',
-  6: 'hover:bg-gray-100',
+  6: 'hover:bg-gray-100'
 }
 
 interface BorderColorItemType {
@@ -200,10 +198,9 @@ const toggleCatalogHandler = () => {
         :disabled="!props.item.children"
         @click="toggleCatalogHandler"
       >
-        <!-- <svgo-ion-add have to be imported as component -->
-        <IconComponent
+        <svgo-ion-add
           v-if="props.item.children"
-          name="add"
+          name="ion/add"
           class="w-3.5 h-3.5 text-white transition-transform duration-500 delay-300"
           :class="expand ? 'rotate-45' : 'rotate-0'"
           :font-controlled="false"

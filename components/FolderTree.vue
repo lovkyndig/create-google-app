@@ -248,8 +248,8 @@ const folderNavScrollingHandler = () => {
           >
             <FileType
               :name="getFileTypeIcon(item._type)"
-              class="shrink-0 text-lg"
-            /> <!-- w-5 h-5 -->
+              class="shrink-0 w-5 h-5"
+            /> <!-- w-5 h-5 OR text-lg -->
             <span class="text-sm break-all">
               {{ item.title }}
             </span>

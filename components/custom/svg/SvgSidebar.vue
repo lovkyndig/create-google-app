@@ -9,11 +9,15 @@ THE ICONS HAVE TO BE SAVED IN USERS FOLDER: ASSETS/ICONS
 */
 </script>
 <template>
-  <span v-if="props.name === 'sidebarList'">
-    <SvgoMingcuteMiniplayerLine :class="props.iconClass" />
-  </span>
-  <span v-else>
-    <SvgoMingcuteExpandPlayerLine :class="props.iconClass" />
-  </span>
+  <SvgoMingcuteMiniplayerLine
+    v-if="props.name === 'sidebarList'"
+    :class="props.iconClass"
+    :font-controlled="false"
+  />
+  <SvgoMingcuteExpandPlayerLine
+    v-else
+    :class="props.iconClass"
+    :font-controlled="false"
+  />
   <!-- Used in ListCatalog -->
 </template>

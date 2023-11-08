@@ -13,7 +13,7 @@ export default defineNuxtPlugin(() => {
       closeAllHeadings: () => {
         if (document) {
           // first step: set attributes (style is set in assets/style.css)
-          const detailEl = document.querySelectorAll('details')
+          const detailEl = document.querySelectorAll('details[data-heading-id]')
           detailEl.forEach((element) => { // adding //tooltip
             element.setAttribute('title', 'Click beside the Header - to toggle the content!') 
             element.setAttribute('style', 'position:relative;')
@@ -30,7 +30,7 @@ export default defineNuxtPlugin(() => {
           const searchString = useState('searchString')
           if (searchString.value === '') {
             detailEl.forEach((element) => {
-              if (element.hasAttribute('open')) {
+              if (element.hasAttribute('open') && element.hasAttribute('data-heading-id')) {
                 element.removeAttribute('open')
               }
             })
@@ -58,22 +58,22 @@ export default defineNuxtPlugin(() => {
         } // https://www.javascripttutorial.net/javascript-dom/javascript-siblings/
         const siblings = getSiblings(current)
         // Do something with the colleted siblings
-        if (!current.hasAttribute('open')) {
+        if (!current.hasAttribute('open') && !current.hasAttribute('id')) {
           siblings.map((sibling) => {
             if (sibling.hasAttribute('open')) {
               sibling.removeAttribute('open')
               const span = sibling.querySelector('summary > span')
-              span.innerHTML = expandSvg
+              // span.innerHTML = expandSvg
             }
             // return expandSvg
           })
+          moveClickedHeaderToTheTop(current.querySelector('[data-heading-path]'))
         } else if (summary) { // Running this on click on an open accordion. - Changing icon.
           // Changing the collapse-icon to expand-icon on click on open element
           summary.innerHTML = expandSvg
         }
 
         // Second step: Get the clicked header on the top of the screen
-        moveClickedHeaderToTheTop(current.querySelector('[data-heading-path]'))
         function moveClickedHeaderToTheTop (hElem) {
           const path = hElem.getAttribute('id')
           let url = window.location.href

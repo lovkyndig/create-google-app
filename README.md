@@ -22,7 +22,7 @@ _Style and icons_
 
 5. Accordion style.[^5]  
 6. Home- and list-page with good readability for mobil and notebook.[^6]  
-7. Offline icons, [nuxt-icons](https://www.npmjs.com/package/nuxt-icons), so the app looks nice offline.[^7]
+7. Offline icons, [nuxt-svgo](https://www.npmjs.com/package/nuxt-svgo), so the app looks nice offline.[^7]
 
 _Helpers (functions/methods)_  
 
@@ -58,7 +58,7 @@ _Extra Futures_
 [^4]: The style and the _find-next-btn_ isn't good, and you are welcome to do it better. See FindNext-component and the find-next.svg.
 [^5]: Most of the accordion functions are from [BlogiNote](https://github.com/Benbinbin/BlogiNote). - style.css is added in assets-folder with style for the accordions. - All headers is collapsed and the Catalog (Table of contents) is closed on load, except; - The headers is not collapsed when using the search-functionality.
 [^6]: The length of articles on the home- and list-page is reduced. Style is changed in PostCardItem (see scss), and .short-description is added in list-page and PostListItem.
-[^7]: All icons are downloaded and saved in assets/icons-folder. I don't think the icons is working in .playground.
+[^7]: All icons are downloaded and saved in assets/icons-folder. Don't try to use `nuxt-icons`, it will not work for layer 2
 [^8]: Most of my functions and methods are located in plugin-folder as helpers.
 [^9]: If the notifications don't shows, changed the settings. Add the sites url in the `allow`-settings. - In Chrome: chrome://settings/content/notifications - In Edge: edge://settings/content/notifications
 [^10]: Typescript-issues in my base theme ([BlogiNote](https://github.com/Benbinbin/BlogiNote))-files are fixed and javascript is converted to typescript.

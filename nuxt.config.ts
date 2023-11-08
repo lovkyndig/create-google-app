@@ -22,9 +22,6 @@ const capitalize = (string: any) => {
 export default defineNuxtConfig({
   app: { /* */ },
   css: [join(currentDir, './assets/style.css')],
-  // @ts-ignore
-  svgo: { autoImportPath: join(currentDir, './assets/icons') },
-  devtools: { enabled: false },
   nitro: {
     prerender: {
       routes: ['/rss.xml', '/sitemap.xml']
@@ -55,23 +52,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-svgo'
   ],
-  // https://content.nuxtjs.org
-  content: {
-    navigation: {
-      fields: ['_id', '_type', 'series', 'tags']
-    },
-    highlight: {
-      // https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
-      theme: 'one-dark-pro',
-      preload: ['vue', 'markdown', 'md']
-    },
-    markdown: {
-      toc: {
-        depth: 5,
-        searchDepth: 5
-      }
-    }
-  },
   // experimental: { payloadExtraction: false },
   pwa: {
     manifest: false, // public/manifest.webmanifest
@@ -80,7 +60,7 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html}', 'img/**/*.{svg,webp}', 'article/**/*.{webp}', 'favicon.*'],
+      globPatterns: ['**/*.{js,css,html,svg,webp}'],
       globIgnores: ['google*.*'],
       // navigateFallbackDenylist: [/^\/api/],
       runtimeCaching: [
@@ -107,14 +87,33 @@ export default defineNuxtConfig({
       suppressWarnings: true
     }
   },
+  svgo: { autoImportPath: join(currentDir, './assets/icons') },
   components: [
     { path: './components/custom', pathPrefix: false },
     { path: './components/content', pathPrefix: false },
     { path: './components' }
     // https://nuxt.com/docs/guide/directory-structure/components
   ],
+  // https://content.nuxtjs.org
+  content: {
+    navigation: {
+      fields: ['_id', '_type', 'series', 'tags']
+    },
+    highlight: {
+      // https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
+      theme: 'one-dark-pro',
+      preload: ['vue', 'markdown', 'md']
+    },
+    markdown: {
+      toc: {
+        depth: 5,
+        searchDepth: 5
+      }
+    }
+  },
   typescript: {
     shim: false,
     typeCheck: true
-  }
+  },
+  devtools: { enabled: false }
 })

@@ -23,9 +23,10 @@ export default defineAppConfig({
       mapping: 'url',
       reactionsEnabled: '1',
       emitMetadata: '0',
-      inputPosition: 'bottom',
+      inputPosition: 'top',
       theme: 'noborder_dark',
-      lang: 'en'
+      lang: 'en',
+      loading: 'lazy'
     },
     privacy: {
       title: 'Privacy Policy following because this is an Google App.',

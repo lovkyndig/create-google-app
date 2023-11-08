@@ -385,8 +385,8 @@ useSeoMeta({
             >
               <FileType
                 :name="getFileTypeIcon(item._type)"
-                class="shrink-0 text-xl"
-              /> <!--  w-6 h-6 -->
+                class="shrink-0 w-6 h-6"
+              /> <!--  w-6 h-6 OR text-xl -->
               <span class="line-camp-2 break-all">
                 {{ item.title }}
               </span>
@@ -430,6 +430,9 @@ useSeoMeta({
           </div>
         </button>
       </template>
+      <!--    **************************************************    -->
+      <GithubComments class="giscus mx-auto px-6 md:px-12" />
+      <!--    **************************************************    -->
     </NuxtLayout>
   </div>
 </template>

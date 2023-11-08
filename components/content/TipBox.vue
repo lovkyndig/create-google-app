@@ -37,47 +37,47 @@ interface DefaultType {
 // bad
 const defaultTypeMap: DefaultType = {
   tip: {
-    icon: 'bi/lightbulb-fill',
+    icon: 'bi-lightbulb-fill',
     name: 'Tip',
     boxClass: 'text-amber-500 bg-amber-50 border-amber-400'
   },
   announce: {
-    icon: 'bi/megaphone-fill',
+    icon: 'bi-megaphone-fill',
     name: 'Announce',
     boxClass: 'text-purple-600 bg-purple-50 border-purple-400'
   },
   warning: {
-    icon: 'bi/exclamation-triangle-fill',
+    icon: 'bi-exclamation-triangle-fill',
     name: 'Warning',
     boxClass: 'text-red-500 bg-red-50 border-red-400'
   },
   fun: {
-    icon: 'bi/balloon-fill',
+    icon: 'bi-balloon-fill',
     name: 'Fun',
     boxClass: 'text-sky-600 bg-cyan-50 border-cyan-400'
   },
   achieve: {
-    icon: 'bi/award-fill',
+    icon: 'bi-award-fill',
     name: 'Achieve',
     boxClass: 'text-orange-600 bg-orange-50 border-orange-400'
   },
   question: {
-    icon: 'bi/question-circle-fill',
+    icon: 'bi-question-circle-fill',
     name: 'Question',
     boxClass: 'text-fuchsia-600 bg-fuchsia-50 border-fuchsia-400'
   },
   good: {
-    icon: 'bi/hand-thumbs-up-fill',
+    icon: 'bi-hand-thumbs-up-fill',
     name: 'Good',
     boxClass: 'text-green-600 bg-green-100 border-green-500'
   },
   bad: {
-    icon: 'bi/hand-thumbs-down-fill',
+    icon: 'bi-hand-thumbs-down-fill',
     name: 'Bad',
     boxClass: 'text-red-500 bg-red-50 border-red-400'
   },
   tldr: {
-    icon: 'bi/chat-left-text-fill',
+    icon: 'bi-chat-left-text-fill',
     name: 'TL;DR',
     boxClass: 'text-gray-800 bg-gray-100 border-gray-400'
   }
@@ -174,6 +174,7 @@ if (boxStyleValue.value) {
 
 <template>
   <details
+    name="TibBox"
     class="my-4 px-4 lg:px-6 py-2 border rounded-md"
     :class="containerClass"
     :style="containerStyle"
@@ -185,8 +186,8 @@ if (boxStyleValue.value) {
     >
       <SvgTipBox
         :name="iconValue"
-        class="text-base"
-      /> <!-- w-4 h-4 bi:lightbulb-fill -->
+        class="w-4 h-4"
+      /> <!-- w-4 h-4 bi:lightbulb-fill OR text-base -->
       <span>{{ nameValue || 'Tip' }}</span>
     </summary>
 
