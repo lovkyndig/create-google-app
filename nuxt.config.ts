@@ -20,7 +20,7 @@ const capitalize = (string: any) => {
 // end grepper
 
 export default defineNuxtConfig({
-  devtools: { enabled: false },
+  app: { /* */ },
   css: [join(currentDir, './assets/style.css')],
   nitro: {
     prerender: {
