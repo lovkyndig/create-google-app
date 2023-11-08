@@ -42,7 +42,7 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html}', 'img/**/*.{svg,webp}', 'article/**/*.{webp}', 'favicon.*'],
       globIgnores: ['google*.*'],
-      navigateFallbackDenylist: [/^\/api/, /^\/about/],
+      // navigateFallbackDenylist: [/^\/api/, /^\/about/],
       runtimeCaching: [
         {
           urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
