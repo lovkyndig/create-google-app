@@ -53,7 +53,7 @@ export default defineNuxtConfig({
     'nuxt-svgo'
   ],
   // experimental: { payloadExtraction: false },
-  pwa: {
+  pwa: { 
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
     injectRegister: 'script',
@@ -62,8 +62,7 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,json,svg,webp}'],
       globIgnores: ['google*.*'],
-      // navigateFallbackDenylist: [/^\/api/],
-      cleanupOutdatedCaches: true,
+      navigateFallbackDenylist: [/^\/.*\\?giscus=.*/, /^\/.*\\?api.*/],
       runtimeCaching: [
         {
           urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
@@ -74,18 +73,74 @@ export default defineNuxtConfig({
               statuses: [0, 200]
             }
           }
+        },
+        {
+          urlPattern: /\/api\/.*/,
+          handler: 'NetworkOnly',
+          method: 'POST',
+          options: {
+            backgroundSync: {
+              name: 'backgroundsync',
+              options: {
+                maxRetentionTime: 24 * 60
+              }
+            }
+          }
+        },
+        {
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*\\?giscus=.*/),
+          handler: 'NetworkOnly',
+          options: {
+            matchOptions: {
+              ignoreVary: true,
+              ignoreSearch: true
+            },
+            plugins: [{
+              handlerDidError: async () => Response.redirect('/error', 302),
+              cacheWillUpdate: async () => null
+            }]
+          }
+        },
+        {
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*\\?searchparam=.*/),
+          handler: 'NetworkOnly',
+          options: {
+            matchOptions: {
+              ignoreVary: true,
+              ignoreSearch: true
+            },
+            plugins: [{
+              handlerDidError: async () => Response.redirect('/error', 302),
+              cacheWillUpdate: async () => null
+            }]
+          }
+        },
+        {
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/article\/.*/),
+          handler: 'NetworkOnly',
+          options: {
+            matchOptions: {
+              ignoreVary: true,
+              ignoreSearch: true
+            },
+            plugins: [{
+              handlerDidError: async () => Response.redirect('/error', 302),
+              cacheWillUpdate: async () => null
+            }]
+          }
         }
       ]
     },
-    client: {
-      installPrompt: true,
-      periodicSyncForUpdates: 3600 // 360 for testing only
-    },
     devOptions: {
       enabled: true,
+      type: 'module',
+      suppressWarnings: true,
       navigateFallback: '/',
-      navigateFallbackAllowlist: [/^\/$/]
-      // suppressWarnings: true
+      navigateFallbackAllowlist: [/^\/$/],
+    },
+    client: {
+      installPrompt: true,
+      periodicSyncForUpdates: 300 // per 5 min for testing only
     }
   },
   svgo: { autoImportPath: join(currentDir, './assets/icons') },
