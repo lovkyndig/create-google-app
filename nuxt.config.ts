@@ -53,7 +53,7 @@ export default defineNuxtConfig({
     'nuxt-svgo'
   ],
   // experimental: { payloadExtraction: false },
-  pwa: { 
+  pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
     injectRegister: 'script',
@@ -75,7 +75,7 @@ export default defineNuxtConfig({
           }
         },
         {
-          urlPattern: /\/api\/.*/,
+          urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
           handler: 'NetworkOnly',
           method: 'POST',
           options: {
@@ -85,48 +85,6 @@ export default defineNuxtConfig({
                 maxRetentionTime: 24 * 60
               }
             }
-          }
-        },
-        {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*\\?giscus=.*/),
-          handler: 'NetworkOnly',
-          options: {
-            matchOptions: {
-              ignoreVary: true,
-              ignoreSearch: true
-            },
-            plugins: [{
-              handlerDidError: async () => Response.redirect('/error', 302),
-              cacheWillUpdate: async () => null
-            }]
-          }
-        },
-        {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*\\?searchparam=.*/),
-          handler: 'NetworkOnly',
-          options: {
-            matchOptions: {
-              ignoreVary: true,
-              ignoreSearch: true
-            },
-            plugins: [{
-              handlerDidError: async () => Response.redirect('/error', 302),
-              cacheWillUpdate: async () => null
-            }]
-          }
-        },
-        {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/article\/.*/),
-          handler: 'NetworkOnly',
-          options: {
-            matchOptions: {
-              ignoreVary: true,
-              ignoreSearch: true
-            },
-            plugins: [{
-              handlerDidError: async () => Response.redirect('/error', 302),
-              cacheWillUpdate: async () => null
-            }]
           }
         }
       ]

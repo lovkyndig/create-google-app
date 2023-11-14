@@ -431,9 +431,6 @@ useSeoMeta({
           </div>
         </button>
       </template>
-      <!--    **************************************************    -->
-      <GithubComments class="giscus mx-auto px-6 md:px-12" />
-      <!--    **************************************************    -->
     </NuxtLayout>
   </div>
 </template>
