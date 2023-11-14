@@ -22,7 +22,7 @@ _Style and icons_
 
 5. Accordion style, all collapsed on start with better overview of content.[^5]  
 6. Advanced catalog or index to see the structure of the content in a hierarchy or graphical map.[^6]  
-7. Offline icons, [nuxt-svgo](https://www.npmjs.com/package/nuxt-svgo), so the app looks nice offline.[^7]
+7. Offline icons, [nuxt-svgo](https://www.npmjs.com/package/nuxt-svgo).[^7]
 
 _Helpers (functions/methods)_  
 
@@ -46,7 +46,7 @@ _Extra Futures_
 19. GitHub-Comments, [giscus](https://giscus.app).[^19]
 
 ## To do-list (plan)
-- Add dark-light-theme-toggle.
+- Add [nuxt/ui](https://www.npmjs.com/package/@nuxt/ui) or/and add dark-light-theme-toggle.
 - Maybe add [Google Translate](https://www.npmjs.com/package/@google-translate-select/vue3) option (not auto-translate).
 
 ## License
@@ -55,10 +55,10 @@ _Extra Futures_
 [^1]: Prov from 02.11.2023 - version 1.0.1-rc.15.
 [^2]: _((4 x 100)% + 98)%/5_ = **99.6%**.
 [^3]: The bundle that is used for searching is normally created on generate. If you are using .playground (and want to test it there), you can use this command to create the bundle: `- npx -y pagefind --site .output/public --output-path public/_pagefind`. - Maybe you need to change `--site .output/public` to `--site ../.output/public`.
-[^4]: The style and the _find-next-btn_ isn't good, and you are welcome to do it better. See FindNext-component and the find-next.svg.
+[^4]: The style and the _find-next-btn_ isn't good, and this _"add-on"_ search-functionality isn't working in `Edge`, only on `Chrome` and on `Phones`.
 [^5]: Most of the accordion functions are from [BlogiNote](https://github.com/Benbinbin/BlogiNote). - style.css is added in assets-folder with style for the accordions. - All headers is collapsed and the Catalog (Table of contents) is closed on load, except; - The headers is not collapsed when using the search-functionality.
 [^6]: Four packages from [d3](https://github.com/d3) is making this possibly. Which ones? See the _package.json_.
-[^7]: All icons are downloaded and saved in assets/icons-folder. Don't try to use `nuxt-icons`, it will not work for layer 2
+[^7]: All icons are downloaded and saved in assets/icons-folder. Don't try to use `nuxt-icons`, it will not work for layer 2.
 [^8]: Most of my functions and methods are located in plugin-folder as helpers.
 [^9]: If the notifications don't shows, changed the settings. Add the sites url in the `allow`-settings. - In Chrome: chrome://settings/content/notifications - In Edge: edge://settings/content/notifications
 [^10]: Typescript-issues in my base theme ([BlogiNote](https://github.com/Benbinbin/BlogiNote))-files are fixed and javascript is converted to typescript.
@@ -70,6 +70,6 @@ _Extra Futures_
 [^16]: The `bat`-file is copying the _dev_-files to _public_-folder (and then it's working). To run _bat_-files in **Git-Bash** write `./rss-sitemap.bat` + enter. 
 [^17]: Vercel Analytics don't use cookies and this app isn't using cookies at all, therefore it's not need for a plugin that pop up with a question if you accept cookies. See the [doc](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
 [^18]: _google.site-verification_-file ([or code](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics)) is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), before [Ahrefs website-checker](https://ahrefs.com/website-checker) can be used. [Read more](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
-[^19]: Added in version 1.0.1 as component with [@giscus/vue](https://github.com/giscus/giscus-component/tree/main). The `id` etc. have to be set in `app.config.ts`.
+[^19]: Added in version 1.0.1 as component with [@giscus/vue](https://github.com/giscus/giscus-component/tree/main). The `repo-id` etc. have to be set in `app.config.ts`. The following _regeg pattern_ have to be added to _navigateFallbackDenylist_: `/^\/.*\\?giscus=.*/`, to get it works properly.
 
-Updated 09.11.2023
+Updated 14.11.2023

@@ -20,10 +20,12 @@ onMounted(() => {
   if (document) {
     if (window.find) { // Firefox, Google Chrome, Safari
       const findBtn = document.querySelector('#findNextHeader')
-      const timer = setTimeout(() => {
-        findBtn.dispatchEvent(new Event('click')) // Fire event
-        clearTimeout(timer)
-      }, 800)
+      if (findBtn) { // if removes the error from Edge
+        const timer = setTimeout(() => {
+          findBtn.dispatchEvent(new Event('click')) // Fire event
+          clearTimeout(timer)
+        }, 800)
+      }
     }
   }
 })

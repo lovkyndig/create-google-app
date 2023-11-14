@@ -2,25 +2,13 @@ import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import { createResolver } from '@nuxt/kit'
 import { isProduction } from 'std-env'
+import { capitalize } from './utils/capitalize-method'
 import pkg from './package.json'
 
 const { resolve } = createResolver(import.meta.url)
-
 const currentDir = dirname(fileURLToPath(import.meta.url))
 
-// grepper capitalize first letter in all words in a string, separeted with space ' ' or hyphen '-' (like name in package.json)
-const capitalize = (string: any) => {
-  const words = string.split(/[\s-]+/)
-  for (const i in words) {
-    words[i] = words[i][0].toUpperCase() + words[i].substring(1)
-  }
-  return words.join(' ')
-  // console.log('The pkg.name is now changed to: ' + capitalize(pkg.name))
-}
-// end grepper
-
 export default defineNuxtConfig({
-  app: { /* */ },
   css: [join(currentDir, './assets/style.css')],
   nitro: {
     prerender: {

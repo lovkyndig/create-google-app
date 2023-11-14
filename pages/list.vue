@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
+import {
+  publishTitle,
+  echoQueryParam,
+  getAndUseSearchparam
+} from '../utils/search-and-seo-methods'
 
 interface MyCustomParsedContent extends ParsedContent {
   tags: string[]
@@ -188,6 +193,7 @@ onMounted(() => {
 
   const series = route.query?.series as string || 'all'
   currentSeries.value = series
+  echoQueryParam(route.query, route) // lovkyndig coded 2023
 })
 
 /**
@@ -276,61 +282,19 @@ const getFileTypeIcon = (type) => {
   }
 }
 
-/** ----------------------------------------------------------------------------- */
+/** -------------------------------- utils/search-and-seo-methods.ts --------------------------------- */
 const appConfig = useAppConfig()
-const config = useRuntimeConfig()
 useServerSeoMeta({
   ogDescription: `${appConfig.myLayer.list.description} ${route.fullPath.slice(9)}`
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 
-/**
- *
- * Publishing the TITLE.
- * Using route.path as argument to this function.
- * Using this function five times below, from here to the script end.
- *
- */
-const publishTitle = (value) => { // using this function 5 times below
-  const title = ref(value)
-  titles.value = title
-  useSeoMeta({
-    title: title.value,
-    description: `${appConfig.myLayer.list.description} ${route.fullPath.slice(9)}`,
-    ogDescription: `${appConfig.myLayer.list.description} ${route.fullPath.slice(9)}`,
-    ogUrl: `${config.public.hostname}${route.fullPath}`
-  })
-  useHead({ link: [{ rel: 'canonical', href: `${config.public.hostname}${route.fullPath}` }] })
-}
-const titles = useSearchString()
-/**
- * Loading echoQueryParam above onMounted
- */
-const searchString = useState('searchString')
-const echoQueryParam = (queryObj) => {
-  /* const cat = queryObj.category; const tag = queryObj.tags; const serie = queryObj.series */
-  if (process.client) {
-    const querystring = window.location.search
-    if (querystring.substring(1)) { // set searchString.value
-      searchString.value = querystring.substring(1)
-    } else { /* console.log('No searchstring here!') */ }
-  }
-  publishTitle(`${appConfig.myLayer.list.tags} ${searchString.value}`)
-}
-
-const getAndUseSearchparam = () => { // only on load
-  if (route.fullPath === route.path) {
-    publishTitle(appConfig.myLayer.list.tags_all)
-  } else {
-    publishTitle(`${appConfig.myLayer.list.tags} ${route.fullPath.slice(9)}`)
-  }
-}
-getAndUseSearchparam()
+getAndUseSearchparam(route)
 
 watch(() => route.fullPath, () => { // only on change after load
   if (route.path === route.fullPath) {
-    publishTitle(appConfig.myLayer.list.tags_all)
+    publishTitle(appConfig.myLayer.list.tags_all, route)
   } else {
-    publishTitle(`${appConfig.myLayer.list.tags} ${route.fullPath.slice(9)}`)
+    publishTitle(`${appConfig.myLayer.list.tags} ${route.fullPath.slice(9)}`, route)
   }
 })
 
