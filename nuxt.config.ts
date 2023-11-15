@@ -53,25 +53,25 @@ export default defineNuxtConfig({
       navigateFallbackDenylist: [/^\/.*\\?giscus=.*/, /^\/.*\\?api.*/, /^\/.*\\?search.*/],
       runtimeCaching: [
         {
-          urlPattern: /^\/(api|article)\/.*/ig,
+          urlPattern: /^\/api\/.*/,
           handler: 'NetworkFirst' as const,
-          options: {
-            cacheName: 'articles-and-img',
-            cacheableResponse: {
-              statuses: [0, 200]
-            }
-          }
+          options: { cacheName: 'articles' }
         },
         {
-          urlPattern: /^\/.*(favicon|avatar).(svg|ico|png)$/ig,
+          urlPattern: /^\/article\/.*/,
           handler: 'NetworkFirst' as const,
-          options: {
-            cacheName: 'front-img',
-            cacheableResponse: {
-              statuses: [0, 200]
-            }
-          }
-        } // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
+          options: { cacheName: 'article-images' }
+        },
+        {
+          urlPattern: /^\/favicon\/.*/,
+          handler: 'NetworkFirst' as const,
+          options: { cacheName: 'favicon' }
+        },
+        {
+          urlPattern: /^\/.*avatar\/.*/,
+          handler: 'NetworkFirst' as const,
+          options: { cacheName: 'avatar' }
+        }
       ]
     },
     devOptions: {
