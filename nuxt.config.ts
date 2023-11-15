@@ -53,22 +53,22 @@ export default defineNuxtConfig({
       navigateFallbackDenylist: [/^\/.*\\?giscus=.*/, /^\/.*\\?api.*/, /^\/.*\\?search.*/],
       runtimeCaching: [
         {
-          urlPattern: /^\/api\/.*/,
+          urlPattern: ({ url }) => { return url.pathname.startsWith('/api/') },
           handler: 'NetworkFirst' as const,
           options: { cacheName: 'articles' }
         },
         {
-          urlPattern: /^\/article\/.*/,
+          urlPattern: ({ url }) => { return url.pathname.startsWith('/article/') },
           handler: 'NetworkFirst' as const,
           options: { cacheName: 'article-images' }
         },
         {
-          urlPattern: /^\/favicon\/.*/,
+          urlPattern: ({ url }) => { return url.pathname.startsWith('/favicon.') },
           handler: 'NetworkFirst' as const,
           options: { cacheName: 'favicon' }
         },
         {
-          urlPattern: /^\/.*avatar\/.*/,
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*avatar.*/i),
           handler: 'NetworkFirst' as const,
           options: { cacheName: 'avatar' }
         }
