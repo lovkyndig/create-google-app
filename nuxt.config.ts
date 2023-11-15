@@ -50,23 +50,23 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,json}'],
       globIgnores: ['google*.*'],
-      navigateFallbackDenylist: [/^\/.*\\?giscus=.*/, /^\/.*\\?api.*/],
+      navigateFallbackDenylist: [/^\/.*\\?giscus=.*/, /^\/.*\\?api.*/, /^\/.*\\?search.*/],
       runtimeCaching: [
         {
           urlPattern: /^\/(api|article)\/.*/ig,
           handler: 'NetworkFirst' as const,
           options: {
-            cacheName: 'articles-and-images',
+            cacheName: 'articles-and-img',
             cacheableResponse: {
               statuses: [0, 200]
             }
           }
         },
         {
-          urlPattern: /^\/(?=.*favicon|avatar)(?=.?svg|ico|png)$/ig,
+          urlPattern: /^\/.*(favicon|avatar).(svg|ico|png)$/ig,
           handler: 'NetworkFirst' as const,
           options: {
-            cacheName: 'front-images',
+            cacheName: 'front-img',
             cacheableResponse: {
               statuses: [0, 200]
             }
