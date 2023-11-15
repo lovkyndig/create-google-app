@@ -12,8 +12,8 @@ const appConfig = useAppConfig()
     aria-labelledby="my-title"
     aria-describedby="my-desc"
   >
-    <title id="my-title">God loves Kyrie Eleison - even if he are a sinner.</title>
-    <desc id="my-desc">This is a header created with NameLogo-component in this app.</desc>
+    <title id="my-title">Are you sure you want to go back to the frontpage?</title>
+    <desc id="my-desc">This button leads back to the frontpage of this app.</desc>
     <a xlink:href="/">
       <text x="15" y="32" fill="#6b21a8" font-style="italic" class="logo">{{ appConfig.myLayer.meta.logo }}</text>
       <rect class="shape" height="50" width="215" />

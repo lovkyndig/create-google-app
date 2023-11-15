@@ -61,7 +61,28 @@ export default defineNuxtConfig({
               statuses: [0, 200]
             }
           }
-        } // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
+        }, // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
+        {
+          urlPattern: ({ url }) => { return url.pathname.endsWith('webp') },
+          handler: 'NetworkFirst' as const,
+          options: {
+            cacheName: 'network-first',
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        },
+        {
+          urlPattern: ({ url }) => { return url.pathname.endsWith('svg') },
+          handler: 'NetworkFirst' as const,
+          options: {
+            cacheName: 'network-first',
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        },
+
       ]
     },
     devOptions: {

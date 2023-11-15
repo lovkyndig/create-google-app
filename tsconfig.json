@@ -2,10 +2,12 @@
   // "./.nuxt/tsconfig.json" OR "./.playground/.nuxt/tsconfig.json"
   "extends": "./.nuxt/tsconfig.json", 
   "compilerOptions": {
-    "strict": false
+    "strict": false,
+    "types": ["vite/client"]
   }
 }
 /* Sources:
+https://vitejs.dev/guide/features.html#client-types
 https://github.com/vuejs/language-tools/issues/1544
 https://www.typescriptlang.org/docs/handbook/compiler-options.html
 https://github.com/viandwi24/nuxt3-awesome-starter/blob/v2/tsconfig.json
