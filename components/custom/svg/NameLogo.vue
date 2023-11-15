@@ -6,7 +6,7 @@ const appConfig = useAppConfig()
 <template>
   <svg
     height="50"
-    width="215"
+    width="180"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     aria-labelledby="my-title"
@@ -16,7 +16,7 @@ const appConfig = useAppConfig()
     <desc id="my-desc">This button leads back to the frontpage of this app.</desc>
     <a xlink:href="/">
       <text x="15" y="32" fill="#6b21a8" font-style="italic" class="logo">{{ appConfig.myLayer.meta.logo }}</text>
-      <rect class="shape" height="50" width="215" />
+      <rect class="shape" height="50" width="180" />
     </a>
   </svg>
 </template>
@@ -25,20 +25,20 @@ const appConfig = useAppConfig()
 /* svg-source: https://codepen.io/seanmccaffery/pen/kWWxzQ */
 svg .shape {
   fill: transparent;
-  stroke-dasharray: 188 540;
-  stroke-dashoffset: -280;
+  stroke-dasharray: 155 540;
+  stroke-dashoffset: -245;
   stroke-width: 8px;
   stroke: #a855f7;
 }
 svg .logo {
-  font-family: 'Roboto';
-  font-size: 22px;
-  letter-spacing: 5px;
+  font-family: 'segoe-ui';
+  font-size: 18px;
+  letter-spacing: 4px;
 }
 @keyframes draw {
   0% {
-    stroke-dasharray: 188 540;
-    stroke-dashoffset: -280;
+    stroke-dasharray: 155 540;
+    stroke-dashoffset: -245;
     stroke-width: 8px;
   }
   100% {

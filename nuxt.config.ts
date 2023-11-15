@@ -55,12 +55,12 @@ export default defineNuxtConfig({
         {
           urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(api|article)\/.*/i),
           handler: 'NetworkFirst' as const,
-          options: { cacheName: 'visitedArticlesOkOffline' }
+          options: { cacheName: 'visitedArticlesIsOffline' }
         }, // when this is cached - the frontpage is working offline
         {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*(avatar|favicon).*/i),
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(favicon|.*avatar).*/i),
           handler: 'NetworkFirst' as const,
-          options: { cacheName: 'indexOkOffline' }
+          options: { cacheName: 'indexIsNowOffline' }
         } // Every page have to be visited before it is cached and works offline
 
       ]
