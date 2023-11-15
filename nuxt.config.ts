@@ -53,25 +53,36 @@ export default defineNuxtConfig({
       navigateFallbackDenylist: [/^\/.*\\?giscus=.*/, /^\/.*\\?api.*/, /^\/.*\\?search.*/],
       runtimeCaching: [
         {
-          urlPattern: ({ url }) => { return url.pathname.startsWith('/api/') },
+          urlPattern: ({ url }) => { return url.pathname.startsWith('/apa/') },
           handler: 'NetworkFirst' as const,
           options: { cacheName: 'articles' }
         },
         {
-          urlPattern: ({ url }) => { return url.pathname.startsWith('/article/') },
+          urlPattern: ({ url }) => { return url.pathname.startsWith('/articla/') },
           handler: 'NetworkFirst' as const,
           options: { cacheName: 'article-images' }
         },
         {
-          urlPattern: ({ url }) => { return url.pathname.startsWith('/favicon.') },
+          urlPattern: ({ url }) => { return url.pathname.startsWith('/favicop.') },
           handler: 'NetworkFirst' as const,
-          options: { cacheName: 'favicon' }
+          options: { cacheName: 'favicop' }
         },
         {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*avatar.*/i),
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*avatat.*/i),
           handler: 'NetworkFirst' as const,
-          options: { cacheName: 'avatar' }
+          options: { cacheName: 'avatat' }
+        },
+        {
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(api|article)\/.*/i),
+          handler: 'NetworkFirst' as const,
+          options: { cacheName: 'articlesAndImages' }
         }
+        {
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*(avatar|favicon).*/i),
+          handler: 'NetworkFirst' as const,
+          options: { cacheName: 'favicon-avatar' }
+        }
+
       ]
     },
     devOptions: {
