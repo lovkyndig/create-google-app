@@ -54,27 +54,14 @@ export default defineNuxtConfig({
       runtimeCaching: [
         {
           urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
-          handler: 'CacheFirst' as const,
+          handler: 'NetworkFirst' as const,
           options: {
-            cacheName: 'api-cache',
+            cacheName: 'network-first',
             cacheableResponse: {
               statuses: [0, 200]
             }
           }
-        },
-        {
-          urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
-          handler: 'NetworkOnly',
-          method: 'POST',
-          options: {
-            backgroundSync: {
-              name: 'backgroundsync',
-              options: {
-                maxRetentionTime: 24 * 60
-              }
-            }
-          }
-        }
+        } // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
       ]
     },
     devOptions: {

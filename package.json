@@ -1,6 +1,6 @@
 {
   "name": "@lovkyndig/create-google-app",
-  "version": "1.0.1-rc.65",
+  "version": "1.0.1-rc.66",
   "type": "module",
   "main": "./nuxt.config.ts",
   "description": "⚡Nuxt layer with nuxt-content, full search-functionality, pwa and guide to how to publish to Google Play Store.",
@@ -21,7 +21,7 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/tailwindcss": "^6.9.4",
     "@vercel/analytics": "^1.1.1",
-    "@vite-pwa/nuxt": "^0.1.1",
+    "@vite-pwa/nuxt": "^0.2.3s",
     "@vueuse/nuxt": "^10.4.1",
     "d3-hierarchy": "^3.1.2",
     "d3-selection": "^3.0.0",
