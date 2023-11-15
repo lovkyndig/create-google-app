@@ -53,20 +53,20 @@ export default defineNuxtConfig({
       navigateFallbackDenylist: [/^\/.*\\?giscus=.*/, /^\/.*\\?api.*/],
       runtimeCaching: [
         {
-          urlPattern: /^\/(api|article)\/.*/,
+          urlPattern: /^\/(api|article)\/.*/ig,
           handler: 'NetworkFirst' as const,
           options: {
-            cacheName: 'articles',
+            cacheName: 'articles-and-images',
             cacheableResponse: {
               statuses: [0, 200]
             }
           }
         },
         {
-          urlPattern: /^\/.*(favicon|avatar)\\.(svg|ico|png)$/igm,
+          urlPattern: /^\/(?=.*favicon|avatar)(?=.?svg|ico|png)$/ig,
           handler: 'NetworkFirst' as const,
           options: {
-            cacheName: 'root-images',
+            cacheName: 'front-images',
             cacheableResponse: {
               statuses: [0, 200]
             }
