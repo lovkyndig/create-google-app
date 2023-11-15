@@ -82,11 +82,11 @@ export default defineNuxtConfig({
       type: 'module',
       suppressWarnings: true,
       navigateFallback: '/',
-      navigateFallbackAllowlist: [/^\/$/],
+      navigateFallbackAllowlist: [/^\/$/]
     },
     client: {
-      installPrompt: true,
-      periodicSyncForUpdates: 300 // per 5 min for testing only
+      installPrompt: true
+      // periodicSyncForUpdates: 300 // per 5 min for testing only
     }
   },
   svgo: { autoImportPath: join(currentDir, './assets/icons') },

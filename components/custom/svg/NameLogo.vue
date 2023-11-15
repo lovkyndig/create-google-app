@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+/* svg-source: https://codepen.io/seanmccaffery/pen/kWWxzQ */
 const appConfig = useAppConfig()
 </script>
 
@@ -12,7 +13,7 @@ const appConfig = useAppConfig()
 </template>
 
 <style lang="scss" scoped>
-/* Source: https://codepen.io/seanmccaffery/pen/kWWxzQ */
+/* svg-source: https://codepen.io/seanmccaffery/pen/kWWxzQ */
 svg .shape {
   fill: transparent;
   stroke-dasharray: 188 540;

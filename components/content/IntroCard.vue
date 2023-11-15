@@ -2,7 +2,7 @@
 const props = defineProps({
   avatar: {
     type: String,
-    default: ''
+    default: '/img/svg/avatar.svg'
   },
   avatarClass: {
     type: String,

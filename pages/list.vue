@@ -1,10 +1,5 @@
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
-import {
-  publishTitle,
-  echoQueryParam,
-  getAndUseSearchparam
-} from '../utils/search-and-seo-methods'
 
 interface MyCustomParsedContent extends ParsedContent {
   tags: string[]

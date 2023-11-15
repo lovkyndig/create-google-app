@@ -92,13 +92,15 @@ const showSearchModal = useState('showSearchModal')
       :class="showSubNav ? 'border-gray-200' : 'border-gray-50 shadow-md shadow-gray-200'"
     >
       <div class="flex justify-start items-center">
-        <!-- <NameLogo /> -->
+        <NameLogo />
+        <!--
         <WritingText
           line1="This is an NUXT3 PWA!"
           line2="Theme by Kyrie Eleison!"
           line3="Download it from GitHub!"
           line4="Publish it on Google Play!"
         />
+        -->
       </div>
       <div class="flex justify-center items-center gap-6">
         <button
