@@ -76,11 +76,11 @@ export default defineNuxtConfig({
           urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(api|article)\/.*/i),
           handler: 'NetworkFirst' as const,
           options: { cacheName: 'articlesAndImages' }
-        }
+        },
         {
           urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*(avatar|favicon).*/i),
           handler: 'NetworkFirst' as const,
-          options: { cacheName: 'favicon-avatar' }
+          options: { cacheName: 'faviconAndAvatar' }
         }
 
       ]
