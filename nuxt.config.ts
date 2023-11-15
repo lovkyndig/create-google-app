@@ -48,41 +48,30 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html,json,svg,webp}'],
+      globPatterns: ['**/*.{js,css,html,json}'],
       globIgnores: ['google*.*'],
       navigateFallbackDenylist: [/^\/.*\\?giscus=.*/, /^\/.*\\?api.*/],
       runtimeCaching: [
         {
-          urlPattern: ({ url }) => { return url.pathname.startsWith('/api') },
+          urlPattern: /^\/(api|article)\/.*/,
           handler: 'NetworkFirst' as const,
           options: {
-            cacheName: 'network-first',
-            cacheableResponse: {
-              statuses: [0, 200]
-            }
-          }
-        }, // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
-        {
-          urlPattern: ({ url }) => { return url.pathname.endsWith('webp') },
-          handler: 'NetworkFirst' as const,
-          options: {
-            cacheName: 'network-first',
+            cacheName: 'articles',
             cacheableResponse: {
               statuses: [0, 200]
             }
           }
         },
         {
-          urlPattern: ({ url }) => { return url.pathname.endsWith('svg') },
+          urlPattern: /^\/.*(favicon|avatar)\\.(svg|ico|png)$/igm,
           handler: 'NetworkFirst' as const,
           options: {
-            cacheName: 'network-first',
+            cacheName: 'root-images',
             cacheableResponse: {
               statuses: [0, 200]
             }
           }
-        },
-
+        } // source: https://vite-pwa-org.netlify.app/workbox/generate-sw.html
       ]
     },
     devOptions: {
