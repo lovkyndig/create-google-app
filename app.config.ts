@@ -7,7 +7,7 @@ export default defineAppConfig({
       version: pkg.version,
       description: pkg.description,
       homepage: pkg.homepage,
-      logo: '/img/svg/text-logo.svg'
+      logo: 'Kyrie Eleison' // max 13 char
     },
     menu: { btn: 'Google' },
     author: pkg.author,

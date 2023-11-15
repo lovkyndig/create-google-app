@@ -72,7 +72,7 @@ const onAfterEnter = (el:HTMLElement) => {
 // fix the overscroll bug
 const subNavDOM = ref<null | HTMLElement>(null)
 const scrollWheelHandler = (event: WheelEvent) => {
-  if(subNavDOM.value) {
+  if (subNavDOM.value) {
     overscrollWheelHandler(event, subNavDOM.value)
   }
 }
@@ -92,13 +92,13 @@ const showSearchModal = useState('showSearchModal')
       :class="showSubNav ? 'border-gray-200' : 'border-gray-50 shadow-md shadow-gray-200'"
     >
       <div class="flex justify-start items-center">
-        <NuxtLink to="/">
-          <img
-            :src="appConfig.myLayer.meta.logo"
-            alt="logo"
-            class="w-96 h-10 rounded-full"
-          >
-        </NuxtLink>
+        <!-- <NameLogo /> -->
+        <WritingText
+          line1="This is an NUXT3 PWA!"
+          line2="Theme by Kyrie Eleison!"
+          line3="Download it from GitHub!"
+          line4="Publish it on Google Play!"
+        />
       </div>
       <div class="flex justify-center items-center gap-6">
         <button
@@ -187,7 +187,6 @@ const showSearchModal = useState('showSearchModal')
 </template>
 
 <style scoped lang="scss">
-
 .btn {
   @apply p-2 font-bold transition-colors duration-300 rounded-md
 }

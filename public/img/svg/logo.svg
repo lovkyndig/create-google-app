@@ -1,9 +1,9 @@
 <!-- https://github.com/DenverCoder1/readme-typing-svg/ -->
 <svg xmlns='http://www.w3.org/2000/svg'
   xmlns:xlink='http://www.w3.org/1999/xlink'
-  viewBox='0 0 400 50'
+  viewBox='0 0 388 48'
   style='background-color: #00000000;'
-  width='400px' height='50px'>
+  width='388px' height='48px'>
 
   <style>
    <![CDATA[    
@@ -34,7 +34,7 @@
     text-anchor='middle'
   >
     <textPath xlink:href='#path0'>
-      This is an NUXT3 PWA!
+      How to create google apps
     </textPath>
   </text>
   <path id='path1'>
@@ -51,7 +51,7 @@
       text-anchor='middle'
   >
     <textPath xlink:href='#path1'>
-      Theme by Kyrie Eleison!
+      without programming skills,
     </textPath>
   </text>
   <path id='path2'>
@@ -68,7 +68,7 @@
     text-anchor='middle'
   >
     <textPath xlink:href='#path2'>
-      Download it from GitHub!
+      in less than one week?
     </textPath>
   </text>
   <path id='path3'>
@@ -84,7 +84,7 @@
     x='50%' 
     text-anchor='middle'>
     <textPath xlink:href='#path3'>
-      And Publish it on Google Play!
+      Read the doc. and find out!
     </textPath>
   </text>
 </svg>
