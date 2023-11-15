@@ -53,35 +53,15 @@ export default defineNuxtConfig({
       navigateFallbackDenylist: [/^\/.*\\?giscus=.*/, /^\/.*\\?api.*/, /^\/.*\\?search.*/],
       runtimeCaching: [
         {
-          urlPattern: ({ url }) => { return url.pathname.startsWith('/apa/') },
-          handler: 'NetworkFirst' as const,
-          options: { cacheName: 'articles' }
-        },
-        {
-          urlPattern: ({ url }) => { return url.pathname.startsWith('/articla/') },
-          handler: 'NetworkFirst' as const,
-          options: { cacheName: 'article-images' }
-        },
-        {
-          urlPattern: ({ url }) => { return url.pathname.startsWith('/favicop.') },
-          handler: 'NetworkFirst' as const,
-          options: { cacheName: 'favicop' }
-        },
-        {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*avatat.*/i),
-          handler: 'NetworkFirst' as const,
-          options: { cacheName: 'avatat' }
-        },
-        {
           urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(api|article)\/.*/i),
           handler: 'NetworkFirst' as const,
-          options: { cacheName: 'articlesAndImages' }
-        },
+          options: { cacheName: 'visitedArticlesOkOffline' }
+        }, // when this is cached - the frontpage is working offline
         {
           urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*(avatar|favicon).*/i),
           handler: 'NetworkFirst' as const,
-          options: { cacheName: 'faviconAndAvatar' }
-        }
+          options: { cacheName: 'indexOkOffline' }
+        } // Every page have to be visited before it is cached and works offline
 
       ]
     },
