@@ -53,6 +53,18 @@ useSeoMeta({
       name="base"
       :footer-catalog="data?.body?.toc && data.body.toc.links.length > 0"
     >
+      <template #not-found>
+        <div class="about-me-content-container">
+          <h1 style="display: none">
+            {{ appConfig.myLayer.about.title }}
+          </h1>
+          <p class="max-w-prose mx-auto p-4 mt-8">
+            This article wasn't visited before you was going <b>offline</b>!
+            <br>
+            After the article is cached (on visit) it will be available offline.
+          </p>
+        </div>
+      </template>
       <template
         v-if="!pending && data?._type === 'markdown' && data?.body?.toc && data.body.toc.links.length > 0"
         #header-nav-right

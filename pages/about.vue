@@ -21,18 +21,9 @@ onMounted(() => {
               {{ appConfig.myLayer.about.title }}
             </h1>
             <p class="max-w-prose mx-auto p-4 mt-8">
-              The <b>about.md</b> in <b>content</b>-folder is missing!
+              This page wasn't visited before you was going <b>offline</b>!
               <br>
-              <br>
-              Read the <b>
-                <a
-                  :href="appConfig.myLayer.meta.homepage"
-                  target="_blank"
-                  class="text-blue-500 hover:text-blue-600 underline font-bold transition-colors duration-300"
-                >
-                  Documentation
-                </a> </b>
-              and guidelines, about how to set up the project.
+              After the page is cached (on visit) it will be available offline.
             </p>
           </div>
         </template>
