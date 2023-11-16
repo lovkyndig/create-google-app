@@ -215,19 +215,10 @@ useSeoMeta({
                 {{ appConfig.myLayer.home.title }}
               </h1>
               <div class="grid place-items-center text-purple-700">
-                <p class="mt-8">
-                  The <b>index.md</b> in <b>content</b>-folder is missing!
+                <p class="max-w-prose mx-auto p-4 mt-8">
+                  This page wasn't finish loading before you was going <b>offline</b>!
                   <br>
-                  <br>
-                  Read the <b>
-                    <a
-                      :href="appConfig.myLayer.meta.homepage"
-                      target="_blank"
-                      class="text-blue-500 hover:text-blue-600 underline font-bold transition-colors duration-300"
-                    >
-                      Documentation
-                    </a> </b>
-                  and guidelines, about how to set up the project.
+                  The page isn't available offline before it has been cached on visit.
                 </p>
               </div>
             </template>

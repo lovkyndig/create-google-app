@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useOnline } from '@vueuse/core'
 const pagefindPath = '/_pagefind/pagefind.js'
 
 const runtimeConfig = useRuntimeConfig()
@@ -145,6 +146,7 @@ const clearInputTextHandler = () => {
         </button>
 
         <input
+          v-if="useOnline().value"
           ref="searchInputDOM"
           v-model="inputText"
           type="text"
@@ -181,7 +183,8 @@ const clearInputTextHandler = () => {
             class="w-12 h-12"
             :font-controlled="false"
           />
-          <p>Type to Search</p>
+          <p v-if="useOnline().value">Type to Search</p>
+          <p v-else>Sorry! This search-functionality isn't offline-ready!</p>
         </div>
         <div
           v-show="inputText && searchState === 'waiting'"

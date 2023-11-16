@@ -15,8 +15,8 @@ This repo can be downloaded or installed as a [package](https://github.com/lovky
 
 _Full search functionality_  
 
-3. Full search functionality with use of [pagefind](https://pagefind.app/).[^3]  
-4. window.find()-function is used to continue searching in a article.[^4]
+3. Full search functionality with use of [pagefind](https://pagefind.app/). (Not in `offline`-mode)[^3]  
+4. window.find()-function is used to continue searching in a article. (Not in `Edge`.)[^4]
 
 _Style and icons_  
 
@@ -54,12 +54,12 @@ _Extra Futures_
 
 [^1]: Prov from 02.11.2023 - version 1.0.1-rc.15.
 [^2]: _((4 x 100)% + 98)%/5_ = **99.6%**.
-[^3]: The bundle that is used for searching is normally created on generate. If you are using .playground (and want to test it there), you can use this command to create the bundle: `- npx -y pagefind --site .output/public --output-path public/_pagefind`. - Maybe you need to change `--site .output/public` to `--site ../.output/public`.
+[^3]: The bundle that is used for searching is normally created on generate. If you are using .playground (and want to test it there), you can use this command to create the bundle: `- npx -y pagefind --site .output/public --output-path public/_pagefind`. - Maybe you need to change `--site .output/public` to `--site ../.output/public`. NB! Offline-search ins't available.
 [^4]: The style and the _find-next-btn_ isn't good, and this _"add-on"_ search-functionality isn't working in `Edge`, only on `Chrome` and on `Phones`.
 [^5]: Most of the accordion functions are from [BlogiNote](https://github.com/Benbinbin/BlogiNote). - style.css is added in assets-folder with style for the accordions. - All headers is collapsed and the Catalog (Table of contents) is closed on load, except; - The headers is not collapsed when using the search-functionality.
 [^6]: Four packages from [d3](https://github.com/d3) is making this possibly. Which ones? See the _package.json_.
 [^7]: All icons are downloaded and saved in assets/icons-folder. Don't try to use `nuxt-icons`, it will not work for layer 2.
-[^8]: Most of my functions and methods are located in plugin-folder as helpers.
+[^8]: Most of my functions and methods are located in `plugin`-folder as helpers, and other is located in the `utils`-folder.
 [^9]: If the notifications don't shows, changed the settings. Add the sites url in the `allow`-settings. - In Chrome: chrome://settings/content/notifications - In Edge: edge://settings/content/notifications
 [^10]: Typescript-issues in my base theme ([BlogiNote](https://github.com/Benbinbin/BlogiNote))-files are fixed and javascript is converted to typescript.
 [^11]: Needs to be there because of [issues in nuxt-content](). The inspiration for the module is this [package](https://www.npmjs.com/package/bloginote-copy-files-module).

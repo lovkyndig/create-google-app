@@ -7,7 +7,7 @@ export default defineAppConfig({
       version: `Playground ${pkg.version}`,
       description: pkg.description,
       homepage: pkg.homepage,
-      logo: '/img/svg/text-logo.svg'
+      logo: 'Kyrie Eleison'
     },
     menu: { btn: 'Articles' },
     author: pkg.author,
