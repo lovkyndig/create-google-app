@@ -50,7 +50,13 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,json}'],
       globIgnores: ['google*.*'],
-      navigateFallbackDenylist: [/^\/.*\\?giscus=.*/, /^\/.*\\?api.*/, /^\/.*\\?search.*/, /not-cached.png$/],
+      navigateFallbackDenylist: [
+        /^\/.*\\?giscus=.*/,
+        /^\/.*\\?api.*/,
+        /^\/.*\\?search.*/,
+        /pagefind.js$/
+
+      ],
       runtimeCaching: [
         {
           urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*(avatar|favicon).*/i),
@@ -68,7 +74,7 @@ export default defineNuxtConfig({
           options: { cacheName: 'articles' }
         }, // when this is cached - the frontpage is working offline
         {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/pagefind.js$/i),
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/pagefind.js$/),
           handler: 'NetworkFirst' as const,
           options: { cacheName: 'pagefind' }
         }

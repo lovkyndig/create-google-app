@@ -141,7 +141,7 @@ onUnmounted(() => {
         </template>
       </HeaderNav>
     </header>
-    <div class="grow flex flex-col">
+    <div id="slot_content" class="grow flex flex-col">
       <slot />
     </div>
     <hr class="p-4 w-1/5 mx-auto">
