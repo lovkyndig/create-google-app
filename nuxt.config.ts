@@ -50,27 +50,27 @@ export default defineNuxtConfig({
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,json}'],
       globIgnores: ['google*.*'],
-      navigateFallbackDenylist: [/^\/.*\\?giscus=.*/, /^\/.*\\?api.*/, /^\/.*\\?search.*/],
+      navigateFallbackDenylist: [/^\/.*\\?giscus=.*/, /^\/.*\\?api.*/, /^\/.*\\?search.*/, /not-cached.png$/],
       runtimeCaching: [
         {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(api|article|pwa)\/.*/i),
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*(avatar|favicon).*/i),
           handler: 'NetworkFirst' as const,
-          options: { cacheName: 'articles-cached' }
-        }, // when this is cached - the frontpage is working offline
-        {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*(avatar|favicon|manifest).*/i),
-          handler: 'NetworkFirst' as const,
-          options: { cacheName: 'homepage-cached' }
+          options: { cacheName: 'homepage' }
         }, // Every article have to be visited before it is cached
         {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(favicon).*/i),
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(.*manifest|pwa\/).*/i),
           handler: 'NetworkFirst' as const,
-          options: { cacheName: 'favicon-cached' }
+          options: { cacheName: 'manifest' }
         },
+        {
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(api|article)\/.*/i),
+          handler: 'NetworkFirst' as const,
+          options: { cacheName: 'articles' }
+        }, // when this is cached - the frontpage is working offline
         {
           urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/pagefind.js$/i),
           handler: 'NetworkFirst' as const,
-          options: { cacheName: 'pagefind-cached' }
+          options: { cacheName: 'pagefind' }
         }
       ]
     },

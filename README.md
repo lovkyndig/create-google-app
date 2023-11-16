@@ -3,7 +3,7 @@ Clone this repository and/or use it as a template for a website.
 - The [documentation/ guidelines](https://create-google-app.vercel.app) shows how to install, setup and publish it on Google Play.
 
 ## Package
-This repo can be downloaded or installed as a [package](https://github.com/lovkyndig?tab=packages&repo_name=create-google-app). I am using the package in [PWA Starter App](https://github.com/lovkyndig/pwa-starter-app), and all my other apps on Google Play.
+This repo can be downloaded or installed as a [package](https://github.com/lovkyndig?tab=packages&repo_name=create-google-app). I am using this package in [PWA Starter App](https://github.com/lovkyndig/pwa-starter-app), and all my other apps on Google Play.
 
 ## Futures
 | 100% Healt Score | Lighthouse => 99.6% |
@@ -72,4 +72,4 @@ _Extra Futures_
 [^18]: _google.site-verification_-file ([or code](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics)) is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), before [Ahrefs website-checker](https://ahrefs.com/website-checker) can be used. [Read more](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
 [^19]: Added in version 1.0.1 as component with [@giscus/vue](https://github.com/giscus/giscus-component/tree/main). The `repo-id` etc. have to be set in `app.config.ts`. The following _regeg pattern_ have to be added to _navigateFallbackDenylist_: `/^\/.*\\?giscus=.*/`, to get it works properly.
 
-Updated 14.11.2023
+Updated 16.11.2023
