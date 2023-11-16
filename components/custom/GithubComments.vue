@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Giscus from '@giscus/vue'
+import { useOnline } from '@vueuse/core'
 
 const appConfig = useAppConfig() as any
 
@@ -16,6 +17,7 @@ input-position="bottom"
 
 <template>
   <Giscus
+    v-if="useOnline().value"
     :repo="appConfig.myLayer.giscus.repo"
     :repo-id="appConfig.myLayer.giscus.repoId"
     :category="appConfig.myLayer.giscus.category"
