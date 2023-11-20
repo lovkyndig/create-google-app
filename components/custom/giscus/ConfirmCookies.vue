@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useConfirmDialog } from '@vueuse/core'
-
-console.log('start of ConfirmCookies')
+import { useConfirmDialog, useStorage } from '@vueuse/core'
 
 const message = ref('')
 const revaled = ref(true)
@@ -11,7 +8,6 @@ const moreBtn = ref(false)
 
 dialog.onConfirm((result) => {
   if (result) {
-    const countDown = 3
     message.value = 'Comments awailable - wait two seconds!'
     localStorage.setItem('app-store', '{"comments": "true"}')
     const timer = setTimeout(() => {
@@ -36,35 +32,55 @@ dialog.onCancel(() => {
   message.value = 'The coockies is created by https://giscus.app (and not by the owner of this website).'
   moreBtn.value = true
 })
+
+const state = useStorage(
+  'app-store',
+  { comments: 'false' },
+  localStorage,
+  { mergeDefaults: true } // use saved value if exist
+)
+const accepted = state.value.comments
 </script>
 
 <template>
-  <h2>
-    <span class="text-slate-950">{{ message }}</span>
-  </h2>
-  <div v-if="revaled">
-    <footer class="flex justify-center mt-2 mb-2">
-      <button @click="dialog.confirm(true)">
-        Accept
-      </button>
+  <div
+    v-if="accepted === 'false'"
+    class="cookie-box"
+  >
+    <div name="header">
+      <h3 class="text-xl">
+        Cookies
+      </h3>
+      <p>Do you accept cookies (on commenting)?</p>
+      <h4 class="text-slate-950">
+        {{ message }}
+      </h4>
+    </div>
+    <div v-if="revaled">
+      <footer class="flex justify-center mt-2 mb-2">
+        <button @click="dialog.confirm(true)">
+          Accept
+        </button>
 
-      <button
-        @click="dialog.confirm(false)"
-      >
-        Reject
-      </button>
+        <button
+          @click="dialog.confirm(false)"
+        >
+          Reject
+        </button>
 
-      <button
-        :class="moreBtn && 'more-active'"
-        @click="dialog.cancel"
-      >
-        More
-      </button>
-    </footer>
+        <button
+          :class="moreBtn && 'more-active'"
+          @click="dialog.cancel"
+        >
+          More
+        </button>
+      </footer>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scooped>
+/* absolute z-90 bottom-20 left-20 bg-white-400 text-white border-red-500 border-solid */
 .modal {
   position: fixed;
   left: 50%;
@@ -102,7 +118,7 @@ dialog.onCancel(() => {
 .heading {
   font-weight: bold;
   font-size: 1.4rem;
-  margin-bottom: 2rem;
+  margin-bottom:2rem;
 }
 
 footer button {
@@ -122,6 +138,34 @@ footer button:hover {
 
 .more-active {
   background-color: grey;
+}
+
+@media screen and (max-width: 600px) {
+   .cookie-box {
+      width: 96.9%;
+   }
+}
+@media screen and (min-width: 1000px) {
+   .cookie-box {
+      width: 97.9%;
+   }
+}
+@media only screen and (min-width: 600px) and (max-width: 1000px)  {
+  .cookie-box {
+      width: 97.5%;
+   }
+}
+
+.cookie-box {
+  opacity: 0.9;
+  padding-top: 6px;
+  padding-left: 20px;
+  color: white;
+  background: slategray;
+  position: absolute;
+  bottom: 13px;
+  left: 9px;
+  border-width: 0 2px;
 }
 
 /*

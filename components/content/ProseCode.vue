@@ -227,7 +227,7 @@ onMounted(() => {
             class="w-4 h-4 text-green-500"
             :font-controlled="false"
           />
-          <LazySvgoIconParkOutlineFileFailedOne
+          <SvgoIconParkOutlineFileFailedOne
             v-show="copyState === 'fail'"
             name="file-failed-one"
             class="w-4 h-4 text-red-500"

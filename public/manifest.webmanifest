@@ -144,29 +144,6 @@
       "label": "Article wide"
     }
   ],
-  "shortcuts": [
-    {
-      "name": "About the app",
-      "short_name": "About",
-      "description": "About this amazing app",
-      "url": "/about",
-      "icons": [{ "src": "/pwa/shortcuts/about.png", "sizes": "96x96" }]
-    },
-    {
-      "name": "Privacy Policy",
-      "short_name": "Privacy",
-      "description": "Privacy Statement",
-      "url": "/privacy",
-      "icons": [{ "src": "/pwa/shortcuts/privacy.png", "sizes": "96x96" }]
-    },
-    {
-      "name": "Content-list",
-      "short_name": "List",
-      "description": "List of the content",
-      "url": "/list",
-      "icons": [{ "src": "/pwa/shortcuts/list.png", "sizes": "96x96" }]
-    }
-  ],
   "id": "/",
   "scope": "/",
   "lang": "en",

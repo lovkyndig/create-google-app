@@ -487,7 +487,7 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
     <MarkdownPostContent :data="props.data" />
 
     <!--    **************************************************    -->
-    <GithubComments class="giscus" />
+    <GithubComments />
     <!--    **************************************************    -->
 
     <div
