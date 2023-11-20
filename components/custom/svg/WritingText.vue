@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 // This component is almost the same as content/MdcHeader
 const props = defineProps<{
   line1?: string;

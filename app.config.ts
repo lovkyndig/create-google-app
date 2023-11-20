@@ -62,7 +62,7 @@ export default defineAppConfig({
     articlePage: {
       showTime: true,
       outdated: {
-        show: true,
+        show: false,
         threshold: 30
       },
       showCatalog: false

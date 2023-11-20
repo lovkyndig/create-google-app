@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 /* svg-source: https://codepen.io/seanmccaffery/pen/kWWxzQ */
 const appConfig = useAppConfig()
 </script>

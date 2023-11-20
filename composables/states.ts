@@ -1,17 +1,20 @@
+// import { useWindowSize } from '@vueuse/core'
 /**
  *
  * window width and heigh
  * change when window resize in /layout/base.vue component
  *
  */
-
+/*
 interface WindowSize {
   height: number;
   width: number;
 }
-export const useWindowSize = () => useState<WindowSize>('windowSize', () => {
+*/
+
+export const useWindowSize = () => useState('windowSize', () => {
   return {
-    height: 0,
+    height: 0, // 0 originalt
     width: 0
   }
 })
