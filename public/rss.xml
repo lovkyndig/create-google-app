@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
-        <title>Create Google App</title>
+        <title>@lovkyndig/create Google App</title>
         <link>https://create-google-app.vercel.app</link>
         <description>Guide to Create Google App in one day or one week, depending on the programming skills.</description>
-        <lastBuildDate>Wed, 25 Oct 2023 07:25:04 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 20 Nov 2023 20:26:44 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
-            <title>Create Google App</title>
-            <url>https://create-google-app.vercel.app/svg/avatar.svg</url>
+            <title>@lovkyndig/create Google App</title>
+            <url>https://create-google-app.vercel.app/img/svg/avatar.svg</url>
             <link>https://create-google-app.vercel.app</link>
         </image>
         <copyright>All rights reserved 2023, Kyrie Eleison</copyright>
@@ -23,6 +23,7 @@
             <title><![CDATA[How to become a google app developer?]]></title>
             <link>https://create-google-app.vercel.app/article/intro</link>
             <guid>/article/intro</guid>
+            <pubDate>Tue, 17 Oct 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[In this tutorial you will learn to create an app and publish it; first as as an homepage, and then on Google Play Store, in less than one week. The tutorial is split in to foure step.]]></description>
             <content:encoded><![CDATA[this should be the full content]]></content:encoded>
         </item>
@@ -30,7 +31,7 @@
             <title><![CDATA[Setup and install]]></title>
             <link>https://create-google-app.vercel.app/article/setup-and-deploy/setup/setup-and-install</link>
             <guid>/article/setup-and-deploy/setup/setup-and-install</guid>
-            <pubDate>Fri, 20 Oct 2023 00:00:00 GMT</pubDate>
+            <pubDate>Wed, 18 Oct 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[How can we use this nuxt layer as a template and create our own app and publish it on Google App Store? I will tell you everything you need to know, as to a child that never have writed any code in your life.]]></description>
             <content:encoded><![CDATA[this should be the full content]]></content:encoded>
         </item>
@@ -38,7 +39,7 @@
             <title><![CDATA[Content and configuration]]></title>
             <link>https://create-google-app.vercel.app/article/setup-and-deploy/content/content-and-config</link>
             <guid>/article/setup-and-deploy/content/content-and-config</guid>
-            <pubDate>Wed, 11 Oct 2023 00:00:00 GMT</pubDate>
+            <pubDate>Thu, 19 Oct 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Normally it's necessary to know html, css and javascript to build a app. That is not necessary for this app. The only thing you need to learn is markdown-syntax to write your content - almost like you write your content in ms-word or another text-editor. The configuration is a little bit more tricky (but there isn't much we need to do about it).]]></description>
             <content:encoded><![CDATA[this should be the full content]]></content:encoded>
         </item>
@@ -46,7 +47,7 @@
             <title><![CDATA[GitHub and Vercel]]></title>
             <link>https://create-google-app.vercel.app/article/setup-and-deploy/deploy/github-and-vercel</link>
             <guid>/article/setup-and-deploy/deploy/github-and-vercel</guid>
-            <pubDate>Wed, 11 Oct 2023 00:00:00 GMT</pubDate>
+            <pubDate>Fri, 20 Oct 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[We need to push our local repo to github and then connect it to vercel. Than we have our app published on vercel. If the name you have set for your repo is my-google-app, then you will find your app on internet with that url (if you don't change it manually on vercel):]]></description>
             <content:encoded><![CDATA[this should be the full content]]></content:encoded>
         </item>
@@ -62,7 +63,7 @@
             <title><![CDATA[Using bubblewrap]]></title>
             <link>https://create-google-app.vercel.app/article/create-and-upload/create-app/bubblewrap</link>
             <guid>/article/create-and-upload/create-app/bubblewrap</guid>
-            <pubDate>Thu, 12 Oct 2023 00:00:00 GMT</pubDate>
+            <pubDate>Sun, 22 Oct 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Bubblewrap is the tool that converts a pwa-homepage into a format that can be uploaded to Google Play Console. Using bubblewrap is very difficult, and on this page we need to focus only on how to install bubblewrap and how to use this tool (to create an aab-file).]]></description>
             <content:encoded><![CDATA[this should be the full content]]></content:encoded>
         </item>
@@ -70,7 +71,7 @@
             <title><![CDATA[Google Play Console]]></title>
             <link>https://create-google-app.vercel.app/article/create-and-upload/upload-app/play-console</link>
             <guid>/article/create-and-upload/upload-app/play-console</guid>
-            <pubDate>Wed, 11 Oct 2023 00:00:00 GMT</pubDate>
+            <pubDate>Mon, 23 Oct 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[When we have created the app with bubblewrap, then we can go on to Goole Play console. You need an google account to get access to the Play Console. Be aware of that publishing apps isn't totally free. To get lifetime access, you have to pay 25 dollar. Then you can publish apps the rest of your life, without paying anything. It's everything or nothing.]]></description>
             <content:encoded><![CDATA[this should be the full content]]></content:encoded>
         </item>

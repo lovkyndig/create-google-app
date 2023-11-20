@@ -40,7 +40,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-svgo'
   ],
-  // experimental: { payloadExtraction: false },
+  experimental: { payloadExtraction: false },
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
@@ -53,7 +53,8 @@ export default defineNuxtConfig({
       navigateFallbackDenylist: [
         /^\/.*\\?giscus=.*/,
         /^\/.*\\?api.*/,
-        /^\/.*\\?search.*/
+        /^\/.*\\?search.*/,
+        /^\/list\\?.*/
       ],
       runtimeCaching: [
         {
@@ -65,7 +66,12 @@ export default defineNuxtConfig({
           urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(api|article)\/.*/i),
           handler: 'NetworkFirst' as const,
           options: { cacheName: 'articles' }
-        } // when this is cached - the frontpage is working offline
+        }, // when this is cached - the frontpage is working offline
+        {
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/list\\?.*/i),
+          handler: 'NetworkFirst' as const,
+          options: { cacheName: 'list' }
+        }
       ]
     },
     devOptions: {
