@@ -2,6 +2,8 @@
 :: https://developers.google.com/speed/webp/download
 :: https://developers.google.com/speed/webp/docs/using
 :: https://web.dev/articles/serve-images-webp
+:: http://downloads.webmproject.org/releases/webp/index.html
+:: Add this to PATH: %ProgramFiles%\cwebp\bin // if installed here
 clear
 @cls
 @echo THIS BAT-FILE CONVERTS AN IMAGE IN IMAGES-FOLDER TO WEBP
