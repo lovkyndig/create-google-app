@@ -36,7 +36,7 @@ _Arrangement for PWA_
 12. Privacy policy statement with route, ready to be used on Google Play Store.[^12]  
 13. [@vite-pwa/nuxt](https://www.npmjs.com/package/@vite-pwa/nuxt) is setting up the PWA. Manifest is loaded trough the settings in nuxt.config.[^13]  
 14. BubbleWrap guide. See assets/guide. Required to be read.[^14]  
-15. Hosting on [Vercel](https://vercel.com/docs/deployments/git/vercel-for-github).[^15]
+15. Hosted on [Vercel](https://vercel.com/docs/deployments/git/vercel-for-github).[^15]
 
 _Extra Futures_  
 
@@ -46,8 +46,8 @@ _Extra Futures_
 19. GitHub-Comments, [giscus](https://giscus.app).[^19]
 
 ## To do-list (plan)
+- Add [Translate](https://www.npmjs.com/package/@google-translate-select/vue3) option.
 - Add [nuxt/ui](https://www.npmjs.com/package/@nuxt/ui) or/and add dark-light-theme-toggle.
-- Maybe add [Google Translate](https://www.npmjs.com/package/@google-translate-select/vue3) option (not auto-translate).
 
 ## License
 [MIT](./LICENSE)
@@ -72,4 +72,4 @@ _Extra Futures_
 [^18]: _google.site-verification_-file ([or code](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics)) is necessary for indexing the pages in [google-search-console](https://search.google.com/search-console/about), before [Ahrefs website-checker](https://ahrefs.com/website-checker) can be used. [Read more](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
 [^19]: Added in version 1.0.1 as component with [@giscus/vue](https://github.com/giscus/giscus-component/tree/main). The `repo-id` etc. have to be set in `app.config.ts`. The following _regeg pattern_ have to be added to _navigateFallbackDenylist_: `/^\/.*\\?giscus=.*/`, to get it works properly.
 
-Updated 16.11.2023
+Updated 21.11.2023
