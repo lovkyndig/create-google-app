@@ -33,7 +33,7 @@ _Helpers (functions/methods)_
 
 _Arrangement for PWA_  
 
-12. Privacy policy statement with route, ready to be used on Google App Store.[^12]  
+12. Privacy policy statement with route, ready to be used on Google Play Store.[^12]  
 13. [@vite-pwa/nuxt](https://www.npmjs.com/package/@vite-pwa/nuxt) is setting up the PWA. Manifest is loaded trough the settings in nuxt.config.[^13]  
 14. BubbleWrap guide. See assets/guide. Required to be read.[^14]  
 15. Hosting on [Vercel](https://vercel.com/docs/deployments/git/vercel-for-github).[^15]
@@ -65,7 +65,7 @@ _Extra Futures_
 [^11]: Needs to be there because of [issues in nuxt-content](). The inspiration for the module is this [package](https://www.npmjs.com/package/bloginote-copy-files-module).
 [^12]: Privacy is mandatory for all Google Apps (and therefore needed in my apps). - privacy.txt.ts is added in server/routes-folder, and privacy.txt is added to public-folder.
 [^13]: PWA is the first step on the way to Google Store. Remember to host your site ([vercel](https://vercel.com/docs/deployments/git/vercel-for-github)). Se more in pkt 15 below.
-[^14]: Bubblewrap has to be used to create the aab-package before uploading it to Google App Store. - Bubblewrap are installed Globally on the local mashine, for use on development, because; - I'm using bubblewrap in a subfolder under the root, because the bubblewrap are creating so many files that have to be keeped away from the github-repo-files. - Guide-folder with links and info about using bubblewrap is added inside the assets-folder. - bubblewrap-folder is added to .gitignore-file. [Read more](https://create-google-app.vercel.app/article/create-and-upload/create-app/bubblewrap).
+[^14]: Bubblewrap has to be used to create the aab-package before uploading it to Google Play Store. - Bubblewrap are installed Globally on the local mashine, for use on development, because; - I'm using bubblewrap in a subfolder under the root, because the bubblewrap are creating so many files that have to be keeped away from the github-repo-files. - Guide-folder with links and info about using bubblewrap is added inside the assets-folder. - bubblewrap-folder is added to .gitignore-file. [Read more](https://create-google-app.vercel.app/article/create-and-upload/create-app/bubblewrap).
 [^15]: All public repos on github can be hosted on [vercel](https://vercel.com/docs/deployments/git/vercel-for-github) for free.
 [^16]: The `bat`-file is copying the _dev_-files to _public_-folder (and then it's working). To run _bat_-files in **Git-Bash** write `./rss-sitemap.bat` + enter. 
 [^17]: Vercel Analytics don't use cookies and this app isn't using cookies at all, therefore it's not need for a plugin that pop up with a question if you accept cookies. See the [doc](https://create-google-app.vercel.app/article/setup-and-deploy/deploy/verification-and-analytics).
