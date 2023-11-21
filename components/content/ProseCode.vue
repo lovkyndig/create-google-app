@@ -180,7 +180,6 @@ onMounted(() => {
         <NuxtLink
           v-if="urlRegex.test(props.filename)"
           :to="props.filename"
-          target="_blank"
           class=" no-underline transition-colors duration-300"
           style="text-decoration-line: none; color: #94a3b8;"
         >

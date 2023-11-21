@@ -36,6 +36,7 @@ useSeoMeta({
               <a
                 :href="`./privacy.txt`"
                 aria-label="privacy.txt"
+                target="_blank"
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
               > <!-- icon="iconoir:privacy-policy" class="w-36 h-36" -->
                 <SvgoCustomPrivacyPolicy class="text-green-400 text-9xl" />
@@ -48,6 +49,7 @@ useSeoMeta({
               <a
                 :href="`./sitemap.xml`"
                 aria-label="sitemap.xml"
+                target="_blank"
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
               > <!-- icon="majesticons:sitemap" class="w-36 h-36" -->
                 <SvgoMajesticonsSitemap class="text-purple-400 text-9xl" />
@@ -60,6 +62,7 @@ useSeoMeta({
               <a
                 :href="`./rss.xml`"
                 aria-label="rss.xml"
+                target="_blank"
                 class="text-blue-500 hover:text-blue-600 transition-colors duration-300"
               > <!-- icon="fa-solid:rss-square" class="w-36 h-36" -->
                 <SvgoFaSolidRssSquare class="text-orange-400 h-1/2 text-9xl" />

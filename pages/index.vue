@@ -372,7 +372,6 @@ useSeoMeta({
               :key="item._path"
               :to="item._path"
               :title="item.title"
-              target="_blank"
               class="self-start px-4 py-2 flex items-start gap-1 hover:text-blue-500 hover:bg-blue-100 transition-colors duration-300 rounded-lg"
             >
               <FileType

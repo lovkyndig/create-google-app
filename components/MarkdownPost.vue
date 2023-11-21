@@ -368,7 +368,6 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
         <NuxtLink
           v-if="theme"
           :to="{ path: '/list', query: { theme: theme } }"
-          target="_blank"
           class="p-2 flex items-center gap-1 text-gray-600 hover:text-white hover:bg-purple-500 focus:outline-purple-500 focus:outline-none rounded transition-colors duration-300"
         >
           <svgo-material-symbols-category-rounded
@@ -476,7 +475,6 @@ watch([collapsedHeadingsSet, syncCatalogToggleState], () => {
           v-for="tag in props.data.tags"
           :key="tag"
           :to="{ path: '/list', query: { tags: [tag] } }"
-          target="_blank"
           class="px-2 py-1 text-xs text-gray-600 hover:text-white hover:bg-blue-500 rounded focus:outline-blue-500 transition-colors duration-300"
         >
           #{{ tag }}

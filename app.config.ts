@@ -11,7 +11,7 @@ export default defineAppConfig({
     },
     menu: { btn: 'Google' },
     author: pkg.author,
-    email: 'jur.eleison@gmail.com',
+    email: 'jesu.broder@gmail.com',
     avatar: '/img/svg/avatar.svg',
     favicon: '/favicon.svg',
     assetTypes: [],

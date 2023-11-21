@@ -243,7 +243,6 @@ const folderNavScrollingHandler = () => {
             v-if="item._type"
             :key="item._path"
             :to="item._path"
-            target="_blank"
             class="p-2 flex items-start gap-1 rounded hover:text-blue-500 active:text-white hover:bg-blue-100 active:bg-blue-500 transition-colors duration-300"
           >
             <FileType

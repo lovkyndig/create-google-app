@@ -40,7 +40,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-svgo'
   ],
-  experimental: { payloadExtraction: false },
+  // experimental: { payloadExtraction: false },
   pwa: {
     manifest: false, // public/manifest.webmanifest
     strategies: 'generateSW',
@@ -54,7 +54,9 @@ export default defineNuxtConfig({
         /^\/.*\\?giscus=.*/,
         /^\/.*\\?api.*/,
         /^\/.*\\?search.*/,
-        /^\/list\\?.*/
+        /^\/privacy.txt$/,
+        /^\/rss.xml$/,
+        /^\/sitemap.xml$/
       ],
       runtimeCaching: [
         {
@@ -68,9 +70,9 @@ export default defineNuxtConfig({
           options: { cacheName: 'articles' }
         }, // when this is cached - the frontpage is working offline
         {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/list\\?.*/i),
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(rss.xml|sitemap.xml|privacy.txt)$/),
           handler: 'NetworkFirst' as const,
-          options: { cacheName: 'list' }
+          options: { cacheName: 'txt-files' }
         }
       ]
     },
