@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
+import pkg from '../package.json'
+
+const titles = useSearchString()
+const searchString = useState('searchString')
+const appConfig = useAppConfig()
 
 interface MyCustomParsedContent extends ParsedContent {
   tags: string[]
@@ -188,7 +193,7 @@ onMounted(() => {
 
   const series = route.query?.series as string || 'all'
   currentSeries.value = series
-  echoQueryParam(route.query, route) // lovkyndig coded 2023
+  echoQueryParam(route.query, route.fullPath) // utils/list-helpers
 })
 
 /**
@@ -277,19 +282,62 @@ const getFileTypeIcon = (type) => {
   }
 }
 
-/** -------------------------------- utils/search-and-seo-methods.ts --------------------------------- */
-const appConfig = useAppConfig()
+/** ---------------------------- utils/search-and-seo-methods.ts ------------------------------- */
 useServerSeoMeta({
   ogDescription: `${appConfig.myLayer.list.description} ${route.fullPath.slice(9)}`
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
 
-getAndUseSearchparam(route)
+// Her starts list-helpers  **************************************************
+
+/**
+ *
+ * Publishing the TITLE.
+ * Using route.path as argument to this function.
+ * Using this function five times below, from here to the script end.
+ *
+ */
+const publishTitle = (value, routeFullpath) => { // using this function 5 times below
+  const title = ref(value)
+  titles.value = title
+  useSeoMeta({
+    title: title.value,
+    description: `${appConfig.myLayer.list.description} ${routeFullpath.slice(9)}`,
+    ogDescription: `${appConfig.myLayer.list.description} ${routeFullpath.slice(9)}`,
+    ogUrl: `${pkg.homepage}${routeFullpath}`
+  })
+  useHead({ link: [{ rel: 'canonical', href: `${pkg.homepage}${routeFullpath}` }] })
+}
+
+/**
+ * Loading echoQueryParam above onMounted
+ */
+const echoQueryParam = (queryObj, routeFullPath) => {
+  if (process.client) {
+    const querystring = window.location.search
+    if (querystring.substring(1)) { // set searchString.value
+      searchString.value = querystring.substring(1)
+    }
+  }
+  publishTitle(`${appConfig.myLayer.list.tags} ${searchString.value}`, routeFullPath)
+}
+
+function getAndUseSearchparam (routePath, routeFullPath) { // only on load
+  if (routeFullPath === routePath) {
+    publishTitle(appConfig.myLayer.list.tags_all, routeFullPath)
+  } else {
+    publishTitle(`${appConfig.myLayer.list.tags} ${routeFullPath.slice(9)}`, routeFullPath)
+  }
+}
+
+// Her ends list-helpers  *******************************************
+
+getAndUseSearchparam(route.path, route.fullPath) // utils/list-helpers
 
 watch(() => route.fullPath, () => { // only on change after load
   if (route.path === route.fullPath) {
-    publishTitle(appConfig.myLayer.list.tags_all, route)
+    publishTitle(appConfig.myLayer.list.tags_all, route.fullPath)
   } else {
-    publishTitle(`${appConfig.myLayer.list.tags} ${route.fullPath.slice(9)}`, route)
+    publishTitle(`${appConfig.myLayer.list.tags} ${route.fullPath.slice(9)}`, route.fullPath)
   }
 })
 

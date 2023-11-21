@@ -62,7 +62,7 @@ export default defineNuxtConfig({
         {
           urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*(avatar|favicon|privacy|rss|sitemap).*/i),
           handler: 'NetworkFirst' as const,
-          options: { cacheName: 'homepage' }
+          options: { cacheName: 'frontpage' }
         }, // Every article have to be visited before it is cached
         {
           urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(api|article)\/.*/i),
