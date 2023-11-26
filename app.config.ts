@@ -7,9 +7,12 @@ export default defineAppConfig({
       version: pkg.version,
       description: pkg.description,
       homepage: pkg.homepage,
-      logo: 'Kyrie Eleison' // max 13 char
     },
-    menu: { btn: 'Google' },
+    menu: { 
+      logo: 'Kyrie Eleison', // max 13 char
+      btn: 'Google',
+      mobil: 'Kyrie'
+    },
     author: pkg.author,
     email: 'jesu.broder@gmail.com',
     avatar: '/img/svg/avatar.svg',

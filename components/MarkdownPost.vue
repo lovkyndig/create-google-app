@@ -70,9 +70,9 @@ if (props.data?.series) {
     return queryContent('article')
       .where({ series: props.data.series })
       .only(['title', 'description', '_path', '_type', 'seriesOrder'])
-      .sort({ seriesOrder: 1, $numeric: true })
+      .sort({ created: 1, _path: 1, $numeric: true })
       .find()
-  })
+  }) // Original: .sort({ seriesOrder: 1, $numeric: true })
 
   seriesList.value = seriesResult.value
 
