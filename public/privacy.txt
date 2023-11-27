@@ -32,7 +32,7 @@ As said above, login is required via third party, but only if you wish to write 
 You can read comments and everyting on the websites, without logging in.
 
 ## Claims and objections
-Complaints or objections to the developer's use of Google Search Console, or other complaints and objections, can be sent to the developer's email:  
+Complaints or objections about the developer's use of third parties services, or other complaints and objections, can be sent to the developer's email:  
 - [Kyrie Eleison](mailto:jesu.broder@gmail.com)
 
 ## Complaint about processing of user activity

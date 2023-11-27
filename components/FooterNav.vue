@@ -87,7 +87,7 @@ const showSearchModal = useState('showSearchModal')
             class="text-xs"
             :class="showFooterNavMoreOptions ? 'text-purple-500' : 'text-gray-500'"
           >
-            More
+            {{ appConfig?.myLayer?.menu?.mobil }}
           </p>
         </div>
       </button>
