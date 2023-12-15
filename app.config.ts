@@ -6,12 +6,13 @@ export default defineAppConfig({
       name: 'Create Goocle App',
       version: pkg.version,
       description: pkg.description,
-      homepage: pkg.homepage,
+      homepage: pkg.homepage
     },
-    menu: { 
+    menu: {
       logo: 'Kyrie Eleison', // max 13 char
       btn: 'Google',
-      mobil: 'Kyrie'
+      mobil: 'Kyrie',
+      restricted: /^\/(article\/restricted|article\/sequred|article\/login)\/.*/
     },
     author: pkg.author,
     email: 'jesu.broder@gmail.com',

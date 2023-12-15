@@ -7,6 +7,7 @@ const online = useOnline().value
 export default defineNuxtRouteMiddleware((to) => {
   const { authenticated } = storeToRefs(useAuthStore()) // make authenticated state reactive
   const token = useCookie('token') // get token from cookies
+  const restricted = useAppConfig().myLayer?.menu?.restricted
 
   if (token.value) {
     // check if value exists
@@ -27,7 +28,7 @@ export default defineNuxtRouteMiddleware((to) => {
   }
   */
   // startsWith('/article/epistler')
-  if (!token.value && to.fullPath.match(/^\/(article\/a|article\/b\/)\/.*/)) {
+  if (!token.value && to.fullPath.match(restricted)) {
     abortNavigation()
     // useSessionStorage
     // console.log('sessionStorage-value is: ' + sessionStorage.getItem('auth-page'))
