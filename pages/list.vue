@@ -297,8 +297,8 @@ useServerSeoMeta({
  * Using this function five times below, from here to the script end.
  *
  */
-const publishTitle = (value, routeFullpath) => { // using this function 5 times below
-  const title = ref(value)
+const publishTitle = (myLayerTitle, routeFullpath) => { // using this function 5 times below
+  const title = ref(myLayerTitle)
   titles.value = title
   useSeoMeta({
     title: title.value,
