@@ -298,8 +298,8 @@ useServerSeoMeta({
  *
  */
 const publishTitle = (myLayerTitle, routeFullpath) => { // using this function 5 times below
-  const title = ref(myLayerTitle)
-  titles.value = title
+  const title = ref('')
+  titles.value = myLayerTitle
   useSeoMeta({
     title: title.value,
     description: `${appConfig.myLayer.list.description} ${routeFullpath.slice(9)}`,
