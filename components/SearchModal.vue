@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useOnline } from '@vueuse/core'
+
 const online = useOnline().value
 const pagefindPath = '/_pagefind/pagefind.js'
 

@@ -3,6 +3,10 @@ const appConfig = useAppConfig()
 const config = useRuntimeConfig()
 const route = useRoute()
 
+definePageMeta({
+  middleware: 'login-test'
+})
+
 /**
  *
  * fetch the article data based on the current route path
@@ -42,6 +46,8 @@ useSeoMeta({
   ogDescription: `${appConfig.myLayer.slug.description} ${route.fullPath.slice(9)}`,
   ogUrl: `${config.public.hostname}${route.fullPath}`
 }) // https://nuxt.com/docs/getting-started/seo-meta#useseometa
+
+const showSearchModal = useState('showSearchModal')
 </script>
 
 <template>
@@ -117,6 +123,9 @@ useSeoMeta({
     <!-- *****************************  FIND-NEXT ********************************* -->
     <FindNext v-if="searchString" />
     <!-- *****************************  FIND-NEXT ********************************* -->
+    <ClientOnly>
+      <SearchModal v-show="showSearchModal" />
+    </ClientOnly>
   </div>
 </template>
 
