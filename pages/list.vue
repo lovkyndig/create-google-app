@@ -205,9 +205,10 @@ onMounted(() => {
 const { pending, data: articleList } = await useAsyncData('articles', () => {
   return queryContent<MyCustomParsedContent>('article')
     .only(['title', 'description', '_type', '_path', 'contentType', '_type', 'series', 'seriesOrder', 'tags'])
-    .sort({ created: 1, _path: 1, $numeric: true })
+    .sort({ created: 1, $numeric: true })
     .find()
 }) // Original: .sort({ seriesOrder: 1, $numeric: true })
+// look also in components\MarkdownPost.vue
 
 // filter articles data
 const filterArticleList = ref([])
@@ -296,9 +297,9 @@ useServerSeoMeta({
  * Using this function five times below, from here to the script end.
  *
  */
-const publishTitle = (value, routeFullpath) => { // using this function 5 times below
-  const title = ref(value)
-  titles.value = title
+const publishTitle = (myLayerTitle, routeFullpath) => { // using this function 5 times below
+  const title = ref('')
+  titles.value = myLayerTitle
   useSeoMeta({
     title: title.value,
     description: `${appConfig.myLayer.list.description} ${routeFullpath.slice(9)}`,

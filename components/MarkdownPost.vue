@@ -73,6 +73,7 @@ if (props.data?.series) {
       .sort({ created: 1, _path: 1, $numeric: true })
       .find()
   }) // Original: .sort({ seriesOrder: 1, $numeric: true })
+  // look also in pages\list.vue
 
   seriesList.value = seriesResult.value
 

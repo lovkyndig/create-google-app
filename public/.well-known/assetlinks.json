@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.vercel.create_google_app.twa",
+      "sha256_cert_fingerprints": [
+        "8D:39:A3:B8:54:3D:B1:BB:79:B2:BA:55:53:F5:33:63:7B:05:3E:E9:BC:F2:82:B4:C8:C5:FB:88:C0:AC:66:B8"
+      ]
+    }
+  }
+]

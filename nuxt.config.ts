@@ -7,6 +7,8 @@ import pkg from './package.json'
 
 const { resolve } = createResolver(import.meta.url)
 const currentDir = dirname(fileURLToPath(import.meta.url))
+const oneDay = 60 * 60 * 24 * 1000
+const oneWeek = oneDay * 7
 
 export default defineNuxtConfig({
   css: [join(currentDir, './assets/style.css')],
@@ -30,6 +32,12 @@ export default defineNuxtConfig({
     public: {
       hostname: pkg.homepage,
       production_mode: isProduction
+    },
+    auth: {
+      cookieName: process.env.COOKIE_NAME || '__session',
+      cookieSecret: process.env.COOKIE_SECRET || 'secret',
+      cookieExpires: parseInt(process.env.COOKIE_REMEMBER_ME_EXPIRES || oneDay.toString(), 10), // 1 day
+      cookieRememberMeExpires: parseInt(process.env.COOKIE_REMEMBER_ME_EXPIRES || oneWeek.toString(), 10), // 7 days
     }
   },
   modules: [
@@ -37,8 +45,8 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@vite-pwa/nuxt',
-    '@vueuse/nuxt',
-    'nuxt-svgo'
+    'nuxt-svgo',
+    '@pinia/nuxt'
   ],
   // experimental: { payloadExtraction: false },
   pwa: {
@@ -56,7 +64,8 @@ export default defineNuxtConfig({
         /^\/.*\\?search.*/,
         /^\/privacy.txt$/,
         /^\/rss.xml$/,
-        /^\/sitemap.xml$/
+        /^\/sitemap.xml$/,
+        /\/assetslinks.json$/
       ],
       runtimeCaching: [
         {

@@ -107,6 +107,7 @@ onMounted(() => {
 })
 
 const showSearchModal = useState('showSearchModal')
+// const showLoginModal = useState('showLoginModal')
 
 // keyboard shortcuts for search modal
 const ModalKeyListener = function (event: KeyboardEvent) {
